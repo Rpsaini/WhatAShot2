@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_20"
+    tools:context=".LoginActivity">
+
+   <LinearLayout
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:orientation="vertical"
+       >
+
+   <ImageView
+       android:visibility="gone"
+       android:id="@+id/login_back"
+       android:padding="6dp"
+       android:layout_marginTop="10dp"
+       android:layout_width="40dp"
+       android:layout_height="30dp"
+       android:src="@drawable/ic_up_arrow"
+       android:rotation="90"
+       app:tint="@color/hintTextColor"></ImageView>
+
+   <ImageView
+       android:layout_gravity="center"
+       android:layout_marginTop="20dp"
+       android:src="@drawable/logo"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       ></ImageView>
+
+
+   <fontspackageForTextView.BoldMedium
+       android:layout_marginTop="50dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Login"
+       android:textColor="@color/dark_blue"
+       android:textSize="22dp"
+       android:gravity="center"
+       ></fontspackageForTextView.BoldMedium>
+
+
+   <LinearLayout
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp"
+       android:orientation="vertical"
+       >
+
+        <fontspackageForTextView.Regular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Public key"
+            android:textColor="@color/grey_dark"
+            android:textSize="12dp"
+            ></fontspackageForTextView.Regular>
+
+<!--      //dlNpTUkrT3lWSXZoSVBFY052N0RNd2Q5RG9EcGpMMjRCQnFETHNVTmxKcz0=-->
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+      <fontpackageforEdittext.Regular
+          android:id="@+id/login_username"
+          android:paddingLeft="5dp"
+          android:maxLines="1"
+          android:imeOptions="actionDone"
+          android:layout_marginTop="5dp"
+          android:layout_width="match_parent"
+          android:layout_height="45dp"
+          android:background="@drawable/edittext_drawable"
+          android:hint="Public key"
+          android:singleLine="true"
+          android:textColorHint="@color/grey_dark"
+          android:textColor="@color/black"
+          android:textSize="14dp"
+          android:paddingRight="30dp"
+          ></fontpackageforEdittext.Regular>
+         <ImageView
+             android:id="@+id/scanqrcode"
+             android:src="@drawable/qrcodescan"
+             android:layout_width="30dp"
+             android:layout_height="30dp"
+             android:layout_alignParentEnd="true"
+             android:layout_centerVertical="true"
+             android:paddingRight="10dp"
+             ></ImageView>
+
+
+      </RelativeLayout>
+
+      <fontspackageForTextView.Regular
+          android:layout_marginTop="25dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Secret key"
+          android:textColor="@color/grey_dark"
+          android:textSize="12dp"
+          ></fontspackageForTextView.Regular>
+
+      <fontpackageforEdittext.Regular
+          android:id="@+id/login_password"
+          android:paddingLeft="5dp"
+          android:layout_marginTop="5dp"
+          android:layout_width="match_parent"
+          android:layout_height="45dp"
+          android:background="@drawable/edittext_drawable"
+          android:hint="Secret key"
+          android:maxLines="1"
+          android:singleLine="true"
+          android:imeOptions="actionDone"
+          android:textColorHint="@color/grey_dark"
+          android:textColor="@color/black"
+          android:textSize="14dp"
+          ></fontpackageforEdittext.Regular>
+
+<!--      S3ROT51Bn9VNjOK0fuEB-->
+      <TextView
+          android:id="@+id/login_btn"
+          android:textSize="16dp"
+          android:textColor="@color/white"
+          android:text="Login"
+          android:gravity="center"
+          android:layout_marginTop="20dp"
+          android:layout_height="45dp"
+          android:layout_width="match_parent"
+          android:background="@drawable/green_drawable"
+          ></TextView>
+
+
+
+      <TextView
+          android:id="@+id/get_keys"
+          android:textSize="16dp"
+          android:textColor="@color/white"
+          android:text="Get Keys"
+          android:gravity="center"
+          android:layout_marginTop="20dp"
+          android:layout_height="45dp"
+          android:layout_width="match_parent"
+          android:background="@drawable/share_button_drawable"
+          ></TextView>
+
+   </LinearLayout>
+   </LinearLayout>
+
+   <LinearLayout
+       android:layout_marginBottom="10dp"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="15dp"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_centerHorizontal="true"
+       android:orientation="horizontal"
+       >
+      <fontspackageForTextView.Regular
+          android:layout_width="wrap_content"
+          android:text="Don't have an account?"
+          android:textSize="16dp"
+          android:textColor="@color/grey_dark"
+          android:layout_height="wrap_content"
+          ></fontspackageForTextView.Regular>
+
+      <fontspackageForTextView.BoldMedium
+          android:id="@+id/txt_register"
+          android:layout_width="wrap_content"
+          android:text=" Register"
+          android:textSize="18dp"
+          android:textColor="@color/black"
+          android:layout_height="wrap_content"
+          ></fontspackageForTextView.BoldMedium>
+
+
+   </LinearLayout>
+
+</RelativeLayout>

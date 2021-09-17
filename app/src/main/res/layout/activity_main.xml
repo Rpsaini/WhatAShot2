@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/purple_700"
+        >
+        <ImageView
+            android:paddingEnd="10dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile_icon"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"></ImageView>
+
+
+        <ImageView
+            android:id="@+id/img_somoreoptions"
+            android:layout_alignParentEnd="true"
+            android:paddingEnd="10dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rupee"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"></ImageView>
+
+        <ImageView
+            android:padding="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/app_header_logo"
+            android:layout_centerInParent="true"
+            ></ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <LinearLayout
+            android:layout_height="61dp"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bottom_nav_drawable"
+            android:weightSum="4"
+            >
+
+            <fontspackageForTextView.Regular
+                android:id="@+id/txt_quicknuy"
+                android:drawablePadding="1dp"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/quickbuy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Quick Buy"
+                android:drawableTint="@color/textcolor"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="12dp"
+                ></fontspackageForTextView.Regular>
+
+            <fontspackageForTextView.Regular
+                android:id="@+id/txt_market"
+                android:drawablePadding="1dp"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/share_icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Exchange"
+                android:drawableTint="@color/textcolor"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="12dp"
+                ></fontspackageForTextView.Regular>
+
+            <fontspackageForTextView.Regular
+                android:id="@+id/text_order"
+                android:drawablePadding="1dp"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/orders"
+                android:layout_width="0dp"
+                android:drawableTint="@color/textcolor"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Order"
+                android:textColor="@color/textcolor"
+                android:gravity="center"
+                android:textSize="12dp"
+                ></fontspackageForTextView.Regular>
+
+
+            <fontspackageForTextView.Regular
+                android:id="@+id/txt_fund"
+                android:drawablePadding="1dp"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/funds"
+                android:layout_width="0dp"
+                android:drawableTint="@color/textcolor"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Funds"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="12dp"
+                ></fontspackageForTextView.Regular>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="59dp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

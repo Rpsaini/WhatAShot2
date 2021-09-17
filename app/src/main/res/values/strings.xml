@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">WhatAShot</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Required">Required</string>
+    <string name="Response">Response</string>
+    <string name="ok">Ok</string>
+    <string name="Rs">\u20B9</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="confirmandwithdraw">Confirm &amp; Withdraw</string>
+    <string name="welcometoexchange">Welcome to WazirX</string>
+    <string name="buyyourfirstcrypto">Buy your first cryptocurrency today</string>
+    <string name="coin">COINS</string>
+    <string name="ruppeinr">Rupee (Inr)</string>
+    <string name="hide_zeorbalance">Hide Zero Balances</string>
+    <string name="converttowrx">Convert To WRX</string>
+    <string name="passwordrule">Please, use atleast 1 uppercase, 1 lowercase 1 numeric &amp; atleast upto 8 characters</string>
+
+    <string-array name="orderType">
+        <item>Market</item>
+        <item>Limit</item>
+    </string-array>
+
+    <string name="converttowrx_text">Convert To WRX</string>
+
+
+</resources>

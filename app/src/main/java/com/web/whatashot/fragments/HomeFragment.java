@@ -1,0 +1,485 @@
+package com.web.whatashot.fragments;
+
+import android.graphics.Color;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.app.dialogsnpickers.DialogCallBacks;
+import com.app.vollycommunicationlib.CallBack;
+import com.app.vollycommunicationlib.ServerHandler;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.web.whatashot.DefaultConstants;
+import com.web.whatashot.MainActivity;
+import com.web.whatashot.R;
+import com.web.whatashot.adapters.CurrencyPagerAdapter;
+import com.web.whatashot.adapters.MarketAdapter;
+import com.web.whatashot.communication.SocketHandlers;
+import com.google.android.material.tabs.TabLayout;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import io.socket.emitter.Emitter;
+
+public class HomeFragment extends Fragment
+{
+    private View view;
+    private MainActivity mainActivity;
+    ArrayList<Map<String, JSONObject>> mainusdtAr = new ArrayList<>();
+    ArrayList<Map<String, JSONObject>> maininrtAr = new ArrayList<>();
+//  ArrayList<Map<String, JSONObject>> mainbtcAr = new ArrayList<>();
+    ArrayList<Map<String, JSONObject>> maintrxAr = new ArrayList<>();
+
+    ArrayList<String> usdtPairId = new ArrayList<>();
+    ArrayList<String> inrtPairId = new ArrayList<>();
+//  ArrayList<String> btcPairId = new ArrayList<>();
+    ArrayList<String> trxPairId = new ArrayList<>();
+
+   public static Map<String,JSONArray> commonMap=new HashMap<>();
+   public static ArrayList<JSONObject> tabsHeaderKeys=new ArrayList<>();
+   public static Map<Integer, MarketAdapter> marketAdapterMap=new HashMap<>();
+   int pagerselectedPos=0;
+
+
+
+
+    CurrencyPagerAdapter adapter;
+
+
+    public HomeFragment() {
+        // Required empty public constructor
+    }
+
+    public static HomeFragment newInstance(String param1, String param2) {
+        HomeFragment fragment = new HomeFragment();
+        Bundle args = new Bundle();
+
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getArguments() != null) {
+
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment_home, container, false);
+        mainActivity = (MainActivity) getActivity();
+        initView();
+        getMarketTickers();
+        return view;
+    }
+
+
+
+    TabLayout tabLayout;
+    ViewPager viewPager;
+
+    private void initView() {
+        tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#13B351"));
+        ArrayList<JSONObject> tabKeys=loadHeaderKeys();
+        for(int x=0;x<tabKeys.size();x++)
+        {
+            try
+            {
+                JSONObject datObj = tabKeys.get(x);
+                tabLayout.addTab(tabLayout.newTab().setText(datObj.getString("pair_name")));
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        viewPager = (ViewPager) view.findViewById(R.id.pager);
+        }
+
+    void tablayout()
+    {
+        adapter = new CurrencyPagerAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+                pagerselectedPos=tab.getPosition();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+    }
+
+
+    private void getMarketTickers() {
+        try {
+            final Map<String, String> m = new HashMap<>();
+            m.put("token", mainActivity.savePreferences.reterivePreference(mainActivity, DefaultConstants.token) + "");
+            m.put("DeviceToken", mainActivity.getDeviceToken() + "");
+
+            final Map<String, String> obj = new HashMap<>();
+             obj.put("X-API-KEY", mainActivity.getXapiKey());
+             obj.put("Rtoken", mainActivity.getNewRToken() + "");
+
+
+             new ServerHandler().sendToServer(mainActivity, mainActivity.getApiUrl() + "get-home-data", m, 0, obj, 20000, R.layout.progressbar, new CallBack() {
+                @Override
+                public void getRespone(String dta, ArrayList<Object> respons) {
+                    try {
+
+
+                        JSONObject jsonObject = new JSONObject(dta);
+                        System.out.println("Api data==="+jsonObject);
+
+                        if (jsonObject.getBoolean("status")) {
+                            try {
+
+                                String appversion = jsonObject.getString("app_version");
+                                if(jsonObject.has("token"))
+                                 {
+                                    mainActivity.savePreferences.savePreferencesData(mainActivity, jsonObject.getString("token"), DefaultConstants.token);
+                                    mainActivity.savePreferences.savePreferencesData(mainActivity, jsonObject.getString("r_token"), DefaultConstants.r_token);
+                                 }
+
+                                for(int x=0;x<tabsHeaderKeys.size();x++)
+                                 {
+                                    JSONObject dataObj=tabsHeaderKeys.get(x);
+                                     String pairName=dataObj.getString("pair_name");
+
+
+
+
+                                     commonMap.put(dataObj.getString("pair_name"),jsonObject.getJSONArray(pairName));
+                                 }
+
+
+                                System.out.println("Pair array==="+commonMap);
+                                if (mainActivity.getAppVersion().equalsIgnoreCase(appversion))
+                                  {
+                                    mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.app_name), "Please update app to new version.", "Ok", "", new DialogCallBacks() {
+                                        @Override
+                                        public void getDialogEvent(String buttonPressed) {
+                                            if(buttonPressed.equalsIgnoreCase("ok")) {
+                                                mainActivity.launchPlayStore(mainActivity, mainActivity.getPackageName());
+                                            }
+                                        }
+                                    });
+                                 }
+
+//                                for (int x = 0; x < usdtAr.length(); x++)
+//                                   {
+//                                    String pairId = usdtAr.getJSONObject(x).getString("pair_id");
+//                                    usdtPairId.add(pairId);
+//                                    Map<String, JSONObject> usdtMap = new HashMap<>();
+//                                    usdtMap.put(pairId, usdtAr.getJSONObject(x));
+//                                    mainusdtAr.add(usdtMap);
+//                                   }
+//
+//                                for (int x = 0; x < trx.length(); x++) {
+//                                    String pairid = trx.getJSONObject(x).getString("pair_id");
+//                                    trxPairId.add(pairid);
+//                                    Map<String, JSONObject> btcMap = new HashMap<>();
+//                                    btcMap.put(pairid, trx.getJSONObject(x));
+//                                    maintrxAr.add(btcMap);
+//                                }
+//
+//                                for (int x = 0; x < inrAr.length(); x++) {
+//                                    String pairid = inrAr.getJSONObject(x).getString("pair_id");
+//                                    inrtPairId.add(pairid);
+//                                    Map<String, JSONObject> inrMap = new HashMap<>();
+//                                    inrMap.put(pairid, inrAr.getJSONObject(x));
+//                                    maininrtAr.add(inrMap);
+//                                }
+
+                                tablayout();
+
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.Response), jsonObject.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                                @Override
+                                public void getDialogEvent(String buttonPressed) {
+                                    mainActivity.unauthorizedAccess(jsonObject);
+                                }
+                            });
+
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        socketHandlers.socket.off("broadcast_sent_client");
+    }
+
+    SocketHandlers socketHandlers;
+
+    private void getDataOfPairs()
+    {
+        socketHandlers = new SocketHandlers();
+        socketHandlers.createConnection();
+        socketHandlers.socket.off("broadcast_sent_client");
+        socketHandlers.socket.on("broadcast_sent_client", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+
+
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try
+                             {
+                                JSONObject jsonObject = new JSONObject(args[0] + "");
+
+                                if(jsonObject.has("price_stats_app"))
+                                    {
+
+                                    String pair_id = jsonObject.getString("pair_id");
+                                    JSONObject price_stats = new JSONObject(jsonObject.getString("price_stats_app"));
+
+                                    final String change = price_stats.getString("change");
+                                    final String lastprice = price_stats.getString("lastprice");
+                                    final String volume = price_stats.getString("volume");
+
+
+                                     System.out.println("Data====>"+change+"=="+pair_id);
+
+
+                                     if(commonMap.size()>0)
+                                      {
+                                          JSONObject data=tabsHeaderKeys.get(pagerselectedPos);
+                                         JSONArray dataAr = commonMap.get(data.getString("pair_name"));
+                                         System.out.println("Data Ar=="+dataAr);
+                                         for(int x = 0; x < dataAr.length(); x++)
+                                            {
+                                             JSONObject dataObj = dataAr.getJSONObject(x);
+                                             if(dataObj.getString("pair_id").equalsIgnoreCase(pair_id))
+                                               {
+                                                   dataObj.remove("price");
+                                                   dataObj.remove("volume");
+                                                   dataObj.remove("change");
+
+                                                   dataObj.put("price", lastprice);
+                                                   dataObj.put("volume", volume);
+                                                   dataObj.put("change", change);
+
+                                                 System.out.println("Data after remove===" + dataObj);
+                                                 dataAr.put(x, dataObj);
+                                               }
+                                            }
+                                         commonMap.put(data.getString("pair_name"), dataAr);
+                                         marketAdapterMap.get(pagerselectedPos).notifyDataSetChanged();
+
+                                     }
+//                                    if(commonMap.containsKey(pairIdInt))
+//                                    {
+//                                        Map<Integer,JSONObject> jsonAr=commonMap.get(pairIdInt);
+//
+//
+//
+//                                        for(int x=0;x<jsonAr.length();x++)
+//                                        {
+//                                            JSONObject data=jsonAr.getJSONObject(x);
+//                                            if(pair_id.equalsIgnoreCase(data.getString("pair_id")))
+//                                            {
+//                                                System.out.println("equal====="+pair_id+"==="+data.getString("pair_id"));
+//                                                data.remove("price");
+//                                                data.remove("volume");
+//                                                data.remove("change");
+//                                                data.put("price", lastprice);
+//                                                data.put("volume", volume);
+//                                                data.put("change", change);
+//                                                System.out.println("Data after remove==="+data);
+//                                                jsonAr.put(x,data);
+//                                               //System.out.println("Size==after==="+jsonAr.length());
+//                                            }
+//                                        }
+//                                        commonMap.put(pairIdInt,jsonAr);
+//                                        marketAdapterMap.get(pagerselectedPos).notifyDataSetChanged();
+//                                        System.out.println("Selected==="+pagerselectedPos);
+//
+//                                    }
+
+
+
+
+//                                    for(int x = 0; x < usdtPairId.size(); x++) {
+//                                        if (usdtPairId.get(x).equalsIgnoreCase(pair_id)) {
+//                                            try {
+//                                                Map<String, JSONObject> usdtObj = mainusdtAr.get(x);
+//                                                JSONObject lastpriceObj = usdtObj.get(pair_id);
+//                                                lastpriceObj.remove("price");
+//                                                lastpriceObj.remove("volume");
+//                                                lastpriceObj.remove("change");
+//                                                lastpriceObj.put("price", lastprice);
+//                                                lastpriceObj.put("volume", volume);
+//                                                lastpriceObj.put("change", change);
+//                                                usdtObj.put(pair_id, lastpriceObj);
+//
+////                                                if(USDTFragment.usdtAdapter != null)
+////                                                {
+////                                                    USDTFragment.usdtAdapter.notifyDataSetChanged();
+////                                                }
+//
+//                                                break;
+//                                            } catch (Exception e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                        }
+//                                    }
+
+
+                                  //  for (int x = 0; x < trxPairId.size(); x++) {
+//                                        if (trxPairId.get(x).equalsIgnoreCase(pair_id))
+//                                        {
+//                                            try {
+//                                                Map<String, JSONObject> trxObj = maintrxAr.get(x);
+//                                                JSONObject lastpriceObj = trxObj.get(pair_id);
+//                                                lastpriceObj.remove("price");
+//                                                lastpriceObj.remove("volume");
+//                                                lastpriceObj.remove("change");
+//                                                lastpriceObj.put("price", lastprice);
+//                                                lastpriceObj.put("volume", volume);
+//                                                lastpriceObj.put("change", change);
+//                                                trxObj.put(pair_id, lastpriceObj);
+////                                                if(BTCFragment.btcAdapter != null) {
+////                                                    BTCFragment.btcAdapter.notifyDataSetChanged();
+////                                                }
+//                                                break;
+//                                            }
+//                                            catch(Exception e)
+//                                            {
+//                                                e.printStackTrace();
+//                                            }
+//                                        }
+//                                    }
+
+//                                    for (int x = 0; x < inrtPairId.size(); x++) {
+//                                        if (inrtPairId.get(x).equalsIgnoreCase(pair_id)) {
+//                                            try {
+//                                                Map<String, JSONObject> inrObj = maininrtAr.get(x);
+//                                                JSONObject lastpriceObj = inrObj.get(pair_id);
+//                                                lastpriceObj.remove("price");
+//                                                lastpriceObj.remove("volume");
+//                                                lastpriceObj.remove("change");
+//                                                lastpriceObj.put("price", lastprice);
+//                                                lastpriceObj.put("volume", volume);
+//                                                lastpriceObj.put("change", change);
+//                                                inrObj.put(pair_id, lastpriceObj);
+//
+////                                                if (INRFragment.inrAdapter != null) {
+////                                                    INRFragment.inrAdapter.notifyDataSetChanged();
+////                                                }
+//
+//                                                break;
+//                                            } catch (Exception e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                        }
+//                                    }
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getDataOfPairs();
+    }
+
+
+
+
+
+
+private ArrayList<JSONObject> loadHeaderKeys()
+{
+    try {
+        tabsHeaderKeys=new ArrayList<>();
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("pair_name","usdt");
+        jsonObject.put("pair_id","62");
+        tabsHeaderKeys.add(jsonObject);
+
+
+        JSONObject jsonObject2=new JSONObject();
+        jsonObject2.put("pair_name","btc");
+        jsonObject2.put("pair_id","63");
+        tabsHeaderKeys.add(jsonObject2);
+
+        JSONObject jsonObject3=new JSONObject();
+        jsonObject3.put("pair_name","inr");
+        jsonObject3.put("pair_id","53");
+        tabsHeaderKeys.add(jsonObject3);
+
+
+        JSONObject jsonObject4=new JSONObject();
+        jsonObject4.put("pair_name","trx");
+        jsonObject4.put("pair_id","66");
+        tabsHeaderKeys.add(jsonObject4);
+
+    }
+    catch (Exception e)
+    {
+        e.printStackTrace();
+    }
+
+
+
+    return  tabsHeaderKeys;
+}
+
+
+
+}
