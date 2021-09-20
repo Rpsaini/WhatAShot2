@@ -85,8 +85,6 @@ private TextView btn_getkeys;
         try {
             Map<String, String> m = new LinkedHashMap<>();
             m.put("email", ed_email.getText().toString());
-
-
             m.put("Version", getAppVersion());
             m.put("PlatForm", "android");
             m.put("Timestamp", System.currentTimeMillis() + "");
@@ -94,8 +92,6 @@ private TextView btn_getkeys;
 
             Map<String, String> headerMap = new HashMap<>();
             headerMap.put("X-API-KEY", UtilClass.xApiKey);
-
-
 
             new ServerHandler().sendToServer(GetKeysActivity.this, getApiUrl() + "generate-keys", m, 0, headerMap, 20000, R.layout.progressbar, new CallBack() {
                 @Override
@@ -130,9 +126,9 @@ private TextView btn_getkeys;
 
                 }
             });
-
-
-        } catch (Exception e) {
+        }
+        catch(Exception e)
+        {
             e.printStackTrace();
         }
     }
