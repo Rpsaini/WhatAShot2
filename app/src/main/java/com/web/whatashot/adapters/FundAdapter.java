@@ -35,7 +35,6 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
         LinearLayout ll_fund_list_row;
         ImageView img_currencyicon;
 
-
         public MyViewHolder(View view) {
             super(view);
 
@@ -121,7 +120,8 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
     private void showImage(final String url, final ImageView header_img) {
         ira1.runOnUiThread(new Runnable() {
             @Override
-            public void run() {
+            public void run()
+            {
                 Glide.with(ira1)
                         .load(url)
                         .apply(RequestOptions.bitmapTransform(new RoundedCorners(3)))
