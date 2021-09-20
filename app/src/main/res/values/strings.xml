@@ -32,4 +32,91 @@
     <string name="converttowrx_text">Convert To WRX</string>
 
 
+
+    <string name="loin_txt">Login</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+
+    <string name="email">Email</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="phone">Phone</string>
+    <string name="userName">User Name</string>
+    <string name="password">Password</string>
+    <string name="confirm">Confirm Password</string>
+    <string name="public_key">Public Key</string>
+    <string name="secret_key">Secret Key</string>
+    <string name="get_keys">Get Keys</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="register_txt">Register</string>
+    <string name="signup_txt">Signup</string>
+
+    <string name="confirm_withdraw_txt">Confirm BTC Withdraw</string>
+    <string name="withdraw_txt">Withdraw Bitcoin</string>
+    <string name="destination_address_txt">Destination Address</string>
+    <string name="amount_txt">BTC Amount</string>
+    <string name="withdrawal_fee_txt">Withdrawal Fee</string>
+    <string name="final_amount_txt">Final Amount</string>
+    <string name="remarks_txt">Remarks</string>
+    <string name="proceed_txt">Proceed</string>
+    <string name="confirm_txt">Confirm</string>
+    <string name="pleas_cros">Please cross-check the destination address. withdrawals to Smart Contract Addresses, payments or participation in ICOs/Airdraps are not supported and will be lost forever. Withdrawal requests cannot be cancelled after submission.</string>
+    <string name="please_depo">Please deposit only BTC to this address. If you deposit any other coins, it will be lost forever.</string>
+
+    <string name="veriry_acco">Verify Account</string>
+    <string name="security">Security</string>
+    <string name="welcome_txt">Welcome</string>
+    <string name="select_your">Select Your Country</string>
+    <string name="country">Country</string>
+    <string name="select_coun">Select country</string>
+    <string name="type">Type</string>
+    <string name="personal">Personal</string>
+    <string name="personal_in">Personal Info</string>
+    <string name="first_name_">First Name*</string>
+    <string name="middle_name">Middle Name</string>
+    <string name="date_of_bir">Date of birth (DD-MM-YYYY)*</string>
+    <string name="dd_mm_yyyy">DD-MM-YYYY</string>
+    <string name="address_">Address*</string>
+    <string name="enter_last_">Enter last name</string>
+    <string name="state_">State*</string>
+    <string name="select_stat">Select state</string>
+    <string name="city_">City*</string>
+    <string name="select_city">Select city</string>
+    <string name="pin_zip_cod">Pin/Zip Code*</string>
+    <string name="enter_code">Enter code</string>
+
+    <string name="pan_card">Pan card</string>
+    <string name="pan_number_">Pan Number*</string>
+    <string name="enter_pan_n">Enter pan number</string>
+    <string name="re_enter_pa">Re-Enter Pan Number*</string>
+    <string name="upload_pan_">Upload Pan Card</string>
+    <string name="on_desktop_">On desktop, simple and drop your file in this field. Acceptable formats:JPEG or PNG</string>
+
+    <string name="document_ty">Document Type</string>
+    <string name="document">Document</string>
+    <string name="aadhaar">Aadhaar</string>
+    <string name="aadhaar_num">Aadhaar Number*</string>
+    <string name="enter_aadha">Enter Aadhaar number</string>
+    <string name="re_enter_aa">Re-Enter Aadhaar Number*</string>
+    <string name="upload_fron">Upload front of Aadhaar Card</string>
+    <string name="upload_back">Upload back of Aadhaar Card</string>
+    <string name="upload_self">Upload selfie while holding your Aadhaar Card</string>
+    <string name="ready_to_su">Ready to submit your application?</string>
+    <string name="please_veri">Please verify the details you\u00E2\u0080\u0099re submitting. Once submitted, you won\u00E2\u0080\u0099t be able to change it unless you</string>
+    <string name="submit_for_">SUBMIT FOR VERIFICATION</string>
+    <string name="buy">BUY</string>
+    <string name="sell">SELL</string>
+    <string name="inr_symbol">₹</string>
+    <string name="some_id">₹0.0000</string>
+    <string name="some_id2">₹0.0000</string>
+    <string name="at_price">AT PRICE</string>
+    <string name="inr">INR</string>
+    <string name="btc">BTC</string>
+    <string name="lowest_pric">LOWEST PRICE</string>
+    <string name="highest_pri">HIGHEST PRICE</string>
+
+
+    <string name="buy_btc">BUY BTC</string>
+    <string name="fee_maker_0">Fee: Maker: 0.2% | Taker: 0.2% | incl. of all applicable taxes</string>
+    <string name="sell_btc">SELL BTC</string>
+    <string name="poly">POLY</string>
 </resources>
