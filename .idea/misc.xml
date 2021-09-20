@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/WhatAShot2/app/src/main/res/drawable-v24/app_button_drawable.xml" value="0.2203125" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/activity_login2.xml" value="0.21" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/activity_main_new.xml" value="0.11730072463768115" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/buy_sell_bottom_dialog.xml" value="0.11730072463768115" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/buy_sell_screen.xml" value="0.11730072463768115" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/confirm_dialog.xml" value="0.11730072463768115" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/deposti_coin_dialog.xml" value="0.11730072463768115" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/verify_profile_details_fragment.xml" value="0.1" />
       </map>
     </option>
   </component>
