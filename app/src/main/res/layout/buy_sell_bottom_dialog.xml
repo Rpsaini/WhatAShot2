@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="10dp"
+    android:layout_gravity="bottom"
+    android:id="@+id/constraint_buysell"
     android:background="@color/white">
 
     <LinearLayout
@@ -153,6 +156,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:textAllCaps="true"
                 android:id="@+id/inrTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -163,12 +167,12 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView2"
                 app:layout_constraintTop_toBottomOf="@+id/at_priceTV" />
 
-            <EditText
-                android:id="@+id/at_price_valueTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <fontpackageforEdittext.Regular
+                android:id="@+id/ed_at_price"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
-                android:text="3780007"
+                android:text="0"
                 android:background="@android:color/transparent"
                 android:textColor="@color/text_black_color"
                 android:textSize="@dimen/title_text_size"
@@ -217,13 +221,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="5dp"
-                android:text="@string/at_price"
+                android:text="@string/amount"
                 android:textColor="@color/text_hint_color"
                 android:textSize="@dimen/text_size"
+                android:textAllCaps="true"
                 app:layout_constraintEnd_toStartOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:textAllCaps="true"
                 android:id="@+id/coinTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -234,12 +240,12 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/at_priceCoinTV" />
 
-            <EditText
-                android:id="@+id/at_price_valueCoinTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <fontpackageforEdittext.Regular
+                android:id="@+id/ed_amount"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
-                android:text="151514"
+                android:text="1"
                 android:background="@android:color/transparent"
                 android:textColor="@color/text_black_color"
                 android:textSize="@dimen/title_text_size"
@@ -284,18 +290,20 @@
                 app:srcCompat="@drawable/ic_vector_29" />
 
             <TextView
+                android:textAllCaps="true"
                 android:id="@+id/at_priceCoin2TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="5dp"
-                android:text="@string/at_price"
+                android:text="@string/total_inr"
                 android:textColor="@color/text_hint_color"
                 android:textSize="@dimen/text_size"
                 app:layout_constraintEnd_toStartOf="@+id/imageView4"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:textAllCaps="true"
                 android:id="@+id/coin2TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -306,13 +314,13 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView4"
                 app:layout_constraintTop_toBottomOf="@+id/at_priceCoin2TV" />
 
-            <EditText
-                android:id="@+id/at_price_valueCoin2TV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <fontpackageforEdittext.Regular
+                android:id="@+id/ed_total_amount"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="20dp"
                 android:background="@android:color/transparent"
-                android:text="3780007"
+                android:text="0"
                 android:textColor="@color/text_black_color"
                 android:textSize="@dimen/title_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/imageView5"
@@ -439,6 +447,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:id="@+id/sell_CL"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

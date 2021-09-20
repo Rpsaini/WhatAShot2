@@ -11,14 +11,13 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-feature android:name="android.hardware.camera" />
 
     <queries>
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
-    </queries>
+     </queries>
 
     <application
         android:name="com.web.whatashot.MyApplication"
@@ -106,3 +105,8 @@
     </application>
 
 </manifest>
+
+
+
+
+

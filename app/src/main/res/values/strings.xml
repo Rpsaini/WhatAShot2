@@ -119,4 +119,6 @@
     <string name="fee_maker_0">Fee: Maker: 0.2% | Taker: 0.2% | incl. of all applicable taxes</string>
     <string name="sell_btc">SELL BTC</string>
     <string name="poly">POLY</string>
+    <string name="amount">Amount</string>
+    <string name="total_inr">Total</string>
 </resources>
