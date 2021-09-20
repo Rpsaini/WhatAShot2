@@ -101,7 +101,7 @@
     <string name="upload_back">Upload back of Aadhaar Card</string>
     <string name="upload_self">Upload selfie while holding your Aadhaar Card</string>
     <string name="ready_to_su">Ready to submit your application?</string>
-    <string name="please_veri">Please verify the details you\u00E2\u0080\u0099re submitting. Once submitted, you won\u00E2\u0080\u0099t be able to change it unless you</string>
+    <string name="please_veri">Please verify the details you\'re submitting. Once submitted, you won\'t be able to change it unless you</string>
     <string name="submit_for_">SUBMIT FOR VERIFICATION</string>
     <string name="buy">BUY</string>
     <string name="sell">SELL</string>
@@ -119,4 +119,21 @@
     <string name="fee_maker_0">Fee: Maker: 0.2% | Taker: 0.2% | incl. of all applicable taxes</string>
     <string name="sell_btc">SELL BTC</string>
     <string name="poly">POLY</string>
+
+
+    <string name="submit">Submit</string>
+    <string name="review">Review</string>
+    <string name="done">Done</string>
+    <string name="please_comp">Please Complete Your KYC</string>
+    <string name="you_haven_t">You haven\'t completed your KYC. Your KYC will be approved instantly if your documents are clearly visible, and your information is correct.</string>
+    <string name="here_s_what">Here\'s what you can do:</string>
+    <string name="trade">Trade</string>
+    <string name="deposit_cry">Deposit Crypto</string>
+    <string name="deposit_inr">Deposit INR</string>
+    <string name="withdraw">Withdraw</string>
+
+
+    <string name="without_kyc">WITHOUT KYC</string>
+
+
 </resources>
