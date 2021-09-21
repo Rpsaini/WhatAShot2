@@ -78,23 +78,25 @@ public class CommonFragment extends Fragment {
         }
     }
 
-    private void init(JSONArray dataObj,int pos) {
-        RecyclerView recycler_view_market = view.findViewById(R.id.recycler_view_market);
-        RelativeLayout relativeLayout = view.findViewById(R.id.rr_nodata_view);
-        if (dataObj.length() == 0) {
-            relativeLayout.setVisibility(View.VISIBLE);
-            recycler_view_market.setVisibility(View.GONE);
-        } else {
-            relativeLayout.setVisibility(View.GONE);
-            recycler_view_market.setVisibility(View.VISIBLE);
+    private void init(JSONArray dataObj,int pos)
+    {
+        if(dataObj!=null) {
+            RecyclerView recycler_view_market = view.findViewById(R.id.recycler_view_market);
+            RelativeLayout relativeLayout = view.findViewById(R.id.rr_nodata_view);
+            if (dataObj.length() == 0) {
+                relativeLayout.setVisibility(View.VISIBLE);
+                recycler_view_market.setVisibility(View.GONE);
+            } else {
+                relativeLayout.setVisibility(View.GONE);
+                recycler_view_market.setVisibility(View.VISIBLE);
+            }
+            MarketAdapter commonAdapter = new MarketAdapter(dataObj, (MainActivity) getActivity());
+            LinearLayoutManager horizontalLayoutManagaer
+                    = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+            recycler_view_market.setLayoutManager(horizontalLayoutManagaer);
+            recycler_view_market.setItemAnimator(new DefaultItemAnimator());
+            recycler_view_market.setAdapter(commonAdapter);
+            HomeFragment.marketAdapterMap.put(pos, commonAdapter);
         }
-      MarketAdapter  commonAdapter = new MarketAdapter(dataObj, (MainActivity) getActivity());
-        LinearLayoutManager horizontalLayoutManagaer
-                = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        recycler_view_market.setLayoutManager(horizontalLayoutManagaer);
-        recycler_view_market.setItemAnimator(new DefaultItemAnimator());
-        recycler_view_market.setAdapter(commonAdapter);
-        HomeFragment.marketAdapterMap.put(pos,commonAdapter);
-
     }
 }
