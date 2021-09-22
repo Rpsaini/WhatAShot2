@@ -809,7 +809,6 @@ public class PairDetailView extends BaseActivity {
     }
 
     ConstraintLayout constraint_buysell;
-
     private void buysellDialog() {
         try
           {
@@ -854,7 +853,7 @@ public class PairDetailView extends BaseActivity {
                 }
             });
 
-//      initRate(change, buy_price, sell_price);
+//       initRate(change, buy_price, sell_price);
         } catch (Exception e) {
             e.printStackTrace();
         }

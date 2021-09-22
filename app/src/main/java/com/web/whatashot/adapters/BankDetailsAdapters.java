@@ -1,5 +1,6 @@
 package com.web.whatashot.adapters;
 
+import android.graphics.ImageDecoder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,23 +20,19 @@ public class BankDetailsAdapters extends RecyclerView.Adapter<BankDetailsAdapter
     private ShowFiatCurrencyDepositWithdraw ira1;
     private JSONArray moviesList;
 
-
-
-
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private  TextView txt_account_holder_name,txt_bank_name,txt_account_number,txt_ifsc;
         private LinearLayout ll_deposit;
 
 
-        public MyViewHolder(View view) {
+        public MyViewHolder(View view)
+        {
             super(view);
             txt_account_holder_name = view.findViewById(R.id.txt_account_holder_name);
             txt_bank_name = view.findViewById(R.id.txt_bank_name);
             txt_account_number = view.findViewById(R.id.txt_account_number);
             txt_ifsc = view.findViewById(R.id.txt_ifsc);
             ll_deposit = view.findViewById(R.id.ll_deposit);
-
         }
     }
 
@@ -47,17 +44,16 @@ public class BankDetailsAdapters extends RecyclerView.Adapter<BankDetailsAdapter
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.bank_list_row, parent, false);
-
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.bank_list_row, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        try {
-
+        try
+          {
             JSONObject dataObj = moviesList.getJSONObject(position);
             dataObj.getString("bank_branch");
             dataObj.getString("branch_number");
@@ -77,9 +73,7 @@ public class BankDetailsAdapters extends RecyclerView.Adapter<BankDetailsAdapter
 //                }
 //            });
 
-
-
-        } catch (Exception e) {
+          } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -99,6 +93,13 @@ public class BankDetailsAdapters extends RecyclerView.Adapter<BankDetailsAdapter
     public int getItemViewType(int position) {
         return position;
     }
+
+
+
+
+
+
+
 
 
 }
