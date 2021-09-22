@@ -165,18 +165,18 @@
         android:background="@color/lite_background"
         ></View>
 
+     <!--September-->
 
-
-    <fontspackageForTextView.BoldExtra
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="12dp"
-        android:textColor="@color/textcolor"
-        android:alpha="0.6"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Fiat"
-        android:textSize="@dimen/text_size"
-        ></fontspackageForTextView.BoldExtra>
+        <fontspackageForTextView.BoldExtra
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="12dp"
+            android:textColor="@color/textcolor"
+            android:alpha="0.6"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Fiat"
+            android:textSize="@dimen/text_size"
+            ></fontspackageForTextView.BoldExtra>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="8dp"
