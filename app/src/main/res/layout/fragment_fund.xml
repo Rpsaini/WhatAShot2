@@ -36,7 +36,7 @@
                     android:layout_height="40dp"
                     android:text=" total portfolio value"
                     android:textColor="@color/textcolor"
-                    android:textSize="15dp"
+                    android:textSize="@dimen/text_size"
                     ></fontspackageForTextView.Regular>
 
                 <fontspackageForTextView.BoldExtra
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Rs"
                     android:textColor="@color/black"
-                    android:textSize="24dp"
+                    android:textSize="@dimen/text_size"
                     ></fontspackageForTextView.BoldExtra>
 
                 <fontspackageForTextView.BoldExtra
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:text="---"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="@dimen/text_size"
             ></fontspackageForTextView.BoldExtra>
             </LinearLayout>
 
@@ -72,35 +72,37 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/lite_background"
         ></View>
 
     <RelativeLayout
-        android:background="@color/row_color"
+        android:background="@drawable/rectangle_1"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         >
 
-    <fontspackageForTextView.Regular
-        android:drawablePadding="5dp"
-        android:paddingLeft="10dp"
-        android:drawableLeft="@drawable/ruppe"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="center|left"
-        android:text="@string/ruppeinr"
-        ></fontspackageForTextView.Regular>
-
         <fontspackageForTextView.Regular
-            android:layout_alignParentEnd="true"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:alpha="0.6"
+            android:drawableLeft="@drawable/ic_rupees"
+            android:drawablePadding="5dp"
             android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:text="@string/ruppeinr"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/text_size"></fontspackageForTextView.Regular>
+
+        <fontspackageForTextView.Regular
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:alpha="0.6"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="0.0000"
-            android:background="@color/row_color"
-            ></fontspackageForTextView.Regular>
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/text_size"></fontspackageForTextView.Regular>
 
     </RelativeLayout>
     <View
@@ -127,12 +129,13 @@
             android:gravity="center|right"
             ></Switch>
         <fontspackageForTextView.Regular
-
+            android:textSize="@dimen/text_size"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="center"
+
             android:layout_centerInParent="true"
             android:text="@string/hide_zeorbalance"
 
@@ -140,17 +143,18 @@
         </LinearLayout>
 
         <fontspackageForTextView.Regular
-            android:drawablePadding="5dp"
-            android:drawableTint="@color/purple_700"
-            android:drawableRight="@drawable/right_arrow"
-            android:layout_alignParentEnd="true"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:textColor="@color/purple_700"
+            android:layout_alignParentEnd="true"
+            android:drawableRight="@drawable/right_arrow"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/purple_700"
             android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="@string/converttowrx"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/purple_700"
 
             ></fontspackageForTextView.Regular>
 
@@ -166,11 +170,12 @@
     <fontspackageForTextView.BoldExtra
         android:layout_marginTop="10dp"
         android:layout_marginLeft="12dp"
-        android:textColor="@color/greyColor"
+        android:textColor="@color/textcolor"
+        android:alpha="0.6"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="Fiat"
-          android:textSize="16dp"
+        android:textSize="@dimen/text_size"
         ></fontspackageForTextView.BoldExtra>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -182,13 +187,14 @@
 
     <fontspackageForTextView.BoldExtra
         android:layout_marginTop="5dp"
-        android:textColor="@color/greyColor"
+        android:textColor="@color/textcolor"
+        android:alpha="0.6"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="Crypto"
-        android:textSize="16dp"
+        android:textSize="@dimen/text_size"
         android:layout_marginLeft="12dp"
-        />
+         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="8dp"

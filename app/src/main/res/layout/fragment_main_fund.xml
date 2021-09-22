@@ -9,6 +9,7 @@
     tools:context=".fragments.HomeFragment">
 
     <com.google.android.material.tabs.TabLayout
+        app:tabTextAppearance="@style/MyTabLayoutStyle"
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -16,7 +17,6 @@
         android:background="@color/purple_700"
         app:tabTextColor="@color/white_20"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/Base.Widget.Design.TabLayout"
         app:tabSelectedTextColor="@color/white"
         android:stateListAnimator="@null"
         app:tabIndicator="@color/greencolor"

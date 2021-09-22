@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/purple_200"
     android:layout_height="match_parent"
     tools:context=".SplashScreen">
 
@@ -12,17 +11,21 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"
         android:layout_centerInParent="true"
-        ></ImageView>
+        android:src="@drawable/logo"
+        app:tint="@color/dark_blue"></ImageView>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/dark_blue"
+       android:alpha="0.1"/>
 
-
-    <ImageView
+  <!--  <ImageView
         android:translationY="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_splashbg"
         android:layout_alignParentBottom="true"
-        ></ImageView>
+        ></ImageView>-->
 
 </RelativeLayout>

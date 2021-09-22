@@ -14,10 +14,10 @@ import android.widget.Toast;
 
 import com.app.dialogsnpickers.AlertDialogs;
 import com.app.dialogsnpickers.DialogCallBacks;
-import com.web.whatashot.fragments.FundFragment;
 import com.web.whatashot.fragments.HomeFragment;
 import com.web.whatashot.fragments.MainFundFragment;
 import com.web.whatashot.fragments.QuickBuyFragment;
+import com.web.whatashot.kyc.VerifyKycAccountDetailsScreen;
 import com.web.whatashot.orderpackage.MyOrderFragment;
 import com.web.whatashot.utilpackage.UtilClass;
 
@@ -44,6 +44,14 @@ public class MainActivity extends BaseActivity
                showMoreOptions(v);
             }
         });
+        findViewById(R.id.kycIC).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             Intent intent=new Intent(MainActivity.this, VerifyKycAccountDetailsScreen.class);
+             startActivity(intent);
+            }
+        });
+
     }
 
     private void MarketFragment()

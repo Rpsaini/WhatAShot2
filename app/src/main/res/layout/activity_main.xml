@@ -15,24 +15,35 @@
         android:layout_height="50dp"
         android:background="@color/purple_700"
         >
+
         <ImageView
-            android:paddingEnd="10dp"
+            android:id="@+id/kycIC"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/profile_icon"
             android:layout_centerVertical="true"
-            android:paddingLeft="10dp"></ImageView>
+            android:paddingLeft="10dp"
+            android:paddingEnd="10dp"
+            android:src="@drawable/profile_icon"></ImageView>
 
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/img_somoreoptions"
+            android:paddingLeft="10dp"
+            android:paddingEnd="2dp"
+            app:srcCompat="@drawable/ic_search"></ImageView>
 
         <ImageView
             android:id="@+id/img_somoreoptions"
-            android:layout_alignParentEnd="true"
-            android:paddingEnd="10dp"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/rupee"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:paddingLeft="10dp"></ImageView>
+            android:paddingLeft="2dp"
+            android:paddingEnd="10dp"
+            android:src="@drawable/rupee"></ImageView>
 
         <ImageView
             android:padding="7dp"
@@ -49,75 +60,88 @@
         >
 
 
-        <LinearLayout
+        <FrameLayout
             android:layout_height="61dp"
             android:layout_width="match_parent"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/bottom_nav_drawable"
-            android:weightSum="4"
-            >
+            android:weightSum="4">
+            <LinearLayout
+                android:layout_height="61dp"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:weightSum="4">
 
-            <fontspackageForTextView.Regular
-                android:id="@+id/txt_quicknuy"
-                android:drawablePadding="1dp"
-                android:layout_gravity="center"
-                android:drawableTop="@drawable/quickbuy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Quick Buy"
-                android:drawableTint="@color/textcolor"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:textSize="12dp"
-                ></fontspackageForTextView.Regular>
+                <fontspackageForTextView.Regular
+                    android:id="@+id/txt_quicknuy"
+                    android:drawablePadding="1dp"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/quickbuy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Quick Buy"
+                    android:drawableTint="@color/textcolor"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    ></fontspackageForTextView.Regular>
 
-            <fontspackageForTextView.Regular
-                android:id="@+id/txt_market"
-                android:drawablePadding="1dp"
-                android:layout_gravity="center"
-                android:drawableTop="@drawable/share_icon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Exchange"
-                android:drawableTint="@color/textcolor"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:textSize="12dp"
-                ></fontspackageForTextView.Regular>
+                <fontspackageForTextView.Regular
+                    android:id="@+id/txt_market"
+                    android:drawablePadding="1dp"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/share_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Exchange"
+                    android:drawableTint="@color/textcolor"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    ></fontspackageForTextView.Regular>
 
-            <fontspackageForTextView.Regular
-                android:id="@+id/text_order"
-                android:drawablePadding="1dp"
-                android:layout_gravity="center"
-                android:drawableTop="@drawable/orders"
-                android:layout_width="0dp"
-                android:drawableTint="@color/textcolor"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Order"
-                android:textColor="@color/textcolor"
-                android:gravity="center"
-                android:textSize="12dp"
-                ></fontspackageForTextView.Regular>
+                <fontspackageForTextView.Regular
+                    android:id="@+id/text_order"
+                    android:drawablePadding="1dp"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/orders"
+                    android:layout_width="0dp"
+                    android:drawableTint="@color/textcolor"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Order"
+                    android:textColor="@color/textcolor"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    ></fontspackageForTextView.Regular>
 
 
-            <fontspackageForTextView.Regular
-                android:id="@+id/txt_fund"
-                android:drawablePadding="1dp"
-                android:layout_gravity="center"
-                android:drawableTop="@drawable/funds"
-                android:layout_width="0dp"
-                android:drawableTint="@color/textcolor"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Funds"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:textSize="12dp"
-                ></fontspackageForTextView.Regular>
-        </LinearLayout>
+                <fontspackageForTextView.Regular
+                    android:id="@+id/txt_fund"
+                    android:drawablePadding="1dp"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/funds"
+                    android:layout_width="0dp"
+                    android:drawableTint="@color/textcolor"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Funds"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    ></fontspackageForTextView.Regular>
+            </LinearLayout>
+            <View
+                android:layout_height="61dp"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bottom_nav_drawable"
+                android:weightSum="4"
+                android:alpha="0.1">
+            </View>
+
+        </FrameLayout>
 
         <LinearLayout
             android:id="@+id/fragment_container"

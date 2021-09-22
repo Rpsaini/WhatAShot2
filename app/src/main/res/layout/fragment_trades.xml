@@ -23,14 +23,14 @@
             android:layout_weight="1"
             android:textAllCaps="true"
             android:text="Time"
-            android:textSize="15dp"
+            android:textSize="@dimen/title_text_size"
             android:layout_height="match_parent"
             android:textColor="@color/white"
             android:gravity="center"
             ></fontspackageForTextView.Regular>
 
         <fontspackageForTextView.Regular
-            android:textSize="15dp"
+            android:textSize="@dimen/title_text_size"
             android:textAllCaps="true"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -41,7 +41,7 @@
             ></fontspackageForTextView.Regular>
 
         <fontspackageForTextView.Regular
-            android:textSize="15dp"
+            android:textSize="@dimen/title_text_size"
             android:layout_width="0dp"
             android:textAllCaps="true"
             android:layout_weight="1"

@@ -42,8 +42,8 @@ private View view;
     void tablayout()
     {
         tabLayout = (TabLayout)view. findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("FUND"));
-        tabLayout.addTab(tabLayout.newTab().setText("TRANSACTIONS"));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.fund)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.transfer_hi)));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         viewPager = (ViewPager) view.findViewById(R.id.pager);

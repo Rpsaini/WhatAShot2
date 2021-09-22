@@ -28,6 +28,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedExchange"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".kyc.VerifyKycForPersonalInfoScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
+        <activity
+            android:name=".kyc.VerifyCompleteSubmitKycScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
+        <activity
+            android:name=".kyc.VerifyKycAccountDetailsScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
         <activity android:name="com.web.whatashot.GetKeysActivity"
             android:screenOrientation="portrait">
         </activity>

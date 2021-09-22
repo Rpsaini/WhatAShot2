@@ -136,10 +136,15 @@
     <string name="deposit_inr">Deposit INR</string>
     <string name="withdraw">Withdraw</string>
 
-
+    <string name="deposit">Deposit</string>
     <string name="without_kyc">WITHOUT KYC</string>
     <string name="submit_kyc">Submit KYC</string>
+    <string name="with_kyc">WITH KYC</string>
+    <string name="skip_for_no">SKIP FOR NOW</string>
+    <string name="complet_kyc">COMPLETE KYC</string>
+    <string name="withdrawal">Withdrawal</string>
+    <string name="p2p">P2P</string>
 
-
-
+    <string name="fund">FUND</string>
+    <string name="transfer_hi">TRANSFER HISTORY</string>
 </resources>

@@ -13,11 +13,14 @@
             android:pathData="M0 0H414V70H0V0Z"
             />
 
+<!--        <path-->
+<!--            android:pathData="M0 0V70H414V0"-->
+<!--            android:fillColor="#d4ebf2"-->
+<!--            />-->
         <path
             android:pathData="M0 0V70H414V0"
-            android:fillColor="#d4ebf2"
+            android:fillColor="@color/app_button_color"
             />
-
     </group>
 
 </vector>

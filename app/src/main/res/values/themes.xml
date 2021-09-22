@@ -69,5 +69,7 @@
         <item name="android:windowExitAnimation">@anim/zoom_out</item>
     </style>
 
-
+    <style name="MyTabLayoutStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/title_text_size</item>
+    </style>
 </resources>
