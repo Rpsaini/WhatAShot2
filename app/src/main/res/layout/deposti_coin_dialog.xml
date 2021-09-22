@@ -61,8 +61,8 @@
                 tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></TextView>
             <ImageView
                 android:id="@+id/qrCodeIC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
                 android:layout_centerInParent="true"
                 app:srcCompat="@drawable/ic_qr_code"
                 android:layout_marginTop="20dp"/>
@@ -89,16 +89,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/publicKeyTV">
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/copyTV"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:inputType="text"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    android:paddingRight="35dp"
                     android:gravity="center|start"
-                    android:text="10wkDNyBfdsnfoiIJNHFUI58md"
+                    android:text="dsadak;dk;as;dkal;sdkl;askd;lkas;ldk;laska;lsdk;askd;"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/text_black_color"
                     android:textColorHint="@color/text_hint_color" />

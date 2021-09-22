@@ -316,6 +316,10 @@ public class HomeFragment extends Fragment
                                      }
 //                                    if(commonMap.containsKey(pairIdInt))
 //                                    {
+
+
+
+
 //                                        Map<Integer,JSONObject> jsonAr=commonMap.get(pairIdInt);
 //
 //

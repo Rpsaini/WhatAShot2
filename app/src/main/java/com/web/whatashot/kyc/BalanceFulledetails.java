@@ -35,7 +35,7 @@ public class BalanceFulledetails extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_balance_fulledetails);
+        setContentView(R.layout.deposti_coin_dialog);
         getSupportActionBar().hide();
         initiateObj();
         init();
@@ -46,70 +46,82 @@ public class BalanceFulledetails extends BaseActivity {
         try {
             JSONObject dataObj = new JSONObject(getIntent().getStringExtra("data"));
             String symbol = dataObj.getString("symbol");
-            String availableBalance = dataObj.getString("available_balance");
-            final String icon = dataObj.getString("icon");
+            //String availableBalance = dataObj.getString("available_balance");
+            //final String icon = dataObj.getString("icon");
 
-            ImageView txt_currency_image = findViewById(R.id.txt_currency_image);
+//          ImageView txt_currency_image = findViewById(R.id.scanImgIC);
             txt_destinationtag = findViewById(R.id.txt_destinationtag);
-            qrImageView = findViewById(R.id.qrImageView);
-            copytext = findViewById(R.id.copytext);
-            TextView txt_withdraw = findViewById(R.id.txt_withdraw);
-            TextView txt_title = findViewById(R.id.txt_title);
+            qrImageView = findViewById(R.id.qrCodeIC);
 
-            TextView total_balance = findViewById(R.id.total_balance);
-            TextView txt_share = findViewById(R.id.txt_share);
-            total_balance.setText(availableBalance);
+            copytext = findViewById(R.id.copyTV);
 
-            txt_title.setText("PLEASE PAY ATTENTION! THE COIN YOU SELECTED IS : " + symbol);
-            showImage(icon, txt_currency_image);
-            findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+            findViewById(R.id.closeIC).setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     finish();
                 }
             });
+            TextView tvTitle = findViewById(R.id.tvTitle);
+            tvTitle.setText("Deposit "+symbol);
+//          TextView txt_title = findViewById(R.id.txt_title);
 
-            txt_withdraw.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (!isKycStatus.equalsIgnoreCase("1"))
-                    {
+//          TextView total_balance = findViewById(R.id.total_balance);
+            //TextView txt_share = findViewById(R.id.txt_share);
 
-                            Intent intent = new Intent(BalanceFulledetails.this, WithdrawMoney.class);
-                            intent.putExtra("isGoogleAuth",authenticator);
-                            intent.putExtra("currency",symbol);
-                            intent.putExtra("balance",availableBalance);
-                            intent.putExtra("icon",icon);
-                            startActivityForResult(intent, 1001);
+//          total_balance.setText(availableBalance);
 
+//            txt_title.setText("PLEASE PAY ATTENTION! THE COIN YOU SELECTED IS : " + symbol);
+            //showImage(icon, txt_currency_image);
+//            findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    finish();
+//                }
+//            });
 
-                    } else {
-                        alertDialogs.alertDialog(BalanceFulledetails.this, getResources().getString(R.string.app_name), "For money withdraw you need to verify KYC.", "OK", "CANCEL", new DialogCallBacks() {
-                            @Override
-                            public void getDialogEvent(String buttonPressed) {
-                                if (buttonPressed.equalsIgnoreCase("ok")) {
-                                    openExternalUrls("http://unitedexchange.io/");
-                                }
-                            }
-                        });
-                    }
+//            txt_withdraw.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (!isKycStatus.equalsIgnoreCase("1"))
+//                    {
+//
+//                            Intent intent = new Intent(BalanceFulledetails.this, WithdrawMoney.class);
+//                            intent.putExtra("isGoogleAuth",authenticator);
+//                            intent.putExtra("currency",symbol);
+//                            intent.putExtra("balance",availableBalance);
+//                            intent.putExtra("icon",icon);
+//                            startActivityForResult(intent, 1001);
+//
+//
+//                    } else {
+//                        alertDialogs.alertDialog(BalanceFulledetails.this, getResources().getString(R.string.app_name), "For money withdraw you need to verify KYC.", "OK", "CANCEL", new DialogCallBacks() {
+//                            @Override
+//                            public void getDialogEvent(String buttonPressed) {
+//                                if (buttonPressed.equalsIgnoreCase("ok")) {
+//                                    openExternalUrls("http://unitedexchange.io/");
+//                                }
+//                            }
+//                        });
+//                    }
+//
+//
+//                }
+//            });
 
-
-                }
-            });
-
-            txt_share.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Sharedialogs shareDialog = new Sharedialogs();
-                    shareDialog.shareDialog(BalanceFulledetails.this, copytext.getText().toString(), "");
-
-                }
-            });
+//            txt_share.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Sharedialogs shareDialog = new Sharedialogs();
+//                    shareDialog.shareDialog(BalanceFulledetails.this, copytext.getText().toString(), "");
+//
+//                }
+//            });
 
             copytext.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     copyCode(copytext.getText().toString());
                 }
             });

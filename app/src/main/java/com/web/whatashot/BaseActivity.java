@@ -327,7 +327,8 @@ public class BaseActivity extends AppCompatActivity {
         return options.transforms(new RoundedCorners(px));
     }
 
-    public void copyCode(String code) {
+    public void copyCode(String code)
+    {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("qrcode", code);
         clipboard.setPrimaryClip(clip);
