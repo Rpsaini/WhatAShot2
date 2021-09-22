@@ -52,7 +52,7 @@ public class CryptoGraphFragment extends Fragment {
         WebSettings webSettings = mywebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        // viewprogressbar = view.findViewById(R.id.viewprogressbar);
+        //viewprogressbar = view.findViewById(R.id.viewprogressbar);
         mywebview.setWebViewClient(new WebViewController());
 
 

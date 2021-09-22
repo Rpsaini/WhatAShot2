@@ -61,7 +61,7 @@ public class ChartFragment extends Fragment {
          height=height/density;
          width= width/density;
 
-System.out.println("Height width==="+height+"=="+width);
+        System.out.println("Height width==="+height+"=="+width);
         String url = pairDetailView.getApiUrl() + "chart-data?pair=" + pairDetailView.joinedPair+"&height="+(height-150)+"&width="+width;
 
 
@@ -76,9 +76,6 @@ System.out.println("Height width==="+height+"=="+width);
 
         webSettings.setUserAgentString("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/80.0.3987.163 Chrome/80.0.3987.163 Safari/537.36");
         mywebview.loadUrl(url);
-
-
-
 
         viewprogressbar = view.findViewById(R.id.viewprogressbar);
         mywebview.setWebViewClient(new WebViewController());
@@ -96,8 +93,6 @@ System.out.println("Height width==="+height+"=="+width);
 
         @Override
         public void onPageFinished(WebView view, String url) {
-
-
             viewprogressbar.setVisibility(View.GONE);
             super.onPageFinished(view, url);
 
