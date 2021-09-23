@@ -1,11 +1,16 @@
 package com.web.whatashot.adapters;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +21,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.web.whatashot.MainActivity;
 import com.web.whatashot.R;
 import com.web.whatashot.fragments.FundFragment;
+import com.web.whatashot.fund_withdrawal.WithdrawalFundScreen;
 import com.web.whatashot.kyc.BalanceFulledetails;
 //import com.web.whatashot.kyc.PersonalDetails;
 
@@ -34,6 +40,7 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
 
         LinearLayout ll_fund_list_row;
         ImageView img_currencyicon;
+        ImageView ic_more;
 
         public MyViewHolder(View view) {
             super(view);
@@ -43,6 +50,8 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
             tv_balance = view.findViewById(R.id.tv_balance);
             ll_fund_list_row = view.findViewById(R.id.ll_fund_list_row);
             img_currencyicon = view.findViewById(R.id.img_currencyicon);
+            ic_more = view.findViewById(R.id.ic_more);
+
 
 
         }
@@ -78,8 +87,8 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
             holder.tv_balance.setText(dataObj.getString("available_balance"));
             showImage(dataObj.getString("icon"), holder.img_currencyicon);
 
-            holder.ll_fund_list_row.setTag(dataObj);
-            holder.ll_fund_list_row.setOnClickListener(new View.OnClickListener() {
+         //   holder.ll_fund_list_row.setTag(dataObj);
+       /*     holder.ll_fund_list_row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
@@ -93,8 +102,24 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
                         e.printStackTrace();
                     }
                 }
-            });
+            });*/
+            holder.ic_more.setTag(dataObj);
+            holder.ic_more.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("ResourceType")
+                @Override
+                public void onClick(View v) {
+                    try {
+                        PopupWindow popupwindow_obj = popupDisplay(v.getTag().toString());
+                        popupwindow_obj.setBackgroundDrawable(new ColorDrawable(
+                                android.graphics.Color.TRANSPARENT));
+                        popupwindow_obj.showAsDropDown(v, -10, 5);
 
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,5 +153,48 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
                         .into(header_img);
             }
         });
+    }
+    public PopupWindow popupDisplay(String data)
+    {
+
+        final PopupWindow popupWindow = new PopupWindow(ira1);
+
+        // inflate your layout or dynamically add view
+        LayoutInflater inflater = (LayoutInflater) ira1.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View view = inflater.inflate(R.layout.fund_item_popup_menu, null);
+
+        LinearLayout depositLLItem = view.findViewById(R.id.depositLL);
+        LinearLayout withdrawalLLItem = view.findViewById(R.id.withdrawalLL);
+
+        popupWindow.setFocusable(true);
+        popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+
+        popupWindow.setContentView(view);
+
+        withdrawalLLItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(ira1, WithdrawalFundScreen.class);
+                ira1.startActivity(intent);
+                popupWindow.dismiss();
+            }
+        });
+
+        depositLLItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ira1, BalanceFulledetails.class);
+                intent.putExtra("data", data);
+                ira1.startActivity(intent);
+                popupWindow.dismiss();
+            }
+        });
+
+
+
+
+        return popupWindow;
     }
 }

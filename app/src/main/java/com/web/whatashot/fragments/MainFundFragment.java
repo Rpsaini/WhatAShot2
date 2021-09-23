@@ -18,7 +18,7 @@ import com.web.whatashot.adapters.OrderViewAdapter;
 public class MainFundFragment extends Fragment {
     private ViewPager viewPager;
     private TabLayout tabLayout;
-private View view;
+    private View view;
     public static MainFundFragment newInstance(String param1, String param2) {
         MainFundFragment fragment = new MainFundFragment();
 

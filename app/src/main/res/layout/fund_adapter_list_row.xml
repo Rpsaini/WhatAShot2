@@ -60,13 +60,12 @@
             android:textSize="@dimen/text_size"></fontspackageForTextView.Regular>
 
         <ImageView
-            android:layout_centerVertical="true"
-            android:paddingEnd="10dp"
-            android:paddingStart="5dp"
+            android:id="@+id/ic_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ic_more"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
             app:srcCompat="@drawable/ic_dot_three"></ImageView>
 
     </RelativeLayout>

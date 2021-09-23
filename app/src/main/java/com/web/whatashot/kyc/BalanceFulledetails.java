@@ -1,6 +1,5 @@
 package com.web.whatashot.kyc;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.web.whatashot.BaseActivity;
 import com.web.whatashot.DefaultConstants;
 import com.web.whatashot.R;
-import com.web.whatashot.Sharedialogs;
 
 import org.json.JSONObject;
 

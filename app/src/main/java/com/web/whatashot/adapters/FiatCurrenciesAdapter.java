@@ -1,13 +1,20 @@
 package com.web.whatashot.adapters;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.dialogsnpickers.DialogCallBacks;
@@ -18,6 +25,7 @@ import com.web.whatashot.MainActivity;
 import com.web.whatashot.R;
 import com.web.whatashot.fiatdepositwithdraw.ShowFiatCurrencyDepositWithdraw;
 import com.web.whatashot.fragments.FundFragment;
+import com.web.whatashot.fund_withdrawal.WithdrawalFundScreen;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,7 +43,7 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
 
         LinearLayout ll_fund_list_row;
         ImageView img_currencyicon;
-
+        ImageView ic_more;
 
         public MyViewHolder(View view) {
             super(view);
@@ -46,6 +54,7 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
             tv_balance = view.findViewById(R.id.tv_balance);
             ll_fund_list_row = view.findViewById(R.id.ll_fund_list_row);
             img_currencyicon = view.findViewById(R.id.img_currencyicon);
+            ic_more = view.findViewById(R.id.ic_more);
 
 
         }
@@ -117,7 +126,16 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
                 }
             });
 
-
+            holder.ic_more.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("ResourceType")
+                @Override
+                public void onClick(View v) {
+                    PopupWindow popupwindow_obj = popupDisplay();
+                    popupwindow_obj.setBackgroundDrawable(new ColorDrawable(
+                            android.graphics.Color.TRANSPARENT));
+                    popupwindow_obj.showAsDropDown(v, -10, 5);
+                }
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -150,5 +168,44 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
                         .into(header_img);
             }
         });
+    }
+    public PopupWindow popupDisplay()
+    {
+
+        final PopupWindow popupWindow = new PopupWindow(ira1);
+
+        // inflate your layout or dynamically add view
+        LayoutInflater inflater = (LayoutInflater) ira1.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View view = inflater.inflate(R.layout.fund_item_popup_menu, null);
+
+        LinearLayout depositLLItem = view.findViewById(R.id.depositLL);
+        LinearLayout withdrawalLLItem = view.findViewById(R.id.withdrawalLL);
+
+        popupWindow.setFocusable(true);
+        popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+
+        popupWindow.setContentView(view);
+
+      /*  withdrawalLLItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(ira1, WithdrawalFundScreen.class);
+                ira1.startActivity(intent);
+                popupWindow.dismiss();
+            }
+        });
+*/
+
+        withdrawalLLItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(ira1, WithdrawalFundScreen.class);
+                ira1.startActivity(intent);
+                popupWindow.dismiss();
+            }
+        });
+        return popupWindow;
     }
 }
