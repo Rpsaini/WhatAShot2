@@ -76,28 +76,19 @@ public class PriceVolumeAdapter extends RecyclerView.Adapter<PriceVolumeAdapter.
 
 
 
-                //setBuSellHorizonalLines(holder.buy_sell_lines_recycler, position*2,"buy");
-
-
 
             } else {
                 holder.txt_volume.setText(object.getString("price"));
                 holder.txt_price.setText(object.getString("volume"));
                 holder.txt_volume.setTextColor(ira1.getResources().getColor(R.color.darkRed));
                 holder.txt_price.setTextColor(ira1.getResources().getColor(R.color.grey_dark));
-              //  setBuSellHorizonalLines(holder.buy_sell_lines_recycler, position*2,"sell");
-
-//                double volume=100-(Double.parseDouble(object.getString("volume")))*100/totalVolume;
-//                System.out.println("Inside sell===="+totalVolume+"==="+object.getString("volume"));
-//                setBuSellHorizonalLines(holder.buy_sell_lines_recycler, (int)volume,"sell");
-
 
             }
-            if (position % 2 == 1) {
-                holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.lite_blue_30));
-            } else {
-                holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.lite_green_30));
-            }
+//            if (position % 2 == 1) {
+//                holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.lite_blue_30));
+//            } else {
+//                holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.lite_green_30));
+//            }
 
 
 

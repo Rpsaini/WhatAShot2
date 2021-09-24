@@ -66,12 +66,7 @@ public class BankDetailsAdapters extends RecyclerView.Adapter<BankDetailsAdapter
             holder.txt_bank_name.setText(dataObj.getString("bank_name"));
             holder.txt_ifsc.setText(dataObj.getString("ifsc_code"));
 
-//            holder.ll_deposit.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
+
 
           } catch (Exception e) {
             e.printStackTrace();

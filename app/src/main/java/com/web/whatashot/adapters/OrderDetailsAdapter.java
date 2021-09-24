@@ -75,14 +75,6 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
         {
 
             JSONObject jsonData=moviesList.get(position);
-//            if(position%2==0)
-//            {
-//                holder.ll_open_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color_lite));
-//            }
-//            else
-//            {
-//                holder.ll_open_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color));
-//            }
 
             if(type.equalsIgnoreCase("history"))
             {

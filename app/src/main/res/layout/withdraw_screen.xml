@@ -83,14 +83,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/destinationAddressTV">
 
-                <EditText
+                <fontpackageforEdittext.Regular
+                    android:gravity="center|left"
                     android:id="@+id/destinationAddressET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:inputType="text"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    android:paddingRight="40dp"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/text_black_color"
                     android:textColorHint="@color/text_hint_color" />
@@ -145,7 +146,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/BTCAmountTV">
 
-                <EditText
+                <fontpackageforEdittext.Regular
+                    android:gravity="center|left"
                     android:id="@+id/BTCAmountET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -153,7 +155,7 @@
                     android:inputType="number"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="10"
+                    android:hint="0"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/text_black_color"
                     android:textColorHint="@color/text_hint_color" />
@@ -161,7 +163,7 @@
             </RelativeLayout>
 
 
-            <TextView
+            <fontspackageForTextView.Regular
                 android:id="@+id/withdrawalFeesTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -188,7 +190,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/withdrawalFeesTV">
 
-                <EditText
+                <fontpackageforEdittext.Regular
+                    android:enabled="false"
+                    android:gravity="center|left"
                     android:id="@+id/withdrawalFeesET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -196,7 +200,7 @@
                     android:inputType="number"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="0.0009"
+                    android:hint="0.0"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/text_black_color"
                     android:textColorHint="@color/text_hint_color" />
@@ -204,7 +208,7 @@
             </RelativeLayout>
 
 
-            <TextView
+            <fontspackageForTextView.Regular
                 android:id="@+id/finalAmountTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -231,7 +235,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/finalAmountTV">
 
-                <EditText
+                <fontpackageforEdittext.Regular
+                    android:enabled="false"
+                    android:gravity="center|left"
                     android:id="@+id/finalAmountET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -239,14 +245,14 @@
                     android:inputType="number"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="9.0009"
+                    android:hint="0"
                     android:textColor="@color/text_black_color"
                     android:textColorHint="@color/text_hint_color"
                     android:textSize="@dimen/text_size" />
 
             </RelativeLayout>
 
-            <TextView
+            <fontspackageForTextView.Regular
                 android:id="@+id/remarksTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -272,7 +278,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/remarksTV">
 
-                <EditText
+                <fontpackageforEdittext.Regular
+                    android:gravity="center|left"
                     android:id="@+id/remarksET"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -318,7 +325,7 @@
 
             </RelativeLayout>-->
 
-            <TextView
+            <fontspackageForTextView.Regular
                 android:id="@+id/proceedBT"
                 android:layout_width="0dp"
                 android:layout_height="50dp"

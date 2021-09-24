@@ -80,7 +80,8 @@ public class CommonFragment extends Fragment {
 
     private void init(JSONArray dataObj,int pos)
     {
-        if(dataObj!=null) {
+        if(dataObj!=null)
+        {
             RecyclerView recycler_view_market = view.findViewById(R.id.recycler_view_market);
             RelativeLayout relativeLayout = view.findViewById(R.id.rr_nodata_view);
             if (dataObj.length() == 0) {

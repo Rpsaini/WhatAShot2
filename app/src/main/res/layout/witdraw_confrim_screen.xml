@@ -72,7 +72,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/destinationAddressTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,13 +84,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/destinationAddressValueTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="0dp"
-                    android:text="10wkDNyBfdsnfoiIJNHFUI58md"
+                    android:text=""
                     android:textColor="@color/text_black_color"
                     android:textSize="@dimen/text_size"
                     app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +102,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/line_color" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/BTCAmountTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -115,14 +115,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/destinationAddressRL" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/BTCAmountValueTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="0dp"
-                    android:text="10 BTC"
+                    android:text=""
                     android:textColor="@color/text_black_color"
                     android:textSize="@dimen/text_size"
                     app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +134,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/line_color" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/withdrawalFeesTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -147,14 +147,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/BTCAmountRL" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/withdrawalFeesValueTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="0dp"
-                    android:text="0.0006"
+                    android:text=""
                     android:textColor="@color/text_black_color"
                     android:textSize="@dimen/text_size"
                     app:layout_constraintStart_toStartOf="parent"
@@ -166,7 +166,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/line_color" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/finalAmountValueTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -179,14 +179,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/withdrawalFeesRL" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/finalAmountTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="0dp"
-                    android:text="9.9994"
+                    android:text=""
                     android:textColor="@color/text_black_color"
                     android:textSize="@dimen/text_size"
                     app:layout_constraintStart_toStartOf="parent"
@@ -198,7 +198,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/line_color" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/remarksTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -219,7 +219,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Test withdrawal"
+                    android:text=""
                     android:textColor="@color/text_black_color"
                     android:textSize="@dimen/text_size"
                     app:layout_constraintStart_toStartOf="parent"
@@ -236,7 +236,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/confirm_details_layout"
                 app:srcCompat="@drawable/ic_allert" />
 
-            <TextView
+            <fontspackageForTextView.Regular
                 android:id="@+id/pleas_cross"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -249,7 +249,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/alertIC" />
 
-            <TextView
+            <fontspackageForTextView.Regular
                 android:id="@+id/confirmBT"
                 android:layout_width="0dp"
                 android:layout_height="50dp"

@@ -81,14 +81,6 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
         try {
 
             JSONObject dataObj=moviesList.getJSONObject(position);
-//            if(position%2==0)
-//            {
-//                holder.ll_fund_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color_lite));
-//            }
-//            else
-//            {
-//                holder.ll_fund_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color));
-//            }
 
             holder.txt_currency_name.setText(dataObj.getString("symbol"));
             holder.tv_balance.setText(dataObj.getString("available_balance"));

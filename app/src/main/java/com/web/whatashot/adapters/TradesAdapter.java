@@ -88,12 +88,12 @@ public class TradesAdapter extends RecyclerView.Adapter<TradesAdapter.MyViewHold
 //            }
 
 
-            if (position % 2 == 0) {
-                holder.ll_open_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color_lite));
-
-            } else {
-                holder.ll_open_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color));
-            }
+//            if (position % 2 == 0) {
+//                holder.ll_open_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color_lite));
+//
+//            } else {
+//                holder.ll_open_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color));
+//            }
 
 
         } catch (Exception e) {

@@ -77,32 +77,11 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
         try {
 
             JSONObject dataObj = moviesList.getJSONObject(position);
-//            if (position % 2 == 0) {
-//                holder.ll_fund_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color_lite));
-//            } else {
-//                holder.ll_fund_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color));
-//            }
 
             holder.txt_currency_name.setText(dataObj.getString("symbol"));
             holder.tv_balance.setText(dataObj.getString("available_balance"));
             showImage(dataObj.getString("icon"), holder.img_currencyicon);
 
-         //   holder.ll_fund_list_row.setTag(dataObj);
-       /*     holder.ll_fund_list_row.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try {
-                        JSONObject data = new JSONObject(v.getTag().toString());
-                        String symbol = data.getString("symbol");
-                        Intent intent = new Intent(ira1, BalanceFulledetails.class);
-                        intent.putExtra("data", v.getTag() + "");
-                        ira1.startActivity(intent);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });*/
             holder.ic_more.setTag(dataObj);
             holder.ic_more.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("ResourceType")
@@ -177,6 +156,7 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(ira1, WithdrawalFundScreen.class);
+                intent.putExtra("data", data);
                 ira1.startActivity(intent);
                 popupWindow.dismiss();
             }
