@@ -188,7 +188,7 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
                 popupWindow.dismiss();
             }
         });
-*/
+     */
 
         withdrawalLLItem.setOnClickListener(new View.OnClickListener() {
             @Override

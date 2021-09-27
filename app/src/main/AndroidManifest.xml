@@ -29,6 +29,10 @@
         android:theme="@style/Theme.UnitedExchange"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".setting_profile.SettingProfileScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
+        <activity
             android:name=".fund_withdrawal.WithdrawalFundScreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WhatAShot"/>

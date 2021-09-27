@@ -147,4 +147,26 @@
 
     <string name="fund">FUND</string>
     <string name="transfer_hi">TRANSFER HISTORY</string>
+
+    <!-- strings.xml -->
+    <string name="setting_pro">Setting/Profile</string>
+    <string name="name">Name</string>
+    <string name="register_yo">Register your phone</string>
+    <string name="currency_pr">CURRENCY PREFERENCE</string>
+    <string name="verify_kyc">VERIFY KYC</string>
+    <string name="payment_opt">PAYMENT OPTIONS</string>
+    <string name="two_factor_">TWO FACTOR AUTHENTICATION</string>
+    <string name="activity_lo">ACTIVITY LOGS</string>
+    <string name="mobile">Mobile</string>
+    <string name="register_ph">Register Phone</string>
+    <string name="send_otp">SEND OTP</string>
+    <string name="fa">2FA</string>
+    <string name="email_verif">Email Verification</string>
+    <string name="your_phone_enter_otp_s">Enter OTP sent to your mobile</string>
+
+    <string name="authenticat">Authenticate</string>
+    <string name="dob_t_recei">Dob\'t receive  OTP yet?\nResend in 60 Seconds</string>
+    <string name="your_phone_">Your phone number is registered\nsuccessfully.</string>
+    <string name="continuee">Continue</string>
+    <string name="enter_otp_s">Enter OTP sent to your mobile</string>
 </resources>

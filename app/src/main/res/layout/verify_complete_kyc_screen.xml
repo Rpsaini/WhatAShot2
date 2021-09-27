@@ -29,13 +29,13 @@
             app:srcCompat="?attr/actionModeCloseDrawable"
             app:tint="@color/white" />
 
-        <TextView
+        <fontspackageForTextView.Regular
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/veriry_acco"
             android:textColor="@color/white"
-            android:textSize="@dimen/title_text_size"
+            android:textSize="@dimen/action_bar_title_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:weightSum="1">
 
-                    <TextView
+                    <fontspackageForTextView.Regular
                         android:id="@+id/security_tv"
                         android:layout_width="0dp"
                         android:layout_weight="0.2"
@@ -103,7 +103,7 @@
                             android:background="@drawable/ic_line" />
                     </LinearLayout>
 
-                    <TextView
+                    <fontspackageForTextView.Regular
                         android:id="@+id/email_tv"
                         android:layout_width="0dp"
                         android:layout_weight="0.2"
@@ -131,7 +131,7 @@
 
 
 
-                    <TextView
+                    <fontspackageForTextView.Regular
                         android:id="@+id/welcome_tv"
                         android:layout_width="0dp"
                         android:layout_weight="0.2"
@@ -197,7 +197,7 @@
                     app:layout_constraintTop_toTopOf="@+id/security_line"
                     app:srcCompat="@drawable/ic_tick_mark" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/email_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/email_mark_ic" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/security_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -222,7 +222,7 @@
                     app:layout_constraintStart_toStartOf="@+id/security_mark_ic"
                     app:layout_constraintTop_toBottomOf="@+id/security_mark_ic" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/welcome_tv"
                     android:layout_width="59dp"
                     android:layout_height="20dp"
@@ -245,7 +245,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/topBarLL" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/select_your_country_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -257,7 +257,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/header_line" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/countryTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -284,7 +284,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/countryTV">
 
-                    <TextView
+                    <fontspackageForTextView.Regular
                         android:id="@+id/select_countryTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -309,7 +309,7 @@
                         app:srcCompat="@drawable/ic_dropdown" />
                 </RelativeLayout>
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/typeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -336,7 +336,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/typeTV">
 
-                    <TextView
+                    <fontspackageForTextView.Regular
                         android:id="@+id/select_typeTV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -389,7 +389,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
-                                <TextView
+                                <fontspackageForTextView.Regular
                                     android:id="@+id/without_kyc"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
@@ -417,7 +417,7 @@
                                     android:layout_height="match_parent"
                                     android:background="@color/line_color" />
 
-                                <TextView
+                                <fontspackageForTextView.Regular
                                     android:id="@+id/with_kyc"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
@@ -461,7 +461,7 @@
                                     android:layout_marginEnd="2dp"
                                     android:background="@color/white">
 
-                                    <TextView
+                                    <fontspackageForTextView.Regular
                                         android:id="@+id/without_kyc_trade_tv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -507,7 +507,7 @@
                                     android:layout_marginEnd="2dp"
                                     android:background="@color/white">
 
-                                    <TextView
+                                    <fontspackageForTextView.Regular
                                         android:id="@+id/with_kyc_deposit_cry_tv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -560,7 +560,7 @@
                                     android:layout_marginEnd="2dp"
                                     android:background="@color/white">
 
-                                    <TextView
+                                    <fontspackageForTextView.Regular
                                         android:id="@+id/without_kyc_deposit_cry_tv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -606,7 +606,7 @@
                                     android:layout_marginEnd="2dp"
                                     android:background="@color/white">
 
-                                    <TextView
+                                    <fontspackageForTextView.Regular
                                         android:id="@+id/with_kyc_trade_tv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -660,7 +660,7 @@
                                     android:layout_marginEnd="2dp"
                                     android:background="@color/white">
 
-                                    <TextView
+                                    <fontspackageForTextView.Regular
                                         android:id="@+id/without_kyc_withdrawal_tv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -706,7 +706,7 @@
                                     android:layout_marginEnd="2dp"
                                     android:background="@color/white">
 
-                                    <TextView
+                                    <fontspackageForTextView.Regular
                                         android:id="@+id/with_kyc_withdrawal_tv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -761,7 +761,7 @@
                                     android:layout_marginEnd="2dp"
                                     android:background="@color/white">
 
-                                    <TextView
+                                    <fontspackageForTextView.Regular
                                         android:id="@+id/without_kyc_p2p_tv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -807,7 +807,7 @@
                                     android:layout_marginEnd="2dp"
                                     android:background="@color/white">
 
-                                    <TextView
+                                    <fontspackageForTextView.Regular
                                         android:id="@+id/with_kyc_p2p_tv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -846,7 +846,7 @@
                 android:weightSum="2">
 
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/skipForNowBT"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -861,7 +861,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <fontspackageForTextView.Regular
                     android:id="@+id/complet_kycBT"
                     android:layout_weight="1"
                     android:layout_width="0dp"
