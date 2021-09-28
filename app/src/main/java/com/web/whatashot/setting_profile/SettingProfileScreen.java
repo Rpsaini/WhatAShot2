@@ -15,7 +15,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.app.dialogsnpickers.SimpleDialog;
 import com.web.whatashot.BaseActivity;
 import com.web.whatashot.R;
+import com.web.whatashot.currency_preferences.CurrencyPreferencesScreen;
 import com.web.whatashot.kyc.VerifyKycAccountDetailsScreen;
+import com.web.whatashot.two_factor_auth.TwoFactorAuthScreen;
 
 public class SettingProfileScreen extends BaseActivity {
     private ImageView backIC=null;
@@ -56,6 +58,20 @@ public class SettingProfileScreen extends BaseActivity {
             @Override
             public void onClick(View v) {
                 showMobileRegDialog();
+            }
+        });
+        findViewById(R.id.currency_pr_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent=new Intent(SettingProfileScreen.this, CurrencyPreferencesScreen.class);
+               startActivity(intent);
+            }
+        });
+        findViewById(R.id.two_factor_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SettingProfileScreen.this, TwoFactorAuthScreen.class);
+                startActivity(intent);
             }
         });
     }
@@ -101,7 +117,7 @@ public class SettingProfileScreen extends BaseActivity {
             SimpleDialog simpleDialog = new SimpleDialog();
             mobRegOtpDialog = simpleDialog.simpleDailog(this, R.layout.mobile_reg_otp_dialog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
             ConstraintLayout root_layout = mobRegOtpDialog.findViewById(R.id.root_layout);
-            TextView authenticatTV = mobRegOtpDialog.findViewById(R.id.authenticatTV);
+            TextView authenticateTV = mobRegOtpDialog.findViewById(R.id.authenticatTV);
             ImageView closeIC = mobRegOtpDialog.findViewById(R.id.closeIC);
 
             mobRegOtpDialog.setCancelable(true);
@@ -117,7 +133,7 @@ public class SettingProfileScreen extends BaseActivity {
                     mobRegOtpDialog.dismiss();
                 }
             });
-            authenticatTV.setOnClickListener(new View.OnClickListener() {
+            authenticateTV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
                 {

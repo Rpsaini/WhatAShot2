@@ -46,9 +46,11 @@
         <entry key="..\:/WhatAShot2/app/src/main/res/drawable/otp_drawable.xml" value="0.20416666666666666" />
         <entry key="..\:/WhatAShot2/app/src/main/res/drawable/rectangle_1.xml" value="0.2203125" />
         <entry key="..\:/WhatAShot2/app/src/main/res/drawable/rectangle_9.xml" value="0.20416666666666666" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/drawable/reset_button_drawable.xml" value="0.2046875" />
         <entry key="..\:/WhatAShot2/app/src/main/res/drawable/round_corner_drawable.xml" value="0.2046875" />
         <entry key="..\:/WhatAShot2/app/src/main/res/drawable/setting_profile_rect_drawable.xml" value="0.20416666666666666" />
         <entry key="..\:/WhatAShot2/app/src/main/res/drawable/setting_profile_rectangle_1.xml" value="1.4035714285714285" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/drawable/two_factor_aut_rec_drawable.xml" value="0.2046875" />
         <entry key="..\:/WhatAShot2/app/src/main/res/drawable/white_drawable_uppercorner.xml" value="0.2046875" />
         <entry key="..\:/WhatAShot2/app/src/main/res/drawable/white_off_set_drawable.xml" value="0.2046875" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/activity_account_screen.xml" value="0.11367753623188406" />
@@ -81,7 +83,7 @@
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/complete_kyc_screen.xml" value="0.33" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/confirm_dialog.xml" value="0.25" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/currency_preference_items.xml" value="0.33" />
-        <entry key="..\:/WhatAShot2/app/src/main/res/layout/currency_preferences_screen.xml" value="0.25" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/currency_preferences_screen.xml" value="0.22" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/deposti_coin_dialog.xml" value="0.11730072463768115" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/fragment_all_orders.xml" value="0.15579710144927536" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/fragment_all_orders2.xml" value="0.15579710144927536" />
@@ -121,6 +123,7 @@
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/signup_screen.xml" value="0.15579710144927536" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/splash_screen.xml" value="0.18854166666666666" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/trades_list_row.xml" value="0.18854166666666666" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/two_fact_auth_screen.xml" value="0.33" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/verify_account_screen.xml" value="0.1" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/verify_captcha_layout.xml" value="0.18854166666666666" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/verify_complete_kyc_screen.xml" value="0.22" />
