@@ -165,8 +165,12 @@
     <string name="your_phone_enter_otp_s">Enter OTP sent to your mobile</string>
 
     <string name="authenticat">Authenticate</string>
-    <string name="dob_t_recei">Dob\'t receive  OTP yet?\nResend in 60 Seconds</string>
+    <string name="dob_t_recei">Don\'t receive  OTP yet?\nResend in 60 Seconds</string>
     <string name="your_phone_">Your phone number is registered\nsuccessfully.</string>
     <string name="continuee">Continue</string>
     <string name="enter_otp_s">Enter OTP sent to your mobile</string>
+
+    <string name="select_your_preference">Select your preferred display currency for all market</string>
+
+
 </resources>

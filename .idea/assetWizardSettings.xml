@@ -14,8 +14,9 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_group" />
-                            <entry key="sourceFile" value="F:\whatAshots\Group.svg" />
+                            <entry key="opacityPercent" value="80" />
+                            <entry key="outputName" value="ic_thether" />
+                            <entry key="sourceFile" value="F:\whatAshots\Group (1).svg" />
                           </map>
                         </option>
                       </PersistentState>
