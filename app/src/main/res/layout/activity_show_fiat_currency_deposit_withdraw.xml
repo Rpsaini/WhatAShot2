@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:id="@+id/ll_view_down"
-    android:background="@color/section_color"
+    android:background="@color/white_20"
     android:layout_height="match_parent">
 
 
@@ -89,7 +89,7 @@
         android:orientation="vertical"
         >
         <fontspackageForTextView.Regular
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="30dp"
             android:id="@+id/note"
             android:text="Bank Details"
@@ -152,7 +152,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/share_button_drawable"
                 android:text="Withdraw INR"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:layout_marginLeft="55dp"
                 android:layout_marginRight="55dp"

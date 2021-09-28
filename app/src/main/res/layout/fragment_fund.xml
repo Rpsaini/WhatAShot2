@@ -124,6 +124,7 @@
             android:orientation="horizontal"
             >
         <Switch
+            android:id="@+id/txt_switch"
             android:paddingLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="50dp"

@@ -10,12 +10,13 @@
     <include layout="@layout/order_strip" />
 
     <include
-        layout="@layout/no_data_found"
-        />
+        layout="@layout/no_data_found" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/order_history_list_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent">
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>

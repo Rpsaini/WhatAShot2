@@ -40,9 +40,7 @@ public class WithdrawInrActivity extends BaseActivity {
     }
 
     private void init() {
-
         txt_amount = findViewById(R.id.txt_amount);
-
         ImageView txt_currency_image1 = findViewById(R.id.txt_currency_image1);
         TextView total_balance1 = findViewById(R.id.total_balance1);
 
@@ -97,7 +95,9 @@ public class WithdrawInrActivity extends BaseActivity {
                     intent.putExtra("address", "");
                     startActivityForResult(intent, 1002);
 
-                } else {
+                }
+                else
+                {
                     withdrawWithoutAuth(symbol, txt_amount.getText().toString());
                 }
             }
@@ -134,7 +134,7 @@ public class WithdrawInrActivity extends BaseActivity {
         map.put("address", "");
         map.put("DeviceToken", getDeviceToken());
 
-       Map<String, String> headerMap = new HashMap<>();
+        Map<String, String> headerMap = new HashMap<>();
         headerMap.put("X-API-KEY", UtilClass.xApiKey);
         headerMap.put("Rtoken", getNewRToken() + "");
 

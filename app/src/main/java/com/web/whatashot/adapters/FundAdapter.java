@@ -28,10 +28,12 @@ import com.web.whatashot.kyc.BalanceFulledetails;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> {
     private MainActivity ira1;
-    private JSONArray moviesList;
+    private ArrayList<JSONObject> moviesList;
     private FundFragment fundFragment;
 
 
@@ -58,7 +60,7 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
     }
 
 
-    public FundAdapter(JSONArray moviesList, MainActivity mainActivity, FundFragment fundFragment) {
+    public FundAdapter(ArrayList<JSONObject> moviesList, MainActivity mainActivity, FundFragment fundFragment) {
         this.moviesList = moviesList;
         this.ira1 = mainActivity;
         this.fundFragment = fundFragment;
@@ -76,7 +78,7 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         try {
 
-            JSONObject dataObj = moviesList.getJSONObject(position);
+            JSONObject dataObj = moviesList.get(position);
 
             holder.txt_currency_name.setText(dataObj.getString("symbol"));
             holder.tv_balance.setText(dataObj.getString("available_balance"));
@@ -108,7 +110,7 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return moviesList.length();
+        return moviesList.size();
     }
 
     @Override

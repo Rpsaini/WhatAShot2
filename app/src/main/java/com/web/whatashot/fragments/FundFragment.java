@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.app.dialogsnpickers.DialogCallBacks;
@@ -41,9 +42,17 @@ private View view;
 private MainActivity mainActivity;
 private TextView txt_totalbalance;
 private int pagecount=1;
-    public FundFragment()
-      {
+private Switch txt_switch;
 
+private ArrayList<JSONObject> fiatCurrencyAr=new ArrayList<>();
+private ArrayList<JSONObject>  cryptoeAr=new ArrayList<>();
+
+
+
+
+
+   public FundFragment()
+      {
       }
 
     public static FundFragment newInstance(String param1, String param2)
@@ -66,15 +75,78 @@ private int pagecount=1;
                              Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_fund, container, false);
         mainActivity=(MainActivity)getActivity();
-        txt_totalbalance=view.findViewById(R.id.txt_totalbalance);
+        init();
         calCulateOrder();
         return view;
     }
 
-    private void fiatCurrencies(JSONArray fiatAr)
+    private void init()
+    {
+        txt_totalbalance=view.findViewById(R.id.txt_totalbalance);
+        txt_switch=view.findViewById(R.id.txt_switch);
+
+
+            txt_switch.setOnClickListener(new View.OnClickListener() {    @Override
+            public void onClick(View v)
+            {
+                try {
+                Switch s=(Switch)v;
+
+                if(s.isChecked())
+                {
+                    System.out.println("Crypto===checked");
+                    ArrayList<JSONObject> filterFiat=new ArrayList<>();
+                    for(int x=0;x<fiatCurrencyAr.size();x++)
+                    {
+                        JSONObject jsonObject=fiatCurrencyAr.get(x);
+                        double balance=Double.parseDouble(jsonObject.getString("available_balance"));
+                        if(balance>0)
+                        {
+                            filterFiat.add(jsonObject);
+                        }
+
+                    }
+
+                    //=================
+
+                    ArrayList<JSONObject> cryptoAr=new ArrayList<>();
+                    for(int x=0;x<cryptoeAr.size();x++)
+                    {
+                        JSONObject jsonObject=cryptoeAr.get(x);
+                        double balance=Double.parseDouble(jsonObject.getString("available_balance"));
+                        if(balance>0)
+                        {
+                            cryptoAr.add(jsonObject);
+                        }
+
+                    }
+
+
+                    init(cryptoAr);
+                    fiatCurrencies(filterFiat);
+
+                }
+                else
+                {
+                    init(cryptoeAr);
+                    fiatCurrencies(fiatCurrencyAr);
+                }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            });
+
+
+
+
+    }
+
+    private void fiatCurrencies(ArrayList<JSONObject> fiatAr)
     {
         RecyclerView fiat_balance_recyclerview=view.findViewById(R.id.fiat_balance_recyclerview);
-
         FiatCurrenciesAdapter mAdapter = new FiatCurrenciesAdapter(fiatAr,(MainActivity) getActivity(),this);
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -84,11 +156,11 @@ private int pagecount=1;
 
     }
 
-    private void init(JSONArray dataAr)
+    private void init(ArrayList<JSONObject> dataAr)
     {
         RelativeLayout relativeLayout =view.findViewById(R.id.rr_nodata_view);
         RecyclerView balance_recyclerview =view.findViewById(R.id.balance_recyclerview);
-        if(dataAr.length()==0)
+        if(dataAr.size()==0)
         {
             relativeLayout.setVisibility(View.VISIBLE);
             balance_recyclerview.setVisibility(View.GONE);
@@ -130,39 +202,36 @@ private int pagecount=1;
                     if (obj.getBoolean("status")) {
                         try
                         {
-
                             if(obj.has("token"))
                             {
                                 mainActivity.savePreferences.savePreferencesData(mainActivity,obj.getString("token"),DefaultConstants.token);
                                 mainActivity.savePreferences.savePreferencesData(mainActivity,obj.getString("r_token"),DefaultConstants.r_token);
 
                             }
-                            ;
+
                             txt_totalbalance.setText((obj.getString("sum_available_bal")));
-
                             JSONArray balances=obj.getJSONArray("balances");
-
-                            JSONArray ctryptoAr=new JSONArray();
-                            JSONArray fiatAr=new JSONArray();
+//                            JSONArray ctryptoAr=new JSONArray();
+//                            JSONArray fiatAr=new JSONArray();
                             for(int x=0;x<balances.length();x++)
                             {
-
                                 String type=balances.getJSONObject(x).getString("type");
                                 if(type.equalsIgnoreCase("fiat"))
                                 {
-                                    fiatAr.put(balances.getJSONObject(x));
+                                    fiatCurrencyAr.add(balances.getJSONObject(x));
+
                                 }
                                 else
                                 {
-                                    ctryptoAr.put(balances.getJSONObject(x));
+                                    cryptoeAr.add(balances.getJSONObject(x));
+
                                 }
                             }
 
-                             init(ctryptoAr);
-                             fiatCurrencies(fiatAr);
+                             init(cryptoeAr);
+                             fiatCurrencies(fiatCurrencyAr);
 
-
-                        }
+                          }
                         catch (Exception e)
                         {
                             e.printStackTrace();
@@ -189,13 +258,13 @@ private int pagecount=1;
 
 
 
-    private void showImage(final String url, final ImageView header_img) {
-
-        Glide.with(mainActivity)
-                .load(url)
-                .apply(RequestOptions.bitmapTransform(new RoundedCorners(3)))
-                .into(header_img);
-    }
+//    private void showImage(final String url, final ImageView header_img) {
+//
+//        Glide.with(mainActivity)
+//                .load(url)
+//                .apply(RequestOptions.bitmapTransform(new RoundedCorners(3)))
+//                .into(header_img);
+//    }
 
 
 }

@@ -46,10 +46,10 @@ public class QuickBuyFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-
-   }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -57,6 +57,7 @@ public class QuickBuyFragment extends Fragment {
         view=inflater.inflate(R.layout.fragment_quick_buy, container, false);
         mainActivity= (MainActivity) getActivity();
         getQuickCurrency();
+
         return view;
     }
 
@@ -64,14 +65,12 @@ public class QuickBuyFragment extends Fragment {
     private void showQuickBuyCurrency(JSONArray fiatAr)
     {
         RecyclerView fiat_balance_recyclerview=view.findViewById(R.id.quick_buy_coin_recycler);
-
         QuickBuyAdapter mAdapter = new QuickBuyAdapter(fiatAr,(MainActivity) getActivity(),this);
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         fiat_balance_recyclerview.setLayoutManager(horizontalLayoutManagaer);
         fiat_balance_recyclerview.setItemAnimator(new DefaultItemAnimator());
         fiat_balance_recyclerview.setAdapter(mAdapter);
-
     }
 
 
@@ -110,7 +109,6 @@ public class QuickBuyFragment extends Fragment {
                             JSONArray fiatAr=new JSONArray();
                             for(int x=0;x<balances.length();x++)
                             {
-
                                 String type=balances.getJSONObject(x).getString("type");
                                 if(type.equalsIgnoreCase("fiat"))
                                 {
@@ -121,16 +119,12 @@ public class QuickBuyFragment extends Fragment {
                                     ctryptoAr.put(balances.getJSONObject(x));
                                 }
                             }
-
-
                             showQuickBuyCurrency(fiatAr);
-
-
                         }
                         catch (Exception e)
-                        {
+                         {
                             e.printStackTrace();
-                        }
+                         }
 
                     } else {mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
@@ -146,6 +140,7 @@ public class QuickBuyFragment extends Fragment {
 
             }
         });
+
 
     }
 

@@ -31,7 +31,7 @@ public class WithdrawalFundScreen extends BaseActivity {
     private ImageView backIC=null;
     private ImageView scanImgIC;
     private EditText BTCAmountET,withdrawalFeesET,finalAmountET,remarksET,destinationAddressET;
-    private TextView BTCAmountTV,amountTV;
+    private TextView BTCAmountTV,amountTV,tvTitle;
     private String symbol;
 
     private double availableBal=0;
@@ -57,28 +57,27 @@ public class WithdrawalFundScreen extends BaseActivity {
             remarksET = findViewById(R.id.remarksET);
             BTCAmountTV = findViewById(R.id.BTCAmountTV);
             amountTV = findViewById(R.id.amountTV);
+            tvTitle = findViewById(R.id.tvTitle);
 
             JSONObject data = new JSONObject(getIntent().getStringExtra("data"));
 
             availableBal = Double.parseDouble(data.getString("available_balance"));
             symbol = data.getString("symbol");
 
-
-//            {"symbol":"ETH","type":"crypto","icon":"https:\/\/unitedexchange.io\/front\/resources\/img\/currency-icons\/ETH.png",
+//   {"symbol":"ETH","type":"crypto","icon":"https:\/\/unitedexchange.io\/front\/resources\/img\/currency-icons\/ETH.png",
 //                    "available_balance":"36.73052727","avail_equivalent":"8872159.69 INR","total_balances":"36.73052727","total_equivalent":"8872159.69 USD"}
 
-
+            tvTitle.setText(getResources().getString(R.string.withdraw)+" "+symbol);
             BTCAmountTV.setText("Enter " + symbol);
             amountTV.setText(availableBal + " " + symbol);
             withdrawalFeesET.setText(".09");
+
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-
-
-    }
+      }
 
     private void setOnClickListener()
        {

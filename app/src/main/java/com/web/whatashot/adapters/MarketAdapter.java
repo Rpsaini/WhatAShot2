@@ -148,6 +148,17 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
                 }
             });
 
+
+
+
+
+
+
+
+
+          
+
+//
 //            if(position%2==0)
 //            {
 //                holder.ll_market_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color_lite));

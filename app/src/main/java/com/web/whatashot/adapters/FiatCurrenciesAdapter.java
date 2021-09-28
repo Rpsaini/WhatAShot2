@@ -30,10 +30,12 @@ import com.web.whatashot.fund_withdrawal.WithdrawalFundScreen;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAdapter.MyViewHolder> {
     private MainActivity ira1;
-    private JSONArray moviesList;
+    private ArrayList<JSONObject> moviesList;
     private FundFragment fundFragment;
 
 
@@ -55,13 +57,14 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
             ll_fund_list_row = view.findViewById(R.id.ll_fund_list_row);
             img_currencyicon = view.findViewById(R.id.img_currencyicon);
             ic_more = view.findViewById(R.id.ic_more);
+            ic_more.setVisibility(View.INVISIBLE);
 
 
         }
     }
 
 
-    public FiatCurrenciesAdapter(JSONArray moviesList, MainActivity mainActivity, FundFragment fundFragment)
+    public FiatCurrenciesAdapter(ArrayList<JSONObject> moviesList, MainActivity mainActivity, FundFragment fundFragment)
     {
         this.moviesList = moviesList;
         this.ira1=mainActivity;
@@ -80,18 +83,19 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         try {
 
-            JSONObject dataObj=moviesList.getJSONObject(position);
+            JSONObject dataObj=moviesList.get(position);
 
             holder.txt_currency_name.setText(dataObj.getString("symbol"));
             holder.tv_balance.setText(dataObj.getString("available_balance"));
-            showImage(dataObj.getString("icon"),holder.img_currencyicon);
 
+            showImage(dataObj.getString("icon"),holder.img_currencyicon);
             holder.ll_fund_list_row.setTag(dataObj);
             holder.ll_fund_list_row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
-                {
-                    try {
+                 {
+                    try
+                    {
                         JSONObject data = new JSONObject(v.getTag().toString());
                         String symbol=data.getString("symbol");
                         if(symbol.equalsIgnoreCase("INR"))
@@ -108,9 +112,7 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
                                  }
                              });
                          }
-
-
-                       }
+                      }
                     catch (Exception e)
                     {
                         e.printStackTrace();
@@ -118,16 +120,16 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
                 }
             });
 
-            holder.ic_more.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceType")
-                @Override
-                public void onClick(View v) {
-                    PopupWindow popupwindow_obj = popupDisplay();
-                    popupwindow_obj.setBackgroundDrawable(new ColorDrawable(
-                            android.graphics.Color.TRANSPARENT));
-                    popupwindow_obj.showAsDropDown(v, -10, 5);
-                }
-            });
+//            holder.ic_more.setOnClickListener(new View.OnClickListener() {
+//                @SuppressLint("ResourceType")
+//                @Override
+//                public void onClick(View v) {
+//                    PopupWindow popupwindow_obj = popupDisplay();
+//                    popupwindow_obj.setBackgroundDrawable(new ColorDrawable(
+//                            android.graphics.Color.TRANSPARENT));
+//                    popupwindow_obj.showAsDropDown(v, -10, 5);
+//                }
+//            });
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -137,7 +139,7 @@ public class FiatCurrenciesAdapter extends RecyclerView.Adapter<FiatCurrenciesAd
 
     @Override
     public int getItemCount() {
-        return moviesList.length();
+        return moviesList.size();
     }
 
     @Override

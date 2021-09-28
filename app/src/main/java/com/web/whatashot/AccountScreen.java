@@ -32,16 +32,15 @@ private TextView txt_public_email;
         setData();
     }
     private void setData() {
-        try {
-
+        try
+          {
             public_seeret_key = savePreferences.reterivePreference(AccountScreen.this, UtilClass.secretkey).toString() + "-" + savePreferences.reterivePreference(AccountScreen.this, UtilClass.publickey).toString();
             txt_public_key.setText(savePreferences.reterivePreference(AccountScreen.this, UtilClass.publickey).toString());
             txt_sceret_key.setText(savePreferences.reterivePreference(AccountScreen.this, UtilClass.secretkey).toString());
             qr_image.setImageBitmap(TextToImageEncode(public_seeret_key));
             txt_public_email.setText(getRestParamsName(UtilClass.email));
-
            }
-        catch (Exception e)
+        catch(Exception e)
         {
             e.printStackTrace();
         }
@@ -54,23 +53,18 @@ private TextView txt_public_email;
                 finish();
             }
         });
-
         txt_sceret_key.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 copyCode(txt_sceret_key.getText().toString());
             }
         });
-
         txt_public_key.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 copyCode(txt_public_key.getText().toString());
             }
         });
-
-
-
         txt_public_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

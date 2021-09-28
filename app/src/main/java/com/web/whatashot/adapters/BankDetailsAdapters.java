@@ -53,26 +53,23 @@ public class BankDetailsAdapters extends RecyclerView.Adapter<BankDetailsAdapter
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         try
-          {
+         {
             JSONObject dataObj = moviesList.getJSONObject(position);
             dataObj.getString("bank_branch");
             dataObj.getString("branch_number");
             dataObj.getString("account_type");
             dataObj.getString("id");
 
-
             holder.txt_account_holder_name.setText(dataObj.getString("account_name"));
             holder.txt_account_number.setText(dataObj.getString("account_no"));
             holder.txt_bank_name.setText(dataObj.getString("bank_name"));
             holder.txt_ifsc.setText(dataObj.getString("ifsc_code"));
-
-
-
-          } catch (Exception e) {
+         }
+        catch(Exception e)
+        {
             e.printStackTrace();
-        }
-
-    }
+           }
+         }
 
     @Override
     public int getItemCount() {

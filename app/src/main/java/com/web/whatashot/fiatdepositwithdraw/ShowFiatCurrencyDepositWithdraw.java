@@ -75,11 +75,8 @@ public class ShowFiatCurrencyDepositWithdraw extends BaseActivity {
             findViewById(R.id.txt_deposit_inr).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Intent intent = new Intent(ShowFiatCurrencyDepositWithdraw.this, DepositeInrActivity.class);
                     startActivityForResult(intent, 1001);
-
-
                 }
             });
 
