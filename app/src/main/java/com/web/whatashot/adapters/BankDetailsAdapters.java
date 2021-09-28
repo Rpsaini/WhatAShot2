@@ -1,6 +1,5 @@
 package com.web.whatashot.adapters;
 
-import android.graphics.ImageDecoder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

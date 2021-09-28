@@ -29,6 +29,14 @@
         android:theme="@style/Theme.UnitedExchange"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".two_factor_auth.TwoFactorAuthScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
+        <activity
+            android:name=".currency_preferences.CurrencyPreferencesScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
+        <activity
             android:name=".setting_profile.SettingProfileScreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WhatAShot"/>

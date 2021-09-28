@@ -171,6 +171,13 @@
     <string name="enter_otp_s">Enter OTP sent to your mobile</string>
 
     <string name="select_your_preference">Select your preferred display currency for all market</string>
-
-
+    <string name="reset">Reset</string>
+    <string name="authenticat_app">Authenticator App</string>
+    <string name="recommended">Recommended</string>
+    <string name="highly_secu">Highly secure</string>
+    <string name="mobile_sms">Mobile SMS</string>
+    <string name="moderately_">moderately secure</string>
+    <string name="none">None</string>
+    <string name="not_secure">Not secure</string>
+    <string name="note_if_you"><b>Note: </b>If you change your 2FA settings, you will be unable to withdraw anything, and place P2P sell orders for 24 hours as a security measure.</string>
 </resources>
