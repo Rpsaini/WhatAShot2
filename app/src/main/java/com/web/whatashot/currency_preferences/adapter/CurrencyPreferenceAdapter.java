@@ -1,9 +1,5 @@
 package com.web.whatashot.currency_preferences.adapter;
 
-/*
-public class CurrencyPreferenceAdapter {
-}
-*/
 
 import android.view.LayoutInflater;
 import android.view.View;
