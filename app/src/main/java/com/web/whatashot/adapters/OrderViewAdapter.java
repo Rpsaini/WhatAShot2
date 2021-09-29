@@ -15,7 +15,8 @@ public class OrderViewAdapter extends FragmentStatePagerAdapter {
      }
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
+        switch (position)
+          {
             case 0:
                 OpenOrderFragment tab1 = new OpenOrderFragment();
                 return tab1;
@@ -25,7 +26,7 @@ public class OrderViewAdapter extends FragmentStatePagerAdapter {
 
             default:
                 return null;
-        }
+          }
     }
     @Override
     public int getCount() {

@@ -18,11 +18,13 @@ public class FundPagerAdapter extends FragmentStatePagerAdapter {
         this.mNumOfTabs = NumOfTabs;
     }
     @Override
-    public Fragment getItem(int position) {
+    public Fragment getItem(int position)
+     {
         switch (position) {
             case 0:
                 FundFragment tab1 = new FundFragment();
                 return tab1;
+
             case 1:
                 TransactionHistoryFragment tab2 = new TransactionHistoryFragment();
                 return tab2;

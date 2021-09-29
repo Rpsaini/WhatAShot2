@@ -84,6 +84,7 @@ private ArrayList<JSONObject>  cryptoeAr=new ArrayList<>();
     {
         txt_totalbalance=view.findViewById(R.id.txt_totalbalance);
         txt_switch=view.findViewById(R.id.txt_switch);
+       final TextView txt_hide_show_balance=view.findViewById(R.id.txt_hide_show_balance);
 
 
             txt_switch.setOnClickListener(new View.OnClickListener() {    @Override
@@ -94,7 +95,7 @@ private ArrayList<JSONObject>  cryptoeAr=new ArrayList<>();
 
                 if(s.isChecked())
                 {
-                    System.out.println("Crypto===checked");
+                    txt_hide_show_balance.setText("Show Zero Balance");
                     ArrayList<JSONObject> filterFiat=new ArrayList<>();
                     for(int x=0;x<fiatCurrencyAr.size();x++)
                     {
@@ -128,6 +129,7 @@ private ArrayList<JSONObject>  cryptoeAr=new ArrayList<>();
                 }
                 else
                 {
+                    txt_hide_show_balance.setText("Hide Zero Balance");
                     init(cryptoeAr);
                     fiatCurrencies(fiatCurrencyAr);
                 }

@@ -106,10 +106,14 @@ public class RegisterActivity extends BaseActivity {
         }
     }
 
-    private void actions() {
+    private void actions()
+    {
+        login_register.setEnabled(true);
         login_register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+             {
+                check_captcha.setChecked(true);
                 if (validationRule.checkEmptyString(txt_fname) == 0) {
                     alertDialogs.alertDialog(RegisterActivity.this, getResources().getString(R.string.app_name), "Enter First Name", "Ok", "", new DialogCallBacks() {
                         @Override
@@ -146,10 +150,6 @@ public class RegisterActivity extends BaseActivity {
                         }
                     });
                 }
-
-
-
-                
                 if (validationRule.checkEmptyString(txt_phonenumber) == 0) {
                     alertDialogs.alertDialog(RegisterActivity.this, getResources().getString(R.string.app_name), "Enter Phone Number", "Ok", "", new DialogCallBacks() {
                         @Override
@@ -203,6 +203,7 @@ public class RegisterActivity extends BaseActivity {
                     });
                     return;
                 }
+
                 doRegistration();
               }
         });
@@ -226,15 +227,17 @@ public class RegisterActivity extends BaseActivity {
             }
         });
 
-        check_captcha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                check_captcha.setChecked(false);
-                queue = Volley.newRequestQueue(getApplicationContext());
-                generateCaptcha();
-            }
-        });
+
+
+//todo for testing        check_captcha.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                check_captcha.setChecked(false);
+//                queue = Volley.newRequestQueue(getApplicationContext());
+//                generateCaptcha();
+//            }
+//        });
 //        check_captcha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -282,6 +285,7 @@ public class RegisterActivity extends BaseActivity {
                                             savePreferences.savePreferencesData(RegisterActivity.this, obj.getString("token"), DefaultConstants.token);
                                             savePreferences.savePreferencesData(RegisterActivity.this, obj.getString("r_token"), DefaultConstants.r_token);
                                             Intent intent = new Intent(RegisterActivity.this, VerifyOtp.class);
+                                            intent.putExtra("url","verify-signup");
                                             startActivity(intent);
 
                                         } catch (Exception e) {

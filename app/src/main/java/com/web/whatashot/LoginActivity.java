@@ -57,7 +57,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (validationRule.checkEmptyString(publicKey) == 0) {
-                    alertDialogs.alertDialog(LoginActivity.this, getResources().getString(R.string.app_name), "Enter Public key.", "Ok", "", new DialogCallBacks() {
+                    alertDialogs.alertDialog(LoginActivity.this, getResources().getString(R.string.app_name), "Enter User name.", "Ok", "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
 
@@ -66,7 +66,7 @@ public class LoginActivity extends BaseActivity {
                     return;
                 }
                 if (validationRule.checkEmptyString(sceretKey) == 0) {
-                    alertDialogs.alertDialog(LoginActivity.this, getResources().getString(R.string.app_name), "Enter Secret key.", "Ok", "", new DialogCallBacks() {
+                    alertDialogs.alertDialog(LoginActivity.this, getResources().getString(R.string.app_name), "Enter Password.", "Ok", "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
 
@@ -76,8 +76,11 @@ public class LoginActivity extends BaseActivity {
                 }
                 try {
                     Map<String, String> m = new LinkedHashMap<>();
-                    m.put("secret", sceretKey.getText().toString());
-                    m.put("publickey", publicKey.getText().toString());
+//                    m.put("secret", sceretKey.getText().toString());
+//                    m.put("publickey", publicKey.getText().toString());
+
+                    m.put("username", publicKey.getText().toString());
+                    m.put("password", sceretKey.getText().toString());
                     m.put("Version", getAppVersion());
                     m.put("PlatForm", "android");
                     m.put("Timestamp", System.currentTimeMillis() + "");
@@ -86,6 +89,8 @@ public class LoginActivity extends BaseActivity {
                     Map<String, String> headerMap = new HashMap<>();
                     headerMap.put("X-API-KEY", UtilClass.xApiKey);
 
+
+
                     new ServerHandler().sendToServer(LoginActivity.this, getApiUrl() + "login-authenticate-api", m, 0, headerMap, 20000, R.layout.progressbar, new CallBack() {
                         @Override
                         public void getRespone(String dta, ArrayList<Object> respons) {
@@ -93,17 +98,24 @@ public class LoginActivity extends BaseActivity {
                                 JSONObject obj = new JSONObject(dta);
                                 if (obj.getBoolean("status")) {
                                     try {
-                                        //no need to very is_active otp because login process is different
+
+                                        System.out.println("Login===="+obj);
                                         savePreferences.savePreferencesData(LoginActivity.this, obj.getString("token"), DefaultConstants.token);
                                         savePreferences.savePreferencesData(LoginActivity.this, obj.getString("r_token"), DefaultConstants.r_token);
-
-                                        savePreferences.savePreferencesData(LoginActivity.this, sceretKey.getText().toString(), UtilClass.publickey);
-                                        savePreferences.savePreferencesData(LoginActivity.this, publicKey.getText().toString(), UtilClass.secretkey);
-                                        savePreferences.savePreferencesData(LoginActivity.this, obj+"", DefaultConstants.login_detail);
-
-                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        Intent intent = new Intent(LoginActivity.this, VerifyOtp.class);
+                                        intent.putExtra("url","verify-login-otp");
                                         startActivity(intent);
-                                        finish();
+                                        //no need to very is_active otp because login process is different
+//                                        savePreferences.savePreferencesData(LoginActivity.this, obj.getString("token"), DefaultConstants.token);
+//                                        savePreferences.savePreferencesData(LoginActivity.this, obj.getString("r_token"), DefaultConstants.r_token);
+//
+//                                        savePreferences.savePreferencesData(LoginActivity.this, sceretKey.getText().toString(), UtilClass.publickey);
+//                                        savePreferences.savePreferencesData(LoginActivity.this, publicKey.getText().toString(), UtilClass.secretkey);
+//                                        savePreferences.savePreferencesData(LoginActivity.this, obj+"", DefaultConstants.login_detail);
+//
+//                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                                        startActivity(intent);
+//                                        finish();
 
 
                                     } catch (Exception e) {

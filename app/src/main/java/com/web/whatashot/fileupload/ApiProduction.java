@@ -11,7 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiProduction {
-    private static String BASE_URL = "https://unitedexchange.io/";
+    private static String BASE_URL = "https://whatashot.io/";
     public static Retrofit getRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)

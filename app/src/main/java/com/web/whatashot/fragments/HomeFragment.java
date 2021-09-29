@@ -182,7 +182,7 @@ public class HomeFragment extends Fragment
                                  }
 
 
-                                System.out.println("Pair array==="+commonMap);
+
                                 if (mainActivity.getAppVersion().equalsIgnoreCase(appversion))
                                   {
                                     mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.app_name), "Please update app to new version.", "Ok", "", new DialogCallBacks() {
@@ -195,30 +195,7 @@ public class HomeFragment extends Fragment
                                     });
                                  }
 
-//                                for (int x = 0; x < usdtAr.length(); x++)
-//                                   {
-//                                    String pairId = usdtAr.getJSONObject(x).getString("pair_id");
-//                                    usdtPairId.add(pairId);
-//                                    Map<String, JSONObject> usdtMap = new HashMap<>();
-//                                    usdtMap.put(pairId, usdtAr.getJSONObject(x));
-//                                    mainusdtAr.add(usdtMap);
-//                                   }
-//
-//                                for (int x = 0; x < trx.length(); x++) {
-//                                    String pairid = trx.getJSONObject(x).getString("pair_id");
-//                                    trxPairId.add(pairid);
-//                                    Map<String, JSONObject> btcMap = new HashMap<>();
-//                                    btcMap.put(pairid, trx.getJSONObject(x));
-//                                    maintrxAr.add(btcMap);
-//                                }
-//
-//                                for (int x = 0; x < inrAr.length(); x++) {
-//                                    String pairid = inrAr.getJSONObject(x).getString("pair_id");
-//                                    inrtPairId.add(pairid);
-//                                    Map<String, JSONObject> inrMap = new HashMap<>();
-//                                    inrMap.put(pairid, inrAr.getJSONObject(x));
-//                                    maininrtAr.add(inrMap);
-//                                }
+
 
                                 tablayout();
 
@@ -274,6 +251,10 @@ public class HomeFragment extends Fragment
                              {
                                 JSONObject jsonObject = new JSONObject(args[0] + "");
 
+
+
+
+
                                 if(jsonObject.has("price_stats_app"))
                                     {
 
@@ -314,116 +295,6 @@ public class HomeFragment extends Fragment
                                          marketAdapterMap.get(pagerselectedPos).notifyDataSetChanged();
 
                                      }
-//                                    if(commonMap.containsKey(pairIdInt))
-//                                    {
-
-
-
-
-//                                        Map<Integer,JSONObject> jsonAr=commonMap.get(pairIdInt);
-//
-//
-//
-//                                        for(int x=0;x<jsonAr.length();x++)
-//                                        {
-//                                            JSONObject data=jsonAr.getJSONObject(x);
-//                                            if(pair_id.equalsIgnoreCase(data.getString("pair_id")))
-//                                            {
-//                                                System.out.println("equal====="+pair_id+"==="+data.getString("pair_id"));
-//                                                data.remove("price");
-//                                                data.remove("volume");
-//                                                data.remove("change");
-//                                                data.put("price", lastprice);
-//                                                data.put("volume", volume);
-//                                                data.put("change", change);
-//                                                System.out.println("Data after remove==="+data);
-//                                                jsonAr.put(x,data);
-//                                               //System.out.println("Size==after==="+jsonAr.length());
-//                                            }
-//                                        }
-//                                        commonMap.put(pairIdInt,jsonAr);
-//                                        marketAdapterMap.get(pagerselectedPos).notifyDataSetChanged();
-//                                        System.out.println("Selected==="+pagerselectedPos);
-//
-//                                    }
-
-
-
-
-//                                    for(int x = 0; x < usdtPairId.size(); x++) {
-//                                        if (usdtPairId.get(x).equalsIgnoreCase(pair_id)) {
-//                                            try {
-//                                                Map<String, JSONObject> usdtObj = mainusdtAr.get(x);
-//                                                JSONObject lastpriceObj = usdtObj.get(pair_id);
-//                                                lastpriceObj.remove("price");
-//                                                lastpriceObj.remove("volume");
-//                                                lastpriceObj.remove("change");
-//                                                lastpriceObj.put("price", lastprice);
-//                                                lastpriceObj.put("volume", volume);
-//                                                lastpriceObj.put("change", change);
-//                                                usdtObj.put(pair_id, lastpriceObj);
-//
-////                                                if(USDTFragment.usdtAdapter != null)
-////                                                {
-////                                                    USDTFragment.usdtAdapter.notifyDataSetChanged();
-////                                                }
-//
-//                                                break;
-//                                            } catch (Exception e) {
-//                                                e.printStackTrace();
-//                                            }
-//                                        }
-//                                    }
-
-
-                                  //  for (int x = 0; x < trxPairId.size(); x++) {
-//                                        if (trxPairId.get(x).equalsIgnoreCase(pair_id))
-//                                        {
-//                                            try {
-//                                                Map<String, JSONObject> trxObj = maintrxAr.get(x);
-//                                                JSONObject lastpriceObj = trxObj.get(pair_id);
-//                                                lastpriceObj.remove("price");
-//                                                lastpriceObj.remove("volume");
-//                                                lastpriceObj.remove("change");
-//                                                lastpriceObj.put("price", lastprice);
-//                                                lastpriceObj.put("volume", volume);
-//                                                lastpriceObj.put("change", change);
-//                                                trxObj.put(pair_id, lastpriceObj);
-////                                                if(BTCFragment.btcAdapter != null) {
-////                                                    BTCFragment.btcAdapter.notifyDataSetChanged();
-////                                                }
-//                                                break;
-//                                            }
-//                                            catch(Exception e)
-//                                            {
-//                                                e.printStackTrace();
-//                                            }
-//                                        }
-//                                    }
-
-//                                    for (int x = 0; x < inrtPairId.size(); x++) {
-//                                        if (inrtPairId.get(x).equalsIgnoreCase(pair_id)) {
-//                                            try {
-//                                                Map<String, JSONObject> inrObj = maininrtAr.get(x);
-//                                                JSONObject lastpriceObj = inrObj.get(pair_id);
-//                                                lastpriceObj.remove("price");
-//                                                lastpriceObj.remove("volume");
-//                                                lastpriceObj.remove("change");
-//                                                lastpriceObj.put("price", lastprice);
-//                                                lastpriceObj.put("volume", volume);
-//                                                lastpriceObj.put("change", change);
-//                                                inrObj.put(pair_id, lastpriceObj);
-//
-////                                                if (INRFragment.inrAdapter != null) {
-////                                                    INRFragment.inrAdapter.notifyDataSetChanged();
-////                                                }
-//
-//                                                break;
-//                                            } catch (Exception e) {
-//                                                e.printStackTrace();
-//                                            }
-//                                        }
-//                                    }
                                 }
 
                             } catch (Exception e) {
@@ -442,14 +313,10 @@ public class HomeFragment extends Fragment
         getDataOfPairs();
     }
 
-
-
-
-
-
 private ArrayList<JSONObject> loadHeaderKeys()
 {
-    try {
+    try
+      {
         tabsHeaderKeys=new ArrayList<>();
         JSONObject jsonObject=new JSONObject();
         jsonObject.put("pair_name","usdt");
@@ -457,21 +324,6 @@ private ArrayList<JSONObject> loadHeaderKeys()
         tabsHeaderKeys.add(jsonObject);
 
 
-        JSONObject jsonObject2=new JSONObject();
-        jsonObject2.put("pair_name","btc");
-        jsonObject2.put("pair_id","63");
-        tabsHeaderKeys.add(jsonObject2);
-
-        JSONObject jsonObject3=new JSONObject();
-        jsonObject3.put("pair_name","inr");
-        jsonObject3.put("pair_id","53");
-        tabsHeaderKeys.add(jsonObject3);
-
-
-        JSONObject jsonObject4=new JSONObject();
-        jsonObject4.put("pair_name","trx");
-        jsonObject4.put("pair_id","66");
-        tabsHeaderKeys.add(jsonObject4);
 
     }
     catch (Exception e)

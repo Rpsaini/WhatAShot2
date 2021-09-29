@@ -131,6 +131,7 @@
             android:gravity="center|right"
             ></Switch>
         <fontspackageForTextView.Regular
+            android:id="@+id/txt_hide_show_balance"
             android:textSize="@dimen/text_size"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"

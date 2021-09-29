@@ -95,7 +95,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public String getDeviceToken() {
-        return savePreferences.reterivePreference(BaseActivity.this, UtilClass.device_Token) + "";
+        return  "devicetoken"; // savePreferences.reterivePreference(BaseActivity.this, UtilClass.device_Token) + "";
 
     }
 
@@ -122,11 +122,11 @@ public class BaseActivity extends AppCompatActivity {
 
     //Also change qr code validation url
     public String getApiUrl() {
-        return "https://unitedexchange.io/";
+        return "https://whatashot.io/";
     }
 
     public String getXapiKey() {
-        return "Q4GxNgqgKV9XJyoKHNgs";
+        return "Q4GxNgqgKV9XJyoKHsdfRE34Ngs";
     }
 
 

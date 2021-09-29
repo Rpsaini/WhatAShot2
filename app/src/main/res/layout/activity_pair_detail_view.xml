@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
-                android:background="@color/dark_blue"
+                android:background="@color/blue_alpha"
                 android:weightSum="5">
 
                 <fontspackageForTextView.Regular
@@ -147,10 +147,10 @@
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_myorders"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/white"
                     android:gravity="center"
                     android:text="My Orders"
-                    android:textColor="@color/white"
+                    android:drawableTint="@color/textcolor"
+                    android:textColor="@color/black"
                     android:textSize="12dp"></fontspackageForTextView.Regular>
 
                 <fontspackageForTextView.Regular
@@ -161,10 +161,10 @@
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_trade"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/white"
                     android:gravity="center"
                     android:text="Trades"
-                    android:textColor="@color/grey_dark"
+                    android:drawableTint="@color/textcolor"
+                    android:textColor="@color/black"
                     android:textSize="12dp"></fontspackageForTextView.Regular>
 
                 <fontspackageForTextView.Regular
@@ -176,10 +176,10 @@
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_ordernew"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/blue_color"
                     android:gravity="center"
                     android:text="Buy/Sell"
-                    android:textColor="@color/white"
+                    android:drawableTint="@color/textcolor"
+                    android:textColor="@color/black"
                     android:textSize="12dp"
                     app:drawableTint="@color/grey_dark"></fontspackageForTextView.Regular>
 
@@ -192,10 +192,10 @@
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_chart"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/white"
                     android:gravity="center"
                     android:text="Charts"
-                    android:textColor="@color/grey_dark"
+                    android:drawableTint="@color/textcolor"
+                    android:textColor="@color/black"
                     android:textSize="12dp"></fontspackageForTextView.Regular>
 
                 <fontspackageForTextView.Regular
@@ -206,10 +206,10 @@
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_ordernew"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/white"
                     android:gravity="center"
                     android:text="Orders"
-                    android:textColor="@color/grey_dark"
+                    android:drawableTint="@color/textcolor"
+                    android:textColor="@color/black"
                     android:textSize="12dp"></fontspackageForTextView.Regular>
 
             </LinearLayout>
@@ -229,7 +229,8 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/buyselllogotb"
+                android:src="@drawable/logo"
+                android:tint="@color/white"
                 ></ImageView>
 
 
