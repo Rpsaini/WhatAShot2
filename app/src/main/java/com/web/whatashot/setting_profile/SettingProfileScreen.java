@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.app.dialogsnpickers.SimpleDialog;
 import com.web.whatashot.BaseActivity;
 import com.web.whatashot.R;
+import com.web.whatashot.activity_log.ActivityLogScreens;
 import com.web.whatashot.currency_preferences.CurrencyPreferencesScreen;
 import com.web.whatashot.kyc.VerifyKycAccountDetailsScreen;
 import com.web.whatashot.two_factor_auth.TwoFactorAuthScreen;
@@ -71,6 +72,13 @@ public class SettingProfileScreen extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SettingProfileScreen.this, TwoFactorAuthScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.activity_lo_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SettingProfileScreen.this, ActivityLogScreens.class);
                 startActivity(intent);
             }
         });

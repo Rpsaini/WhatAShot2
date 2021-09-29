@@ -178,4 +178,9 @@
     <string name="none">None</string>
     <string name="not_secure">Not secure</string>
     <string name="note_if_you"><b>Note: </b>If you change your 2FA settings, you will be unable to withdraw anything, and place P2P sell orders for 24 hours as a security measure.</string>
+
+    <string name="activity_logs">Activity logs</string>
+    <string name="date">DATE</string>
+    <string name="ip">IP</string>
+    <string name="activity">ACTIVITY</string>
 </resources>

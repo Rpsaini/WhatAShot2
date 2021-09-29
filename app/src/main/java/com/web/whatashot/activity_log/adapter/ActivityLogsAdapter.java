@@ -1,5 +1,4 @@
-package com.web.whatashot.currency_preferences.adapter;
-
+package com.web.whatashot.activity_log.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,27 +10,28 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.web.whatashot.R;
+import com.web.whatashot.activity_log.ActivityLogScreens;
 import com.web.whatashot.currency_preferences.CurrencyPreferencesScreen;
 
 import org.json.JSONArray;
 
 
-public class CurrencyPreferenceAdapter extends RecyclerView.Adapter<CurrencyPreferenceAdapter.MyViewHolder> {
-    private CurrencyPreferencesScreen ira1;
+public class ActivityLogsAdapter extends RecyclerView.Adapter<ActivityLogsAdapter.MyViewHolder> {
+    private ActivityLogScreens ira1;
     private JSONArray moviesList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private  TextView txt_currency_name;
-        private ImageView img_currencyicon,selectIC;
+     /*   private  TextView txt_currency_name;
+        private ImageView img_currencyicon,selectIC;*/
         private LinearLayout ll_list_row;
         private View line;
 
         public MyViewHolder(View view)
         {            super(view);
-            txt_currency_name = view.findViewById(R.id.txt_currency_name);
+           /* txt_currency_name = view.findViewById(R.id.txt_currency_name);
             img_currencyicon = view.findViewById(R.id.img_currencyicon);
 
-            selectIC = view.findViewById(R.id.selectIC);
+            selectIC = view.findViewById(R.id.selectIC);*/
 
             ll_list_row = view.findViewById(R.id.ll_fund_list_row);
             line = view.findViewById(R.id.line);
@@ -39,19 +39,19 @@ public class CurrencyPreferenceAdapter extends RecyclerView.Adapter<CurrencyPref
     }
 
 
-    public CurrencyPreferenceAdapter(CurrencyPreferencesScreen showFiatCurrencyDepositWithdraw,JSONArray dataAr) {
+    public ActivityLogsAdapter(ActivityLogScreens showFiatCurrencyDepositWithdraw, JSONArray dataAr) {
         this.moviesList = dataAr;
         this.ira1 = showFiatCurrencyDepositWithdraw;
 
     }
-    public CurrencyPreferenceAdapter(CurrencyPreferencesScreen showFiatCurrencyDepositWithdraw) {
+    public ActivityLogsAdapter(ActivityLogScreens showFiatCurrencyDepositWithdraw) {
         this.ira1 = showFiatCurrencyDepositWithdraw;
 
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.currency_preference_items, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_log_row_items, parent, false);
         return new MyViewHolder(itemView);
     }
 
