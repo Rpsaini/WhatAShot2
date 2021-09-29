@@ -7,14 +7,12 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.web.whatashot.orderpackage.HistoryFragment;
 import com.web.whatashot.orderpackage.OpenOrderFragment;
 
-
 public class OrderViewAdapter extends FragmentStatePagerAdapter {
-
     int mNumOfTabs;
     public OrderViewAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
-    }
+     }
     @Override
     public Fragment getItem(int position) {
         switch (position) {

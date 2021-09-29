@@ -65,6 +65,8 @@ public class PairDetailView extends BaseActivity {
     private EditText ed_at_price ,ed_amount,ed_total_amount;
     private TextView at_priceinrTV,at_amountcoinTV,tota_coin2TV;
     NumberFormat formatter = new DecimalFormat("#0.0000");
+    public double buyBalance = 0;
+    public double sellBalance = 0;
 
 
     @Override
@@ -307,7 +309,7 @@ public class PairDetailView extends BaseActivity {
         }
 
         double totalCurrencyNeed=Double.parseDouble(ed_at_price.getText().toString())*Double.parseDouble(ed_amount.getText().toString());
-        ed_total_amount.setText(totalCurrencyNeed+"");
+        ed_total_amount.setText(formatter.format(totalCurrencyNeed)+"");
     }
 
 
@@ -468,7 +470,7 @@ public class PairDetailView extends BaseActivity {
                 lowest_priceTV.setTextColor(getResources().getColor(R.color.green));
                 buyBTCBT.setBackgroundResource(R.drawable.green_drawable);
                 buyBTCBT.setText("Buy "+mainPair);
-
+                clearFields();
 
             }
         });
@@ -488,10 +490,9 @@ public class PairDetailView extends BaseActivity {
                 buyTV.setTextColor(getResources().getColor(R.color.text_hint_color));
                 lowest_priceTV.setText(getResources().getString(R.string.highest_pri));
                 lowest_priceTV.setTextColor(getResources().getColor(R.color.darkRed));
-
                 buyBTCBT.setText("Sell " + mainPair);
-
                 buyBTCBT.setBackgroundResource(R.drawable.round_corner_drawable);
+                clearFields();
             }
         });
 
@@ -514,12 +515,12 @@ public class PairDetailView extends BaseActivity {
                     double amount=Double.parseDouble(s.toString());
                     double atPrice=Double.parseDouble(ed_at_price.getText().toString());
                     double  total =amount*atPrice;
-                    String coinValue=formatter.format(total);
-                    ed_total_amount.setText(coinValue+"");
+
+                    ed_total_amount.setText(formatter.format(total)+"");
                 }
                 else
                 {
-                    ed_total_amount.setText(buy_price);
+                    ed_total_amount.setText(formatter.format(buy_price));
                     ed_at_price.setHint("0");
                 }
 
@@ -688,13 +689,11 @@ public class PairDetailView extends BaseActivity {
     }
 
     Dialog showOrderPlacedConfirmDia;
-
     private void shoOrderEstimation(JSONObject obj, final Map<String, String> m) {
-
-        try {
+        try
+        {
             showOrderPlacedConfirmDia = new Dialog(this);
             showOrderPlacedConfirmDia.setContentView(R.layout.show_order_place_dialog);
-
 
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             Window window = showOrderPlacedConfirmDia.getWindow();
@@ -819,13 +818,7 @@ public class PairDetailView extends BaseActivity {
             buySellDialog.setCancelable(true);
             animateUp(constraint_buysell);
 
-//        closeDialogBtn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    downSourceDestinationView(ll_buysell, buySellDialog);
-//                }
-//            });
-//lowest_priceTV
+
 
             Spinner spiinerOrderType = buySellDialog.findViewById(R.id.limitTV);
             ArrayList<String> typeAr = new ArrayList<>();
@@ -853,11 +846,121 @@ public class PairDetailView extends BaseActivity {
                 }
             });
 
-//       initRate(change, buy_price, sell_price);
+            percentageCalculation();
+            clearFields();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+    private ArrayList<TextView> percentageAR;
+    private TextView inrValueTV;
+    private void percentageCalculation()
+    {
+       inrValueTV= buySellDialog.findViewById(R.id.inrValueTV);
+       percentageAR=new ArrayList<>();
+       percentageAR.add(buySellDialog.findViewById(R.id.tv25));
+       percentageAR.add(buySellDialog.findViewById(R.id.tv50));
+       percentageAR.add(buySellDialog.findViewById(R.id.tv75));
+       percentageAR.add(buySellDialog.findViewById(R.id.tv100));
+
+       if(str_side.equalsIgnoreCase("buy"))
+       {
+           inrValueTV.setText(buyBalance+" "+mainPair);
+       }
+       else
+       {
+           inrValueTV.setText(sellBalance+" "+mainPair);
+       }
+
+       for(int x=0;x<percentageAR.size();x++)
+       {
+           percentageAR.get(x).setTag(x);
+           percentageAR.get(x).setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v)
+               {
+                performCalculation(Integer.parseInt(v.getTag().toString()));
+               }
+           });
+       }
+
+    }
+
+    private void performCalculation(int percentange)
+    {
+        if(str_side.equalsIgnoreCase("buy"))
+        {
+            for(int x=0;x<percentageAR.size();x++)
+            {
+                percentageAR.get(x).setTextColor(getResources().getColor(R.color.text_hint_color));
+                if(percentange==x)
+                {
+                 percentageAR.get(x).setTextColor(getResources().getColor(R.color.green));
+                 if(x==0)
+                 {
+                     inrValueTV.setText(formatter.format(buyBalance*25/100)+" "+sub_pair);
+                 }
+                 else if(x==1)
+                 {
+                     inrValueTV.setText(formatter.format(buyBalance*50/100)+" "+sub_pair);
+                 }
+                 else if(x==2)
+                 {
+                     inrValueTV.setText(formatter.format(buyBalance*75/100)+" "+sub_pair);
+                 }
+                 else
+                 {
+                     inrValueTV.setText(formatter.format(buyBalance*100/100)+" "+sub_pair);
+                 }
+                }
+            }
+        }
+        else
+        {
+           for(int x=0;x<percentageAR.size();x++)
+            {
+                percentageAR.get(x).setTextColor(getResources().getColor(R.color.text_hint_color));
+                if(percentange==x)
+                {
+                    percentageAR.get(x).setTextColor(getResources().getColor(R.color.darkRed));
+                    if(x==0)
+                    {
+                        inrValueTV.setText(formatter.format(sellBalance*25/100)+" "+mainPair);
+                    }
+                    else if(x==1)
+                    {
+                        inrValueTV.setText(formatter.format(sellBalance*50/100)+" "+mainPair);
+                    }
+                    else if(x==2)
+                    {
+                        inrValueTV.setText(formatter.format(sellBalance*75/100)+" "+mainPair);
+                    }
+                    else
+                    {
+                        inrValueTV.setText(formatter.format(sellBalance*100/100)+" "+mainPair);
+                    }
+                }
+            }
+        }
+    }
+
+    private void clearFields()
+    {
+        if(str_side.equalsIgnoreCase("buy"))
+        {
+            inrValueTV.setText(formatter.format(buyBalance)+""+sub_pair);
+        }
+        else
+        {
+            inrValueTV.setText(formatter.format(sellBalance)+" "+mainPair);
+        }
+
+        for(int x=0;x<percentageAR.size();x++)
+        {
+          percentageAR.get(x).setTextColor(getResources().getColor(R.color.text_hint_color));
+        }
     }
 
 

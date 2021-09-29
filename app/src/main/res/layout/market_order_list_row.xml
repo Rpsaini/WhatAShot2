@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="17dp"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     android:textColor="@color/dark_blue"
                     >
@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text=""
-                    android:textSize="12dp"
+                    android:textSize="11dp"
                     android:textColor="@color/grey_dark"
                     >
                 </fontspackageForTextView.BoldMedium>
@@ -72,7 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=""
-                        android:textSize="17dp"
+                        android:textSize="15dp"
                         android:textStyle="bold"
                         android:textColor="@color/dark_blue"
                         >

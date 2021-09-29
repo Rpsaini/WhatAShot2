@@ -32,7 +32,6 @@
     <string name="converttowrx_text">Convert To WRX</string>
 
 
-
     <string name="loin_txt">Login</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -122,7 +121,6 @@
 
     <string name="amount">Amount</string>
     <string name="total_inr">Total</string>
-
 
 
     <string name="submit">Submit</string>

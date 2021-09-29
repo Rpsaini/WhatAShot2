@@ -394,14 +394,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tv75"
                 app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
             <TextView
+                android:gravity="center"
                 android:id="@+id/tv25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:text="25%"
-                android:textSize="@dimen/text_size"
                 android:textColor="@color/text_hint_color"
+                android:textSize="@dimen/text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tv50"
                 app:layout_constraintTop_toBottomOf="@+id/imageView5" />

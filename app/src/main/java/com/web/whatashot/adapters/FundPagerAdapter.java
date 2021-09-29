@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.web.whatashot.fragments.FundFragment;
+import com.web.whatashot.fragments.TransactionHistoryFragment;
 import com.web.whatashot.orderpackage.HistoryFragment;
 import com.web.whatashot.orderpackage.OpenOrderFragment;
 
@@ -23,7 +24,7 @@ public class FundPagerAdapter extends FragmentStatePagerAdapter {
                 FundFragment tab1 = new FundFragment();
                 return tab1;
             case 1:
-                HistoryFragment tab2 = new HistoryFragment();
+                TransactionHistoryFragment tab2 = new TransactionHistoryFragment();
                 return tab2;
 
             default:

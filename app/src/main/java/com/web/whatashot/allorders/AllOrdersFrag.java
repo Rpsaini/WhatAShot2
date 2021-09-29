@@ -156,7 +156,12 @@ public class AllOrdersFrag extends Fragment {
                                 sellAr.add(sell.getJSONObject(x));
 
                             }
-                         init(buyAr,sellAr);
+
+                            JSONObject balance =jsonObject.getJSONObject("balance");
+                            pairDetailView.buyBalance=Double.parseDouble(balance.getString("buy_balance"));
+                            pairDetailView.sellBalance =Double.parseDouble(balance.getString("sell_balance"));
+
+                            init(buyAr,sellAr);
 
                         } else
                             {
