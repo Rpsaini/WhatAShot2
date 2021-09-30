@@ -97,12 +97,12 @@ public class HomeFragment extends Fragment
     {
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#13B351"));
-        ArrayList<JSONObject> tabKeys=loadHeaderKeys();
-        for(int x=0;x<tabKeys.size();x++)
+        //ArrayList<JSONObject> tabKeys=loadHeaderKeys();
+        for(int x=0;x<tabsHeaderKeys.size();x++)
         {
             try
             {
-                JSONObject datObj = tabKeys.get(x);
+                JSONObject datObj = tabsHeaderKeys.get(x);
                 tabLayout.addTab(tabLayout.newTab().setText(datObj.getString("pair_name")));
             }
             catch (Exception e)
@@ -164,12 +164,13 @@ public class HomeFragment extends Fragment
                         for(int x=0;x<termArray.length();x++)
                         {
                             JSONObject headerObj=new JSONObject();
-                            headerObj.put("pair_name",termArray.getJSONObject(x).getString("symbol"));
+                            headerObj.put("pair_name",termArray.getJSONObject(x).getString("symbol").toLowerCase());
                             headerObj.put("pair_id",termArray.getJSONObject(x).getString("id"));
+                            tabsHeaderKeys.add(headerObj);
                         }
                         initView();
 
-                        if (jsonObject.getBoolean("status")) {
+                        if(jsonObject.getBoolean("status")) {
                             try {
 
                                 String appversion = jsonObject.getString("app_version");
@@ -183,7 +184,8 @@ public class HomeFragment extends Fragment
                                  {
                                     JSONObject dataObj=tabsHeaderKeys.get(x);
                                      String pairName=dataObj.getString("pair_name");
-                                     commonMap.put(dataObj.getString("pair_name"),jsonObject.getJSONArray(pairName));
+                                     commonMap.put(pairName, jsonObject.getJSONArray(pairName));
+
                                  }
 
 
@@ -318,28 +320,28 @@ public class HomeFragment extends Fragment
         getDataOfPairs();
     }
 
-private ArrayList<JSONObject> loadHeaderKeys()
-{
-    try
-      {
-        tabsHeaderKeys=new ArrayList<>();
-        JSONObject jsonObject=new JSONObject();
-        jsonObject.put("pair_name","usdt");
-        jsonObject.put("pair_id","62");
-        tabsHeaderKeys.add(jsonObject);
-
-
-
-    }
-    catch (Exception e)
-    {
-        e.printStackTrace();
-    }
-
-
-
-    return  tabsHeaderKeys;
-}
+//private ArrayList<JSONObject> loadHeaderKeys()
+//{
+//    try
+//      {
+//        tabsHeaderKeys=new ArrayList<>();
+//        JSONObject jsonObject=new JSONObject();
+//        jsonObject.put("pair_name","usdt");
+//        jsonObject.put("pair_id","62");
+//        tabsHeaderKeys.add(jsonObject);
+//
+//
+//
+//    }
+//    catch (Exception e)
+//    {
+//        e.printStackTrace();
+//    }
+//
+//
+//
+//    return  tabsHeaderKeys;
+//}
 
 
 

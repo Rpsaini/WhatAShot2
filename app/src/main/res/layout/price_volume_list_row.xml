@@ -3,6 +3,7 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:background="@color/white"
+    android:id="@+id/rr_buysell"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
   <androidx.recyclerview.widget.RecyclerView
@@ -27,13 +28,14 @@
         android:layout_height="40dp"
         android:layout_weight="1"
         android:textColor="@color/grey_dark"
-        android:text="23,7878"
+        android:text=""
         android:textSize="14dp"
         android:maxLines="1"
         android:gravity="center"
         ></fontspackageForTextView.Regular>
 
     <fontspackageForTextView.Regular
+        android:layout_marginRight="5dp"
         android:singleLine="true"
         android:textSize="15dp"
         android:id="@+id/txt_price"
@@ -43,7 +45,7 @@
         android:gravity="center"
         android:textColor="@color/green"
         android:maxLines="1"
-        android:text="98,989"
+        android:text=""
         ></fontspackageForTextView.Regular>
 </LinearLayout>
 

@@ -29,7 +29,6 @@ public class CurrencyPagerAdapter extends FragmentStatePagerAdapter {
 
         CommonFragment tab1 = new CommonFragment();
         Bundle bundle=new Bundle();
-       //bundle.putString("usdtAr",usdtAr+"");
         bundle.putString("pos",position+"");
         tab1.setArguments(bundle);
         return tab1;

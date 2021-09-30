@@ -76,6 +76,8 @@ public class AllOrdersFrag extends Fragment {
     public void init(ArrayList<JSONObject> buyDataAr,ArrayList<JSONObject> sellDataAr) {
         try
          {
+             pairDetailView.topBuyPrice=buyDataAr;
+             pairDetailView.topSellPrice=sellDataAr;
 
              if(buyDataAr.size()==0&&sellDataAr.size()==0)
              {
@@ -87,6 +89,8 @@ public class AllOrdersFrag extends Fragment {
                  ll_orderbook.setVisibility(View.VISIBLE);
                  rr_nodata_view.setVisibility(View.GONE);
              }
+
+
 
            if(sellDataAr.size() > 0 && buyDataAr.size() > 0)
             {
