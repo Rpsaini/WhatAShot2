@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <RelativeLayout
@@ -21,9 +21,11 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Market"
-                android:textColor="@color/textcolor"
-                android:textSize="15dp"
+                android:text="@string/market_vol"
+                android:textColor="@color/black"
+                android:alpha="0.6"
+                android:textAllCaps="true"
+                android:textSize="@dimen/text_size"
                 ></fontspackageForTextView.Regular>
 
 
@@ -48,15 +50,17 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Price"
-                android:textColor="@color/textcolor"
-                android:textSize="15dp"
+                android:text="@string/price"
+                android:textColor="@color/black"
+                android:alpha="0.6"
+                android:textAllCaps="true"
+                android:textSize="@dimen/text_size"
                 ></fontspackageForTextView.Regular>
             <fontspackageForTextView.Regular
                 android:gravity="center|right"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="/Vol"
+                android:text=" "
                 android:textColor="@color/textcolor"
                 android:textSize="15dp"
                 ></fontspackageForTextView.Regular>
@@ -66,8 +70,9 @@
                 android:gravity="center"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:text="Change %"
-                android:textColor="@color/textcolor"
+                android:text="@string/change"
+                android:textAllCaps="true"
+                android:textColor="@color/green_color"
                 android:textSize="15dp"
                 ></fontspackageForTextView.Regular>
 

@@ -13,8 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/purple_700"
-        >
+        android:background="@color/purple_700">
 
         <ImageView
             android:id="@+id/profileIC"
@@ -23,7 +22,7 @@
             android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:paddingEnd="10dp"
-            android:src="@drawable/profile_icon"></ImageView>
+            android:src="@drawable/ic_user"></ImageView>
 
         <ImageView
             android:id="@+id/img_search"
@@ -35,7 +34,7 @@
             android:paddingEnd="2dp"
             app:srcCompat="@drawable/ic_search"></ImageView>
 
-        <ImageView
+     <!--   <ImageView
             android:id="@+id/img_somoreoptions"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
@@ -43,7 +42,20 @@
             android:layout_centerVertical="true"
             android:paddingLeft="2dp"
             android:paddingEnd="10dp"
+            android:visibility="invisible"
             android:src="@drawable/rupee"></ImageView>
+-->
+
+        <ImageView
+            android:id="@+id/img_somoreoptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="2dp"
+            android:paddingEnd="10dp"
+            android:visibility="invisible"
+        ></ImageView>
 
         <ImageView
             android:padding="7dp"
@@ -61,12 +73,12 @@
 
 
         <FrameLayout
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             android:layout_width="match_parent"
             android:layout_alignParentBottom="true"
             android:weightSum="4">
             <LinearLayout
-                android:layout_height="61dp"
+                android:layout_height="60dp"
                 android:layout_width="match_parent"
                 android:layout_alignParentBottom="true"
                 android:weightSum="4">
@@ -75,12 +87,11 @@
                     android:id="@+id/txt_quicknuy"
                     android:drawablePadding="1dp"
                     android:layout_gravity="center"
-                    android:drawableTop="@drawable/quickbuy"
+                    android:drawableTop="@drawable/ic_quick_buy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Quick Buy"
-                    android:drawableTint="@color/textcolor"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:textSize="12dp"
@@ -90,12 +101,11 @@
                     android:id="@+id/txt_market"
                     android:drawablePadding="1dp"
                     android:layout_gravity="center"
-                    android:drawableTop="@drawable/share_icon"
+                    android:drawableTop="@drawable/ic_exchange"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Exchange"
-                    android:drawableTint="@color/textcolor"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:textSize="12dp"
@@ -105,9 +115,8 @@
                     android:id="@+id/text_order"
                     android:drawablePadding="1dp"
                     android:layout_gravity="center"
-                    android:drawableTop="@drawable/orders"
+                    android:drawableTop="@drawable/ic_order"
                     android:layout_width="0dp"
-                    android:drawableTint="@color/textcolor"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Order"
@@ -121,9 +130,8 @@
                     android:id="@+id/txt_fund"
                     android:drawablePadding="1dp"
                     android:layout_gravity="center"
-                    android:drawableTop="@drawable/funds"
+                    android:drawableTop="@drawable/ic_funds"
                     android:layout_width="0dp"
-                    android:drawableTint="@color/textcolor"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Funds"

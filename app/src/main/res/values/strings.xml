@@ -108,6 +108,7 @@
     <string name="some_id">₹0.0000</string>
     <string name="some_id2">₹0.0000</string>
     <string name="at_price">AT PRICE</string>
+    <string name="stop_price">STOP PRICE</string>
     <string name="inr">INR</string>
     <string name="btc">BTC</string>
     <string name="lowest_pric">LOWEST PRICE</string>
@@ -183,4 +184,35 @@
     <string name="date">DATE</string>
     <string name="ip">IP</string>
     <string name="activity">ACTIVITY</string>
+    <string name="payment_opts">Payment Options</string>
+
+    <string name="account_hol">Account Holder\'s Name</string>
+    <string name="bank_accoun">BANK ACCOUNT*</string>
+    <string name="upi">UPI</string>
+
+    <string name="add_your_ba">Add your bank account details for IMPS payments</string>
+    <string name="alias">Alias</string>
+    <string name="enter_alias">Enter alias name</string>
+    <string name="account_num">Account Number</string>
+    <string name="enter_accou">Enter account aumber</string>
+    <string name="re_enter_ac">Re-Enter Account Number</string>
+    <string name="ifsc_code">IFSC Code</string>
+    <string name="account_typ">Account Type</string>
+    <string name="savings">Savings</string>
+    <string name="current">Current</string>
+    <string name="add_your_up">Add your UPI / VPA ID for UPI payments</string>
+    <string name="upi_vpa_id">UPI / VPA Id</string>
+    <string name="enter_upi_v">Enter UPI / VPA Id</string>
+    <string name="enter_ifsc_">Enter IFSC code</string>
+
+    <string name="account">Account</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="logout">Logout</string>
+
+    <string name="market_vol">Market / vol</string>
+    <string name="price">price</string>
+    <string name="change">Change</string>
+
+
 </resources>

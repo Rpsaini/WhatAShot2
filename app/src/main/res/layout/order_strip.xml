@@ -23,7 +23,7 @@
                 android:layout_height="match_parent"
                 android:text="Currency"
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="@dimen/text_size"
                 ></fontspackageForTextView.Regular>
 
 
@@ -51,7 +51,7 @@
                     android:layout_height="match_parent"
                     android:text="Volume"
                     android:textColor="@color/black"
-                    android:textSize="15dp"
+                    android:textSize="@dimen/text_size"
                     ></fontspackageForTextView.Regular>
 
                 <fontspackageForTextView.Regular
@@ -60,7 +60,7 @@
                     android:layout_height="match_parent"
                     android:text="(Price)"
                     android:textColor="@color/black"
-                    android:textSize="15dp"
+                    android:textSize="@dimen/text_size"
                     ></fontspackageForTextView.Regular>
             </LinearLayout>
 
@@ -71,7 +71,7 @@
                 android:layout_height="match_parent"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="@dimen/text_size"
                 ></fontspackageForTextView.Regular>
 
 

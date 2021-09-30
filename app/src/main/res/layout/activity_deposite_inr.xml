@@ -24,15 +24,15 @@
             android:paddingLeft="10dp">
         </ImageView>
 
-        <fontspackageForTextView.BoldMedium
+        <fontspackageForTextView.Regular
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="INR Deposit"
             android:textColor="@color/dark_blue"
-            android:textSize="20dp"
+            android:textSize="@dimen/action_bar_title_text_size"
             android:gravity="center"
-            ></fontspackageForTextView.BoldMedium>
+            ></fontspackageForTextView.Regular>
 
     </RelativeLayout>
 
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:gravity="center|left"
             android:textColor="@color/black"
-            >
+            android:textSize="@dimen/text_size">
         </fontspackageForTextView.Regular>
     <fontspackageForTextView.Regular
         android:layout_marginTop="10dp"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:text="Deposit Amount"
         android:textColor="@color/grey_dark"
-        android:textSize="12dp"
+        android:textSize="@dimen/small_text_size"
         ></fontspackageForTextView.Regular>
 
     <fontpackageforEdittext.Regular
@@ -88,7 +88,7 @@
         android:imeOptions="actionDone"
         android:textColorHint="@color/grey_dark"
         android:textColor="@color/black"
-        android:textSize="14dp"
+        android:textSize="@dimen/text_size"
         ></fontpackageforEdittext.Regular>
 
 
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:text="Remarks"
             android:textColor="@color/grey_dark"
-            android:textSize="12dp"
+            android:textSize="@dimen/small_text_size"
             ></fontspackageForTextView.Regular>
 
         <fontpackageforEdittext.Regular
@@ -118,7 +118,7 @@
             android:imeOptions="actionDone"
             android:textColorHint="@color/grey_dark"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="@dimen/text_size"
             ></fontpackageforEdittext.Regular>
 
         <fontspackageForTextView.Regular
@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:text="Your Deposit Code"
             android:textColor="@color/grey_dark"
-            android:textSize="12dp"
+            android:textSize="@dimen/text_size"
             ></fontspackageForTextView.Regular>
 
         <fontspackageForTextView.Regular
@@ -138,14 +138,14 @@
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ></fontspackageForTextView.Regular>
+           android:textSize="@dimen/text_size" ></fontspackageForTextView.Regular>
 
 
-        <TextView
+        <fontspackageForTextView.Regular
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:id="@+id/submit"
-            android:textSize="16dp"
+            android:textSize="@dimen/title_text_size"
             android:textColor="@color/white"
             android:text="Submit"
             android:gravity="center"
@@ -153,7 +153,7 @@
             android:layout_height="45dp"
             android:layout_width="match_parent"
             android:background="@drawable/green_drawable"
-            ></TextView>
+            ></fontspackageForTextView.Regular>
 
     </LinearLayout>
     <fontspackageForTextView.Regular
@@ -163,7 +163,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ></fontspackageForTextView.Regular>
+        android:textSize="@dimen/text_size"></fontspackageForTextView.Regular>
     </LinearLayout>
     </ScrollView>
 

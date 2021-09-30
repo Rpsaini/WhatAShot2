@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity
         findViewById(R.id.img_somoreoptions).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               showMoreOptions(v);
+              // showMoreOptions(v);
             }
         });
         findViewById(R.id.profileIC).setOnClickListener(new View.OnClickListener() {

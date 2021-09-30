@@ -27,7 +27,8 @@ public class ActivityLogsAdapter extends RecyclerView.Adapter<ActivityLogsAdapte
         private View line;
 
         public MyViewHolder(View view)
-        {            super(view);
+        {
+            super(view);
            /* txt_currency_name = view.findViewById(R.id.txt_currency_name);
             img_currencyicon = view.findViewById(R.id.img_currencyicon);
 

@@ -49,15 +49,15 @@
             android:layout_marginTop="20dp"
             android:src="@drawable/logo"></ImageView>
 
-        <fontspackageForTextView.BoldMedium
+        <fontspackageForTextView.Regular
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Get Keys"
             android:textColor="@color/dark_blue"
-            android:textSize="22dp"
+            android:textSize="@dimen/title_text_size"
             android:gravity="center"
-            ></fontspackageForTextView.BoldMedium>
+            ></fontspackageForTextView.Regular>
 
 
         <LinearLayout
@@ -74,8 +74,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Enter Registered Email to get keys"
-                android:textColor="@color/grey_dark"
-                android:textSize="12dp"
+                android:textColor="@color/black"
+                android:alpha="0.6"
+                android:textSize="@dimen/small_text_size"
                 ></fontspackageForTextView.Regular>
 
             <fontpackageforEdittext.Regular
@@ -89,15 +90,15 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:imeOptions="actionDone"
-                android:textColorHint="@color/grey_dark"
+                android:textColorHint="@color/hintTextColor"
                 android:textColor="@color/black"
-                android:textSize="14dp"
+                android:textSize="@dimen/text_size"
                 ></fontpackageforEdittext.Regular>
 
             <!--      S3ROT51Bn9VNjOK0fuEB-->
-            <TextView
+            <fontspackageForTextView.Regular
                 android:id="@+id/btn_getkeys"
-                android:textSize="16dp"
+                android:textSize="@dimen/text_size"
                 android:textColor="@color/white"
                 android:text="Submit"
                 android:gravity="center"
@@ -105,7 +106,7 @@
                 android:layout_height="45dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/green_drawable"
-                ></TextView>
+                ></fontspackageForTextView.Regular>
 
 
 

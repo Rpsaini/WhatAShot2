@@ -12,12 +12,16 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.app.dialogsnpickers.AlertDialogs;
+import com.app.dialogsnpickers.DialogCallBacks;
 import com.app.dialogsnpickers.SimpleDialog;
 import com.web.whatashot.BaseActivity;
+import com.web.whatashot.MainActivity;
 import com.web.whatashot.R;
 import com.web.whatashot.activity_log.ActivityLogScreens;
 import com.web.whatashot.currency_preferences.CurrencyPreferencesScreen;
 import com.web.whatashot.kyc.VerifyKycAccountDetailsScreen;
+import com.web.whatashot.payment_option.PaymentOptionsScreen;
 import com.web.whatashot.two_factor_auth.TwoFactorAuthScreen;
 
 public class SettingProfileScreen extends BaseActivity {
@@ -82,6 +86,42 @@ public class SettingProfileScreen extends BaseActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.payment_opt_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SettingProfileScreen.this, PaymentOptionsScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.privacyPolicy_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openExternalUrls(getApiUrl()+"privacy-policy");
+            }
+        });
+        findViewById(R.id.contactUs_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openExternalUrls(getApiUrl()+"contactus");
+            }
+        });
+        findViewById(R.id.logout_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialogs alertDialogs=new AlertDialogs();
+                alertDialogs.alertDialog(SettingProfileScreen.this, "Logout", "Would you like to logout ?", "Yes", "No", new DialogCallBacks() {
+                    @Override
+                    public void getDialogEvent(String buttonPressed) {
+
+                        if(buttonPressed.equalsIgnoreCase("Yes"))
+                        {
+                            logout();
+                        }
+                    }
+                });
+            }
+        });
+
     }
     private void showMobileRegDialog() {
         try

@@ -22,15 +22,14 @@
             android:paddingLeft="10dp">
         </ImageView>
 
-        <fontspackageForTextView.BoldMedium
-            android:layout_marginTop="10dp"
+        <fontspackageForTextView.Regular
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="Account"
             android:textColor="@color/dark_blue"
-            android:textSize="20dp"
-            android:gravity="center"
-            ></fontspackageForTextView.BoldMedium>
+            android:textSize="@dimen/action_bar_title_text_size"></fontspackageForTextView.Regular>
 
     </RelativeLayout>
 
@@ -44,15 +43,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:gravity="center"
-        android:textColor="@color/black"
-        >
+        android:textColor="@color/text_black_color"
+        android:textSize="@dimen/text_size">
     </fontspackageForTextView.Regular>
 
 
 
     <ImageView
         android:id="@+id/qr_image"
-        android:src="@drawable/buyselllogotb"
+        android:src="@drawable/logo"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:layout_width="160dp"
@@ -72,7 +71,7 @@
 <fontspackageForTextView.Regular
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:textSize="20dp"
+    android:textSize="@dimen/text_size"
     android:text="Public Key"
     android:textColor="@color/black"
     android:id="@+id/txt_sceret_key"
@@ -94,7 +93,7 @@
     <fontspackageForTextView.Regular
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textSize="20dp"
+        android:textSize="@dimen/text_size"
         android:text=""
         android:textColor="@color/black"
         android:id="@+id/txt_public_key"
@@ -113,13 +112,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        >
+        android:textSize="@dimen/text_size">
     </fontspackageForTextView.Regular>
 
     <fontspackageForTextView.Regular
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textSize="20dp"
+        android:textSize="@dimen/text_size"
         android:text=""
         android:textColor="@color/black"
         android:id="@+id/txt_public_email"

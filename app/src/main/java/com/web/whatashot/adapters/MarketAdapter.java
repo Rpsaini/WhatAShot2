@@ -104,7 +104,8 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
             holder.txt_subpair.setText(ar[0]);
             holder.txt_mainpar.setText("/"+ar[1]);
             holder.txt_price.setText(object.getString("price"));
-            holder.txt_volume.setText(object.getString("volume"));
+          //  holder.txt_volume.setText(object.getString("volume"));
+            holder.txt_volume.setText(ira1.getString(R.string.inr_symbol)+"00.0000");
             holder.txt_change.setText(change);
 
 

@@ -13,38 +13,37 @@
         >
 
         <fontspackageForTextView.Regular
-            android:translationY="-10dp"
-            android:layout_centerInParent="true"
             android:id="@+id/txt_buy_crypto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/welcometoexchange"
+            android:layout_centerInParent="true"
             android:gravity="center"
-            android:textSize="17dp"
+            android:text="@string/welcometoexchange"
             android:textColor="@color/white"
-            ></fontspackageForTextView.Regular>
+            android:textSize="@dimen/large_title_text_size"
+            android:translationY="-10dp"></fontspackageForTextView.Regular>
 
         <fontspackageForTextView.Regular
-            android:translationY="-10dp"
-            android:layout_below="@+id/txt_buy_crypto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/buyyourfirstcrypto"
+            android:layout_below="@+id/txt_buy_crypto"
             android:gravity="center"
-            android:textSize="14dp"
+            android:text="@string/buyyourfirstcrypto"
             android:textColor="@color/yello_color"
-            ></fontspackageForTextView.Regular>
+            android:textSize="@dimen/action_bar_title_text_size"
+            android:translationY="-10dp"></fontspackageForTextView.Regular>
     </RelativeLayout>
 
-    <fontspackageForTextView.BoldMedium
+    <fontspackageForTextView.Regular
         android:paddingLeft="10dp"
         android:text="@string/coin"
         android:gravity="center|left"
         android:layout_marginTop="12dp"
         android:layout_height="40dp"
         android:layout_width="match_parent"
+        android:textSize="@dimen/title_text_size"
         android:background="@color/lite_background"
-        ></fontspackageForTextView.BoldMedium>
+        ></fontspackageForTextView.Regular>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
