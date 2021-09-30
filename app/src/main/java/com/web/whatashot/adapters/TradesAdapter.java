@@ -41,6 +41,7 @@ public class TradesAdapter extends RecyclerView.Adapter<TradesAdapter.MyViewHold
             txt_volume = view.findViewById(R.id.txt_volume);
             ll_open_order_list_row = view.findViewById(R.id.ll_open_order_list_row);
 
+
         }
     }
 
@@ -70,7 +71,6 @@ public class TradesAdapter extends RecyclerView.Adapter<TradesAdapter.MyViewHold
             holder.txt_price.setText(price);
             holder.txt_time.setText(jsonObject.getString("modified").split(" ")[1]);
             holder.txt_volume.setText(jsonObject.getString("volume"));
-
             holder.ll_open_order_list_row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
@@ -78,6 +78,11 @@ public class TradesAdapter extends RecyclerView.Adapter<TradesAdapter.MyViewHold
                     ira1.buysellDialog();
                 }
             });
+
+
+            //4  ==100
+
+
         }
         catch (Exception e)
         {
