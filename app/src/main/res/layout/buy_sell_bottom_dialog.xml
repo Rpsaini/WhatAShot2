@@ -101,11 +101,13 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/limitTV"
             app:srcCompat="@drawable/ic_limit_line" />
+
+
 
         <TextView
             android:id="@+id/someIdTV"
@@ -258,6 +260,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/someId2TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -274,7 +277,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/ic_rectangle_21"
             app:layout_constraintEnd_toEndOf="parent"

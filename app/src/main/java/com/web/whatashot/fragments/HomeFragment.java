@@ -37,15 +37,15 @@ public class HomeFragment extends Fragment
 {
     private View view;
     private MainActivity mainActivity;
-    ArrayList<Map<String, JSONObject>> mainusdtAr = new ArrayList<>();
-    ArrayList<Map<String, JSONObject>> maininrtAr = new ArrayList<>();
-//  ArrayList<Map<String, JSONObject>> mainbtcAr = new ArrayList<>();
-    ArrayList<Map<String, JSONObject>> maintrxAr = new ArrayList<>();
+//    ArrayList<Map<String, JSONObject>> mainusdtAr = new ArrayList<>();
+//    ArrayList<Map<String, JSONObject>> maininrtAr = new ArrayList<>();
+////  ArrayList<Map<String, JSONObject>> mainbtcAr = new ArrayList<>();
+//    ArrayList<Map<String, JSONObject>> maintrxAr = new ArrayList<>();
 
-    ArrayList<String> usdtPairId = new ArrayList<>();
-    ArrayList<String> inrtPairId = new ArrayList<>();
-//  ArrayList<String> btcPairId = new ArrayList<>();
-    ArrayList<String> trxPairId = new ArrayList<>();
+//    ArrayList<String> usdtPairId = new ArrayList<>();
+//    ArrayList<String> inrtPairId = new ArrayList<>();
+////  ArrayList<String> btcPairId = new ArrayList<>();
+//    ArrayList<String> trxPairId = new ArrayList<>();
 
    public static Map<String,JSONArray> commonMap=new HashMap<>();
    public static ArrayList<JSONObject> tabsHeaderKeys=new ArrayList<>();
@@ -84,7 +84,6 @@ public class HomeFragment extends Fragment
 
         view = inflater.inflate(R.layout.fragment_home, container, false);
         mainActivity = (MainActivity) getActivity();
-        initView();
         getMarketTickers();
         return view;
     }
@@ -94,7 +93,8 @@ public class HomeFragment extends Fragment
     TabLayout tabLayout;
     ViewPager viewPager;
 
-    private void initView() {
+    private void initView()
+    {
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#13B351"));
         ArrayList<JSONObject> tabKeys=loadHeaderKeys();
@@ -156,9 +156,18 @@ public class HomeFragment extends Fragment
                 public void getRespone(String dta, ArrayList<Object> respons) {
                     try {
 
-
                         JSONObject jsonObject = new JSONObject(dta);
                         System.out.println("Api data==="+jsonObject);
+
+                        JSONArray termArray=jsonObject.getJSONArray("term_array");
+                        tabsHeaderKeys=new ArrayList<>();
+                        for(int x=0;x<termArray.length();x++)
+                        {
+                            JSONObject headerObj=new JSONObject();
+                            headerObj.put("pair_name",termArray.getJSONObject(x).getString("symbol"));
+                            headerObj.put("pair_id",termArray.getJSONObject(x).getString("id"));
+                        }
+                        initView();
 
                         if (jsonObject.getBoolean("status")) {
                             try {
@@ -174,10 +183,6 @@ public class HomeFragment extends Fragment
                                  {
                                     JSONObject dataObj=tabsHeaderKeys.get(x);
                                      String pairName=dataObj.getString("pair_name");
-
-
-
-
                                      commonMap.put(dataObj.getString("pair_name"),jsonObject.getJSONArray(pairName));
                                  }
 

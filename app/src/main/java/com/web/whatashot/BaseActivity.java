@@ -39,6 +39,7 @@ import com.web.whatashot.utilpackage.UtilClass;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import animationpackage.AnimationForViews;
 import animationpackage.IsAnimationEndedCallback;
@@ -94,8 +95,25 @@ public class BaseActivity extends AppCompatActivity {
         return "0";
     }
 
-    public String getDeviceToken() {
-        return  "devicetoken"; // savePreferences.reterivePreference(BaseActivity.this, UtilClass.device_Token) + "";
+    public String getDeviceToken()
+    {
+//       return savePreferences.reterivePreference(BaseActivity.this, UtilClass.device_Token) + "";
+        String deviceToken=savePreferences.reterivePreference(BaseActivity.this, UtilClass.device_Token) + "";
+        System.out.println("device token=="+deviceToken);
+        if(deviceToken.length()==0)
+        {
+            final int min = 20;
+            final int max = 800;
+            final int random = new Random().nextInt((max - min) + 1) + min;
+            savePreferences.savePreferencesData(BaseActivity.this,"devicetoken"+random, UtilClass.device_Token);
+            return  "devicetoken"+random;
+
+        }
+        else
+        {
+            return deviceToken;
+        }
+
 
     }
 
