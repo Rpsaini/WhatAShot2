@@ -67,40 +67,23 @@ public class TradesAdapter extends RecyclerView.Adapter<TradesAdapter.MyViewHold
             JSONObject jsonObject = moviesList.get(position);
 
             String price = jsonObject.getString("price");
-//            int pair_id = position;
             holder.txt_price.setText(price);
             holder.txt_time.setText(jsonObject.getString("modified").split(" ")[1]);
             holder.txt_volume.setText(jsonObject.getString("volume"));
 
-
-//            if (changeMap.containsKey(pair_id))
-//            {
-//                System.out.println("Change map===" + changeMap.get(pair_id) + "===" + price + "==" + pair_id);
-//                if(!changeMap.get(pair_id).equalsIgnoreCase(price)) {
-//                    System.out.println("matched===" + changeMap.get(pair_id) + "===" + price + "==" + pair_id);
-//                    changeMap.put(pair_id, price);
-//
-//                    animationEffect(1, holder.ll_open_order_list_row, position);
-//                }
-//
-//            } else {
-//                changeMap.put(pair_id, price);
-//            }
-
-
-//            if (position % 2 == 0) {
-//                holder.ll_open_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color_lite));
-//
-//            } else {
-//                holder.ll_open_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color));
-//            }
-
-
-        } catch (Exception e) {
+            holder.ll_open_order_list_row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    ira1.buysellDialog();
+                }
+            });
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
-
-    }
+      }
 
     @Override
     public int getItemCount() {
@@ -116,6 +99,8 @@ public class TradesAdapter extends RecyclerView.Adapter<TradesAdapter.MyViewHold
     public int getItemViewType(int position) {
         return position;
     }
+
+
 
 
 //    private void animationEffect(int x, LinearLayout linearLayout, int position) {

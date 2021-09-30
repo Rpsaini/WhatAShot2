@@ -1,10 +1,12 @@
 package com.web.whatashot.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -31,6 +33,7 @@ public class PriceVolumeAdapter extends RecyclerView.Adapter<PriceVolumeAdapter.
         TextView txt_volume, txt_price;
         LinearLayout ll_orders_layout;
         private RecyclerView buy_sell_lines_recycler;
+        RelativeLayout rr_buysell;
 
 
         public MyViewHolder(View view) {
@@ -39,6 +42,7 @@ public class PriceVolumeAdapter extends RecyclerView.Adapter<PriceVolumeAdapter.
             txt_price = view.findViewById(R.id.txt_price);
             ll_orders_layout = view.findViewById(R.id.ll_orders_layout);
             buy_sell_lines_recycler = view.findViewById(R.id.buy_sell_lines_recycler);
+            rr_buysell = view.findViewById(R.id.rr_buysell);
 
         }
     }
@@ -49,8 +53,6 @@ public class PriceVolumeAdapter extends RecyclerView.Adapter<PriceVolumeAdapter.
         this.type = type;
         ira1 = mainActivity;
         this.context = context;
-
-
     }
 
     @Override
@@ -68,27 +70,45 @@ public class PriceVolumeAdapter extends RecyclerView.Adapter<PriceVolumeAdapter.
 
             JSONObject object = moviesList.get(position);
 
-            if (type.equalsIgnoreCase("buy")) {
+//            double buyVolSum=0,listSum=0;
+//
+//                buyVolSum=Double.parseDouble(object.getString("volume").replace(",",""))+buyVolSum;
+//               listSum=Double.parseDouble(object.getString("price").replace(",",""))+listSum;
+//
+//
+//            double percentage=(buyVolSum*100)/listSum;
+//            System.out.println("percentage==="+percentage);
+
+
+            if(type.equalsIgnoreCase("buy"))
+              {
                 holder.txt_price.setText(object.getString("price"));
                 holder.txt_volume.setText(object.getString("volume"));
                 holder.txt_price.setTextColor(ira1.getResources().getColor(R.color.greencolor));
                 holder.txt_volume.setTextColor(ira1.getResources().getColor(R.color.grey_dark));
+                holder.txt_price.setTypeface(Typeface.DEFAULT_BOLD);
+                holder.txt_volume.setTypeface(Typeface.DEFAULT);
 
 
-
-
-            } else {
+              }
+            else
+                {
                 holder.txt_volume.setText(object.getString("price"));
                 holder.txt_price.setText(object.getString("volume"));
                 holder.txt_volume.setTextColor(ira1.getResources().getColor(R.color.darkRed));
                 holder.txt_price.setTextColor(ira1.getResources().getColor(R.color.grey_dark));
+                holder.txt_price.setTypeface(Typeface.DEFAULT);
+                holder.txt_volume.setTypeface(Typeface.DEFAULT_BOLD);
+                }
 
-            }
-//            if (position % 2 == 1) {
-//                holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.lite_blue_30));
-//            } else {
-//                holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.lite_green_30));
-//            }
+            holder.rr_buysell.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ira1.buysellDialog();
+                }
+            });
+
+
 
 
 

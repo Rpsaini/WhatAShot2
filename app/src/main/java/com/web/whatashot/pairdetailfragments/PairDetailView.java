@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -65,12 +67,14 @@ public class PairDetailView extends BaseActivity
 
     private EditText ed_at_price ,ed_amount,ed_total_amount;
     private TextView at_priceinrTV,at_amountcoinTV,tota_coin2TV;
-    NumberFormat formatter = new DecimalFormat("#0.0000");
+    public NumberFormat formatter = new DecimalFormat("#0.0000");
     public double buyBalance = 0;
     public double sellBalance = 0;
 
     private boolean is_ed_at_price_focus=false,is_ed_amount_focus=false,is_ed_total_amount_focus=false;
 
+    public ArrayList<JSONObject> topBuyPrice=new ArrayList<>();
+    public ArrayList<JSONObject> topSellPrice=new ArrayList<>();
 
 
     @Override
@@ -90,7 +94,8 @@ public class PairDetailView extends BaseActivity
 
     void init()
     {
-        try {
+        try
+            {
             txt_main_pair = findViewById(R.id.txt_main_pair);
             txt_sub_pair = findViewById(R.id.txt_sub_pair);
             txt_price = findViewById(R.id.txt_price);
@@ -206,16 +211,17 @@ public class PairDetailView extends BaseActivity
     private void buysell() {
 
         buysellDialog();
-        initbuysell();
+
     }
 
-    private void chartFrag() {
+    private void chartFrag()
+       {
         ChartFragment chartFrg = new ChartFragment();
         Bundle args = new Bundle();
         chartFrg.setArguments(args);
         replaceMainFragment(chartFrg, "allorders");
         commonFragent = chartFrg;
-    }
+       }
 
 
     private void allOrders() {
@@ -296,9 +302,6 @@ public class PairDetailView extends BaseActivity
                 ed_at_price.setEnabled(true);
                 ed_total_amount.setEnabled(true);
             }
-
-
-
         }
     }
     private void setBuySellOrder()
@@ -478,6 +481,24 @@ public class PairDetailView extends BaseActivity
                 buyBTCBT.setText("Buy "+mainPair);
                 clearFields();
 
+                lowest_priceTV.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        try {
+                            animate(lowest_priceTV);
+                            JSONObject dataObj=topSellPrice.get(topSellPrice.size()-1);
+                            double price=Double.parseDouble(dataObj.getString("price").replace(",",""));
+                            ed_at_price.setText(formatter.format(price)+"");
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+
             }
         });
 
@@ -499,6 +520,25 @@ public class PairDetailView extends BaseActivity
                 buyBTCBT.setText("Sell " + mainPair);
                 buyBTCBT.setBackgroundTintList(ContextCompat.getColorStateList(PairDetailView.this, R.color.darkRed));
                 clearFields();
+                animate(lowest_priceTV);
+                lowest_priceTV.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        animate(lowest_priceTV);
+                        try {
+                            JSONObject dataObj=topBuyPrice.get(0);
+                            double price=Double.parseDouble(dataObj.getString("price").replace(",",""));
+                            ed_at_price.setText(formatter.format(price)+"");
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
             }
         });
 
@@ -640,6 +680,17 @@ public class PairDetailView extends BaseActivity
             }
         });
 
+    }
+
+    private void animate(View view)
+    {
+        view.setAlpha(.5f);
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                view.setAlpha(1f);
+            }
+        }, 300);
     }
 
     private void calculateOrderPrice() {
@@ -854,12 +905,13 @@ public class PairDetailView extends BaseActivity
     }
 
     ConstraintLayout constraint_buysell;
-    private void buysellDialog() {
+    public void buysellDialog() {
         try
           {
             str_side = "buy";
             SimpleDialog simpleDialog = new SimpleDialog();
             buySellDialog = simpleDialog.simpleDailog(this, R.layout.buy_sell_bottom_dialog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+            initbuysell();
             constraint_buysell = buySellDialog.findViewById(R.id.constraint_buysell);
             buySellDialog.setCancelable(true);
             animateUp(constraint_buysell);

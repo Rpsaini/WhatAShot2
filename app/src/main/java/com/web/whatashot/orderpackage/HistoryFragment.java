@@ -32,13 +32,13 @@ private MainActivity mainActivity;
     public static HistoryFragment newInstance(String param1, String param2) {
         HistoryFragment fragment = new HistoryFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
 
@@ -49,7 +49,7 @@ private MainActivity mainActivity;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_history, container, false);
-      mainActivity=  (MainActivity) getActivity();
+        mainActivity=  (MainActivity) getActivity();
         init();
         return view;
     }
