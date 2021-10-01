@@ -20,7 +20,7 @@
        android:layout_width="24dp"
        android:layout_height="24dp"
        android:layout_marginStart="10dp"
-       android:src="@drawable/ic_btc"/>
+       />
 
         <RelativeLayout
             android:layout_marginLeft="10dp"
@@ -50,6 +50,7 @@
                         android:textStyle="bold"></fontspackageForTextView.Regular>
 
                     <fontspackageForTextView.Regular
+
                         android:id="@+id/txt_mainpar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

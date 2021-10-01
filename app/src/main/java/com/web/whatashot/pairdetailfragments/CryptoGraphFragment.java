@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,13 +70,20 @@ public class CryptoGraphFragment extends Fragment {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            //viewprogressbar.setVisibility(View.GONE);
-            new Handler().postDelayed(new Runnable() {
+
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     paymentWaitingDialog.dismiss();
                 }
             }, 2000);
+
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    paymentWaitingDialog.dismiss();
+//                }
+//            }, 2000);
 
             super.onPageFinished(view, url);
 

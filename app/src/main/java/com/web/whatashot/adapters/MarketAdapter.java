@@ -2,6 +2,7 @@ package com.web.whatashot.adapters;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,16 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.web.whatashot.DefaultConstants;
+import com.web.whatashot.LoginActivity;
 import com.web.whatashot.MainActivity;
 import com.web.whatashot.R;
+import com.web.whatashot.SplashScreen;
 import com.web.whatashot.pairdetailfragments.PairDetailView;
+import com.web.whatashot.utilpackage.UtilClass;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,9 +39,10 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView txt_subpair, txt_mainpar, txt_price, txt_volume, txt_change;
-        ImageView img_arrow;
+        ImageView img_arrow,img_currencyicon;
         LinearLayout ll_market_order_list_row;
         RelativeLayout rr_change;
+        TextView txt_fullpar;
 
 
     public MyViewHolder(View view) {
@@ -47,6 +55,8 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
             txt_change = view.findViewById(R.id.txt_change);
             rr_change = view.findViewById(R.id.rr_change);
             ll_market_order_list_row = view.findViewById(R.id.ll_market_order_list_row);
+            img_currencyicon = view.findViewById(R.id.img_currencyicon);
+            txt_fullpar = view.findViewById(R.id.txt_fullpar);
 
         }
     }
@@ -104,8 +114,8 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
             holder.txt_subpair.setText(ar[0]);
             holder.txt_mainpar.setText("/"+ar[1]);
             holder.txt_price.setText(object.getString("price"));
-          //  holder.txt_volume.setText(object.getString("volume"));
-            holder.txt_volume.setText(ira1.getString(R.string.inr_symbol)+"00.0000");
+
+            holder.txt_volume.setText(object.getString("volume"));
             holder.txt_change.setText(change);
 
 
@@ -150,25 +160,11 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
             });
 
 
+            showImage(object.getString("icon"),holder.img_currencyicon);
+            holder.txt_fullpar.setText(object.getString("name"));
 
 
 
-
-
-
-
-          
-
-//
-//            if(position%2==0)
-//            {
-//                holder.ll_market_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color_lite));
-//
-//            }
-//            else
-//            {
-//                holder.ll_market_order_list_row.setBackgroundColor(ira1.getResources().getColor(R.color.section_color));
-//            }
 
 
 
@@ -197,30 +193,67 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
 
     private void animationEffect(int x,LinearLayout linearLayout,int position)
     {
-       new Handler().postDelayed(new Runnable() {
-           @Override
-           public void run() {
-               if(x<0)
-               {
-                   linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.light_color_red));
-               }
-               else if(x>0)
-               {
+//       new Handler().postDelayed(new Runnable() {
+//           @Override
+//           public void run() {
+//               if(x<0)
+//               {
+//                   linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.light_color_red));
+//               }
+//               else if(x>0)
+//               {
+//
+//                   linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.buy_line_color));
+//               }
+//               else
+//               {
+//                   linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.buy_line_color));
+//               }
+//           }
+//       },500) ;
 
-                   linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.buy_line_color));
-               }
-               else
-               {
-                   linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.buy_line_color));
-               }
-           }
-       },500) ;
 
-
-        new Handler().postDelayed(new Runnable() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
-            public void run()
-            {
+            public void run() {
+                if(x<0)
+                {
+                    linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.light_color_red));
+                }
+                else if(x>0)
+                {
+
+                    linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.buy_line_color));
+                }
+                else
+                {
+                    linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.buy_line_color));
+                }
+            }
+        }, 500);
+
+
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run()
+//            {
+//                if(position%2==0)
+//                {
+//                    linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.white));
+//
+//                }
+//                else
+//                {
+//                    linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.white));
+//                }
+//            }
+//        },1500);
+
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 if(position%2==0)
                 {
                     linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.white));
@@ -231,8 +264,21 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
                     linearLayout.setBackgroundColor(ira1.getResources().getColor(R.color.white));
                 }
             }
-        },1500);
+        }, 1500);
 
 
+
+    }
+
+    private void showImage(final String url, final ImageView header_img) {
+        ira1.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Glide.with(ira1)
+                        .load(url)
+                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(3)))
+                        .into(header_img);
+            }
+        });
     }
 }

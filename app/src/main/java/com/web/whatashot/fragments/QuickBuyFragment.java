@@ -65,6 +65,16 @@ public class QuickBuyFragment extends Fragment {
     private void showQuickBuyCurrency(JSONArray fiatAr)
     {
         RecyclerView fiat_balance_recyclerview=view.findViewById(R.id.quick_buy_coin_recycler);
+        RelativeLayout relativeLayout = view.findViewById(R.id.rr_nodata_view);
+        if (fiatAr.length() == 0) {
+            relativeLayout.setVisibility(View.VISIBLE);
+            fiat_balance_recyclerview.setVisibility(View.GONE);
+        } else {
+            relativeLayout.setVisibility(View.GONE);
+            fiat_balance_recyclerview.setVisibility(View.VISIBLE);
+        }
+
+
         QuickBuyAdapter mAdapter = new QuickBuyAdapter(fiatAr,(MainActivity) getActivity(),this);
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);

@@ -34,7 +34,7 @@
                     android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text=" total portfolio value"
+                    android:text="@string/total_portfolio"
                     android:textColor="@color/textcolor"
                     android:textSize="@dimen/text_size"
                     ></fontspackageForTextView.Regular>

@@ -19,6 +19,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -150,13 +151,21 @@ public class BaseActivity extends AppCompatActivity {
 
     public void addClickEventEffet(final View viwView) {
         viwView.setAlpha(.5f);
-        Handler hnd = new Handler();
-        hnd.postDelayed(new Runnable() {
+//        Handler hnd = new Handler();
+//        hnd.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                viwView.setAlpha(1f);
+//            }
+//        }, 100);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 viwView.setAlpha(1f);
             }
         }, 100);
+
     }
 
 //    public void hideShowPassword(int x, EditText editText, ImageView imageView)

@@ -433,6 +433,7 @@ public class PairDetailView extends BaseActivity
     private String pairid = "";
     public String str_side = "buy";
     private Dialog buySellDialog;
+    private EditText ed_at_stop_price;
 
     private void initbuysell()
     {
@@ -451,11 +452,13 @@ public class PairDetailView extends BaseActivity
         at_amountcoinTV = buySellDialog.findViewById(R.id.coinTV);
         tota_coin2TV = buySellDialog.findViewById(R.id.coin2TV);
         tota_coin2TV = buySellDialog.findViewById(R.id.coin2TV);
+
+        ed_at_stop_price=buySellDialog.findViewById(R.id.ed_at_stop_price);
         TextView lowest_priceTV = buySellDialog.findViewById(R.id.lowest_priceTV);
         TextView buyBTCBT = buySellDialog.findViewById(R.id.buyBTCBT);
 
 
-        buyBTCBT.setText("Buy "+pair_name);
+        buyBTCBT.setText("Buy "+mainPair);
         setBuySellOrder();
 
         lowest_priceTV.setOnClickListener(new View.OnClickListener() {
@@ -728,6 +731,19 @@ public class PairDetailView extends BaseActivity
             });
             return;
         }
+        System.out.println("stop limit==="+isLimitOrMarket+"==="+ed_at_stop_price.getText().toString());
+
+        if(isLimitOrMarket.equalsIgnoreCase("3"))
+        {
+            if (validationRule.checkEmptyString(ed_at_stop_price) == 0) {
+                alertDialogs.alertDialog(this, getResources().getString(R.string.Response), "Enter Stop Limit Price.", getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                    @Override
+                    public void getDialogEvent(String buttonPressed) {
+                    }
+                });
+                return;
+            }
+        }
 
         Map<String, String> m = new HashMap<>();
         m.put("isherder", "true");
@@ -746,6 +762,7 @@ public class PairDetailView extends BaseActivity
         m.put("PlatForm", "android");
         m.put("Timestamp", System.currentTimeMillis() + "");
         m.put(DefaultConstants.r_token, getNewRToken() + "");
+        m.put("stop_limit", ed_at_stop_price.getText()+"");
 
 
         calCulateOrder(m);
@@ -930,12 +947,12 @@ public class PairDetailView extends BaseActivity
             constraint_buysell = buySellDialog.findViewById(R.id.constraint_buysell);
             buySellDialog.setCancelable(true);
             animateUp(constraint_buysell);
-
+            final ConstraintLayout at_stop_price_valueCL=buySellDialog.findViewById(R.id.at_stop_price_valueCL);
 
 
             Spinner spiinerOrderType = buySellDialog.findViewById(R.id.limitTV);
             ArrayList<String> typeAr = new ArrayList<>();
-              typeAr.add("Market");//1
+            typeAr.add("Market");//1
             typeAr.add("Limit");//2
             typeAr.add("Stop Limit");//3
 
@@ -949,14 +966,17 @@ public class PairDetailView extends BaseActivity
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     if (position == 0)
                      {
+                        at_stop_price_valueCL.setVisibility(View.GONE);
                         isLimitOrMarket = "1";
-                    }
+                     }
                     else if(position==1)
                     {
+                        at_stop_price_valueCL.setVisibility(View.GONE);
                         isLimitOrMarket = "2";//Actual Limit order
                     }
                     else
                     {
+                        at_stop_price_valueCL.setVisibility(View.VISIBLE);
                         isLimitOrMarket = "3";//Stop limit
                     }
                     initRate(change, buy_price, sell_price);
@@ -979,6 +999,7 @@ public class PairDetailView extends BaseActivity
     private TextView inrValueTV;
     private void percentageCalculation()
     {
+
        inrValueTV= buySellDialog.findViewById(R.id.inrValueTV);
        percentageAR=new ArrayList<>();
        percentageAR.add(buySellDialog.findViewById(R.id.tv25));

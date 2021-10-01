@@ -1,44 +1,66 @@
 package com.web.whatashot.search_currency.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.web.whatashot.DefaultConstants;
+import com.web.whatashot.MainActivity;
 import com.web.whatashot.R;
 import com.web.whatashot.activity_log.ActivityLogScreens;
+import com.web.whatashot.pairdetailfragments.PairDetailView;
 import com.web.whatashot.search_currency.SearchCurrencyScreen;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SearchCurrencyAdapter extends RecyclerView.Adapter<SearchCurrencyAdapter.MyViewHolder> {
     private SearchCurrencyScreen ira1;
-    private JSONArray moviesList;
+    private ArrayList<JSONObject> moviesList;
+
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-     /*   private  TextView txt_currency_name;
-        private ImageView img_currencyicon,selectIC;*/
-        private LinearLayout ll_list_row;
-        private View line;
+        TextView txt_subpair, txt_mainpar, txt_price, txt_volume, txt_change;
+        ImageView img_arrow,img_currencyicon;
+        LinearLayout ll_market_order_list_row;
+        RelativeLayout rr_change;
+        TextView txt_fullpar;
 
         public MyViewHolder(View view)
         {
             super(view);
-           /* txt_currency_name = view.findViewById(R.id.txt_currency_name);
+            img_arrow = view.findViewById(R.id.img_arrow);
+            txt_subpair = view.findViewById(R.id.txt_subpair);
+            txt_mainpar = view.findViewById(R.id.txt_mainpar);
+            txt_price = view.findViewById(R.id.txt_price);
+            txt_volume = view.findViewById(R.id.txt_volume);
+            txt_change = view.findViewById(R.id.txt_change);
+            rr_change = view.findViewById(R.id.rr_change);
+            ll_market_order_list_row = view.findViewById(R.id.ll_market_order_list_row);
             img_currencyicon = view.findViewById(R.id.img_currencyicon);
+            txt_fullpar = view.findViewById(R.id.txt_fullpar);
 
-            selectIC = view.findViewById(R.id.selectIC);*/
-
-            ll_list_row = view.findViewById(R.id.ll_market_order_list_row);
-            line = view.findViewById(R.id.line);
         }
     }
 
 
-    public SearchCurrencyAdapter(SearchCurrencyScreen showFiatCurrencyDepositWithdraw, JSONArray dataAr) {
+    public SearchCurrencyAdapter(SearchCurrencyScreen showFiatCurrencyDepositWithdraw, ArrayList<JSONObject> dataAr) {
         this.moviesList = dataAr;
         this.ira1 = showFiatCurrencyDepositWithdraw;
 
@@ -56,31 +78,72 @@ public class SearchCurrencyAdapter extends RecyclerView.Adapter<SearchCurrencyAd
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        try
-        {
-          /*  JSONObject dataObj = moviesList.getJSONObject(position);
-            dataObj.getString("bank_branch");
-            dataObj.getString("branch_number");
-            dataObj.getString("account_type");
-            dataObj.getString("id");
+       try {
+           JSONObject object = moviesList.get(position);
+           int pair_id = Integer.parseInt(object.getString("pair_id"));
+           String change = object.getString("change").replace("%", "");
 
-      */
-          /* if (position==9){
-               holder.line.setVisibility(View.GONE);
+
+
+           String ar[] = object.getString("symbol").split("\\/");
+           holder.txt_subpair.setText(ar[0]);
+           holder.txt_mainpar.setText("/" + ar[1]);
+           holder.txt_price.setText(object.getString("price"));
+
+           holder.txt_volume.setText(object.getString("volume"));
+           holder.txt_change.setText(change);
+
+
+           if (change.contains("+")) {
+               holder.txt_price.setTextColor(ira1.getResources().getColor(R.color.greencolor));
+               holder.rr_change.setBackgroundResource(R.drawable.green_drawable);
+               holder.img_arrow.setRotation(270);
+
+           } else if (change.contains("-")) {
+
+               holder.txt_price.setTextColor(ira1.getResources().getColor(R.color.darkRed));
+               holder.rr_change.setBackgroundResource(R.drawable.round_corner_drawable);
+               holder.img_arrow.setRotation(90);
+
+           } else {
+
+               holder.txt_price.setTextColor(ira1.getResources().getColor(R.color.greencolor));
+               holder.rr_change.setBackgroundResource(R.drawable.green_drawable);
+               holder.img_arrow.setRotation(270);
+
            }
-           else {
-               holder.line.setVisibility(View.VISIBLE);
-           }
-*/
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+           holder.ll_market_order_list_row.setTag(object + "");
+           holder.ll_market_order_list_row.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   try {
+                       Intent intent = new Intent(ira1, PairDetailView.class);
+                       intent.putExtra(DefaultConstants.pair_data, v.getTag() + "");
+                       ira1.startActivity(intent);
+                   } catch (Exception e) {
+                       e.printStackTrace();
+                   }
+               }
+           });
+
+
+           showImage(object.getString("icon"), holder.img_currencyicon);
+           holder.txt_fullpar.setText(object.getString("name"));
+
+       }
+       catch (Exception e)
+       {
+           e.printStackTrace();
+       }
+
 
     }
 
     @Override
-    public int getItemCount() {
-        return 10;
+    public int getItemCount()
+    {
+        return moviesList.size();
     }
 
     @Override
@@ -91,6 +154,18 @@ public class SearchCurrencyAdapter extends RecyclerView.Adapter<SearchCurrencyAd
     @Override
     public int getItemViewType(int position) {
         return position;
+    }
+
+    private void showImage(final String url, final ImageView header_img) {
+        ira1.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Glide.with(ira1)
+                        .load(url)
+                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(3)))
+                        .into(header_img);
+            }
+        });
     }
 
 }

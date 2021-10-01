@@ -34,17 +34,6 @@
             android:paddingEnd="2dp"
             app:srcCompat="@drawable/ic_search"></ImageView>
 
-     <!--   <ImageView
-            android:id="@+id/img_somoreoptions"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:paddingLeft="2dp"
-            android:paddingEnd="10dp"
-            android:visibility="invisible"
-            android:src="@drawable/rupee"></ImageView>
--->
 
         <ImageView
             android:id="@+id/img_somoreoptions"
