@@ -59,6 +59,7 @@ public class PairDetailView extends BaseActivity
     private Fragment commonFragent;
     private TextView orderConfirm;
 
+    //Added Pair details
     private TextView txt_main_pair, txt_sub_pair, txt_change;
     RelativeLayout rr_change;
     ImageView img_arrow;
