@@ -19,6 +19,7 @@ import com.web.whatashot.fragments.MainFundFragment;
 import com.web.whatashot.fragments.QuickBuyFragment;
 import com.web.whatashot.kyc.VerifyKycAccountDetailsScreen;
 import com.web.whatashot.orderpackage.MyOrderFragment;
+import com.web.whatashot.search_currency.SearchCurrencyScreen;
 import com.web.whatashot.setting_profile.SettingProfileScreen;
 import com.web.whatashot.utilpackage.UtilClass;
 
@@ -45,6 +46,17 @@ public class MainActivity extends BaseActivity
               // showMoreOptions(v);
             }
         });
+
+
+
+        findViewById(R.id.img_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, SearchCurrencyScreen.class);
+                startActivity(intent);
+            }
+        });
+
         findViewById(R.id.profileIC).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

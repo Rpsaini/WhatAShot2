@@ -29,6 +29,10 @@
         android:theme="@style/Theme.UnitedExchange"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".search_currency.SearchCurrencyScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
+        <activity
             android:name=".payment_option.PaymentOptionsScreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WhatAShot"/>

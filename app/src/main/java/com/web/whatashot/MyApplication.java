@@ -26,13 +26,15 @@ public class MyApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         AndroidNetworking.initialize(this);
-      /*  DefineYourAppFont.fontNameRegular="fonts/OpenSans-Regular.ttf";
+      /*
+        DefineYourAppFont.fontNameRegular="fonts/OpenSans-Regular.ttf";
         DefineYourAppFont.fontNameBold="fonts/OpenSans-Bold.ttf";
         DefineYourAppFont.fontNameBoldExtra="fonts/OpenSans-ExtraBold.ttf";
         DefineYourAppFont.fontNameItalic="fonts/OpenSans-Italic.ttf";
         DefineYourAppFont.fontNameBoldItalic="OpenSans-BoldItalic.ttf";
         DefineYourAppFont.fontNameLiteItalic="fonts/OpenSans-LightItalic.ttf";
-        DefineYourAppFont.fontNameBoldMedium="fonts/OpenSans-SemiBold.ttf";*/
+        DefineYourAppFont.fontNameBoldMedium="fonts/OpenSans-SemiBold.ttf";
+        */
 
 
         DefineYourAppFont.fontNameRegular="aeonik_font/Aeonik-Regular.otf";
@@ -42,8 +44,6 @@ public class MyApplication extends MultiDexApplication {
         DefineYourAppFont.fontNameBoldItalic="aeonik_font/Aeonik-BoldItalic.otf";
         DefineYourAppFont.fontNameLiteItalic="aeonik_font/Aeonik-LightItalic.otf";
         DefineYourAppFont.fontNameBoldMedium="aeonik_font/Aeonik-Medium.otf";
-
-
         mInstance = this;
 
     }

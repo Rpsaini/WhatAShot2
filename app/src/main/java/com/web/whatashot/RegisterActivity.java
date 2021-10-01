@@ -24,6 +24,8 @@ import com.android.volley.toolbox.Volley;
 import com.app.dialogsnpickers.DialogCallBacks;
 import com.app.vollycommunicationlib.CallBack;
 import com.app.vollycommunicationlib.ServerHandler;
+import com.geetest.sdk.GT3ConfigBean;
+import com.geetest.sdk.GT3GeetestUtils;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.safetynet.SafetyNet;
@@ -48,8 +50,8 @@ public class RegisterActivity extends BaseActivity {
     private ImageView img_back;
     private CheckBox check_captcha;
     private CheckBox checkbox_tems;
-
-
+    private GT3GeetestUtils gt3GeetestUtils;
+    private GT3ConfigBean gt3ConfigBean;
     //for captcha
     String TAG = VerifyCaptchaJava.class.getSimpleName();
     String SITE_KEY = "6LeFIn4bAAAAADeh2C7Bq0KciRNCGgXf__Kw5wHC";
@@ -63,6 +65,7 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.register_activity);
         getSupportActionBar().hide();
         initiateObj();
+        gt3GeetestUtils = new GT3GeetestUtils(this);
         init();
         actions();
         setHtmlCode();
@@ -408,6 +411,9 @@ public class RegisterActivity extends BaseActivity {
     }
     //end of captcha=====
 
-
+    private void validateUserAccount(){
+// Configure bean file and
+        gt3ConfigBean = new GT3ConfigBean();
+    }
 }
 

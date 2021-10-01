@@ -94,5 +94,8 @@ dependencies {
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation "com.ncorti:slidetoact:0.9.0"
 
+    // for puzzle Slider Captcha Verification
+    implementation 'com.geetest.sensebot:sensebot:4.3.4.3'
+
 
 }
