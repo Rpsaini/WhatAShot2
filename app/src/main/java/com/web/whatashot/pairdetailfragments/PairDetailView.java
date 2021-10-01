@@ -59,6 +59,7 @@ public class PairDetailView extends BaseActivity
     private Fragment commonFragent;
     private TextView orderConfirm;
 
+    //Added Pair details
     private TextView txt_main_pair, txt_sub_pair, txt_change;
     RelativeLayout rr_change;
     ImageView img_arrow;
@@ -441,9 +442,6 @@ public class PairDetailView extends BaseActivity
         ImageView buy_topBar = buySellDialog.findViewById(R.id.buy_topBar);
         ImageView sell_topBar = buySellDialog.findViewById(R.id.sell_topBar);
         TextView sellTV = buySellDialog.findViewById(R.id.sellTV);
-        ConstraintLayout buy_CL = buySellDialog.findViewById(R.id.buy_CL);
-       // ConstraintLayout sell_CL = buySellDialog.findViewById(R.id.sell_CL);
-
 
         ed_at_price = buySellDialog.findViewById(R.id.ed_at_price);
         ed_amount = buySellDialog.findViewById(R.id.ed_amount);
@@ -456,14 +454,32 @@ public class PairDetailView extends BaseActivity
         TextView lowest_priceTV = buySellDialog.findViewById(R.id.lowest_priceTV);
         TextView buyBTCBT = buySellDialog.findViewById(R.id.buyBTCBT);
 
+
         buyBTCBT.setText("Buy "+pair_name);
         setBuySellOrder();
+
+        lowest_priceTV.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        try {
+                            animate(lowest_priceTV);
+                            JSONObject dataObj=topSellPrice.get(topSellPrice.size()-1);
+                            double price=Double.parseDouble(dataObj.getString("price").replace(",",""));
+                            ed_at_price.setText(formatter.format(price)+"");
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
         bindingbuyLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 str_side = "buy";
                 //initRate(change, buy_price, sell_price);
-
                 buy_topBar.setBackgroundResource(R.drawable.ic_select_buy);
                 bindingbuyLL.setBackgroundColor(getResources().getColor(R.color.white));
                 buyTV.setTextColor(getResources().getColor(R.color.text_black_color));
@@ -520,7 +536,6 @@ public class PairDetailView extends BaseActivity
                 buyBTCBT.setText("Sell " + mainPair);
                 buyBTCBT.setBackgroundTintList(ContextCompat.getColorStateList(PairDetailView.this, R.color.darkRed));
                 clearFields();
-                animate(lowest_priceTV);
                 lowest_priceTV.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v)
