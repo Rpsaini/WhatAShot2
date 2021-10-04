@@ -53,5 +53,6 @@
         ></androidx.recyclerview.widget.RecyclerView>
 
 
+    <include layout="@layout/no_data_found"/>
 
 </LinearLayout>

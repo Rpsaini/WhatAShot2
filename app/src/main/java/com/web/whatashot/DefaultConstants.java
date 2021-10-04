@@ -18,5 +18,6 @@ import java.util.ArrayList;
     public static String total="total";
     public static String remarks="remarks";
     public static String symbol="symbol";
+    public static String allDefaultCurrency="allDefaultCurrency";
     public static  ArrayList<JSONObject> open_orders=new ArrayList<>(),orders_history=new ArrayList<>();
 }

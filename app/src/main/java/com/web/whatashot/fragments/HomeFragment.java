@@ -33,26 +33,15 @@ import java.util.Map;
 
 import io.socket.emitter.Emitter;
 
-public class HomeFragment extends Fragment
-{
+public class HomeFragment extends Fragment {
     private View view;
     private MainActivity mainActivity;
-//    ArrayList<Map<String, JSONObject>> mainusdtAr = new ArrayList<>();
-//    ArrayList<Map<String, JSONObject>> maininrtAr = new ArrayList<>();
-////  ArrayList<Map<String, JSONObject>> mainbtcAr = new ArrayList<>();
-//    ArrayList<Map<String, JSONObject>> maintrxAr = new ArrayList<>();
-
-//    ArrayList<String> usdtPairId = new ArrayList<>();
-//    ArrayList<String> inrtPairId = new ArrayList<>();
-////  ArrayList<String> btcPairId = new ArrayList<>();
-//    ArrayList<String> trxPairId = new ArrayList<>();
-
-   public static Map<String,JSONArray> commonMap=new HashMap<>();
-   public static ArrayList<JSONObject> tabsHeaderKeys=new ArrayList<>();
-   public static Map<Integer, MarketAdapter> marketAdapterMap=new HashMap<>();
-   int pagerselectedPos=0;
 
 
+    public static Map<String, JSONArray> commonMap = new HashMap<>();
+    public static ArrayList<JSONObject> tabsHeaderKeys = new ArrayList<>();
+    public static Map<Integer, MarketAdapter> marketAdapterMap = new HashMap<>();
+    int pagerselectedPos = 0;
 
 
     CurrencyPagerAdapter adapter;
@@ -89,55 +78,50 @@ public class HomeFragment extends Fragment
     }
 
 
-
     TabLayout tabLayout;
     ViewPager viewPager;
 
-    private void initView()
-    {
+    private void initView() {
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#13B351"));
-        //ArrayList<JSONObject> tabKeys=loadHeaderKeys();
-        for(int x=0;x<tabsHeaderKeys.size();x++)
-        {
-            try
-            {
+        for (int x = 0; x < tabsHeaderKeys.size(); x++) {
+            try {
                 JSONObject datObj = tabsHeaderKeys.get(x);
                 tabLayout.addTab(tabLayout.newTab().setText(datObj.getString("pair_name")));
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         viewPager = (ViewPager) view.findViewById(R.id.pager);
-        }
-
-    void tablayout()
-    {
-        adapter = new CurrencyPagerAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                pagerselectedPos=tab.getPosition();
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
     }
+
+    void tablayout() {
+        if (tabLayout != null) {
+            adapter = new CurrencyPagerAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+            viewPager.setAdapter(adapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+            tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                    pagerselectedPos = tab.getPosition();
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+                }
+            });
+        }
+    }
+
+
 
 
     private void getMarketTickers() {
@@ -146,7 +130,7 @@ public class HomeFragment extends Fragment
             m.put("token", mainActivity.savePreferences.reterivePreference(mainActivity, DefaultConstants.token) + "");
             m.put("DeviceToken", mainActivity.getDeviceToken() + "");
 
-            final Map<String, String> obj = new HashMap<>();
+             final Map<String, String> obj = new HashMap<>();
              obj.put("X-API-KEY", mainActivity.getXapiKey());
              obj.put("Rtoken", mainActivity.getNewRToken() + "");
 
@@ -155,10 +139,7 @@ public class HomeFragment extends Fragment
                 @Override
                 public void getRespone(String dta, ArrayList<Object> respons) {
                     try {
-
                         JSONObject jsonObject = new JSONObject(dta);
-                        System.out.println("Api data==="+jsonObject);
-
                         JSONArray termArray=jsonObject.getJSONArray("term_array");
                         tabsHeaderKeys=new ArrayList<>();
                         for(int x=0;x<termArray.length();x++)
@@ -187,10 +168,7 @@ public class HomeFragment extends Fragment
                                      commonMap.put(pairName, jsonObject.getJSONArray(pairName));
 
                                  }
-
-
-
-                                if (mainActivity.getAppVersion().equalsIgnoreCase(appversion))
+                                if(mainActivity.getAppVersion().equalsIgnoreCase(appversion))
                                   {
                                     mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.app_name), "Please update app to new version.", "Ok", "", new DialogCallBacks() {
                                         @Override
@@ -201,13 +179,9 @@ public class HomeFragment extends Fragment
                                         }
                                     });
                                  }
-
-
-
                                 tablayout();
-
-
-                            } catch (Exception e) {
+                            }
+                            catch (Exception e) {
                                 e.printStackTrace();
                             }
                         } else {
@@ -257,11 +231,6 @@ public class HomeFragment extends Fragment
                             try
                              {
                                 JSONObject jsonObject = new JSONObject(args[0] + "");
-
-
-
-
-
                                 if(jsonObject.has("price_stats_app"))
                                     {
 
@@ -320,28 +289,6 @@ public class HomeFragment extends Fragment
         getDataOfPairs();
     }
 
-//private ArrayList<JSONObject> loadHeaderKeys()
-//{
-//    try
-//      {
-//        tabsHeaderKeys=new ArrayList<>();
-//        JSONObject jsonObject=new JSONObject();
-//        jsonObject.put("pair_name","usdt");
-//        jsonObject.put("pair_id","62");
-//        tabsHeaderKeys.add(jsonObject);
-//
-//
-//
-//    }
-//    catch (Exception e)
-//    {
-//        e.printStackTrace();
-//    }
-//
-//
-//
-//    return  tabsHeaderKeys;
-//}
 
 
 

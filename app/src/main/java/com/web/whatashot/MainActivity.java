@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
@@ -23,8 +24,11 @@ import com.web.whatashot.search_currency.SearchCurrencyScreen;
 import com.web.whatashot.setting_profile.SettingProfileScreen;
 import com.web.whatashot.utilpackage.UtilClass;
 
+import org.json.JSONObject;
+
 public class MainActivity extends BaseActivity
 {
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -229,12 +233,21 @@ public class MainActivity extends BaseActivity
         {
             Toast.makeText(MainActivity.this,"Tap again to exit "+getResources().getString(R.string.app_name)+" app",Toast.LENGTH_LONG).show();
             exitCount++;
-            new Handler().postDelayed(new Runnable() {
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    exitCount=1;
+//                }
+//            },3000);
+
+
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     exitCount=1;
                 }
-            },3000);
+            }, 3000);
+
 
         }
 

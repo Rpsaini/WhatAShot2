@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/app_header_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:background="@color/app_bg_color"
         android:orientation="horizontal"
         android:gravity="center_vertical"
@@ -52,6 +52,6 @@
             android:id="@+id/currency_search_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/market_order_list_row" />
+             />
     </RelativeLayout>
 </LinearLayout>

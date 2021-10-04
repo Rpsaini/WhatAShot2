@@ -3,6 +3,7 @@ package com.web.whatashot;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 
 import com.web.whatashot.communication.SocketHandlers;
 import com.web.whatashot.utilpackage.UtilClass;
@@ -23,27 +24,48 @@ public class SplashScreen extends BaseActivity {
         new SocketHandlers().createConnection();
         String loginData=savePreferences.reterivePreference(this, DefaultConstants.login_detail).toString();
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run()
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run()
+//                {
+//
+//                    if(savePreferences.reterivePreference(SplashScreen.this, UtilClass.isLogin).toString().equalsIgnoreCase("true"))
+//                    {
+//
+//                        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//
+//                    }
+//                    else
+//                    {
+//                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                }
+//            },2000);
+
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(savePreferences.reterivePreference(SplashScreen.this, UtilClass.isLogin).toString().equalsIgnoreCase("true"))
                 {
 
-                    if(savePreferences.reterivePreference(SplashScreen.this, UtilClass.isLogin).toString().equalsIgnoreCase("true"))
-                    {
+                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
 
-                        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-
-                    }
-                    else
-                    {
-                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
                 }
-            },2000);
+                else
+                {
+                    Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        }, 2000);
 
     }
 

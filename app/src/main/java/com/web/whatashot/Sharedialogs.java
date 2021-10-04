@@ -4,6 +4,7 @@ package com.web.whatashot;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Handler;
+import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,12 +38,21 @@ public class Sharedialogs
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             appCompatActivity.startActivity(Intent.createChooser(shareIntent, "choose one"));
 
-            new Handler().postDelayed(new Runnable() {
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    dialog.dismiss();
+//                }
+//            },1000);
+
+
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     dialog.dismiss();
                 }
-            },1000);
+            }, 1000);
+
 
         }
         catch(Exception e) {
