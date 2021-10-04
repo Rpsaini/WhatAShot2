@@ -524,7 +524,8 @@ public class PairDetailView extends BaseActivity
 
         sell_LL.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+                {
                 str_side = "sell";
                 sell_topBar.setBackgroundResource(R.drawable.ic_select_sell);
                 sell_LL.setBackgroundColor(getResources().getColor(R.color.white));
@@ -731,7 +732,6 @@ public class PairDetailView extends BaseActivity
             });
             return;
         }
-        System.out.println("stop limit==="+isLimitOrMarket+"==="+ed_at_stop_price.getText().toString());
 
         if(isLimitOrMarket.equalsIgnoreCase("3"))
         {

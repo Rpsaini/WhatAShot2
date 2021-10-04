@@ -1,16 +1,26 @@
 package com.web.whatashot.fragments;
 
+import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.app.dialogsnpickers.DialogCallBacks;
+import com.app.dialogsnpickers.SimpleDialog;
 import com.app.vollycommunicationlib.CallBack;
 import com.app.vollycommunicationlib.ServerHandler;
 import com.google.gson.JsonArray;
@@ -26,6 +36,8 @@ import com.google.android.material.tabs.TabLayout;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -62,8 +74,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
+        if(getArguments() != null)
+        {
 
         }
     }
@@ -288,8 +300,6 @@ public class HomeFragment extends Fragment {
         super.onResume();
         getDataOfPairs();
     }
-
-
 
 
 }

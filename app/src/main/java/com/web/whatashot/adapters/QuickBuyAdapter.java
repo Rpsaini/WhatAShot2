@@ -22,14 +22,16 @@ import com.web.whatashot.kyc.BalanceFulledetails;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class QuickBuyAdapter extends RecyclerView.Adapter<QuickBuyAdapter.MyViewHolder> {
     private MainActivity ira1;
-    private JSONArray moviesList;
+    private ArrayList<JSONObject> quickAr;
     private QuickBuyFragment fundFragment;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_currency_name, tv_balance;
+        TextView txt_currency_name, tv_buy,txt_currency_price,txt_currency_fullname;
 
         LinearLayout ll_fund_list_row;
         ImageView img_currencyicon;
@@ -37,20 +39,21 @@ public class QuickBuyAdapter extends RecyclerView.Adapter<QuickBuyAdapter.MyView
 
         public MyViewHolder(View view) {
             super(view);
-
-
             txt_currency_name = view.findViewById(R.id.txt_currency_name);
-            tv_balance = view.findViewById(R.id.tv_balance);
+            tv_buy = view.findViewById(R.id.tv_buy);
             ll_fund_list_row = view.findViewById(R.id.ll_fund_list_row);
             img_currencyicon = view.findViewById(R.id.img_currencyicon);
+            txt_currency_price = view.findViewById(R.id.txt_currency_price);
+            txt_currency_fullname = view.findViewById(R.id.txt_currency_fullname);
 
 
         }
     }
 
 
-    public QuickBuyAdapter(JSONArray moviesList, MainActivity mainActivity, QuickBuyFragment fundFragment) {
-        this.moviesList = moviesList;
+    public QuickBuyAdapter(ArrayList<JSONObject> quickAr, MainActivity mainActivity, QuickBuyFragment fundFragment)
+    {
+        this.quickAr = quickAr;
         this.ira1 = mainActivity;
         this.fundFragment = fundFragment;
     }
@@ -67,25 +70,22 @@ public class QuickBuyAdapter extends RecyclerView.Adapter<QuickBuyAdapter.MyView
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         try {
 
-            JSONObject dataObj = moviesList.getJSONObject(position);
-
-
-            holder.txt_currency_name.setText(dataObj.getString("symbol"));
-          // holder.tv_balance.setText(dataObj.getString("available_balance"));
+            JSONObject dataObj = quickAr.get(position);
+            holder.txt_currency_name.setText(dataObj.getString("symbol").split("\\/")[0]);
+            holder.txt_currency_price.setText(ira1.getResources().getString(R.string.Rs)+dataObj.getString("price"));
+            holder.txt_currency_fullname.setText(dataObj.getString("name"));
             showImage(dataObj.getString("icon"), holder.img_currencyicon);
 
-            holder.ll_fund_list_row.setTag(dataObj);
-            holder.ll_fund_list_row.setOnClickListener(new View.OnClickListener() {
+
+            holder.tv_buy.setTag(dataObj);
+            holder.tv_buy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
                         JSONObject data = new JSONObject(v.getTag().toString());
-                        String symbol = data.getString("symbol");
-                        Intent intent = new Intent(ira1, BalanceFulledetails.class);
-                        intent.putExtra("data", v.getTag() + "");
-                        ira1.startActivity(intent);
-
-                    } catch (Exception e) {
+                        fundFragment.buysellDialog(data);
+                       }
+                      catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -100,7 +100,7 @@ public class QuickBuyAdapter extends RecyclerView.Adapter<QuickBuyAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return moviesList.length();
+        return quickAr.size();
     }
 
     @Override
