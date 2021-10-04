@@ -332,12 +332,6 @@
 
             </LinearLayout>
 
-
-
-
-
-
-
             <fontspackageForTextView.Regular
                 android:enabled="false"
                 android:alpha=".7"
@@ -352,7 +346,6 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/green_drawable"
                 ></fontspackageForTextView.Regular>
-
 
 
 
