@@ -23,6 +23,7 @@ import com.web.whatashot.currency_preferences.CurrencyPreferencesScreen;
 import com.web.whatashot.kyc.VerifyKycAccountDetailsScreen;
 import com.web.whatashot.payment_option.PaymentOptionsScreen;
 import com.web.whatashot.two_factor_auth.TwoFactorAuthScreen;
+import com.web.whatashot.utilpackage.UtilClass;
 
 public class SettingProfileScreen extends BaseActivity {
     private ImageView backIC=null;
@@ -34,8 +35,8 @@ public class SettingProfileScreen extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_profile_screen);
-
         initView();
+       // savePreferences.savePreferencesData(SettingProfileScreen.this,"true", UtilClass.isLogin);
         setOnClickListener();
     }
 

@@ -1,11 +1,11 @@
 package com.web.whatashot;
 
-import androidx.annotation.NonNull;
-
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -14,29 +14,53 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.app.dialogsnpickers.DialogCallBacks;
 import com.app.vollycommunicationlib.CallBack;
 import com.app.vollycommunicationlib.ServerHandler;
 import com.geetest.sdk.GT3ConfigBean;
+import com.geetest.sdk.GT3ErrorBean;
 import com.geetest.sdk.GT3GeetestUtils;
+import com.geetest.sdk.GT3Listener;
+import com.geetest.sdk.views.GT3GeetestButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.common.util.HttpUtils;
 import com.google.android.gms.safetynet.SafetyNet;
 import com.google.android.gms.safetynet.SafetyNetApi;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.web.whatashot.captcha.VerifyCaptchaJava;
 import com.web.whatashot.utilpackage.UtilClass;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -53,7 +77,7 @@ public class RegisterActivity extends BaseActivity {
     private GT3GeetestUtils gt3GeetestUtils;
     private GT3ConfigBean gt3ConfigBean;
     //for captcha
-    String TAG = VerifyCaptchaJava.class.getSimpleName();
+    String TAG = RegisterActivity.class.getSimpleName();
     String SITE_KEY = "6LeFIn4bAAAAADeh2C7Bq0KciRNCGgXf__Kw5wHC";
     String SECRET_KEY = "6LeFIn4bAAAAAMgHXifb3uN4vlU7W_DMkYgBu8dB";
     RequestQueue queue;
@@ -69,8 +93,6 @@ public class RegisterActivity extends BaseActivity {
         init();
         actions();
         setHtmlCode();
-
-
     }
 
     private void init() {
@@ -88,6 +110,7 @@ public class RegisterActivity extends BaseActivity {
         img_back = findViewById(R.id.img_back);
         check_captcha = findViewById(R.id.check_captcha);
         checkbox_tems = findViewById(R.id.checkbox_tems);
+
     }
 
     private void setHtmlCode()
@@ -206,8 +229,7 @@ public class RegisterActivity extends BaseActivity {
                     });
                     return;
                 }
-
-                doRegistration();
+                startCaptchaDialog();
               }
         });
 
@@ -411,9 +433,228 @@ public class RegisterActivity extends BaseActivity {
     }
     //end of captcha=====
 
-    private void validateUserAccount(){
-// Configure bean file and
-        gt3ConfigBean = new GT3ConfigBean();
+
+    private void requestAPI1(){
+        String url = "https://unitedexchange.io/generate-challenge";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e(TAG, "RequestAPI2-->onPostExecute: " + response);
+                gt3ConfigBean.setApi1Json(response);
+                gt3GeetestUtils.getGeetest();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+
     }
+    private void requestAPI2(){
+
+        String url = "https://unitedexchange.io/validate-challenge";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        String URL = url;
+        JSONObject jsonBody = new JSONObject();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.i("VOLLEY", response);
+                try {
+                    Log.e(TAG, "RequestAPI2-->onPostExecute: " + response);
+                    if (!TextUtils.isEmpty(response)) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            String status = jsonObject.getString("status");
+                            if ("success".equals(status)) {
+                                gt3GeetestUtils.showSuccessDialog();
+                            } else {
+                                gt3GeetestUtils.showFailedDialog();
+                            }
+                        } catch (Exception e) {
+                            gt3GeetestUtils.showFailedDialog();
+                            e.printStackTrace();
+                        }
+                    } else {
+                        gt3GeetestUtils.showFailedDialog();
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("VOLLEY", error.toString());
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return null;
+            }
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                String responseString = "";
+                if (response != null) {
+                    responseString = String.valueOf(response.statusCode);
+                    // can get more details such as response.headers
+                }
+                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+            }
+        };
+
+        requestQueue.add(stringRequest);
+        /*
+
+        Map<String, String> m = new LinkedHashMap<>();
+
+        Map<String, String> headerMap = new HashMap<>();
+
+        String baseurl="https://unitedexchange.io/";
+
+        new ServerHandler().sendToServer(RegisterActivity.this, baseurl + "validate-challenge", m, 0, headerMap, 20000, R.layout.progressbar, new CallBack() {
+            @Override
+            public void getRespone(String dta, ArrayList<Object> respons) {
+                try {
+                    Log.i(TAG, "RequestAPI2-->onPostExecute: " + dta);
+                    if (!TextUtils.isEmpty(dta)) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(dta);
+
+                            String status = jsonObject.getString("status");
+                            if ("success".equals(status)) {
+                                gt3GeetestUtils.showSuccessDialog();
+                            } else {
+                                gt3GeetestUtils.showFailedDialog();
+                            }
+                        } catch (Exception e) {
+                            gt3GeetestUtils.showFailedDialog();
+                            e.printStackTrace();
+                        }
+                    } else {
+                        gt3GeetestUtils.showFailedDialog();
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+*/
+
+    }
+
+
+    private void startCaptchaDialog(){
+        // Configure the bean file
+        gt3ConfigBean = new GT3ConfigBean();
+// Set how captcha is presented，1：bind，2：unbind
+        gt3ConfigBean.setPattern(1);
+// The default is false
+        gt3ConfigBean.setCanceledOnTouchOutside(false);
+// Set language. Use system default language if null
+        gt3ConfigBean.setLang(null);
+// Set the timeout for loading webview static files
+        gt3ConfigBean.setTimeout(10000);
+// Set the timeout for webview request after user finishing the CAPTCHA verification. The default is 10,000
+        gt3ConfigBean.setWebviewTimeout(10000);
+// Set callback listener
+        gt3ConfigBean.setListener(new GT3Listener() {
+
+            /**
+             * CAPTCHA loading is completed
+             * @param duration Loading duration and version info，in JSON format
+             */
+            @Override
+            public void onDialogReady(String duration) {
+                Log.e(TAG, "GT3BaseListener-->onDialogReady-->" + duration);
+            }
+
+            /**
+             * Verification result callback
+             * @param code 1:success, 0:fail
+             */
+            @Override
+            public void onReceiveCaptchaCode(int code) {
+                Log.e(TAG, "GT3BaseListener-->onReceiveCaptchaCode-->" + code);
+            }
+
+            /**
+             * api2 custom call
+             * @param result
+             */
+            @Override
+            public void onDialogResult(String result) {
+                Log.e(TAG, "GT3BaseListener-->onDialogResult-->" + result);
+                // Start api2 workflow
+            //    new RequestAPI2().execute(result);
+                 doRegistration();
+            }
+
+            /**
+             * Statistic info.
+             * @param result
+             */
+            @Override
+            public void onStatistics(String result) {
+                Log.e(TAG, "GT3BaseListener-->onStatistics-->" + result);
+            }
+
+            /**
+             * Close the CAPTCHA
+             * @param num 1 Click the close button to close the CAPTCHA, 2 Click anyplace on screen to close the CAPTCHA, 3 Click return button the close
+             */
+            @Override
+            public void onClosed(int num) {
+                Log.e(TAG, "GT3BaseListener-->onClosed-->" + num);
+            }
+
+            /**
+             * Verfication succeeds
+             * @param result
+             */
+            @Override
+            public void onSuccess(String result) {
+                Log.e(TAG, "GT3BaseListener-->onSuccess-->" + result);
+            }
+
+            /**
+             * Verification fails
+             * @param errorBean Version info, error code & description, etc.
+             */
+            @Override
+            public void onFailed(GT3ErrorBean errorBean) {
+                Log.e(TAG, "GT3BaseListener-->onFailed-->" + errorBean.toString());
+            }
+
+            /**
+             * api1 custom call
+             */
+            @Override
+            public void onButtonClick() {
+                requestAPI1();
+            }
+
+        });
+        gt3GeetestUtils.init(gt3ConfigBean);
+// Start CAPTCHA verification
+        gt3GeetestUtils.startCustomFlow();
+    }
+
+
 }
 
