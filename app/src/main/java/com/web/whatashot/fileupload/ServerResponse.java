@@ -19,6 +19,21 @@ public class ServerResponse {
     private UserData userdata;
 
 
+    @SerializedName("kyc_info")
+    @Expose
+    private Kyc_info kyc_info;
+
+
+
+    @SerializedName("token")
+    @Expose
+    private String token;
+
+
+    @SerializedName("r_token")
+    @Expose
+    private String r_token;
+
     public boolean isStatus() {
         return status;
     }
@@ -40,8 +55,34 @@ public class ServerResponse {
         return userdata;
     }
 
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getR_token() {
+        return r_token;
+    }
+
+    public void setR_token(String r_token) {
+        this.r_token = r_token;
+    }
+
     public void setUserdata(UserData userdata) {
         this.userdata = userdata;
+    }
+
+
+    public Kyc_info getKyc_info() {
+        return kyc_info;
+    }
+
+    public void setKyc_info(Kyc_info kyc_info) {
+        this.kyc_info = kyc_info;
     }
 
     public class UserData
@@ -123,6 +164,69 @@ public class ServerResponse {
             this.mobile = mobile;
         }
     }
+
+
+    public  class  Kyc_info
+    {
+        @SerializedName("status")
+        @Expose
+        private String status;
+
+        @SerializedName("address_f_status")
+        @Expose
+        private String address_f_status;
+
+
+        @SerializedName("address_b_status")
+        @Expose
+        private String address_b_status;
+
+
+        @SerializedName("pan_status")
+        @Expose
+        private String pan_status;
+
+
+        public Kyc_info(String status, String address_f_status, String address_b_status, String pan_status) {
+            this.status = status;
+            this.address_f_status = address_f_status;
+            this.address_b_status = address_b_status;
+            this.pan_status = pan_status;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        public String getAddress_f_status() {
+            return address_f_status;
+        }
+
+        public void setAddress_f_status(String address_f_status) {
+            this.address_f_status = address_f_status;
+        }
+
+        public String getAddress_b_status() {
+            return address_b_status;
+        }
+
+        public void setAddress_b_status(String address_b_status) {
+            this.address_b_status = address_b_status;
+        }
+
+        public String getPan_status() {
+            return pan_status;
+        }
+
+        public void setPan_status(String pan_status) {
+            this.pan_status = pan_status;
+        }
+    }
+
 }
 
 

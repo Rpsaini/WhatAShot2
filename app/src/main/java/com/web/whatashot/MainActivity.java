@@ -61,9 +61,11 @@ public class MainActivity extends BaseActivity
             }
         });
 
+
         findViewById(R.id.profileIC).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent=new Intent(MainActivity.this, SettingProfileScreen.class);
                 startActivity(intent);
             }
@@ -173,51 +175,6 @@ public class MainActivity extends BaseActivity
        }
 
     }
-    private void showMoreOptions(View imageView)
-       {
-        PopupMenu popup = new PopupMenu(MainActivity.this, imageView);
-        popup.getMenuInflater().inflate(R.menu.poupup_menu, popup.getMenu());
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-
-
-                if(item.getItemId()==R.id.menu_account)
-                {
-                    Intent intent=new Intent(MainActivity.this,AccountScreen.class);
-                    startActivity(intent);
-                }
-
-
-                if(item.getItemId()==R.id.menu_about)
-                {
-                 openExternalUrls(getApiUrl()+"contactus");
-                }
-               else if(item.getItemId()==R.id.menu_Privacy)
-                {
-                       openExternalUrls(getApiUrl()+"privacy-policy");
-                }
-                else if(item.getItemId()==R.id.menu_logout)
-                {
-                    AlertDialogs alertDialogs=new AlertDialogs();
-                    alertDialogs.alertDialog(MainActivity.this, "Logout", "Would you like to logout ?", "Yes", "No", new DialogCallBacks() {
-                        @Override
-                        public void getDialogEvent(String buttonPressed) {
-
-                            if(buttonPressed.equalsIgnoreCase("Yes"))
-                            {
-                                logout();
-                            }
-                        }
-                    });
-                }
-
-                return true;
-            }
-        });
-
-        popup.show(); //showing popup menu
-
-    }
 
 
 
@@ -233,12 +190,7 @@ public class MainActivity extends BaseActivity
         {
             Toast.makeText(MainActivity.this,"Tap again to exit "+getResources().getString(R.string.app_name)+" app",Toast.LENGTH_LONG).show();
             exitCount++;
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    exitCount=1;
-//                }
-//            },3000);
+
 
 
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {

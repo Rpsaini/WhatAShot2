@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import com.app.dialogsnpickers.AlertDialogs;
 import com.app.dialogsnpickers.DialogCallBacks;
 import com.app.dialogsnpickers.SimpleDialog;
 import com.web.whatashot.BaseActivity;
+import com.web.whatashot.DefaultConstants;
 import com.web.whatashot.MainActivity;
 import com.web.whatashot.R;
 import com.web.whatashot.activity_log.ActivityLogScreens;
@@ -24,6 +26,8 @@ import com.web.whatashot.kyc.VerifyKycAccountDetailsScreen;
 import com.web.whatashot.payment_option.PaymentOptionsScreen;
 import com.web.whatashot.two_factor_auth.TwoFactorAuthScreen;
 import com.web.whatashot.utilpackage.UtilClass;
+
+import org.json.JSONObject;
 
 public class SettingProfileScreen extends BaseActivity {
     private ImageView backIC=null;
@@ -35,9 +39,10 @@ public class SettingProfileScreen extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_profile_screen);
+        initiateObj();
         initView();
-       // savePreferences.savePreferencesData(SettingProfileScreen.this,"true", UtilClass.isLogin);
         setOnClickListener();
+        setData();
     }
 
     private void initView(){
@@ -227,6 +232,26 @@ public class SettingProfileScreen extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private void setData()
+    {
+        try {
+            TextView nameValueTV  = findViewById(R.id.nameValueTV);
+            TextView emailValueTV =  findViewById(R.id.emailValueTV);
+            TextView mobileValueTV = findViewById(R.id.mobileValueTV);
+
+            JSONObject data=new JSONObject(savePreferences.reterivePreference(this, DefaultConstants.login_detail).toString());
+
+            System.out.println("Data===>"+data);
+//          {"status":true,"is_active":true,"name":"kumar kumar","token":"Y3Q1MWpLY0tWQ0ZhUGdKYXFFWlJzZz09","r_token":"24705574-KRG","code":200}
+
+            nameValueTV.setText(data.getString("name"));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
 
     }
 }

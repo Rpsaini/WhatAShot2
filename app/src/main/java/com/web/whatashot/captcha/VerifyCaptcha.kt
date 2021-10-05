@@ -20,7 +20,6 @@ class VerifyCaptcha : AppCompatActivity(), View.OnClickListener {
     }
 
     private lateinit var btnverifyCaptcha: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.verify_captcha_layout)

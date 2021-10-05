@@ -1,10 +1,13 @@
 package com.web.whatashot.fileupload;
 
 import android.content.Context;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.web.whatashot.DefaultConstants;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -12,12 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiProduction {
     private static String BASE_URL = "https://whatashot.io/";
-    public static Retrofit getRetrofit() {
-        return new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-    }
+
     private final Context context;
     private ApiProduction(Context context) {
         this.context = context;
@@ -30,12 +28,14 @@ public class ApiProduction {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
-        return new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(OkHttpProduction.getOkHttpClient(context, true))
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
+
+         return new
+                 Retrofit.Builder()
+                 .baseUrl(BASE_URL)
+                 .client(OkHttpProduction.getOkHttpClient(context, true))
+                 .addConverterFactory(GsonConverterFactory.create(gson))
+                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                 .build();
     }
     public <S> S provideService(Class<S> serviceClass)
      {

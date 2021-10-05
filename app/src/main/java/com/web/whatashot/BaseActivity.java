@@ -58,18 +58,18 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
+
     }
 
-    public void initiateObj() {
-
+    public void initiateObj()
+    {
         savePreferences = new SavePreferences();
         serverHandler = new ServerHandler();
         alertDialogs = new AlertDialogs();
         validationRule = new ValidationRule();
         animationForViews = new AnimationForViews();
         changestatusBarColor(0);
-        // getSupportActionBar().hide();
-    }
+     }
 
     public void removeActionBar() {
         getSupportActionBar().hide();

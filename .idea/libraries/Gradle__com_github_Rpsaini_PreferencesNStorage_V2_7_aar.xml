@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.Rpsaini:PreferencesNStorage:V2.7@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8f1373b67750044e32bc7ba24733c344/jetified-PreferencesNStorage-V2.7/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8f1373b67750044e32bc7ba24733c344/jetified-PreferencesNStorage-V2.7/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8f1373b67750044e32bc7ba24733c344/jetified-PreferencesNStorage-V2.7/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f56c25519767deabdc9e781f3b114b9/jetified-PreferencesNStorage-V2.7/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f56c25519767deabdc9e781f3b114b9/jetified-PreferencesNStorage-V2.7/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f56c25519767deabdc9e781f3b114b9/jetified-PreferencesNStorage-V2.7/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

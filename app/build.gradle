@@ -107,4 +107,10 @@ dependencies {
   //  implementation(name: 'geetest_sensebot_android_v4.3.4.3_20210405', ext: 'aar')
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
+    implementation 'com.google.android.gms:play-services-vision:+'
+    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging'
+
 }
+apply plugin: 'com.google.gms.google-services'

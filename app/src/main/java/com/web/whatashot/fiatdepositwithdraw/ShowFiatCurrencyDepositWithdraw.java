@@ -130,23 +130,22 @@ public class ShowFiatCurrencyDepositWithdraw extends BaseActivity {
                 public void getRespone(String dta, ArrayList<Object> respons) {
                     try {
                         JSONObject jsonObject = new JSONObject(dta);
-                        System.out.println("deposited= address==+" + jsonObject);
-                        if (jsonObject.getBoolean("status")) {
+                        if(jsonObject.getBoolean("status")) {
                             try {
                                 authenticator = jsonObject.getBoolean("authenticator");
                                 showBanksAddress(jsonObject.getJSONArray("banks"));
-
-                            } catch (Exception e) {
+                                }
+                            catch (Exception e) {
                                 e.printStackTrace();
                             }
                         } else {
                             alertDialogs.alertDialog(ShowFiatCurrencyDepositWithdraw.this, getResources().getString(R.string.Response), jsonObject.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                                 @Override
-                                public void getDialogEvent(String buttonPressed) {
+                                public void getDialogEvent(String buttonPressed)
+                                {
                                     unauthorizedAccess(jsonObject);
                                 }
                             });
-
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -155,14 +154,14 @@ public class ShowFiatCurrencyDepositWithdraw extends BaseActivity {
                 }
             });
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    private void showBanksAddress(JSONArray dataAr) {
+    private void showBanksAddress(JSONArray dataAr)
+    {
         BankDetailsAdapters mAdapter = new BankDetailsAdapters(this, dataAr);
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

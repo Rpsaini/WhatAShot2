@@ -63,19 +63,21 @@ public class CommonFragment extends Fragment {
         }
     }
 
-    private void loadData() {
-        try {
+    private void loadData()
+    {
+       if(getArguments()!=null)
+       {
+           try {
+               int pos = Integer.parseInt(getArguments().getString("pos"));
+               JSONObject headerData = HomeFragment.tabsHeaderKeys.get(pos);
+               String pairName = headerData.getString("pair_name");
 
-            int pos = Integer.parseInt(getArguments().getString("pos"));
-            JSONObject headerData = HomeFragment.tabsHeaderKeys.get(pos);
-            String pairName = headerData.getString("pair_name");
-
-
-           JSONArray dataAr= HomeFragment.commonMap.get(pairName);
-           init(dataAr,pos);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+               JSONArray dataAr = HomeFragment.commonMap.get(pairName);
+               init(dataAr, pos);
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       }
     }
 
     private void init(JSONArray dataObj,int pos)
