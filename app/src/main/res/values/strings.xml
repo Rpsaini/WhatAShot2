@@ -65,6 +65,7 @@
     <string name="security">Security</string>
     <string name="welcome_txt">Welcome</string>
     <string name="select_your">Select Your Country</string>
+    <string name="search_country">Search Country</string>
     <string name="country">Country</string>
     <string name="select_coun">Select country</string>
     <string name="type">Type</string>

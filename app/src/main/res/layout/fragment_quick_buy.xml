@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".fragments.QuickBuyFragment">
 
     <RelativeLayout
@@ -12,7 +13,7 @@
         android:background="@color/skyblue"
         >
 
-        <fontspackageForTextView.Regular
+        <fontspackageForTextView.BoldMedium
             android:id="@+id/txt_buy_crypto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +22,7 @@
             android:text="@string/welcometoexchange"
             android:textColor="@color/white"
             android:textSize="@dimen/large_title_text_size"
-            android:translationY="-10dp"></fontspackageForTextView.Regular>
+            android:translationY="-10dp"></fontspackageForTextView.BoldMedium>
 
         <fontspackageForTextView.Regular
             android:layout_width="match_parent"
@@ -39,10 +40,10 @@
         android:text="@string/coin"
         android:gravity="center|left"
         android:layout_marginTop="12dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_width="match_parent"
         android:textSize="@dimen/title_text_size"
-        android:background="@color/lite_background"
+        android:background="@color/edit_view_bg_color"
         ></fontspackageForTextView.Regular>
 
     <androidx.recyclerview.widget.RecyclerView

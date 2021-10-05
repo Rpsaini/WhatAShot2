@@ -254,7 +254,7 @@ public class RegisterActivity extends BaseActivity {
 
 
 
-//todo for testing        check_captcha.setOnClickListener(new View.OnClickListener() {
+//todo for testing check_captcha.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v)
 //            {
@@ -396,7 +396,8 @@ public class RegisterActivity extends BaseActivity {
                                 login_register.setEnabled(true);
                                 login_register.setAlpha(1f);
                                 // {"success":true,"challenge_ts":"2021-07-07T06:33:55Z","apk_package_name":"com.web
-                            } else {
+                            }
+                            else {
                                 check_captcha.setChecked(false);
                                 login_register.setEnabled(false);
                                 login_register.setAlpha(.7f);
@@ -431,9 +432,8 @@ public class RegisterActivity extends BaseActivity {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(request);
     }
+
     //end of captcha=====
-
-
     private void requestAPI1(){
         String url = "https://unitedexchange.io/generate-challenge";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -454,70 +454,8 @@ public class RegisterActivity extends BaseActivity {
         requestQueue.add(jsonObjectRequest);
 
     }
+
     private void requestAPI2(){
-
-        String url = "https://unitedexchange.io/validate-challenge";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = url;
-        JSONObject jsonBody = new JSONObject();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.i("VOLLEY", response);
-                try {
-                    Log.e(TAG, "RequestAPI2-->onPostExecute: " + response);
-                    if (!TextUtils.isEmpty(response)) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-
-                            String status = jsonObject.getString("status");
-                            if ("success".equals(status)) {
-                                gt3GeetestUtils.showSuccessDialog();
-                            } else {
-                                gt3GeetestUtils.showFailedDialog();
-                            }
-                        } catch (Exception e) {
-                            gt3GeetestUtils.showFailedDialog();
-                            e.printStackTrace();
-                        }
-                    } else {
-                        gt3GeetestUtils.showFailedDialog();
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("VOLLEY", error.toString());
-            }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                return null;
-            }
-
-            @Override
-            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                String responseString = "";
-                if (response != null) {
-                    responseString = String.valueOf(response.statusCode);
-                    // can get more details such as response.headers
-                }
-                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
-            }
-        };
-
-        requestQueue.add(stringRequest);
-        /*
 
         Map<String, String> m = new LinkedHashMap<>();
 
@@ -554,7 +492,6 @@ public class RegisterActivity extends BaseActivity {
 
             }
         });
-*/
 
     }
 
@@ -562,17 +499,17 @@ public class RegisterActivity extends BaseActivity {
     private void startCaptchaDialog(){
         // Configure the bean file
         gt3ConfigBean = new GT3ConfigBean();
-// Set how captcha is presented，1：bind，2：unbind
+       // Set how captcha is presented，1：bind，2：unbind
         gt3ConfigBean.setPattern(1);
-// The default is false
+       // The default is false
         gt3ConfigBean.setCanceledOnTouchOutside(false);
-// Set language. Use system default language if null
+       // Set language. Use system default language if null
         gt3ConfigBean.setLang(null);
-// Set the timeout for loading webview static files
+       // Set the timeout for loading webview static files
         gt3ConfigBean.setTimeout(10000);
-// Set the timeout for webview request after user finishing the CAPTCHA verification. The default is 10,000
+       // Set the timeout for webview request after user finishing the CAPTCHA verification. The default is 10,000
         gt3ConfigBean.setWebviewTimeout(10000);
-// Set callback listener
+        // Set callback listener
         gt3ConfigBean.setListener(new GT3Listener() {
 
             /**

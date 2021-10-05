@@ -237,7 +237,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
             }
             if (photoFile != null) {
                 photoURI = FileProvider.getUriForFile(Objects.requireNonNull(getApplicationContext()),
-                        BuildConfig.APPLICATION_ID + ".provider", photoFile);
+                        BuildConfig.APPLICATION_ID + ".fileprovider", photoFile);
 
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
