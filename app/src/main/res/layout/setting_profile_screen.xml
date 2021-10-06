@@ -273,6 +273,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/payment_opt_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -301,6 +302,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/two_factor_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -329,6 +331,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/activity_lo_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -438,8 +441,8 @@
                     android:textSize="@dimen/title_text_size"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
             </RelativeLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -190,7 +190,7 @@ public class QuickBuyFragment extends Fragment {
     private ArrayList<TextView> percentageAR;
     private TextView inrValueTV;
     public NumberFormat formatter = new DecimalFormat("#0.0000");
-    double buyBalancefiat=3000,sellBalanceMainPair=200;
+    double buyBalancefiat=0,sellBalanceMainPair=0;
     String mainPair="",sub_pair="";
     private  double buyatPrice=0;
     private String pair_id="";
@@ -225,6 +225,7 @@ public class QuickBuyFragment extends Fragment {
             TextView coinTV = buySellDialog.findViewById(R.id.coinTV);
             coinTV.setText(buy_fiat);
             ed_amount.setText(buyBalancefiat+"");
+            buyBTCBT.setText("Buy "+mainPair);
 
             bindingbuyLL.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -241,7 +242,7 @@ public class QuickBuyFragment extends Fragment {
                     buy_topBar.setVisibility(View.VISIBLE);
                     bindingbuyLL.setVisibility(View.VISIBLE);
                     buyBTCBT.setBackgroundTintList(ContextCompat.getColorStateList(mainActivity, R.color.greencolor));
-                    buyBTCBT.setText("Buy "+buy_fiat);
+                    buyBTCBT.setText("Buy "+mainPair);
                     clearFields();
                 }
             });

@@ -68,12 +68,14 @@ public class CommonFragment extends Fragment {
        if(getArguments()!=null)
        {
            try {
-               int pos = Integer.parseInt(getArguments().getString("pos"));
-               JSONObject headerData = HomeFragment.tabsHeaderKeys.get(pos);
-               String pairName = headerData.getString("pair_name");
+               if(HomeFragment.tabsHeaderKeys.size()>0) {
+                   int pos = Integer.parseInt(getArguments().getString("pos"));
+                   JSONObject headerData = HomeFragment.tabsHeaderKeys.get(pos);
+                   String pairName = headerData.getString("pair_name");
 
-               JSONArray dataAr = HomeFragment.commonMap.get(pairName);
-               init(dataAr, pos);
+                   JSONArray dataAr = HomeFragment.commonMap.get(pairName);
+                   init(dataAr, pos);
+               }
            } catch (Exception e) {
                e.printStackTrace();
            }

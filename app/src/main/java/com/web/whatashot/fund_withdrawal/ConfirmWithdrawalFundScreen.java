@@ -84,7 +84,7 @@ public class ConfirmWithdrawalFundScreen extends BaseActivity
         confirmBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmWithdrawFundDialog();
+                withdrawWithoutAuth();
             }
         });
     }
@@ -100,15 +100,15 @@ public class ConfirmWithdrawalFundScreen extends BaseActivity
                 @Override
                 public void onClick(View v) {
                     confirmDialog.dismiss();
+
                 }
             });
             txtConfirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
                 {
-                    withdrawWithoutAuth();
-
                     confirmDialog.dismiss();
+                    finish();
                 }
             });
         } catch (Exception e) {
@@ -145,7 +145,7 @@ public class ConfirmWithdrawalFundScreen extends BaseActivity
                             @Override
                             public void getDialogEvent(String buttonPressed) {
 
-                                finish();
+                                confirmWithdrawFundDialog();
                             }
                         });
                     } else {

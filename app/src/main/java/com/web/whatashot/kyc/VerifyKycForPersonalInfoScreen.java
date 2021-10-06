@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -25,6 +26,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.app.dialogsnpickers.DialogCallBacks;
+import com.app.vollycommunicationlib.CallBack;
+import com.app.vollycommunicationlib.ServerHandler;
 import com.google.gson.Gson;
 import com.web.whatashot.BaseActivity;
 import com.web.whatashot.BuildConfig;
@@ -35,7 +38,11 @@ import com.web.whatashot.fileupload.ApiProduction;
 import com.web.whatashot.fileupload.RxAPICallHelper;
 import com.web.whatashot.fileupload.RxAPICallback;
 import com.web.whatashot.fileupload.ServerResponse;
+import com.web.whatashot.utilpackage.UtilClass;
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -237,7 +244,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
             }
             if (photoFile != null) {
                 photoURI = FileProvider.getUriForFile(Objects.requireNonNull(getApplicationContext()),
-                        BuildConfig.APPLICATION_ID + ".provider", photoFile);
+                        BuildConfig.APPLICATION_ID + ".fileprovider", photoFile);
 
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
@@ -362,9 +369,8 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 
                             }
                         });
-
-
-                    } else {
+                    }
+                    else {
                         alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.app_name), t.body().getMsg(), "ok", "", new DialogCallBacks() {
                             @Override
                             public void getDialogEvent(String buttonPressed) {
@@ -397,4 +403,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         });
 
     }
+
+
+
 }

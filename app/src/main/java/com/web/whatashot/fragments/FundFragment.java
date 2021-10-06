@@ -43,6 +43,7 @@ private MainActivity mainActivity;
 private TextView txt_totalbalance;
 private int pagecount=1;
 private Switch txt_switch;
+private TextView txt_total_fund_value;
 
 private ArrayList<JSONObject> fiatCurrencyAr=new ArrayList<>();
 private ArrayList<JSONObject>  cryptoeAr=new ArrayList<>();
@@ -84,7 +85,8 @@ private ArrayList<JSONObject>  cryptoeAr=new ArrayList<>();
     {
         txt_totalbalance=view.findViewById(R.id.txt_totalbalance);
         txt_switch=view.findViewById(R.id.txt_switch);
-       final TextView txt_hide_show_balance=view.findViewById(R.id.txt_hide_show_balance);
+        txt_total_fund_value=view.findViewById(R.id.txt_total_fund_value);
+        final TextView txt_hide_show_balance=view.findViewById(R.id.txt_hide_show_balance);
 
 
             txt_switch.setOnClickListener(new View.OnClickListener() {    @Override
@@ -208,20 +210,18 @@ private ArrayList<JSONObject>  cryptoeAr=new ArrayList<>();
                             {
                                 mainActivity.savePreferences.savePreferencesData(mainActivity,obj.getString("token"),DefaultConstants.token);
                                 mainActivity.savePreferences.savePreferencesData(mainActivity,obj.getString("r_token"),DefaultConstants.r_token);
-
                             }
 
                             txt_totalbalance.setText((obj.getString("sum_available_bal")));
+                            txt_total_fund_value.setText(mainActivity.getResources().getString(R.string.Rs)+""+obj.getString("sum_available_bal"));
                             JSONArray balances=obj.getJSONArray("balances");
-//                            JSONArray ctryptoAr=new JSONArray();
-//                            JSONArray fiatAr=new JSONArray();
+
                             for(int x=0;x<balances.length();x++)
                             {
                                 String type=balances.getJSONObject(x).getString("type");
                                 if(type.equalsIgnoreCase("fiat"))
                                 {
                                     fiatCurrencyAr.add(balances.getJSONObject(x));
-
                                 }
                                 else
                                 {

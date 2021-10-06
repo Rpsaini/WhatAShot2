@@ -241,11 +241,9 @@ public class SettingProfileScreen extends BaseActivity {
             TextView mobileValueTV = findViewById(R.id.mobileValueTV);
 
             JSONObject data=new JSONObject(savePreferences.reterivePreference(this, DefaultConstants.login_detail).toString());
-
-            System.out.println("Data===>"+data);
-//          {"status":true,"is_active":true,"name":"kumar kumar","token":"Y3Q1MWpLY0tWQ0ZhUGdKYXFFWlJzZz09","r_token":"24705574-KRG","code":200}
-
             nameValueTV.setText(data.getString("name"));
+            emailValueTV.setText(data.getString("email"));
+            mobileValueTV.setText(data.getString("mobile"));
         }
         catch (Exception e)
         {

@@ -26,16 +26,15 @@
        android:rotation="90"
        app:tint="@color/hintTextColor"></ImageView>
 
-   <ImageView
-       android:layout_gravity="center"
-       android:layout_marginTop="20dp"
-       android:src="@drawable/logo"
-       android:layout_height="wrap_content"
-       android:layout_width="match_parent"
-       ></ImageView>
 
+      <ImageView
+          android:layout_width="90dp"
+          android:layout_height="90dp"
+          android:layout_gravity="center"
+          android:layout_marginTop="20dp"
+          android:src="@drawable/logo"></ImageView>
 
-   <fontspackageForTextView.BoldMedium
+      <fontspackageForTextView.BoldMedium
        android:layout_marginTop="50dp"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"

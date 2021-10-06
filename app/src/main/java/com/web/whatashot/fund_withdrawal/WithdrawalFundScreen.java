@@ -152,9 +152,14 @@ public class WithdrawalFundScreen extends BaseActivity {
                @Override
                public void afterTextChanged(Editable s)
                {
-                   System.out.println("change==="+s.toString()+"==="+withdrawalFeesET.getText());
+                   
                 if(s.length()>0)
                 {
+                    if(s.toString().startsWith(".")&&s.toString().length()==1)
+                    {
+                        return;
+                    }
+
                     double total=Double.parseDouble(s.toString())+Double.parseDouble(withdrawalFeesET.getText()+"");
                     finalAmountET.setText(total+"");
                 }

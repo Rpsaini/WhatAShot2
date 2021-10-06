@@ -434,6 +434,7 @@ public class PairDetailView extends BaseActivity
     public String str_side = "buy";
     private Dialog buySellDialog;
     private EditText ed_at_stop_price;
+    private TextView  lowest_priceTV;
 
     private void initbuysell()
     {
@@ -454,7 +455,7 @@ public class PairDetailView extends BaseActivity
         tota_coin2TV = buySellDialog.findViewById(R.id.coin2TV);
 
         ed_at_stop_price=buySellDialog.findViewById(R.id.ed_at_stop_price);
-        TextView lowest_priceTV = buySellDialog.findViewById(R.id.lowest_priceTV);
+         lowest_priceTV = buySellDialog.findViewById(R.id.lowest_priceTV);
         TextView buyBTCBT = buySellDialog.findViewById(R.id.buyBTCBT);
 
 
@@ -600,7 +601,7 @@ public class PairDetailView extends BaseActivity
             public void afterTextChanged(Editable s)
             {
 
-                if(ed_amount.getText().toString().startsWith("."))
+                if(ed_amount.getText().toString().startsWith(".")&&ed_amount.getText().toString().length()==1)
                 {
                     return;
                 }
@@ -849,7 +850,7 @@ public class PairDetailView extends BaseActivity
             orderVolume.setText(obj.getString("volume"));
             orderSide.setText(obj.getString("side"));
 
-            if (isLimitOrMarket.equalsIgnoreCase("1"))
+            if(isLimitOrMarket.equalsIgnoreCase("1"))
             {
                 orderType.setText("Market");
             } else {
@@ -954,7 +955,7 @@ public class PairDetailView extends BaseActivity
             ArrayList<String> typeAr = new ArrayList<>();
             typeAr.add("Market");//1
             typeAr.add("Limit");//2
-            typeAr.add("Stop Limit");//3
+//            typeAr.add("Stop Limit");//3
 
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typeAr);
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout
@@ -968,11 +969,13 @@ public class PairDetailView extends BaseActivity
                      {
                         at_stop_price_valueCL.setVisibility(View.GONE);
                         isLimitOrMarket = "1";
+                         lowest_priceTV.setVisibility(View.INVISIBLE);
                      }
                     else if(position==1)
                     {
                         at_stop_price_valueCL.setVisibility(View.GONE);
                         isLimitOrMarket = "2";//Actual Limit order
+                        lowest_priceTV.setVisibility(View.VISIBLE);
                     }
                     else
                     {
