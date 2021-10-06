@@ -55,44 +55,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/app_bg_color">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/round_rect_white_shape_drawable"
                 android:paddingBottom="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/round_rect_white_shape_drawable">
+                app:layout_constraintTop_toTopOf="parent">
+
                 <LinearLayout
                     android:id="@+id/topBarLL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
                     app:layout_constraintEnd_toStartOf="@+id/header_line"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:weightSum="1">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <fontspackageForTextView.Regular
                         android:id="@+id/security_tv"
                         android:layout_width="0dp"
-                        android:layout_weight="0.2"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/security"
-                        android:gravity="center"
-                        android:textColor="@color/text_hint_color"
+                        android:layout_weight="0.2"
                         android:drawableTop="@drawable/ic_tick_mark"
-                        android:textSize="@dimen/text_size"
-                        />
+                        android:gravity="center"
+                        android:text="@string/security"
+                        android:textColor="@color/text_hint_color"
+                        android:textSize="@dimen/text_size" />
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="0.2"
                         android:layout_height="match_parent"
+                        android:layout_weight="0.2"
                         android:gravity="center">
+
                         <ImageView
                             android:id="@+id/email_line"
                             android:layout_width="100dp"
@@ -104,19 +107,21 @@
                     <fontspackageForTextView.Regular
                         android:id="@+id/email_tv"
                         android:layout_width="0dp"
-                        android:layout_weight="0.2"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/email"
+                        android:layout_weight="0.2"
+                        android:drawableTop="@drawable/ic_tick_mark"
                         android:gravity="center"
+                        android:text="@string/email"
                         android:textColor="@color/text_hint_color"
-                        android:textSize="@dimen/text_size"
-                        android:drawableTop="@drawable/ic_tick_mark" />
+                        android:textSize="@dimen/text_size" />
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="0.2"
                         android:layout_height="match_parent"
+                        android:layout_weight="0.2"
                         android:gravity="center">
+
                         <ImageView
                             android:id="@+id/security_line"
                             android:layout_width="100dp"
@@ -127,22 +132,20 @@
                     </LinearLayout>
 
 
-
-
                     <fontspackageForTextView.Regular
                         android:id="@+id/welcome_tv"
                         android:layout_width="0dp"
-                        android:layout_weight="0.2"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:layout_weight="0.2"
+                        android:drawableTop="@drawable/ic_tick_mark"
                         android:gravity="center"
                         android:text="@string/welcome_txt"
                         android:textColor="@color/text_hint_color"
-                        android:textSize="@dimen/text_size"
-                        android:drawableTop="@drawable/ic_tick_mark"/>
+                        android:textSize="@dimen/text_size" />
                 </LinearLayout>
 
-             <!--   <ImageView
+                <!--   <ImageView
                     android:id="@+id/security_mark_ic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -663,6 +666,32 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cityTV">
 
+                    <EditText
+                        android:id="@+id/cityET"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/enter_city_"
+                        android:inputType="text"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/text_black_color"
+                        android:textColorHint="@color/text_hint_color" />
+                </RelativeLayout>
+                <!-- <RelativeLayout
+                    android:id="@+id/cityRL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/ic_gray_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cityTV">
+
                     <fontspackageForTextView.Regular
                         android:id="@+id/select_cityTV"
                         android:layout_width="match_parent"
@@ -686,7 +715,7 @@
                         android:layout_centerInParent="true"
                         android:layout_marginEnd="10dp"
                         app:srcCompat="@drawable/ic_dropdown" />
-                </RelativeLayout>
+                </RelativeLayout>-->
 
                 <fontspackageForTextView.Regular
                     android:id="@+id/pinCodeTV"
@@ -846,8 +875,8 @@
 
                     <ImageView
                         android:id="@+id/pancardImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
                         android:layout_marginTop="-4dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/sample_pan_card" />
@@ -989,6 +1018,47 @@
                 </RelativeLayout>
 
                 <fontspackageForTextView.Regular
+                    android:id="@+id/adharNoTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/enter_aadha"
+                    android:textColor="@color/text_hint_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/docRL" />
+
+                <RelativeLayout
+                    android:id="@+id/adharNoRL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/ic_gray_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/adharNoTV">
+
+                    <EditText
+                        android:id="@+id/adharNoET"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/enter_aadha"
+                        android:inputType="text"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/text_black_color"
+                        android:textColorHint="@color/text_hint_color" />
+                </RelativeLayout>
+
+
+
+                <fontspackageForTextView.Regular
                     android:id="@+id/reDocTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -998,7 +1068,7 @@
                     android:text="@string/re_enter_aa"
                     android:textColor="@color/text_hint_color"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/docRL" />
+                    app:layout_constraintTop_toBottomOf="@+id/adharNoRL" />
 
                 <RelativeLayout
                     android:id="@+id/reDocRL"
@@ -1045,9 +1115,8 @@
 
                     <ImageView
                         android:id="@+id/docImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="-18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"      android:layout_marginTop="-18dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/sample_aadhaar_card_front" />
 
@@ -1111,6 +1180,7 @@
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/uploadDocBackImageRL"
                     android:layout_width="match_parent"
@@ -1129,9 +1199,8 @@
 
                     <ImageView
                         android:id="@+id/docBackImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="-18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"     android:layout_marginTop="-18dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/sample_aadhaar_card_front" />
 
@@ -1195,6 +1264,7 @@
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/uploadDocSelfiImageRL"
                     android:layout_width="match_parent"
@@ -1213,8 +1283,8 @@
 
                     <ImageView
                         android:id="@+id/docSelfiImage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
                         android:layout_marginTop="-18dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/document_selfie" />

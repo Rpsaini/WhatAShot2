@@ -31,7 +31,7 @@
             app:tint="@color/black" />
 
         <fontpackageforEdittext.Regular
-            android:id="@+id/tvTitle"
+            android:id="@+id/etSearchCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -58,12 +58,10 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/currency_search_rv"
+            android:id="@+id/country_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/search_country_item"/>
+            android:layout_height="match_parent" />
     </RelativeLayout>
 </LinearLayout>

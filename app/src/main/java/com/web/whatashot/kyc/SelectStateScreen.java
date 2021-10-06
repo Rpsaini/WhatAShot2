@@ -1,5 +1,6 @@
 package com.web.whatashot.kyc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,14 +22,8 @@ import com.app.vollycommunicationlib.CallBack;
 import com.app.vollycommunicationlib.ServerHandler;
 import com.web.whatashot.BaseActivity;
 import com.web.whatashot.DefaultConstants;
-import com.web.whatashot.MainActivity;
 import com.web.whatashot.R;
-import com.web.whatashot.adapters.OrderDetailsAdapter;
-import com.web.whatashot.fragments.HomeFragment;
-import com.web.whatashot.kyc.adapter.SelectCountryAdapter;
-import com.web.whatashot.pairdetailfragments.PairDetailView;
-import com.web.whatashot.search_currency.SearchCurrencyScreen;
-import com.web.whatashot.search_currency.adapter.SearchCurrencyAdapter;
+import com.web.whatashot.kyc.adapter.SelectStateAdapter;
 import com.web.whatashot.utilpackage.UtilClass;
 
 import org.json.JSONArray;
@@ -41,16 +35,17 @@ import java.util.Map;
 
 import animationpackage.AnimationForViews;
 
-public class SelectCountryScreen extends BaseActivity {
+public class SelectStateScreen extends BaseActivity {
     private static String TAG=SelectCountryScreen.class.getSimpleName();
     private ImageView backIC;
     private RecyclerView countryRV;
-    private SelectCountryScreen mSelectCountryScreen;
+    private SelectStateScreen mSelectCountryScreen;
     private RelativeLayout relativeLayout;
-    private SelectCountryAdapter mAdapter;
-    private  ArrayList<JSONObject> filteredAr=new ArrayList<>();
+    private SelectStateAdapter mAdapter;
+    private ArrayList<JSONObject> filteredAr=new ArrayList<>();
     private ArrayList<JSONObject> allDataAr=new ArrayList<>();
     private EditText etSearchCountry;
+    private String countryID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +53,9 @@ public class SelectCountryScreen extends BaseActivity {
         mSelectCountryScreen=this;
         initiateObj();
         initView();
-        getCountryList();
         setOnClickListener();
+        if(countryID!=null)
+        getStateByCountryID(countryID);
     }
 
     public void initiateObj()
@@ -76,6 +72,12 @@ public class SelectCountryScreen extends BaseActivity {
         countryRV=findViewById(R.id.country_rv);
         etSearchCountry=findViewById(R.id.etSearchCountry);
         relativeLayout =findViewById(R.id.rr_nodata_view);
+
+        Intent intent =getIntent();
+
+        if(intent.hasExtra("_id")){
+            countryID=intent.getExtras().getString("_id");
+        }
     }
 
     private void setOnClickListener(){
@@ -86,13 +88,15 @@ public class SelectCountryScreen extends BaseActivity {
             }
         });
     }
-    private void getCountryList()
+    private void getStateByCountryID(String country_id)
     {
 
         DefaultConstants.open_orders.clear();
         DefaultConstants.orders_history.clear();
 
         Map<String, String> m=new HashMap<>();
+        m.put("country_id",country_id);
+
         m.put("token",savePreferences.reterivePreference(mSelectCountryScreen, DefaultConstants.token)+"");
         m.put("DeviceToken",getDeviceToken()+"");
 
@@ -104,18 +108,17 @@ public class SelectCountryScreen extends BaseActivity {
 
 
 
-        serverHandler.sendToServer(mSelectCountryScreen, getApiUrl()+"get-all-countires", m, 0,headerMap, 20000, R.layout.progressbar, new CallBack() {
+        serverHandler.sendToServer(mSelectCountryScreen, getApiUrl()+"get-state-by-country", m, 0,headerMap, 20000, R.layout.progressbar, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {
                 try {
                     Log.e(TAG,"Response Data:"+dta);
 
-                  //  allDataAr=dta;
+                    //  allDataAr=dta;
                     JSONObject obj = new JSONObject(dta);
 
                     if (obj.getBoolean("status")) {
-                        JSONArray openAr = obj.getJSONArray("countries");
-                        Log.e(TAG,"Response Data openAr.length:"+openAr.length());
+                        JSONArray openAr = obj.getJSONArray("states");
                         for(int x=0;x<openAr.length();x++)
                         {
                             allDataAr.add(openAr.getJSONObject(x));
@@ -123,24 +126,21 @@ public class SelectCountryScreen extends BaseActivity {
                     }
                     else {
                         alertDialogs.alertDialog(mSelectCountryScreen, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
-                        @Override
-                        public void getDialogEvent(String buttonPressed)
-                        {
-                            unauthorizedAccess(obj);
-                        }
-                    });
+                            @Override
+                            public void getDialogEvent(String buttonPressed)
+                            {
+                                unauthorizedAccess(obj);
+                            }
+                        });
 
                     }
 
-
                    /*
 
-            {
-           "status":true,"countries":[{"id":"1","sortname":"AF","name":"Afghanistan","phonecode":"93"}
-
+          {"status":true,"states":[{"id":"1","name":"Andaman and Nicobar Islands"}
                */
 
-                setAdapterData();
+                    setAdapterData();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -155,10 +155,10 @@ public class SelectCountryScreen extends BaseActivity {
     {
         try
         {
-           filteredAr=allDataAr;
-            mAdapter = new SelectCountryAdapter(SelectCountryScreen.this, filteredAr);
+            filteredAr=allDataAr;
+            mAdapter = new SelectStateAdapter(SelectStateScreen.this, filteredAr);
             LinearLayoutManager horizontalLayoutManager
-                    = new LinearLayoutManager(SelectCountryScreen.this, LinearLayoutManager.VERTICAL, false);
+                    = new LinearLayoutManager(SelectStateScreen.this, LinearLayoutManager.VERTICAL, false);
             countryRV.setLayoutManager(horizontalLayoutManager);
             countryRV.setItemAnimator(new DefaultItemAnimator());
             countryRV.setAdapter(mAdapter);
@@ -219,3 +219,4 @@ public class SelectCountryScreen extends BaseActivity {
 
     }
 }
+

@@ -2,6 +2,7 @@ package com.web.whatashot.kyc;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Context;
@@ -10,12 +11,16 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,8 +28,14 @@ import android.widget.TextView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.dialogsnpickers.DialogCallBacks;
+import com.app.dialogsnpickers.SimpleDialog;
+import com.app.vollycommunicationlib.CallBack;
+import com.app.vollycommunicationlib.ServerHandler;
 import com.google.gson.Gson;
 import com.web.whatashot.BaseActivity;
 import com.web.whatashot.BuildConfig;
@@ -35,7 +46,12 @@ import com.web.whatashot.fileupload.ApiProduction;
 import com.web.whatashot.fileupload.RxAPICallHelper;
 import com.web.whatashot.fileupload.RxAPICallback;
 import com.web.whatashot.fileupload.ServerResponse;
+import com.web.whatashot.kyc.adapter.SelectCategorySubCategoryAdapter;
+import com.web.whatashot.utilpackage.UtilClass;
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -60,12 +76,15 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 {
     private ImageView backIc = null;
     private ImageView img_one;
-    private TextView lbl_one,btn_browse;
+    private TextView lbl_one,btn_browse,selectCountryTV,select_typeTV,select_stateTV;
+    RecyclerView select_category_recycle;
     private ImageView pancardImage,docImage,docBackImage,docSelfiImage;
     private RelativeLayout panUploadRL,docUploadRL,docBackUploadRL,docSelfiUploadRL;
     String imageType="pan";
     private ImageView commonImage;
-
+    private String countryID;
+    private EditText firstNameET,middleNameET,lastNameET,dobET,addressET,cityET,pinCodeET,panNumberET,rePanNumberET,adharNumberET,reAdharNumberET;
+    private String panCardImage="",adharCardFrontImage="",adharCardBackImage="",selfiImage="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,16 +97,25 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 
     private void initView() {
         backIc = findViewById(R.id.backIC);
+        selectCountryTV=findViewById(R.id.select_countryTV);
+        select_typeTV=findViewById(R.id.select_typeTV);
 
-    }
+        select_stateTV=findViewById(R.id.select_stateTV);
 
-    private void setOnClickListener() {
-        backIc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        firstNameET=findViewById(R.id.firstNameET);
+        middleNameET=findViewById(R.id.middleNameET);
+        lastNameET=findViewById(R.id.lastNameET);
+
+        dobET=findViewById(R.id.dobET);
+        addressET=findViewById(R.id.addressET);
+        cityET=findViewById(R.id.cityET);
+
+        pinCodeET=findViewById(R.id.pinCodeET);
+        panNumberET=findViewById(R.id.panNumberET);
+        rePanNumberET=findViewById(R.id.rePanNumberET);
+
+        adharNumberET=findViewById(R.id.adharNoET);
+        reAdharNumberET=findViewById(R.id.reDocET);
 
         pancardImage=findViewById(R.id.pancardImage);
         docImage=findViewById(R.id.docImage);
@@ -99,9 +127,206 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         docBackUploadRL=findViewById(R.id.docBackUploadRL);
         docSelfiUploadRL=findViewById(R.id.docSelfiUploadRL);
 
+        Intent intent =getIntent();
+        if(intent.hasExtra("country_name")){
+         selectCountryTV.setText(intent.getExtras().getString("country_name"));
+        }
+        if(intent.hasExtra("kyc_type")){
+            select_typeTV.setText(intent.getExtras().getString("kyc_type"));
+        }
+        if(intent.hasExtra("_id")){
+           countryID=intent.getExtras().getString("_id");
+        }
+    }
+
+    private void setOnClickListener() {
+        backIc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+       selectCountryTV.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent =new Intent(VerifyKycForPersonalInfoScreen.this,SelectCountryScreen.class);
+               startActivityForResult(intent,101);
+           }
+       });
+        select_stateTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(VerifyKycForPersonalInfoScreen.this,SelectStateScreen.class);
+                intent.putExtra("_id",countryID);
+                startActivityForResult(intent,102);
+            }
+        });
+
+        select_typeTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectTypeDialog();
+            }
+        });
+
+        findViewById(R.id.submitVerifyBT).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (firstNameET.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.firstname_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+                if (dobET.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.dob_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+                if (addressET.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.address_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+                if (select_stateTV.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.state_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+                if (cityET.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.city_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+                if (pinCodeET.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pincode_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+                if (panNumberET.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+                if (rePanNumberET.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+                if (!panNumberET.getText().toString().equals(rePanNumberET.getText().toString())){
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_number_match_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+
+                if (panCardImage.length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
 
 
+                if (adharNumberET.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
 
+                        }
+                    });
+                    return;
+                }
+                if (reAdharNumberET.getText().toString().length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+                if (!adharNumberET.getText().toString().equals(reAdharNumberET.getText().toString())){
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_number_match_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+
+                if (adharCardFrontImage.length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_front_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+
+                if (adharCardBackImage.length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_back_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+
+                if (selfiImage.length() == 0) {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.selfie_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+                    return;
+                }
+
+                saveKyc();
+            }
+        });
     }
 
     private void actions() {
@@ -137,10 +362,6 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                 browseImage();
             }
         });
-
-
-
-
 
     }
 
@@ -215,6 +436,21 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                             }
                         }
                     }
+                    break;
+                case 101://selectCountry
+                    if (imageReturnedIntent != null) {
+                        String countryName=  imageReturnedIntent.getExtras().getString("_name");
+                        countryID=imageReturnedIntent.getExtras().getString("_id");
+                        selectCountryTV.setText(countryName);
+                    }
+
+                    break;
+                case 102://selectState
+                    if (imageReturnedIntent != null) {
+                        String stateName=  imageReturnedIntent.getExtras().getString("_name");
+                        select_stateTV.setText(stateName);
+                    }
+
                     break;
             }
 
@@ -349,6 +585,18 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                         Gson gson = new Gson();
                         String json = gson.toJson(kyc_info);
                         System.out.println("Check image---"+json);
+                        if (imageType.equals("pan")){
+                           panCardImage="pan";
+                        }
+                        else if (imageType.equals("documnt_front")){
+                          adharCardFrontImage="documnt_front";
+                        }
+                        else if (imageType.equals("document_back")){
+                            adharCardBackImage="document_back";
+                        }
+                        else if (imageType.equals("selfie")){
+                             selfiImage="selfie";
+                        }
                        // savePreferences.savePreferencesData(UploadDocuments.this, json, AppSettings.kyc_details);
 //
 //
@@ -393,6 +641,147 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                         }
                     }
                 });
+            }
+        });
+
+    }
+    private void selectTypeDialog() {
+        try {
+
+            hideKeyboard(this);
+            SimpleDialog simpleDialog = new SimpleDialog();
+            final Dialog selectCategoryDialog = simpleDialog.simpleDailog(VerifyKycForPersonalInfoScreen.this, R.layout.select_category_dialog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+            select_category_recycle = selectCategoryDialog.findViewById(R.id.select_category_recycler);
+            ImageView img_hideview = selectCategoryDialog.findViewById(R.id.img_hideview);
+            final RelativeLayout ll_relativelayout = selectCategoryDialog.findViewById(R.id.ll_relativelayout);
+            final TextView select_title = selectCategoryDialog.findViewById(R.id.select_title);
+            final TextView select_sub_title = selectCategoryDialog.findViewById(R.id.select_sub_title);
+            final TextView tv_done = selectCategoryDialog.findViewById(R.id.tv_done);
+            animateUp(ll_relativelayout);
+            select_title.setText(getResources().getString(R.string.type));
+            select_sub_title.setText("");
+            JSONArray buisnessTypeAr = new JSONArray();
+            JSONObject type1 = new JSONObject();
+            type1.put("name", "personal");
+
+            JSONObject type2 = new JSONObject();
+            type2.put("name", "company");
+
+            buisnessTypeAr.put(type1);
+            buisnessTypeAr.put(type2);
+
+
+            initHomeCategory(buisnessTypeAr);
+
+
+
+            img_hideview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    downSourceDestinationView(ll_relativelayout, selectCategoryDialog);
+                }
+            });
+
+            tv_done.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    downSourceDestinationView(ll_relativelayout, selectCategoryDialog);
+
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void setKycType(String s){
+        if(!s.isEmpty()) {
+            select_typeTV.setText(s);
+        }
+        else {
+            select_typeTV.setText(getString(R.string.personal));
+
+        }
+
+    }
+    private void initHomeCategory(JSONArray dataAr) {
+        select_category_recycle.setNestedScrollingEnabled(false);
+        select_category_recycle.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false));
+        select_category_recycle.setHasFixedSize(true);
+        select_category_recycle.setItemAnimator(new DefaultItemAnimator());
+        SelectCategorySubCategoryAdapter horizontalCategoriesAdapter = new SelectCategorySubCategoryAdapter(dataAr, this);
+        select_category_recycle.setAdapter(horizontalCategoriesAdapter);
+    }
+    private void saveKyc()
+    {
+        Map<String, String> m=new HashMap<>();
+        m.put("kyc_type", select_typeTV.getText().toString());
+        m.put("country_id", countryID);
+        m.put("first_name", firstNameET.getText().toString());
+        m.put("last_name", lastNameET.getText().toString());
+        m.put("dob", dobET.getText().toString());
+        m.put("address", addressET.getText().toString());
+        m.put("state", select_stateTV.getText().toString());
+        m.put("city", cityET.getText().toString());
+        m.put("postal_code", pinCodeET.getText().toString());
+        m.put("pan_number", panNumberET.getText().toString());
+        m.put("document_type", "adhaar");
+        m.put("id_number", adharNumberET.getText().toString());
+
+        m.put("token",savePreferences.reterivePreference(this, DefaultConstants.token)+"");
+        m.put("DeviceToken",getDeviceToken()+"");
+        m.put("Version",getAppVersion()+"");
+        m.put("PlatForm", "Android");
+        m.put("Timestamp", System.currentTimeMillis()+"");
+        Map<String,String> headerMap=new HashMap<>();
+        headerMap.put("X-API-KEY", UtilClass.xApiKey);
+        headerMap.put("Rtoken", getNewRToken()+"");
+
+
+        new ServerHandler().sendToServer(this, getApiUrl()+"submit-kyc-request", m, 0,headerMap, 20000, R.layout.progressbar, new CallBack() {
+            @Override
+            public void getRespone(String dta, ArrayList<Object> respons) {
+                try {
+
+                    JSONObject obj = new JSONObject(dta);
+                    Log.d("Fait",obj+"");
+                    if (obj.getBoolean("status")) {
+                        try
+                        {
+                            if(obj.has("token"))
+                            {
+                                savePreferences.savePreferencesData(VerifyKycForPersonalInfoScreen.this,obj.getString("token"),DefaultConstants.token);
+                                savePreferences.savePreferencesData(VerifyKycForPersonalInfoScreen.this,obj.getString("r_token"),DefaultConstants.r_token);
+                            }
+
+                            alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                                @Override
+                                public void getDialogEvent(String buttonPressed) {
+                                    unauthorizedAccess(obj);
+                                }
+                            });
+
+
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+
+                    } else {alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+                            unauthorizedAccess(obj);
+                        }
+                    });
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 

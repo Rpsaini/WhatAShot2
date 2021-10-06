@@ -32,6 +32,14 @@
         android:theme="@style/Theme.UnitedExchange"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".kyc.SelectStateScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
+        <activity
+            android:name=".kyc.SelectCountryScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
+        <activity
             android:name=".search_currency.SearchCurrencyScreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WhatAShot"/>

@@ -18,10 +18,9 @@
 
         <ImageView
             android:id="@+id/img_countryIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_country"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -42,9 +41,9 @@
                 android:id="@+id/selectCountryCB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:layout_alignParentEnd="true"/>
+                android:layout_marginStart="10dp" />
 
         </RelativeLayout>
     </LinearLayout>
