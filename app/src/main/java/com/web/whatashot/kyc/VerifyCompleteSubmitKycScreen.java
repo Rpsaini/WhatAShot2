@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import animationpackage.AnimationForViews;
 
 public class VerifyCompleteSubmitKycScreen extends BaseActivity {
+    public static VerifyCompleteSubmitKycScreen mVerifyCompleteSubmitKycScreen;
     private ImageView backIc=null;
     private TextView completeKycBt,selectCountryTV,select_typeTV;
     RecyclerView select_category_recycle;
@@ -39,6 +40,7 @@ public class VerifyCompleteSubmitKycScreen extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.verify_complete_kyc_screen);
+        mVerifyCompleteSubmitKycScreen=this;
         initiateObj();
         initView();
         setOnClickListener();
@@ -49,16 +51,6 @@ public class VerifyCompleteSubmitKycScreen extends BaseActivity {
         completeKycBt=findViewById(R.id.complet_kycBT);
         selectCountryTV=findViewById(R.id.select_countryTV);
         select_typeTV=findViewById(R.id.select_typeTV);
-    }
-
-    public void initiateObj()
-    {
-        savePreferences = new SavePreferences();
-        serverHandler = new ServerHandler();
-        alertDialogs = new AlertDialogs();
-        validationRule = new ValidationRule();
-        animationForViews = new AnimationForViews();
-        changestatusBarColor(0);
     }
     private void setOnClickListener(){
         backIc.setOnClickListener(new View.OnClickListener() {

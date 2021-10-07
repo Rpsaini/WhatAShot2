@@ -15,14 +15,14 @@ import com.web.whatashot.R;
 
 public class VerifyKycAccountDetailsScreen extends BaseActivity {
 
+    public static VerifyKycAccountDetailsScreen mVerifyKycAccountDetailsScreen;
     private TextView submitVerifyBT=null;
-    private Context mContext=null;
     private ImageView backIC=null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.verify_submit_account_screen);
-        mContext=this;
+        mVerifyKycAccountDetailsScreen=this;
         initView();
         setOnClickListener();
     }
@@ -36,7 +36,7 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
         submitVerifyBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(mContext, VerifyCompleteSubmitKycScreen.class);
+                Intent intent =new Intent(mVerifyKycAccountDetailsScreen, VerifyCompleteSubmitKycScreen.class);
                 startActivity(intent);
             }
         });

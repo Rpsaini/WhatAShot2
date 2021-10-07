@@ -35,6 +35,7 @@ public class SettingProfileScreen extends BaseActivity {
     private Dialog mobRegDialog;
     private Dialog mobRegOtpDialog;
     private Dialog mobRegSuccessDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

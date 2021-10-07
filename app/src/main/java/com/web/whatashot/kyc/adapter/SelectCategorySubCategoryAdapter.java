@@ -28,11 +28,16 @@ public class SelectCategorySubCategoryAdapter extends RecyclerView.Adapter<Selec
     private AppCompatActivity pActivity;
     private String imageUrl="";
     private  CheckBox commonChekBox;
-    private String categoryName=null;
+    private String type=null;
 
     public SelectCategorySubCategoryAdapter(JSONArray ar, AppCompatActivity paActiviity) {
         datAr = ar;
         pActivity = paActiviity;
+    }
+    public SelectCategorySubCategoryAdapter(JSONArray ar, AppCompatActivity paActiviity,String type) {
+        datAr = ar;
+        pActivity = paActiviity;
+        this.type=type;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -96,37 +101,66 @@ public class SelectCategorySubCategoryAdapter extends RecyclerView.Adapter<Selec
             catch (Exception e){
                 e.printStackTrace();
             }
-
-
         }
         if(pActivity instanceof VerifyKycForPersonalInfoScreen)
         {
-            try {
-                JSONObject object = (JSONObject) datAr.get(position);
-                String type = object.getString("name");
-                holder.category_name.setText(type);
-                holder.category_image.setVisibility(View.GONE);
-                holder.chk_selectcategory.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        try
-                        {
-                            if (commonChekBox != null) {
-                                commonChekBox.setChecked(false);
+            if(type.equals("doc")){
+                try {
+                    JSONObject object = (JSONObject) datAr.get(position);
+                    String type = object.getString("name");
+                    holder.category_name.setText(type);
+                    holder.category_image.setVisibility(View.GONE);
+                    holder.chk_selectcategory.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            try
+                            {
+                                if (commonChekBox != null) {
+                                    commonChekBox.setChecked(false);
+                                }
+                                commonChekBox = holder.chk_selectcategory;
+                                ((VerifyKycForPersonalInfoScreen) pActivity).setDocType(type);
+
                             }
-                            commonChekBox = holder.chk_selectcategory;
-                            ((VerifyKycForPersonalInfoScreen) pActivity).setKycType(type);
-
+                            catch(Exception e) {
+                                e.printStackTrace();
+                            }
                         }
-                        catch(Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                    });
 
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
             }
-            catch (Exception e){
-                e.printStackTrace();
+            else {
+                try {
+                    JSONObject object = (JSONObject) datAr.get(position);
+                    String type = object.getString("name");
+                    holder.category_name.setText(type);
+                    holder.category_image.setVisibility(View.GONE);
+                    holder.chk_selectcategory.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            try
+                            {
+                                if (commonChekBox != null) {
+                                    commonChekBox.setChecked(false);
+                                }
+                                commonChekBox = holder.chk_selectcategory;
+                                ((VerifyKycForPersonalInfoScreen) pActivity).setKycType(type);
+
+                            }
+                            catch(Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
             }
 
 
