@@ -1134,6 +1134,7 @@
                             android:orientation="vertical">
 
                             <fontspackageForTextView.Regular
+                                android:id="@+id/uploadFrontDocTitleTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
@@ -1200,7 +1201,8 @@
                     <ImageView
                         android:id="@+id/docBackImage"
                         android:layout_width="match_parent"
-                        android:layout_height="220dp"     android:layout_marginTop="-18dp"
+                        android:layout_height="220dp"
+                        android:layout_marginTop="-18dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/sample_aadhaar_card_front" />
 
@@ -1218,6 +1220,7 @@
                             android:orientation="vertical">
 
                             <fontspackageForTextView.Regular
+                                android:id="@+id/uploadBackDocTitleTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"

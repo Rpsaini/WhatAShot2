@@ -78,9 +78,10 @@ import retrofit2.Response;
 
 public class VerifyKycForPersonalInfoScreen extends BaseActivity
 {
+    public static VerifyKycForPersonalInfoScreen mVerifyKycForPersonalInfoScreen;
     private ImageView backIc = null;
     private ImageView img_one;
-    private TextView lbl_one,btn_browse,selectCountryTV,select_typeTV,select_stateTV;
+    private TextView lbl_one,btn_browse,selectCountryTV,select_typeTV,select_stateTV,select_DocTypeTV,adharNoTV,reDocTV,uploadFrontDocTitleTV,uploadBackDocTitleTV;
     RecyclerView select_category_recycle;
     private ImageView pancardImage,docImage,docBackImage,docSelfiImage;
     private RelativeLayout panUploadRL,docUploadRL,docBackUploadRL,docSelfiUploadRL;
@@ -89,10 +90,12 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
     private String countryID;
     private EditText firstNameET,middleNameET,lastNameET,dobET,addressET,cityET,pinCodeET,panNumberET,rePanNumberET,adharNumberET,reAdharNumberET;
     private String panCardImage="",adharCardFrontImage="",adharCardBackImage="",selfiImage="";
+    private String docType="adhaar";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.verify_profile_details_screen);
+        mVerifyKycForPersonalInfoScreen=this;
         initiateObj();
         initView();
         setOnClickListener();
@@ -105,6 +108,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         select_typeTV=findViewById(R.id.select_typeTV);
 
         select_stateTV=findViewById(R.id.select_stateTV);
+        select_DocTypeTV=findViewById(R.id.select_DocTypeTV);
 
         firstNameET=findViewById(R.id.firstNameET);
         middleNameET=findViewById(R.id.middleNameET);
@@ -130,6 +134,14 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         docUploadRL=findViewById(R.id.docUploadRL);
         docBackUploadRL=findViewById(R.id.docBackUploadRL);
         docSelfiUploadRL=findViewById(R.id.docSelfiUploadRL);
+
+        adharNoTV=findViewById(R.id.adharNoTV);
+        reDocTV=findViewById(R.id.reDocTV);
+        uploadFrontDocTitleTV=findViewById(R.id.uploadFrontDocTitleTV);
+        uploadBackDocTitleTV=findViewById(R.id.uploadBackDocTitleTV);
+
+
+
 
         Intent intent =getIntent();
         if(intent.hasExtra("country_name")){
@@ -173,7 +185,12 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                 selectTypeDialog();
             }
         });
-
+        select_DocTypeTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectDocTypeDialog();
+            }
+        });
         findViewById(R.id.submitVerifyBT).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -271,7 +288,20 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 
 
                 if (adharNumberET.getText().toString().length() == 0) {
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                    String msg="";
+                    if(docType.equals("adhaar")){
+                        msg="Enter Aadhaar number";
+                    }
+                    else if(docType.equals("passport")){
+                        msg="Enter Passport number";
+                    }
+                    else if(docType.equals("driving-license")){
+                        msg="Enter Driving-License number";
+                    }
+                    else if(docType.equals("voter-id")){
+                        msg="Enter Voter-ID number";
+                    }
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required),msg, getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
 
@@ -279,16 +309,51 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                     });
                     return;
                 }
-                if (reAdharNumberET.getText().toString().length() == 0) {
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+              /*  if (reAdharNumberET.getText().toString().length() == 0) {
+                    String msg="";
+                    if(docType.equals("adhaar")){
+                        msg="Enter Aadhaar number";
+                    }
+                    else if(docType.equals("passport")){
+                        msg="Enter Passport number";
+                    }
+                    else if(docType.equals("driving-license")){
+                        msg="Enter Driving-License number";
+                    }
+                    else if(docType.equals("voter-id")){
+                        msg="Enter Voter-ID number";
+                    }
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required),msg, getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
 
                         }
                     });
                     return;
-                }
+                }*/
                 if (!adharNumberET.getText().toString().equals(reAdharNumberET.getText().toString())){
+
+                    String msg="";
+                    if(docType.equals("adhaar")){
+                        msg="Aadhaar Number must be match.";
+                    }
+                    else if(docType.equals("passport")){
+                        msg="Passport Number must be match.";
+                    }
+                    else if(docType.equals("driving-license")){
+                        msg="Driving-License Number must be match.";
+                    }
+                    else if(docType.equals("voter-id")){
+                        msg="Voter-ID Number must be match.";
+                    }
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required),msg, getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                        @Override
+                        public void getDialogEvent(String buttonPressed) {
+
+                        }
+                    });
+
+
                     alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_number_match_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
@@ -601,21 +666,11 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                         else if (imageType.equals("selfie")){
                              selfiImage="selfie";
                         }
-                       // savePreferences.savePreferencesData(UploadDocuments.this, json, AppSettings.kyc_details);
-//
-//
-//                        savePreferences.savePreferencesData(UploadDocuments.this, t.body().getToken(), AppSettings.token);
-//                        savePreferences.savePreferencesData(UploadDocuments.this, t.body().getR_token(), AppSettings.r_token);
-//
-//
-                        alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.app_name), t.body().getMsg(), "ok", "", new DialogCallBacks() {
-                            @Override
-                            public void getDialogEvent(String buttonPressed) {
 
-                            }
-                        });
-                    }
-                    else {
+
+
+                    } else {
+
                         alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.app_name), t.body().getMsg(), "ok", "", new DialogCallBacks() {
                             @Override
                             public void getDialogEvent(String buttonPressed) {
@@ -718,6 +773,16 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         SelectCategorySubCategoryAdapter horizontalCategoriesAdapter = new SelectCategorySubCategoryAdapter(dataAr, this);
         select_category_recycle.setAdapter(horizontalCategoriesAdapter);
     }
+    private void initHomeCategory(JSONArray dataAr,String type) {
+        select_category_recycle.setNestedScrollingEnabled(false);
+        select_category_recycle.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false));
+        select_category_recycle.setHasFixedSize(true);
+        select_category_recycle.setItemAnimator(new DefaultItemAnimator());
+        SelectCategorySubCategoryAdapter horizontalCategoriesAdapter = new SelectCategorySubCategoryAdapter(dataAr, this,type);
+        select_category_recycle.setAdapter(horizontalCategoriesAdapter);
+    }
+
     private void saveKyc()
     {
         Map<String, String> m=new HashMap<>();
@@ -731,7 +796,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         m.put("city", cityET.getText().toString());
         m.put("postal_code", pinCodeET.getText().toString());
         m.put("pan_number", panNumberET.getText().toString());
-        m.put("document_type", "adhaar");
+        m.put("document_type", docType);
         m.put("id_number", adharNumberET.getText().toString());
 
         m.put("token",savePreferences.reterivePreference(this, DefaultConstants.token)+"");
@@ -751,6 +816,8 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 
                     JSONObject obj = new JSONObject(dta);
                     Log.d("Fait",obj+"");
+                  /*  {"status":true,"msg":"Your KYC details have been submitted successfully","code":200}
+                 */
                     if (obj.getBoolean("status")) {
                         try
                         {
@@ -764,8 +831,13 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                                 @Override
                                 public void getDialogEvent(String buttonPressed) {
                                     unauthorizedAccess(obj);
+                                    VerifyKycForPersonalInfoScreen.mVerifyKycForPersonalInfoScreen.finish();
+                                    VerifyKycAccountDetailsScreen.mVerifyKycAccountDetailsScreen.finish();
+                                    VerifyCompleteSubmitKycScreen.mVerifyCompleteSubmitKycScreen.finish();
+
                                 }
                             });
+
 
 
                         }
@@ -774,7 +846,8 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                             e.printStackTrace();
                         }
 
-                    } else {alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                    } else {
+                        alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
                             unauthorizedAccess(obj);
@@ -788,6 +861,118 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 
             }
         });
+
+    }
+
+    private void selectDocTypeDialog() {
+        try {
+
+            hideKeyboard(this);
+            SimpleDialog simpleDialog = new SimpleDialog();
+            final Dialog selectCategoryDialog = simpleDialog.simpleDailog(VerifyKycForPersonalInfoScreen.this, R.layout.select_category_dialog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+            select_category_recycle = selectCategoryDialog.findViewById(R.id.select_category_recycler);
+            ImageView img_hideview = selectCategoryDialog.findViewById(R.id.img_hideview);
+            final RelativeLayout ll_relativelayout = selectCategoryDialog.findViewById(R.id.ll_relativelayout);
+            final TextView select_title = selectCategoryDialog.findViewById(R.id.select_title);
+            final TextView select_sub_title = selectCategoryDialog.findViewById(R.id.select_sub_title);
+            final TextView tv_done = selectCategoryDialog.findViewById(R.id.tv_done);
+            animateUp(ll_relativelayout);
+            select_title.setText(getResources().getString(R.string.document_ty));
+            select_sub_title.setText("");
+            JSONArray buisnessTypeAr = new JSONArray();
+
+            JSONObject adhaar = new JSONObject();
+            adhaar.put("name", "adhaar");
+
+            JSONObject passport = new JSONObject();
+            passport.put("name", "passport");
+
+            JSONObject driving_license = new JSONObject();
+            driving_license.put("name", "driving-license");
+
+            JSONObject voter_id = new JSONObject();
+            voter_id.put("name", "voter-id");
+
+            buisnessTypeAr.put(adhaar);
+            buisnessTypeAr.put(passport);
+            buisnessTypeAr.put(driving_license);
+            buisnessTypeAr.put(voter_id);
+
+
+
+            initHomeCategory(buisnessTypeAr,"doc");
+
+
+
+            img_hideview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    downSourceDestinationView(ll_relativelayout, selectCategoryDialog);
+                }
+            });
+
+            tv_done.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    downSourceDestinationView(ll_relativelayout, selectCategoryDialog);
+
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void setDocType(String s){
+        if(!s.isEmpty()) {
+            select_DocTypeTV.setText(s);
+            docType=s;
+          /*  adhaar
+                    passport
+            driving-license
+            voter-id*/
+            if(s.equals("adhaar")){
+                adharNoTV.setText("Aadhaar Number*");
+                reDocTV.setText("Re-Enter Aadhaar Number*");
+                adharNumberET.setHint("Enter Aadhaar number");
+                reAdharNumberET.setHint("Enter Aadhaar number");
+                uploadFrontDocTitleTV.setText("Upload front of Aadhaar Card");
+                uploadBackDocTitleTV.setText("Upload back of Aadhaar Card");
+            }
+            if(s.equals("passport")){
+                adharNoTV.setText("Passport Number*");
+                reDocTV.setText("Re-Enter Passport Number*");
+                adharNumberET.setHint("Enter Passport number");
+                reAdharNumberET.setHint("Enter Passport number");
+                uploadFrontDocTitleTV.setText("Upload front of Passport Card");
+                uploadBackDocTitleTV.setText("Upload back of Passport Card");
+            }
+            if(s.equals("driving-license")){
+                adharNoTV.setText("Driving-License Number*");
+                reDocTV.setText("Re-Enter Driving-License Number*");
+                adharNumberET.setHint("Enter Driving-License number");
+                reAdharNumberET.setHint("Enter Driving-License number");
+                uploadFrontDocTitleTV.setText("Upload front of Driving-License Card");
+                uploadBackDocTitleTV.setText("Upload back of Driving-License Card");
+            }
+            if(s.equals("voter-id")){
+                adharNoTV.setText("Voter-ID Number*");
+                reDocTV.setText("Re-Enter Voter-ID Number*");
+                adharNumberET.setHint("Enter Voter-ID number");
+                reAdharNumberET.setHint("Enter Voter-ID number");
+                uploadFrontDocTitleTV.setText("Upload front of Voter-ID Card");
+                uploadBackDocTitleTV.setText("Upload back of Voter-ID Card");
+            }
+        }
+        else {
+            docType="adhaar";
+            select_DocTypeTV.setText(getString(R.string.personal));
+            adharNoTV.setText("Aadhaar Number*");
+            reDocTV.setText("Re-Enter Aadhaar Number*");
+            uploadFrontDocTitleTV.setText("Upload front of Aadhaar Card");
+            uploadBackDocTitleTV.setText("Upload back of Aadhaar Card");
+        }
 
     }
 

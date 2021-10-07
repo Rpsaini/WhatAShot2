@@ -78,10 +78,10 @@
     <string name="pan_number_match_warning">PAN Number must be match.</string>
     <string name="pan_image_warning">Select PAN Image.</string>
 
-    <string name="adhar_number_warning">Enter Aadhar Number.</string>
-    <string name="adhar_number_match_warning">Aadhar Number must be match.</string>
-    <string name="adhar_front_image_warning">Select Aadhar Front Image.</string>
-    <string name="adhar_back_image_warning">Select Aadhar Back Image.</string>
+    <string name="adhar_number_warning">Enter Aadhaar Number.</string>
+    <string name="adhar_number_match_warning">Aadhaar Number must be match.</string>
+    <string name="adhar_front_image_warning">Select Aadhaar Front Image.</string>
+    <string name="adhar_back_image_warning">Select Aadhaar Back Image.</string>
     <string name="selfie_image_warning">Select Selfie Image.</string>
 
     <string name="required">Required</string>
