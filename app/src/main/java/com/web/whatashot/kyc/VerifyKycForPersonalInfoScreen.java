@@ -825,6 +825,8 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                             {
                                 savePreferences.savePreferencesData(VerifyKycForPersonalInfoScreen.this,obj.getString("token"),DefaultConstants.token);
                                 savePreferences.savePreferencesData(VerifyKycForPersonalInfoScreen.this,obj.getString("r_token"),DefaultConstants.r_token);
+                                savePreferences.savePreferencesData(VerifyKycForPersonalInfoScreen.this,"1",DefaultConstants.kyc_status);
+
                             }
 
                             alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
@@ -939,6 +941,9 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                 reAdharNumberET.setHint("Enter Aadhaar number");
                 uploadFrontDocTitleTV.setText("Upload front of Aadhaar Card");
                 uploadBackDocTitleTV.setText("Upload back of Aadhaar Card");
+                docImage.setImageDrawable(getDrawable(R.drawable.sample_aadhaar_card_front_1));
+                docBackImage.setImageDrawable(getDrawable(R.drawable.sample_aadhaar_card_back_1));
+
             }
             if(s.equals("passport")){
                 adharNoTV.setText("Passport Number*");
@@ -947,6 +952,10 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                 reAdharNumberET.setHint("Enter Passport number");
                 uploadFrontDocTitleTV.setText("Upload front of Passport Card");
                 uploadBackDocTitleTV.setText("Upload back of Passport Card");
+
+                docImage.setImageDrawable(getDrawable(R.drawable.sample_passport_front_1));
+                docBackImage.setImageDrawable(getDrawable(R.drawable.sample_passport_baclk_1));
+
             }
             if(s.equals("driving-license")){
                 adharNoTV.setText("Driving-License Number*");
@@ -955,6 +964,10 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                 reAdharNumberET.setHint("Enter Driving-License number");
                 uploadFrontDocTitleTV.setText("Upload front of Driving-License Card");
                 uploadBackDocTitleTV.setText("Upload back of Driving-License Card");
+
+                docImage.setImageDrawable(getDrawable(R.drawable.sample_driving_licence_front_1));
+                docBackImage.setImageDrawable(getDrawable(R.drawable.sample_driving_licence_back_1));
+
             }
             if(s.equals("voter-id")){
                 adharNoTV.setText("Voter-ID Number*");
@@ -963,6 +976,10 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                 reAdharNumberET.setHint("Enter Voter-ID number");
                 uploadFrontDocTitleTV.setText("Upload front of Voter-ID Card");
                 uploadBackDocTitleTV.setText("Upload back of Voter-ID Card");
+
+                docImage.setImageDrawable(getDrawable(R.drawable.sample_voter_card_front_1));
+                docBackImage.setImageDrawable(getDrawable(R.drawable.sample_voter_card_back_1));
+
             }
         }
         else {
@@ -972,6 +989,9 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
             reDocTV.setText("Re-Enter Aadhaar Number*");
             uploadFrontDocTitleTV.setText("Upload front of Aadhaar Card");
             uploadBackDocTitleTV.setText("Upload back of Aadhaar Card");
+            docImage.setImageDrawable(getDrawable(R.drawable.sample_aadhaar_card_front_1));
+            docBackImage.setImageDrawable(getDrawable(R.drawable.sample_aadhaar_card_back_1));
+
         }
 
     }

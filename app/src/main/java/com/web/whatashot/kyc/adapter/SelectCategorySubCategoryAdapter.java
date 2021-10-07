@@ -28,7 +28,7 @@ public class SelectCategorySubCategoryAdapter extends RecyclerView.Adapter<Selec
     private AppCompatActivity pActivity;
     private String imageUrl="";
     private  CheckBox commonChekBox;
-    private String type=null;
+    private String type="";
 
     public SelectCategorySubCategoryAdapter(JSONArray ar, AppCompatActivity paActiviity) {
         datAr = ar;
