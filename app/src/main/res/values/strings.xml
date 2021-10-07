@@ -64,11 +64,35 @@
     <string name="veriry_acco">Verify Account</string>
     <string name="security">Security</string>
     <string name="welcome_txt">Welcome</string>
+    <string name="select_category">Select Type</string>
+    <string name="country_warning">Select the country field.</string>
+    <string name="firstname_warning">Enter The First Name.</string>
+    <string name="lastname_warning">Enter The Last Name.</string>
+    <string name="email_warning">Enter The Email.</string>
+    <string name="dob_warning">Enter The Date Of Birth(DD-MM-YYYY).</string>
+    <string name="address_warning">Enter The Address.</string>
+    <string name="state_warning">Select The State.</string>
+    <string name="city_warning">Enter The City.</string>
+    <string name="pincode_warning">Enter The Pin Code.</string>
+    <string name="pan_number_warning">Enter The PAN Number.</string>
+    <string name="pan_number_match_warning">PAN Number must be match.</string>
+    <string name="pan_image_warning">Select PAN Image.</string>
+
+    <string name="adhar_number_warning">Enter Aadhar Number.</string>
+    <string name="adhar_number_match_warning">Aadhar Number must be match.</string>
+    <string name="adhar_front_image_warning">Select Aadhar Front Image.</string>
+    <string name="adhar_back_image_warning">Select Aadhar Back Image.</string>
+    <string name="selfie_image_warning">Select Selfie Image.</string>
+
+    <string name="required">Required</string>
+    <string name="select_any_two">Select any two </string>
+    <string name="select_any_one">Select any one </string>
     <string name="select_your">Select Your Country</string>
+    <string name="search_country">Search Country</string>
     <string name="country">Country</string>
     <string name="select_coun">Select country</string>
     <string name="type">Type</string>
-    <string name="personal">Personal</string>
+    <string name="personal">personal</string>
     <string name="personal_in">Personal Info</string>
     <string name="first_name_">First Name*</string>
     <string name="middle_name">Middle Name</string>
@@ -76,6 +100,7 @@
     <string name="dd_mm_yyyy">DD-MM-YYYY</string>
     <string name="address_">Address*</string>
     <string name="enter_last_">Enter last name</string>
+    <string name="enter_city_">Enter City</string>
     <string name="state_">State*</string>
     <string name="select_stat">Select state</string>
     <string name="city_">City*</string>

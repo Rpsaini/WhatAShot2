@@ -53,7 +53,7 @@ public class SplashScreen extends BaseActivity {
                 if(savePreferences.reterivePreference(SplashScreen.this, UtilClass.isLogin).toString().equalsIgnoreCase("true"))
                 {
 
-                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                     Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                     startActivity(intent);
                     finish();
 
