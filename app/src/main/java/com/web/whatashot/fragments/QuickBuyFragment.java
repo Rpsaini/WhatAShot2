@@ -71,11 +71,6 @@ public class QuickBuyFragment extends Fragment {
     {
         view=inflater.inflate(R.layout.fragment_quick_buy, container, false);
         mainActivity= (MainActivity) getActivity();
-
-
-
-
-
         getQuickData();
         return view;
     }
