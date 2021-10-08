@@ -21,7 +21,6 @@ public class ActivityLogScreens extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_screen);
-
         initView();
         setOnClickListener();
         setAdapterData();

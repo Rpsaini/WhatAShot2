@@ -57,7 +57,7 @@ public class TransactionHistoryFragment extends Fragment {
         RecyclerView recycler_view_market = view.findViewById(R.id.transaction_history_recycler);
         RelativeLayout relativeLayout = view.findViewById(R.id.rr_nodata_view);
 
-        if (dataAr.size() < 0) {
+        if (dataAr.size() <=0) {
             relativeLayout.setVisibility(View.VISIBLE);
             recycler_view_market.setVisibility(View.GONE);
         } else {
