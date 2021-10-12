@@ -40,14 +40,14 @@
                     android:layout_centerVertical="true"
                     android:orientation="horizontal">
 
-                    <fontspackageForTextView.Regular
+                    <fontspackageForTextView.BoldMedium
                         android:id="@+id/txt_subpair"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="BTC"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size"
-                        android:textStyle="bold"></fontspackageForTextView.Regular>
+                        android:textStyle="bold"></fontspackageForTextView.BoldMedium>
 
                     <fontspackageForTextView.Regular
 

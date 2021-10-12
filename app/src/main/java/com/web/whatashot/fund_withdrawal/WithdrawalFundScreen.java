@@ -33,6 +33,8 @@ public class WithdrawalFundScreen extends BaseActivity {
     private EditText BTCAmountET,withdrawalFeesET,finalAmountET,remarksET,destinationAddressET;
     private TextView BTCAmountTV,amountTV,tvTitle;
     private String symbol;
+    double fee;
+    String fee_type="";
 
     private double availableBal=0;
     @Override
@@ -64,13 +66,13 @@ public class WithdrawalFundScreen extends BaseActivity {
             availableBal = Double.parseDouble(data.getString("available_balance"));
             symbol = data.getString("symbol");
 
-//   {"symbol":"ETH","type":"crypto","icon":"https:\/\/unitedexchange.io\/front\/resources\/img\/currency-icons\/ETH.png",
-//                    "available_balance":"36.73052727","avail_equivalent":"8872159.69 INR","total_balances":"36.73052727","total_equivalent":"8872159.69 USD"}
+             fee=Double.parseDouble(data.getString("fee"));
+             fee_type=data.getString("fee_type");
 
             tvTitle.setText(getResources().getString(R.string.withdraw)+" "+symbol);
             BTCAmountTV.setText("Enter " + symbol);
             amountTV.setText(availableBal + " " + symbol);
-            withdrawalFeesET.setText(".09");
+            withdrawalFeesET.setText(fee+" "+fee_type);
 
         }
         catch (Exception e)
@@ -121,7 +123,7 @@ public class WithdrawalFundScreen extends BaseActivity {
                 Intent intent=new Intent(WithdrawalFundScreen.this,ConfirmWithdrawalFundScreen.class);
                 intent.putExtra(DefaultConstants.destinationAddressET,destinationAddressET.getText().toString());
                 intent.putExtra(DefaultConstants.currenyAmount,BTCAmountET.getText().toString());
-                intent.putExtra(DefaultConstants.feeapplicable,withdrawalFeesET.getText().toString());
+                intent.putExtra(DefaultConstants.feeapplicable,fee+"");
                 intent.putExtra(DefaultConstants.total,finalAmountET.getText().toString());
                 intent.putExtra(DefaultConstants.remarks,remarksET.getText().toString());
                 intent.putExtra(DefaultConstants.symbol,symbol);
@@ -160,8 +162,19 @@ public class WithdrawalFundScreen extends BaseActivity {
                         return;
                     }
 
-                    double total=Double.parseDouble(s.toString())+Double.parseDouble(withdrawalFeesET.getText()+"");
-                    finalAmountET.setText(total+"");
+                    if(fee_type.equalsIgnoreCase("fixed"))
+                    {
+                        double total=Double.parseDouble(s.toString())+Double.parseDouble(fee+"");
+                        finalAmountET.setText(total+"");
+                    }
+                    else
+                    {
+
+                        double total=Double.parseDouble(s.toString())*fee/100;
+                          total=total+Double.parseDouble(s.toString());
+                        finalAmountET.setText(total+"");
+                    }
+
                 }
                 else
                 {

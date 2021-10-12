@@ -71,7 +71,7 @@ public class QuickBuyFragment extends Fragment {
     {
         view=inflater.inflate(R.layout.fragment_quick_buy, container, false);
         mainActivity= (MainActivity) getActivity();
-    //    getQuickData();
+    //  getQuickData();
         getQuickCurrency();
         return view;
     }
@@ -172,8 +172,10 @@ public class QuickBuyFragment extends Fragment {
             buyBalancefiat=Double.parseDouble(data.getString("term_balance"));
             sellBalanceMainPair=Double.parseDouble(data.getString("base_balance"));
 
+
             buy_price=data.getString("buy_price");
             sell_price=data.getString("sell_price");
+
 
 
 
@@ -246,6 +248,13 @@ public class QuickBuyFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     calculateOrderPrice();
+                }
+            });
+
+            buySellDialog.findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mainActivity.downSourceDestinationView(constraint_buysell,buySellDialog);
                 }
             });
 
@@ -549,16 +558,15 @@ public class QuickBuyFragment extends Fragment {
                         if (obj.has("token")) {
                             mainActivity.savePreferences.savePreferencesData(mainActivity, obj.getString("token"), DefaultConstants.token);
                             mainActivity.savePreferences.savePreferencesData(mainActivity, obj.getString("r_token"), DefaultConstants.r_token);
-
-                        }
+                          }
                         mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                             @Override
                             public void getDialogEvent(String buttonPressed) {
                                 showOrderPlacedConfirmDia.dismiss();
                                 mainActivity.downSourceDestinationView(constraint_buysell, buySellDialog);
-
                             }
                         });
+                        getQuickCurrency();
 
                     } else {
                         orderConfirm.setEnabled(true);

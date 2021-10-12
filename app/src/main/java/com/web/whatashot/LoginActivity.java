@@ -79,8 +79,8 @@ public class LoginActivity extends BaseActivity {
 //                  m.put("secret", sceretKey.getText().toString());
 //                  m.put("publickey", publicKey.getText().toString());
 
-                    m.put("username", publicKey.getText().toString());
-                    m.put("password", sceretKey.getText().toString());
+                    m.put("username", publicKey.getText().toString().trim());
+                    m.put("password", sceretKey.getText().toString().trim());
                     m.put("Version", getAppVersion());
                     m.put("PlatForm", "android");
                     m.put("Timestamp", System.currentTimeMillis() + "");
@@ -88,6 +88,8 @@ public class LoginActivity extends BaseActivity {
 
                     Map<String, String> headerMap = new HashMap<>();
                     headerMap.put("X-API-KEY", UtilClass.xApiKey);
+
+                    System.out.println("Login==="+m+"==="+headerMap);
 
 
                     new ServerHandler().sendToServer(LoginActivity.this, getApiUrl() + "login-authenticate-api", m, 0, headerMap, 20000, R.layout.progressbar, new CallBack() {
