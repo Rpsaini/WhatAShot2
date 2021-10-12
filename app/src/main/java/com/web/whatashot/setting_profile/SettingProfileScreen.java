@@ -69,7 +69,7 @@ public class SettingProfileScreen extends BaseActivity {
         findViewById(R.id.mobileValueTV).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMobileRegDialog();
+               // showMobileRegDialog();
             }
         });
         findViewById(R.id.currency_pr_layout).setOnClickListener(new View.OnClickListener() {

@@ -95,11 +95,12 @@
                          android:layout_height="match_parent"
                          android:gravity="center">
                          <ImageView
-                             android:id="@+id/email_line"
+                             android:id="@+id/submit_line"
                              android:layout_width="100dp"
                              android:layout_height="wrap_content"
                              android:layout_marginEnd="10dp"
-                             android:background="@drawable/ic_line" />
+                             android:background="@drawable/ic_line"
+                             app:tint="@color/line_color"/>
                      </LinearLayout>
 
                     <TextView
@@ -112,18 +113,20 @@
                         android:gravity="center"
                         android:textColor="@color/text_hint_color"
                         android:textSize="@dimen/text_size"
-                        android:drawableTop="@drawable/ic_review" />
+                        android:drawableTop="@drawable/ic_review"
+                        app:tint="@color/line_color"/>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="0.2"
                         android:layout_height="match_parent"
                         android:gravity="center">
                         <ImageView
-                            android:id="@+id/security_line"
+                            android:id="@+id/review_line"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:background="@drawable/ic_line" />
+                            android:background="@drawable/ic_line"
+                            app:tint="@color/line_color" />
 
                     </LinearLayout>
 
@@ -140,7 +143,8 @@
                         android:text="@string/done"
                         android:textColor="@color/text_hint_color"
                         android:textSize="@dimen/text_size"
-                        android:drawableTop="@drawable/ic_done"/>
+                        android:drawableTop="@drawable/ic_done"
+                        app:tint="@color/line_color"/>
                 </LinearLayout>
 
 
@@ -290,7 +294,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="20dp"
-                            android:text="@string/deposit_cry"
+                            android:text="@string/deposit_inr"
                             android:textColor="@color/hintTextColor"
                             android:textSize="@dimen/text_size" />
 
@@ -324,7 +328,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="20dp"
-                            android:text="@string/deposit_cry"
+                            android:text="@string/withdraw"
                             android:textColor="@color/hintTextColor"
                             android:textSize="@dimen/text_size" />
 

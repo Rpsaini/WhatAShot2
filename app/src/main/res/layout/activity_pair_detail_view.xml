@@ -164,6 +164,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:weightSum="5">
+
                 <fontspackageForTextView.Regular
                     android:id="@+id/txt_chart"
                     android:layout_width="0dp"
@@ -172,11 +173,12 @@
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_charts"
                     android:drawablePadding="5dp"
+                    android:drawableTint="@color/textcolor"
                     android:gravity="center"
                     android:text="Charts"
-                    android:drawableTint="@color/textcolor"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size"></fontspackageForTextView.Regular>
+
                 <fontspackageForTextView.Regular
                     android:id="@+id/txt_openOrders"
                     android:layout_width="0dp"

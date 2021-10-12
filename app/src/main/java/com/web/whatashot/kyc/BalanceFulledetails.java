@@ -62,6 +62,9 @@ public class BalanceFulledetails extends BaseActivity {
             });
             TextView tvTitle = findViewById(R.id.tvTitle);
             tvTitle.setText("Deposit "+symbol);
+            TextView notText=findViewById(R.id.pleas_cross);
+            String noteMsg="Please deposit only "+ symbol+" to this address. If you deposit any other coins, it will be lost forever.";
+            notText.setText(noteMsg);
 //          TextView txt_title = findViewById(R.id.txt_title);
 
 //          TextView total_balance = findViewById(R.id.total_balance);
@@ -165,6 +168,7 @@ public class BalanceFulledetails extends BaseActivity {
                                 copytext.setText(jsonObject.getString("address"));
                                 Bitmap bitmap = TextToImageEncode(jsonObject.getString("address"));
                                 qrImageView.setImageBitmap(bitmap);
+
                               }
                             catch(Exception e)
                             {

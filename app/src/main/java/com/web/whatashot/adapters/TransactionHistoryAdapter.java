@@ -61,7 +61,7 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
     @Override
     public int getItemCount()
     {
-        return moviesList.size()+20;
+        return moviesList.size();
     }
 
     @Override
