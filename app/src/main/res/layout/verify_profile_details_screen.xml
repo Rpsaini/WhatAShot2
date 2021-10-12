@@ -74,6 +74,7 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:weightSum="1"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toStartOf="@+id/header_line"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -241,6 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/ic_line"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/topBarLL" />
@@ -527,12 +529,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/dobTV">
 
-                    <EditText
+                    <fontspackageForTextView.Regular
                         android:id="@+id/dobET"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
                         android:hint="@string/dd_mm_yyyy"
+                        android:gravity="center|start"
                         android:inputType="text"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
@@ -762,6 +765,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:visibility="gone"
                     android:background="@drawable/ic_line"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -773,6 +777,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
+                    android:visibility="gone"
                     android:text="@string/pan_card"
                     android:textColor="@color/text_black_color"
                     android:textSize="@dimen/title_text_size"
@@ -787,6 +792,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/pan_number_"
+                    android:visibility="gone"
                     android:textColor="@color/text_hint_color"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/pan_card_info_tv" />
@@ -800,6 +806,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
+                    android:visibility="gone"
                     android:background="@drawable/ic_gray_border"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -825,6 +832,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
+                    android:visibility="gone"
                     android:text="@string/re_enter_pa"
                     android:textColor="@color/text_hint_color"
                     app:layout_constraintStart_toStartOf="parent"
@@ -839,6 +847,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
+                    android:visibility="gone"
                     android:background="@drawable/ic_gray_border"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -866,6 +875,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
+                    android:visibility="gone"
                     android:background="@drawable/ic_rectangle_dotted"
                     android:orientation="vertical"
                     android:padding="4dp"
@@ -1001,7 +1011,7 @@
                         android:inputType="text"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/aadhaar"
+                        android:text="@string/national_id"
                         android:textColor="@color/text_black_color"
                         android:textColorHint="@color/text_hint_color"
                         android:textSize="@dimen/text_size" />

@@ -2,6 +2,7 @@ package com.web.whatashot.kyc;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ClipData;
@@ -20,6 +21,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -63,6 +65,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -81,16 +84,17 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
     public static VerifyKycForPersonalInfoScreen mVerifyKycForPersonalInfoScreen;
     private ImageView backIc = null;
     private ImageView img_one;
-    private TextView lbl_one,btn_browse,selectCountryTV,select_typeTV,select_stateTV,select_DocTypeTV,adharNoTV,reDocTV,uploadFrontDocTitleTV,uploadBackDocTitleTV;
+    private TextView dobET,lbl_one,btn_browse,selectCountryTV,select_typeTV,select_stateTV,select_DocTypeTV,adharNoTV,reDocTV,uploadFrontDocTitleTV,uploadBackDocTitleTV;
     RecyclerView select_category_recycle;
     private ImageView pancardImage,docImage,docBackImage,docSelfiImage;
     private RelativeLayout panUploadRL,docUploadRL,docBackUploadRL,docSelfiUploadRL;
     String imageType="pan";
     private ImageView commonImage;
     private String countryID;
-    private EditText firstNameET,middleNameET,lastNameET,dobET,addressET,cityET,pinCodeET,panNumberET,rePanNumberET,adharNumberET,reAdharNumberET;
+    private EditText firstNameET,middleNameET,lastNameET,addressET,cityET,pinCodeET,panNumberET,rePanNumberET,adharNumberET,reAdharNumberET;
     private String panCardImage="",adharCardFrontImage="",adharCardBackImage="",selfiImage="";
     private String docType="adhaar";
+    private int mYear,mMonth,mDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,6 +144,14 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         uploadFrontDocTitleTV=findViewById(R.id.uploadFrontDocTitleTV);
         uploadBackDocTitleTV=findViewById(R.id.uploadBackDocTitleTV);
 
+        adharNoTV.setText("National ID Number*");
+        reDocTV.setText("Re-Enter National ID Number*");
+        adharNumberET.setHint("Enter National ID number");
+        reAdharNumberET.setHint("Enter National ID number");
+        uploadFrontDocTitleTV.setText("Upload front of National ID Card");
+        uploadBackDocTitleTV.setText("Upload back of National ID Card");
+        docImage.setImageDrawable(getDrawable(R.drawable.sample_aadhaar_card_front_1));
+        docBackImage.setImageDrawable(getDrawable(R.drawable.sample_aadhaar_card_back_1));
 
 
 
@@ -248,7 +260,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                     });
                     return;
                 }
-                if (panNumberET.getText().toString().length() == 0) {
+               /* if (panNumberET.getText().toString().length() == 0) {
                     alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
@@ -256,8 +268,8 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                         }
                     });
                     return;
-                }
-                if (rePanNumberET.getText().toString().length() == 0) {
+                }*/
+              /*  if (rePanNumberET.getText().toString().length() == 0) {
                     alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
@@ -274,9 +286,9 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                         }
                     });
                     return;
-                }
+                }*/
 
-                if (panCardImage.length() == 0) {
+           /*     if (panCardImage.length() == 0) {
                     alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
@@ -285,14 +297,14 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                     });
                     return;
                 }
-
+*/
 
                 if (adharNumberET.getText().toString().length() == 0) {
                     String msg="";
                     if(docType.equals("adhaar")){
-                        msg="Enter Aadhaar number";
+                        msg="Enter National ID number";
                     }
-                    else if(docType.equals("passport")){
+                /*    else if(docType.equals("passport")){
                         msg="Enter Passport number";
                     }
                     else if(docType.equals("driving-license")){
@@ -300,7 +312,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                     }
                     else if(docType.equals("voter-id")){
                         msg="Enter Voter-ID number";
-                    }
+                    }*/
                     alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required),msg, getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
@@ -335,9 +347,9 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 
                     String msg="";
                     if(docType.equals("adhaar")){
-                        msg="Aadhaar Number must be match.";
+                        msg="National ID Number must be match.";
                     }
-                    else if(docType.equals("passport")){
+                  /*  else if(docType.equals("passport")){
                         msg="Passport Number must be match.";
                     }
                     else if(docType.equals("driving-license")){
@@ -345,7 +357,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                     }
                     else if(docType.equals("voter-id")){
                         msg="Voter-ID Number must be match.";
-                    }
+                    }*/
                     alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required),msg, getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
@@ -353,18 +365,11 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                         }
                     });
 
-
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_number_match_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
-                        @Override
-                        public void getDialogEvent(String buttonPressed) {
-
-                        }
-                    });
                     return;
                 }
 
                 if (adharCardFrontImage.length() == 0) {
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_front_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.national_id_front_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
 
@@ -374,7 +379,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                 }
 
                 if (adharCardBackImage.length() == 0) {
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.adhar_back_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.national_id_back_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
 
@@ -394,6 +399,51 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                 }
 
                 saveKyc();
+            }
+        });
+        dobET.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                final DatePickerDialog datePickerDialog = new DatePickerDialog(VerifyKycForPersonalInfoScreen.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            String fmonth, fDate;
+                            int month;
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+//bjb
+                                try {
+                                    if (monthOfYear < 10 && dayOfMonth < 10) {
+
+                                        fmonth = "0" + monthOfYear;
+                                        month = Integer.parseInt(fmonth) + 1;
+                                        fDate = "0" + dayOfMonth;
+                                        String paddedMonth = String.format("%02d", month);
+                                        dobET.setText(fDate + "-" + paddedMonth + "-" + year);
+
+                                    } else {
+
+                                        fmonth = "0" + monthOfYear;
+                                        month = Integer.parseInt(fmonth) + 1;
+                                        String paddedMonth = String.format("%02d", month);
+                                        dobET.setText(dayOfMonth + "-" + paddedMonth + "-" + year);
+                                    }
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                datePickerDialog.show();
             }
         });
     }
@@ -795,7 +845,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         m.put("state", select_stateTV.getText().toString());
         m.put("city", cityET.getText().toString());
         m.put("postal_code", pinCodeET.getText().toString());
-        m.put("pan_number", panNumberET.getText().toString());
+        //m.put("pan_number", "pan");
         m.put("document_type", docType);
         m.put("id_number", adharNumberET.getText().toString());
 
@@ -808,6 +858,8 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         headerMap.put("X-API-KEY", UtilClass.xApiKey);
         headerMap.put("Rtoken", getNewRToken()+"");
 
+        System.out.println("request::"+m);
+        System.out.println("headerMap::"+headerMap);
 
         new ServerHandler().sendToServer(this, getApiUrl()+"submit-kyc-request", m, 0,headerMap, 20000, R.layout.progressbar, new CallBack() {
             @Override
@@ -884,9 +936,9 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
             JSONArray buisnessTypeAr = new JSONArray();
 
             JSONObject adhaar = new JSONObject();
-            adhaar.put("name", "adhaar");
+            adhaar.put("name", "National ID");
 
-            JSONObject passport = new JSONObject();
+         /*   JSONObject passport = new JSONObject();
             passport.put("name", "passport");
 
             JSONObject driving_license = new JSONObject();
@@ -894,11 +946,11 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 
             JSONObject voter_id = new JSONObject();
             voter_id.put("name", "voter-id");
-
+*/
             buisnessTypeAr.put(adhaar);
-            buisnessTypeAr.put(passport);
-            buisnessTypeAr.put(driving_license);
-            buisnessTypeAr.put(voter_id);
+           // buisnessTypeAr.put(passport);
+           // buisnessTypeAr.put(driving_license);
+            //buisnessTypeAr.put(voter_id);
 
 
 
@@ -929,23 +981,24 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
     public void setDocType(String s){
         if(!s.isEmpty()) {
             select_DocTypeTV.setText(s);
-            docType=s;
+
           /*  adhaar
                     passport
             driving-license
             voter-id*/
-            if(s.equals("adhaar")){
-                adharNoTV.setText("Aadhaar Number*");
-                reDocTV.setText("Re-Enter Aadhaar Number*");
-                adharNumberET.setHint("Enter Aadhaar number");
-                reAdharNumberET.setHint("Enter Aadhaar number");
-                uploadFrontDocTitleTV.setText("Upload front of Aadhaar Card");
-                uploadBackDocTitleTV.setText("Upload back of Aadhaar Card");
+            if(s.equals("National ID")){
+                docType="adhaar";
+                adharNoTV.setText("National ID Number*");
+                reDocTV.setText("Re-Enter National ID Number*");
+                adharNumberET.setHint("Enter National ID number");
+                reAdharNumberET.setHint("Enter National ID number");
+                uploadFrontDocTitleTV.setText("Upload front of National ID Card");
+                uploadBackDocTitleTV.setText("Upload back of National ID Card");
                 docImage.setImageDrawable(getDrawable(R.drawable.sample_aadhaar_card_front_1));
                 docBackImage.setImageDrawable(getDrawable(R.drawable.sample_aadhaar_card_back_1));
 
             }
-            if(s.equals("passport")){
+         /*   if(s.equals("passport")){
                 adharNoTV.setText("Passport Number*");
                 reDocTV.setText("Re-Enter Passport Number*");
                 adharNumberET.setHint("Enter Passport number");
@@ -980,7 +1033,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                 docImage.setImageDrawable(getDrawable(R.drawable.sample_voter_card_front_1));
                 docBackImage.setImageDrawable(getDrawable(R.drawable.sample_voter_card_back_1));
 
-            }
+            }*/
         }
         else {
             docType="adhaar";

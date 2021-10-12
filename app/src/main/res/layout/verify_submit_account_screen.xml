@@ -125,8 +125,7 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:background="@drawable/ic_line"
-                            app:tint="@color/line_color" />
+                            android:background="@drawable/ic_line" />
 
                     </LinearLayout>
 

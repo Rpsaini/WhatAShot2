@@ -24,27 +24,27 @@ public class SplashScreen extends BaseActivity {
         new SocketHandlers().createConnection();
         String loginData=savePreferences.reterivePreference(this, DefaultConstants.login_detail).toString();
 
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run()
-//                {
-//
-//                    if(savePreferences.reterivePreference(SplashScreen.this, UtilClass.isLogin).toString().equalsIgnoreCase("true"))
-//                    {
-//
-//                        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//
-//                    }
-//                    else
-//                    {
-//                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                    }
-//                }
-//            },2000);
+        //            new Handler().postDelayed(new Runnable() {
+        //                @Override
+        //                public void run()
+        //                {
+        //
+        //                    if(savePreferences.reterivePreference(SplashScreen.this, UtilClass.isLogin).toString().equalsIgnoreCase("true"))
+        //                    {
+        //
+        //                        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+        //                        startActivity(intent);
+        //                        finish();
+        //
+        //                    }
+        //                    else
+        //                    {
+        //                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+        //                        startActivity(intent);
+        //                        finish();
+        //                    }
+        //                }
+        //            },2000);
 
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
@@ -53,7 +53,7 @@ public class SplashScreen extends BaseActivity {
                 if(savePreferences.reterivePreference(SplashScreen.this, UtilClass.isLogin).toString().equalsIgnoreCase("true"))
                 {
 
-                     Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                     startActivity(intent);
                     finish();
 
