@@ -71,16 +71,17 @@ public class QuickBuyFragment extends Fragment {
     {
         view=inflater.inflate(R.layout.fragment_quick_buy, container, false);
         mainActivity= (MainActivity) getActivity();
-        getQuickData();
+    //    getQuickData();
+        getQuickCurrency();
         return view;
     }
 
 
-    private void showQuickBuyCurrency(ArrayList<JSONObject> quickAr)
+    private void showQuickBuyCurrency(JSONArray quickAr)
     {
         RecyclerView fiat_balance_recyclerview=view.findViewById(R.id.quick_buy_coin_recycler);
         RelativeLayout relativeLayout = view.findViewById(R.id.rr_nodata_view);
-        if (quickAr.size() == 0) {
+        if (quickAr.length() == 0) {
             relativeLayout.setVisibility(View.VISIBLE);
             fiat_balance_recyclerview.setVisibility(View.GONE);
         } else {
@@ -98,82 +99,53 @@ public class QuickBuyFragment extends Fragment {
     }
 
 
-//    private void getQuickCurrency()
-//    {
-//
-//        Map<String, String> m=new HashMap<>();
-//        m.put("currency", "BTC");
-//        m.put("page", "1");
-//        m.put("token",mainActivity.savePreferences.reterivePreference(mainActivity, DefaultConstants.token)+"");
-//        m.put("DeviceToken",mainActivity.getDeviceToken()+"");
-//
-//        Map<String,String> headerMap=new HashMap<>();
-//        headerMap.put("X-API-KEY", UtilClass.xApiKey);
-//        headerMap.put("Rtoken", mainActivity.getNewRToken()+"");
-//
-//
-//        new ServerHandler().sendToServer(mainActivity, mainActivity.getApiUrl()+"get-balances-call", m, 0,headerMap, 20000, R.layout.progressbar, new CallBack() {
-//            @Override
-//            public void getRespone(String dta, ArrayList<Object> respons) {
-//                try {
-//
-//                    JSONObject obj = new JSONObject(dta);
-//                    Log.d("Fait",obj+"");
-//                    if (obj.getBoolean("status")) {
-//                        try
-//                        {
-//                            if(obj.has("token"))
-//                            {
-//                                mainActivity.savePreferences.savePreferencesData(mainActivity,obj.getString("token"),DefaultConstants.token);
-//                                mainActivity.savePreferences.savePreferencesData(mainActivity,obj.getString("r_token"),DefaultConstants.r_token);
-//                            }
-//
-//                            JSONArray balances=obj.getJSONArray("balances");
-//                            JSONArray ctryptoAr=new JSONArray();
-//                            JSONArray fiatAr=new JSONArray();
-//                            for(int x=0;x<balances.length();x++)
-//                            {
-//                                String type=balances.getJSONObject(x).getString("type");
-//                                if(type.equalsIgnoreCase("fiat"))
-//                                {
-//                                    fiatAr.put(balances.getJSONObject(x));
-//                                }
-//                                else
-//                                {
-//                                    ctryptoAr.put(balances.getJSONObject(x));
-//                                }
-//                            }
-//                            showQuickBuyCurrency(fiatAr);
-//                        }
-//                        catch (Exception e)
-//                         {
-//                            e.printStackTrace();
-//                         }
-//
-//                    } else {mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
-//                        @Override
-//                        public void getDialogEvent(String buttonPressed) {
-//                            mainActivity.unauthorizedAccess(obj);
-//                        }
-//                    });
-//
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        });
+    private void getQuickCurrency() {
 
+        Map<String, String> m = new HashMap<>();
+        m.put("token", mainActivity.savePreferences.reterivePreference(mainActivity, DefaultConstants.token) + "");
+        m.put("DeviceToken", mainActivity.getDeviceToken() + "");
 
-    //}
-//    private void showImage(final String url, final ImageView header_img) {
-//
-//        Glide.with(mainActivity)
-//                .load(url)
-//                .apply(RequestOptions.bitmapTransform(new RoundedCorners(3)))
-//                .into(header_img);
-//    }
+        Map<String, String> headerMap = new HashMap<>();
+        headerMap.put("X-API-KEY", UtilClass.xApiKey);
+        headerMap.put("Rtoken", mainActivity.getNewRToken() + "");
+        new ServerHandler().sendToServer(mainActivity, mainActivity.getApiUrl() + "get-quick-buy-sell", m, 0, headerMap, 20000, R.layout.progressbar, new CallBack() {
+            @Override
+            public void getRespone(String dta, ArrayList<Object> respons) {
+                try {
+
+                    JSONObject obj = new JSONObject(dta);
+                    System.out.println("Data==="+obj);
+                    if (obj.getBoolean("status"))
+                    {
+                        try {
+                            if (obj.has("token"))
+                            {
+                                mainActivity.savePreferences.savePreferencesData(mainActivity, obj.getString("token"), DefaultConstants.token);
+                                mainActivity.savePreferences.savePreferencesData(mainActivity, obj.getString("r_token"), DefaultConstants.r_token);
+                            }
+                            JSONArray pairs_info=obj.getJSONArray("pairs_info");
+                            showQuickBuyCurrency(pairs_info);
+                        }
+                        catch(Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.Response), obj.getString("msg"), getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                            @Override
+                            public void getDialogEvent(String buttonPressed) {
+                                mainActivity.unauthorizedAccess(obj);
+                            }
+                        });
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
 
 
     ConstraintLayout constraint_buysell;
@@ -187,27 +159,30 @@ public class QuickBuyFragment extends Fragment {
     public NumberFormat formatter = new DecimalFormat("#0.0000");
     double buyBalancefiat=0,sellBalanceMainPair=0;
     String mainPair="",sub_pair="";
-    private  double buyatPrice=0;
     private String pair_id="";
-
+    String buy_price,sell_price;
     public void buysellDialog(JSONObject data) {
         try
         {
-            buy_fiat=getResources().getString(R.string.Rs);
+            buy_fiat="USDT";
             str_side = "buy";
-            String symbol = data.getString("symbol");
-            String ar[]=symbol.split("\\/");
-            mainPair=ar[0];
-            sub_pair=ar[1];
+            mainPair=data.getString("base");
+            sub_pair=data.getString("term");
             pair_id=data.getString("pair_id");
-            buyatPrice=Double.parseDouble(data.getString("price").replace(",",""));
+            buyBalancefiat=Double.parseDouble(data.getString("term_balance"));
+            sellBalanceMainPair=Double.parseDouble(data.getString("base_balance"));
 
-            System.out.println("Buy at==="+buyatPrice);
+            buy_price=data.getString("buy_price");
+            sell_price=data.getString("sell_price");
+
+
+
             SimpleDialog simpleDialog = new SimpleDialog();
             buySellDialog = simpleDialog.simpleDailog(mainActivity, R.layout.quick_buy_sell, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
 
             constraint_buysell = buySellDialog.findViewById(R.id.constraint_buysell);
             buySellDialog.setCancelable(true);
+
             mainActivity.animateUp(constraint_buysell);
             ed_amount=buySellDialog.findViewById(R.id.ed_amount);
 
@@ -218,9 +193,14 @@ public class QuickBuyFragment extends Fragment {
             ImageView sell_topBar = buySellDialog.findViewById(R.id.sell_topBar);
             TextView buyBTCBT = buySellDialog.findViewById(R.id.buyBTCBT);
             TextView coinTV = buySellDialog.findViewById(R.id.coinTV);
+            TextView txt_currencyname = buySellDialog.findViewById(R.id.txt_currencyname);
+            TextView txt_longname = buySellDialog.findViewById(R.id.txt_longname);
             coinTV.setText(buy_fiat);
             ed_amount.setText(buyBalancefiat+"");
             buyBTCBT.setText("Buy "+mainPair);
+            txt_currencyname.setText(mainPair);
+            txt_longname.setText("("+data.getString("base_name")+")");
+
 
             bindingbuyLL.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -325,28 +305,28 @@ public class QuickBuyFragment extends Fragment {
                     {
                         //inrValueTV.setText(formatter.format(buyBalancefiat)+" "+mainPair);
                         double amountPercentage=buyBalancefiat*25/100;
-                        ed_amount.setText(formatter.format(amountPercentage/buyatPrice));
+                        ed_amount.setText(formatter.format(amountPercentage));
 
                     }
                     else if(x==1)
                     {
                        // inrValueTV.setText(formatter.format(buyBalancefiat)+" "+mainPair);
                         double amountPercentage=buyBalancefiat*50/100;
-                        ed_amount.setText(formatter.format(amountPercentage/buyatPrice));
+                        ed_amount.setText(formatter.format(amountPercentage));
 
                     }
                     else if(x==2)
                     {
                         //inrValueTV.setText(formatter.format(buyBalancefiat)+" "+mainPair);
                         double amountPercentage=buyBalancefiat*75/100;
-                        ed_amount.setText(formatter.format(amountPercentage/buyatPrice));
+                        ed_amount.setText(formatter.format(amountPercentage));
 
                     }
                     else
                     {
                       //  inrValueTV.setText(formatter.format(buyBalancefiat)+" "+buy_fiat);
                         double amountPercentage=buyBalancefiat*100/100;
-                        ed_amount.setText(formatter.format(amountPercentage/buyatPrice));
+                        ed_amount.setText(formatter.format(amountPercentage));
 
                     }
                 }
@@ -362,22 +342,22 @@ public class QuickBuyFragment extends Fragment {
                     percentageAR.get(x).setTextColor(getResources().getColor(R.color.darkRed));
                     if(x==0)
                     {
-                      //  inrValueTV.setText(formatter.format(sellBalanceMainPair)+" "+mainPair);
+
                         ed_amount.setText(formatter.format(sellBalanceMainPair*25/100));
                     }
                     else if(x==1)
                     {
-                        //inrValueTV.setText(formatter.format(sellBalanceMainPair)+" "+mainPair);
+
                         ed_amount.setText(formatter.format(sellBalanceMainPair*50/100));
                     }
                     else if(x==2)
                     {
-                       // inrValueTV.setText(formatter.format(sellBalanceMainPair)+" "+mainPair);
+
                         ed_amount.setText(formatter.format(sellBalanceMainPair*75/100));
                     }
                     else
                     {
-                       // inrValueTV.setText(formatter.format(sellBalanceMainPair)+" "+mainPair);
+
                         ed_amount.setText(formatter.format(sellBalanceMainPair*100/100));
                     }
                 }
@@ -403,21 +383,7 @@ public class QuickBuyFragment extends Fragment {
     }
 
 
-    private void getQuickData() {
-        try {
 
-            ArrayList<JSONObject>  allDataAr = new ArrayList<>();
-            for (Map.Entry<String, JSONArray> m : HomeFragment.commonMap.entrySet()) {
-                JSONArray currencyAr = m.getValue();
-                for (int x = 0; x < currencyAr.length(); x++) {
-                    allDataAr.add(currencyAr.getJSONObject(x));
-                  }
-            }
-            showQuickBuyCurrency(allDataAr);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 
 
@@ -431,14 +397,26 @@ public class QuickBuyFragment extends Fragment {
             });
             return;
         }
-
-
         Map<String, String> m = new HashMap<>();
+        if(str_side.equalsIgnoreCase("buy"))
+        {
+
+
+            String buy=formatter.format(Double.parseDouble(ed_amount.getText().toString())/Double.parseDouble(sell_price));
+            System.out.println("Buy at=="+buy);
+            m.put("price", buy_price);
+            m.put("amount", buy);
+        }
+        else
+        {
+            m.put("price", sell_price);
+            m.put("amount", ed_amount.getText().toString());
+        }
         m.put("isherder", "true");
+        m.put("order_type", "market");
         m.put("pair_id", pair_id);
         m.put("side", str_side);
-        m.put("amount", ed_amount.getText().toString());
-        m.put("price", buyatPrice+"");
+
         m.put("market_type", "exchange");
         m.put("Version", mainActivity.getAppVersion());
         m.put("PlatForm", "android");
@@ -528,7 +506,7 @@ public class QuickBuyFragment extends Fragment {
 
 
             orderTotalamount.setText(obj.getString("total_price"));
-
+            orderType.setText(obj.getString("type"));
             orderPrice.setText(obj.getString("price"));
             orderVolume.setText(obj.getString("volume"));
             orderSide.setText(obj.getString("side"));

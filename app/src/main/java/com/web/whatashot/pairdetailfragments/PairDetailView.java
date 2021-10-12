@@ -766,6 +766,7 @@ public class PairDetailView extends BaseActivity
         m.put("stop_limit", ed_at_stop_price.getText()+"");
 
 
+        System.out.println("Before ---->"+m);
         calCulateOrder(m);
     }
 

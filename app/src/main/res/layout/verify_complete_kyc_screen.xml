@@ -847,6 +847,7 @@
 
 
                 <fontspackageForTextView.Regular
+                    android:visibility="gone"
                     android:id="@+id/skipForNowBT"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -863,7 +864,7 @@
 
                 <fontspackageForTextView.Regular
                     android:id="@+id/complet_kycBT"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
