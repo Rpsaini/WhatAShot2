@@ -175,8 +175,6 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
         });
 
 
-
-
         return popupWindow;
     }
 }

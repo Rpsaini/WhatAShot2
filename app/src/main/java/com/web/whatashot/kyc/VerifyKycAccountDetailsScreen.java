@@ -46,7 +46,8 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
       String kycStatus=  savePreferences.reterivePreference(mVerifyKycAccountDetailsScreen, DefaultConstants.kyc_status).toString();
       if(kycStatus.equals("1")){
           submitVerifyBT.setVisibility(View.GONE);
-
+          submit_line.setBackground(getResources().getDrawable(R.drawable.ic_select_line));
+          review_line.setBackground(getResources().getDrawable(R.drawable.ic_line));
           review_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_select_review, 0, 0);
           done_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_done, 0, 0);
 
@@ -57,10 +58,13 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
           review_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_select_review, 0, 0);
           done_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_select_done, 0, 0);
 
-
+          review_line.setBackground(getResources().getDrawable(R.drawable.ic_select_line));
+          submit_line.setBackground(getResources().getDrawable(R.drawable.ic_select_line));
 
       }
       else if(kycStatus.equals("3")){
+          review_line.setBackground(getResources().getDrawable(R.drawable.ic_line));
+          submit_line.setBackground(getResources().getDrawable(R.drawable.ic_line));
           submitVerifyBT.setVisibility(View.VISIBLE);
           review_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_review, 0, 0);
           done_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_done, 0, 0);

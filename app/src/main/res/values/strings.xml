@@ -22,7 +22,7 @@
     <string name="ruppeinr">Fund</string>
     <string name="hide_zeorbalance">Hide Zero Balances</string>
     <string name="converttowrx">Convert To WhatAShot</string>
-    <string name="passwordrule">Please, use atleast 1 uppercase, 1 lowercase 1 numeric &amp; atleast upto 8 characters</string>
+    <string name="passwordrule">Please, use atleast 1 uppercase, 1 lowercase , 1 special character, 1 numeric &amp; atleast upto 8 characters</string>
 
     <string-array name="orderType">
         <item>Market</item>
@@ -82,6 +82,11 @@
     <string name="adhar_number_match_warning">Aadhaar Number must be match.</string>
     <string name="adhar_front_image_warning">Select Aadhaar Front Image.</string>
     <string name="adhar_back_image_warning">Select Aadhaar Back Image.</string>
+
+    <string name="national_id_front_image_warning">Select National ID Front Image.</string>
+    <string name="national_id_back_image_warning">Select National ID Back Image.</string>
+
+
     <string name="selfie_image_warning">Select Selfie Image.</string>
 
     <string name="required">Required</string>
@@ -118,6 +123,7 @@
     <string name="document_ty">Document Type</string>
     <string name="document">Document</string>
     <string name="aadhaar">Aadhaar</string>
+    <string name="national_id">National ID</string>
     <string name="aadhaar_num">Aadhaar Number*</string>
     <string name="enter_aadha">Enter Aadhaar number</string>
     <string name="re_enter_aa">Re-Enter Aadhaar Number*</string>
