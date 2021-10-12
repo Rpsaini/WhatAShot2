@@ -280,10 +280,12 @@ public class QuickBuyFragment extends Fragment {
         if(str_side.equalsIgnoreCase("buy"))
         {
             inrValueTV.setText(buyBalancefiat+" "+buy_fiat);
+
         }
         else
         {
             inrValueTV.setText(sellBalanceMainPair +mainPair);
+
         }
 
         for(int x=0;x<percentageAR.size();x++)
@@ -304,6 +306,7 @@ public class QuickBuyFragment extends Fragment {
     {
         if(str_side.equalsIgnoreCase("buy"))
         {
+
             for(int x=0;x<percentageAR.size();x++)
             {
                 percentageAR.get(x).setTextColor(getResources().getColor(R.color.text_hint_color));

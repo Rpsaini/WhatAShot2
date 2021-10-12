@@ -72,7 +72,7 @@ public class WithdrawalFundScreen extends BaseActivity {
             tvTitle.setText(getResources().getString(R.string.withdraw)+" "+symbol);
             BTCAmountTV.setText("Enter " + symbol);
             amountTV.setText(availableBal + " " + symbol);
-            withdrawalFeesET.setText(fee+" "+fee_type);
+            withdrawalFeesET.setText(data.getString("fee")+" "+fee_type);
 
         }
         catch (Exception e)
