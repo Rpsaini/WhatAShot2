@@ -417,7 +417,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
-
+//bjb
                                 try {
                                     if (monthOfYear < 10 && dayOfMonth < 10) {
 
