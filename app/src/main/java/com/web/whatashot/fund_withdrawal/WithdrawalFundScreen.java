@@ -54,7 +54,7 @@ public class WithdrawalFundScreen extends BaseActivity {
         init();
         setOnClickListener();
     }
-
+//hghjgchhhh
     private void init() {
         try {
             proceedBT = findViewById(R.id.proceedBT);
