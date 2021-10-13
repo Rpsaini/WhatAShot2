@@ -72,7 +72,7 @@ public class WithdrawalFundScreen extends BaseActivity {
             desTagRL = findViewById(R.id.desTagRL);
             desfinalAmountET = findViewById(R.id.desfinalAmountET);
 
-
+              //show destination tag
             JSONObject data = new JSONObject(getIntent().getStringExtra("data"));
 
             availableBal = Double.parseDouble(data.getString("available_balance"));
