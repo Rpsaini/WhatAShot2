@@ -59,8 +59,10 @@ public class SearchCurrencyScreen extends BaseActivity {
     private void setAdapterData()
     {
         try
-         {
-            allDataAr = new ArrayList<>();
+        {
+        allDataAr = new ArrayList<>();
+        if(getIntent().getStringExtra(DefaultConstants.callfrom).equalsIgnoreCase(DefaultConstants.home))
+        {
             for (Map.Entry<String, JSONArray> m : HomeFragment.commonMap.entrySet())
             {
                 JSONArray currencyAr = m.getValue();
@@ -70,6 +72,15 @@ public class SearchCurrencyScreen extends BaseActivity {
                     filteredAr.add(currencyAr.getJSONObject(x));
                 }
             }
+        }
+        else if(getIntent().getStringExtra(DefaultConstants.callfrom).equalsIgnoreCase(DefaultConstants.fund))
+        {
+
+
+        }
+
+
+
 
             mAdapter = new SearchCurrencyAdapter(SearchCurrencyScreen.this, filteredAr);
             LinearLayoutManager horizontalLayoutManager

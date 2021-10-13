@@ -35,6 +35,7 @@ public class MainFundFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_main_fund, container, false);
+
         tablayout();
         return view;
     }
@@ -70,6 +71,7 @@ public class MainFundFragment extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
     }
 
 }

@@ -29,6 +29,7 @@ import org.json.JSONObject;
 public class MainActivity extends BaseActivity
 {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -55,8 +56,10 @@ public class MainActivity extends BaseActivity
 
         findViewById(R.id.img_search).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent=new Intent(MainActivity.this, SearchCurrencyScreen.class);
+                intent.putExtra(DefaultConstants.callfrom,DefaultConstants.home);
                 startActivity(intent);
             }
         });
@@ -75,6 +78,7 @@ public class MainActivity extends BaseActivity
 
     private void MarketFragment()
     {
+
         HomeFragment homeFragment = new HomeFragment();
         Bundle args = new Bundle();
         homeFragment.setArguments(args);
@@ -107,11 +111,21 @@ public class MainActivity extends BaseActivity
     }
 
 
-    private void replaceMainFragment(Fragment upcoming, String tag) {
-       FragmentTransaction ft_main = getSupportFragmentManager().beginTransaction();
+    private void replaceMainFragment(Fragment upcoming, String tag)
+    {
+        FragmentTransaction ft_main = getSupportFragmentManager().beginTransaction();
         ft_main.replace(R.id.fragment_container, upcoming);
         //ft_main.addToBackStack(tag);
         ft_main.commit();
+
+        if(tag.equalsIgnoreCase("home"))
+        {
+            findViewById(R.id.img_search).setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            findViewById(R.id.img_search).setVisibility(View.INVISIBLE);
+        }
     }
 
 

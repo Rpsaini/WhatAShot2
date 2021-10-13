@@ -159,7 +159,7 @@ public class FundAdapter extends RecyclerView.Adapter<FundAdapter.MyViewHolder> 
             public void onClick(View v) {
                 Intent intent =new Intent(ira1, WithdrawalFundScreen.class);
                 intent.putExtra("data", data);
-                ira1.startActivity(intent);
+                ira1.startActivityForResult(intent,1003);
                 popupWindow.dismiss();
             }
         });

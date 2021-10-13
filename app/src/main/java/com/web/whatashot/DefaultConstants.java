@@ -20,5 +20,9 @@ import java.util.ArrayList;
     public static String remarks="remarks";
     public static String symbol="symbol";
     public static String allDefaultCurrency="allDefaultCurrency";
+    public static String callfrom="callfrom";
+    public static String home="home";
+    public static String fund="fund";
+    public static String destinationtag="destinationtag";
     public static  ArrayList<JSONObject> open_orders=new ArrayList<>(),orders_history=new ArrayList<>();
 }

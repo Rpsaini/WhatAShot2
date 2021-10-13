@@ -54,7 +54,7 @@
     <string name="destination_address_txt">Destination Address</string>
     <string name="amount_txt">BTC Amount</string>
     <string name="withdrawal_fee_txt">Withdrawal Fee</string>
-    <string name="final_amount_txt">Final Amount</string>
+    <string name="final_amount_txt">Final Amount(You will get)</string>
     <string name="remarks_txt">Remarks</string>
     <string name="proceed_txt">Proceed</string>
     <string name="confirm_txt">Confirm</string>
@@ -245,6 +245,9 @@
     <string name="price">price</string>
     <string name="change">Change</string>
     <string name="total_portfolio">Total portfolio value</string>
-
+    <string name="youwillget">You will get</string>
+    <string name="destinationtag">Destination Tag</string>
+    <string name="destination_tag_txt">Destination Tag</string>
+    <string name="enter_destination_tag_txt">Enter Destination Tag</string>
 
 </resources>

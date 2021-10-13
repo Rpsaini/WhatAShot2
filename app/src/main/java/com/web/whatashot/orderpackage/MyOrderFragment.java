@@ -68,7 +68,7 @@ public class MyOrderFragment extends Fragment {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
          viewPager = (ViewPager) view.findViewById(R.id.pager);
 
-
+        mainActivity.findViewById(R.id.img_search).setVisibility(View.INVISIBLE);
     }
 
 

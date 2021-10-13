@@ -1,6 +1,7 @@
 package com.web.whatashot.fragments;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import com.web.whatashot.adapters.CurrencyPagerAdapter;
 import com.web.whatashot.adapters.MarketAdapter;
 import com.web.whatashot.communication.SocketHandlers;
 import com.google.android.material.tabs.TabLayout;
+import com.web.whatashot.search_currency.SearchCurrencyScreen;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -66,7 +68,6 @@ public class HomeFragment extends Fragment {
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -86,6 +87,7 @@ public class HomeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         mainActivity = (MainActivity) getActivity();
         getMarketTickers();
+
         return view;
     }
 
@@ -107,6 +109,8 @@ public class HomeFragment extends Fragment {
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         viewPager = (ViewPager) view.findViewById(R.id.pager);
+
+
     }
 
     void tablayout() {

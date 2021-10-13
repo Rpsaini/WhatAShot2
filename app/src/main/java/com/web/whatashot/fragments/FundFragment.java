@@ -1,5 +1,6 @@
 package com.web.whatashot.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -27,6 +28,7 @@ import com.web.whatashot.MainActivity;
 import com.web.whatashot.R;
 import com.web.whatashot.adapters.FiatCurrenciesAdapter;
 import com.web.whatashot.adapters.FundAdapter;
+import com.web.whatashot.search_currency.SearchCurrencyScreen;
 import com.web.whatashot.utilpackage.UtilClass;
 
 import org.json.JSONArray;
@@ -46,11 +48,7 @@ private Switch txt_switch;
 private TextView txt_total_fund_value;
 
 private ArrayList<JSONObject> fiatCurrencyAr=new ArrayList<>();
-private ArrayList<JSONObject>  cryptoeAr=new ArrayList<>();
-
-
-
-
+private ArrayList<JSONObject> cryptoeAr=new ArrayList<>();
 
    public FundFragment()
       {
@@ -88,8 +86,7 @@ private ArrayList<JSONObject>  cryptoeAr=new ArrayList<>();
         txt_total_fund_value=view.findViewById(R.id.txt_total_fund_value);
         final TextView txt_hide_show_balance=view.findViewById(R.id.txt_hide_show_balance);
 
-
-            txt_switch.setOnClickListener(new View.OnClickListener() {    @Override
+        txt_switch.setOnClickListener(new View.OnClickListener() {    @Override
             public void onClick(View v)
             {
                 try {
