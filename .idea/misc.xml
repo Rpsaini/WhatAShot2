@@ -30,6 +30,10 @@
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/activity_verify_captcha_java2.xml" value="0.15353260869565216" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/activity_verify_otp.xml" value="0.15353260869565216" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/activity_withdraw_inr.xml" value="0.15353260869565216" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/buy_sell_bottom_dialog.xml" value="0.11956521739130435" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/buy_sell_screen.xml" value="0.1" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/buy_slle_dialog.xml" value="0.11956521739130435" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/buysell_hills_lines.xml" value="0.1" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/deposti_coin_dialog.xml" value="0.5" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/fragment_fund.xml" value="0.15715579710144928" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/fragment_open_order.xml" value="0.1" />
@@ -38,6 +42,7 @@
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/market_order_list_row.xml" value="0.1" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/no_data_found.xml" value="0.12771739130434784" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/order_list_row.xml" value="0.33" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/quick_buy_sell.xml" value="0.18" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/search_country_item.xml" value="0.25" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/search_currency_screen.xml" value="0.1" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/select_category_dialog.xml" value="0.1" />
@@ -48,6 +53,7 @@
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/verify_profile_details_screen.xml" value="0.1895933014354067" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/verify_submit_account_screen.xml" value="0.42670537010159654" />
         <entry key="..\:/WhatAShot2/app/src/main/res/layout/witdraw_confrim_screen.xml" value="0.5" />
+        <entry key="..\:/WhatAShot2/app/src/main/res/layout/withdraw_screen.xml" value="0.33" />
       </map>
     </option>
   </component>

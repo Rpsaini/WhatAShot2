@@ -16,7 +16,7 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
 
     public static VerifyKycAccountDetailsScreen mVerifyKycAccountDetailsScreen;
     private TextView submitVerifyBT=null,review_tv,done_tv;
-    private ImageView backIC=null,submit_line,review_line;
+    private ImageView backIC=null,submit_line,review_line,withdraw_ic,deposit_inr_ic;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,8 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
         done_tv=findViewById(R.id.done_tv);
         submit_line=findViewById(R.id.submit_line);
         review_line=findViewById(R.id.review_line);
+        deposit_inr_ic=findViewById(R.id.deposit_inr_ic);
+        withdraw_ic=findViewById(R.id.withdraw_ic);
         backIC=findViewById(R.id.backIC);
     }
 
@@ -50,7 +52,8 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
           review_line.setBackground(getResources().getDrawable(R.drawable.ic_line));
           review_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_select_review, 0, 0);
           done_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_done, 0, 0);
-
+          withdraw_ic.setImageDrawable(getResources().getDrawable(R.drawable.ic_group_428));
+          deposit_inr_ic.setImageDrawable(getResources().getDrawable(R.drawable.ic_group_428));
 
       }
       else if(kycStatus.equals("2")){
@@ -61,6 +64,9 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
           review_line.setBackground(getResources().getDrawable(R.drawable.ic_select_line));
           submit_line.setBackground(getResources().getDrawable(R.drawable.ic_select_line));
 
+          withdraw_ic.setImageDrawable(getResources().getDrawable(R.drawable.ic_group_429));
+          deposit_inr_ic.setImageDrawable(getResources().getDrawable(R.drawable.ic_group_429));
+
       }
       else if(kycStatus.equals("3")){
           review_line.setBackground(getResources().getDrawable(R.drawable.ic_line));
@@ -68,7 +74,8 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
           submitVerifyBT.setVisibility(View.VISIBLE);
           review_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_review, 0, 0);
           done_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_done, 0, 0);
-
+          withdraw_ic.setImageDrawable(getResources().getDrawable(R.drawable.ic_group_428));
+          deposit_inr_ic.setImageDrawable(getResources().getDrawable(R.drawable.ic_group_428));
       }
     }
     private void setOnClickListener(){

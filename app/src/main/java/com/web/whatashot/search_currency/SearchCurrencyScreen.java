@@ -36,7 +36,7 @@ public class SearchCurrencyScreen extends BaseActivity {
     private EditText tvTitle;
     private  ArrayList<JSONObject> filteredAr=new ArrayList<>();
     private ArrayList<JSONObject> allDataAr=new ArrayList<>();
-
+//
 
     SearchCurrencyAdapter mAdapter;
 
