@@ -10,7 +10,7 @@ public class SocketHandlers {
     public void createConnection() {
            try
            {
-            socket = IO.socket("https://whatashot.io:2053/");
+            socket = IO.socket("https://whatashot.io:2083/");
             socket.connect();
             socket.on(Socket.EVENT_CONNECT,new Emitter.Listener() {
                 @Override
