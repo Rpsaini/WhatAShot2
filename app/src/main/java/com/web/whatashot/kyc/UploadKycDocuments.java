@@ -118,7 +118,7 @@ public class UploadKycDocuments extends BaseActivity
 
     private void browseImage()
     {
-        alertDialogs.alertDialog(UploadKycDocuments.this, getResources().getString(R.string.app_name), "Choose Image from", "Camera", "Gallery", new DialogCallBacks() {
+        alertDialogs.alertDialog(UploadKycDocuments.this, getResources().getString(R.string.app_name), "Choose less than 5 MB Image from", "Camera", "Gallery", new DialogCallBacks() {
             @Override
             public void getDialogEvent(String buttonPressed)
             {

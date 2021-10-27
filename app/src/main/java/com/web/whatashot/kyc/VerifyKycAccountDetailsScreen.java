@@ -46,7 +46,8 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
 
     private void changeHeaderLayoutColorByKycStatus(){
       String kycStatus=  savePreferences.reterivePreference(mVerifyKycAccountDetailsScreen, DefaultConstants.kyc_status).toString();
-      if(kycStatus.equals("1")){
+      if(kycStatus.equals("1"))
+      {
           submitVerifyBT.setVisibility(View.GONE);
           submit_line.setBackground(getResources().getDrawable(R.drawable.ic_select_line));
           review_line.setBackground(getResources().getDrawable(R.drawable.ic_line));
@@ -56,7 +57,8 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
           deposit_inr_ic.setImageDrawable(getResources().getDrawable(R.drawable.ic_group_428));
 
       }
-      else if(kycStatus.equals("2")){
+      else if(kycStatus.equals("2"))
+      {
           submitVerifyBT.setVisibility(View.GONE);
           review_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_select_review, 0, 0);
           done_tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_select_done, 0, 0);
@@ -77,6 +79,9 @@ public class VerifyKycAccountDetailsScreen extends BaseActivity {
           withdraw_ic.setImageDrawable(getResources().getDrawable(R.drawable.ic_group_428));
           deposit_inr_ic.setImageDrawable(getResources().getDrawable(R.drawable.ic_group_428));
       }
+
+
+
     }
     private void setOnClickListener(){
         submitVerifyBT.setOnClickListener(new View.OnClickListener() {

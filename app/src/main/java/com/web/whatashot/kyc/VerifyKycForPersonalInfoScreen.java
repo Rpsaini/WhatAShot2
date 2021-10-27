@@ -42,6 +42,7 @@ import com.app.vollycommunicationlib.CallBack;
 import com.app.vollycommunicationlib.ServerHandler;
 import com.google.gson.Gson;
 import com.web.whatashot.BaseActivity;
+
 import com.web.whatashot.BuildConfig;
 import com.web.whatashot.DefaultConstants;
 import com.web.whatashot.R;
@@ -73,6 +74,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import io.reactivex.Observable;
+import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -260,59 +262,14 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                     });
                     return;
                 }
-               /* if (panNumberET.getText().toString().length() == 0) {
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
-                        @Override
-                        public void getDialogEvent(String buttonPressed) {
 
-                        }
-                    });
-                    return;
-                }*/
-              /*  if (rePanNumberET.getText().toString().length() == 0) {
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_number_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
-                        @Override
-                        public void getDialogEvent(String buttonPressed) {
-
-                        }
-                    });
-                    return;
-                }
-                if (!panNumberET.getText().toString().equals(rePanNumberET.getText().toString())){
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_number_match_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
-                        @Override
-                        public void getDialogEvent(String buttonPressed) {
-
-                        }
-                    });
-                    return;
-                }*/
-
-           /*     if (panCardImage.length() == 0) {
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required), getResources().getString(R.string.pan_image_warning), getResources().getString(R.string.ok), "", new DialogCallBacks() {
-                        @Override
-                        public void getDialogEvent(String buttonPressed) {
-
-                        }
-                    });
-                    return;
-                }
-*/
 
                 if (adharNumberET.getText().toString().length() == 0) {
                     String msg="";
                     if(docType.equals("adhaar")){
                         msg="Enter National ID number";
                     }
-                /*    else if(docType.equals("passport")){
-                        msg="Enter Passport number";
-                    }
-                    else if(docType.equals("driving-license")){
-                        msg="Enter Driving-License number";
-                    }
-                    else if(docType.equals("voter-id")){
-                        msg="Enter Voter-ID number";
-                    }*/
+
                     alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required),msg, getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
@@ -321,43 +278,14 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                     });
                     return;
                 }
-              /*  if (reAdharNumberET.getText().toString().length() == 0) {
-                    String msg="";
-                    if(docType.equals("adhaar")){
-                        msg="Enter Aadhaar number";
-                    }
-                    else if(docType.equals("passport")){
-                        msg="Enter Passport number";
-                    }
-                    else if(docType.equals("driving-license")){
-                        msg="Enter Driving-License number";
-                    }
-                    else if(docType.equals("voter-id")){
-                        msg="Enter Voter-ID number";
-                    }
-                    alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required),msg, getResources().getString(R.string.ok), "", new DialogCallBacks() {
-                        @Override
-                        public void getDialogEvent(String buttonPressed) {
 
-                        }
-                    });
-                    return;
-                }*/
                 if (!adharNumberET.getText().toString().equals(reAdharNumberET.getText().toString())){
 
                     String msg="";
                     if(docType.equals("adhaar")){
                         msg="National ID Number must be match.";
                     }
-                  /*  else if(docType.equals("passport")){
-                        msg="Passport Number must be match.";
-                    }
-                    else if(docType.equals("driving-license")){
-                        msg="Driving-License Number must be match.";
-                    }
-                    else if(docType.equals("voter-id")){
-                        msg="Voter-ID Number must be match.";
-                    }*/
+
                     alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.Required),msg, getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {
@@ -488,7 +416,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
     int browseMode = 0;
 
     private void browseImage() {
-        alertDialogs.alertDialog(this, getResources().getString(R.string.app_name), "Choose Image from", "Camera", "Gallery", new DialogCallBacks() {
+        alertDialogs.alertDialog(this, getResources().getString(R.string.app_name), "Choose less than 5 MB Image from", "Camera", "Gallery", new DialogCallBacks() {
             @Override
             public void getDialogEvent(String buttonPressed) {
                 if (buttonPressed.equalsIgnoreCase("Camera")) {
@@ -530,9 +458,15 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                         Bitmap bmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoURI);
                         Uri uri = getImageUri(this, bmap);
                         selectedPath = getRealPathFromURI(uri);
-                        commonImage.setImageBitmap(bmap);
 
-                        senAndUploadFile();
+                        if(fileSize(selectedPath))
+                        {
+                            commonImage.setImageBitmap(bmap);
+                            senAndUploadFile();
+                        }
+
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -546,9 +480,12 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
                                 selectedPath = getRealPathFromURI(selectedImage);
                                 InputStream image_stream = getContentResolver().openInputStream(selectedImage);
                                 Bitmap bmap = BitmapFactory.decodeStream(image_stream);
-                                commonImage.setImageBitmap(bmap);
+                                if(fileSize(selectedPath))
+                                {
+                                    commonImage.setImageBitmap(bmap);
+                                    senAndUploadFile();
+                                }
 
-                                senAndUploadFile();
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -575,6 +512,43 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 
             // new ConvertImage().execute();
         }
+    }
+
+    private boolean fileSize(String  path)
+    {
+        System.out.println("path==="+path);
+        try {
+            File file = new File(path);
+            long length = file.length();
+            length = length/1024;
+            System.out.println("File Path : " + file.getPath() + ", File size : " + length +" KB");
+
+            if(length<=5000)
+            {
+                return  true;
+            }
+            else
+            {
+                alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.app_name), "Image size must be less than 5 MB.", "ok", "", new DialogCallBacks() {
+                    @Override
+                    public void getDialogEvent(String buttonPressed) {
+                    }
+                });
+                return  false;
+
+            }
+
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("Excep===="+e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+
+
+
     }
 
     static final int REQUEST_TAKE_PHOTO = 0;
