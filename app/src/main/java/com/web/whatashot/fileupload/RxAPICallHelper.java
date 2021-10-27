@@ -27,12 +27,10 @@ public class RxAPICallHelper {
 
         return observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-
                 .subscribe(new Consumer<T>()
                 {
                     @Override
                     public void accept(@NonNull T t) throws Exception {
-                        System.out.println("inside success---"+t.toString());
                         rxAPICallback.onSuccess(t);
                     }
                 }, new Consumer<Throwable>() {

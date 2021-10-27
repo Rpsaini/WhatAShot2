@@ -612,7 +612,7 @@ public class PairDetailView extends BaseActivity
                         double total = amount * atPrice;
                         ed_total_amount.setText(formatter.format(total) + "");
                     } else {
-                        System.out.println("Buy price=="+buy_price);
+
                          ed_total_amount.setText("0");
                         ed_at_price.setHint("0");
                         }
@@ -766,7 +766,7 @@ public class PairDetailView extends BaseActivity
         m.put("stop_limit", ed_at_stop_price.getText()+"");
 
 
-        System.out.println("Before ---->"+m);
+
         calCulateOrder(m);
     }
 
@@ -930,7 +930,7 @@ public class PairDetailView extends BaseActivity
             map.put("pair_id", pairId);
             map.put("type", "app");
 
-            System.out.println("Pair id===" + map);
+
             socketHandlers.socket.emit("broadcast_sent_server", map + "");
         } catch (Exception e) {
             e.printStackTrace();

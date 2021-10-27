@@ -185,6 +185,18 @@ public class RegisterActivity extends BaseActivity {
                     });
                     return;
                 }
+
+                 if (txt_phonenumber.getText().toString().length() <=8)
+                 {
+                     alertDialogs.alertDialog(RegisterActivity.this, getResources().getString(R.string.app_name), "Enter valid mobile number", "Ok", "", new DialogCallBacks() {
+                         @Override
+                         public void getDialogEvent(String buttonPressed) {
+
+                         }
+                     });
+                     return;
+                 }
+
                 if (validationRule.checkEmptyString(txt_username) == 0) {
                     alertDialogs.alertDialog(RegisterActivity.this, getResources().getString(R.string.app_name), "Enter Username", "Ok", "", new DialogCallBacks() {
                         @Override

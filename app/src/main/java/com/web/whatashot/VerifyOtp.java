@@ -279,7 +279,6 @@ public class VerifyOtp extends BaseActivity {
             obj.put("X-API-KEY", getXapiKey());
             obj.put("Rtoken", getNewRToken()+"");
 
-            System.out.println("Urll===="+getApiUrl() + getIntent().getStringExtra("url"));
             serverHandler.sendToServer(VerifyOtp.this, getApiUrl() + getIntent().getStringExtra("url"), m, 0, obj, 20000, R.layout.progressbar, new CallBack() {
                 @Override
                 public void getRespone(String dta, ArrayList<Object> respons) {
@@ -287,7 +286,7 @@ public class VerifyOtp extends BaseActivity {
                     try {
                         JSONObject jsonObject = new JSONObject(dta);
 
-                        System.out.println("data back==="+jsonObject);
+
                         if(jsonObject.getBoolean("status"))
                         {
                             //savePreferences.savePreferencesData(VerifyOtp.this,jsonObject.getString("api_key"), UtilClass.publickey);

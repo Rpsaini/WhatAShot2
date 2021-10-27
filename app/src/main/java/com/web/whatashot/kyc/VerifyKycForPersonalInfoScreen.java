@@ -106,6 +106,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         initView();
         setOnClickListener();
         actions();
+        setData();
     }
 
     private void initView() {
@@ -416,7 +417,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
     int browseMode = 0;
 
     private void browseImage() {
-        alertDialogs.alertDialog(this, getResources().getString(R.string.app_name), "Choose less than 5 MB Image from", "Camera", "Gallery", new DialogCallBacks() {
+        alertDialogs.alertDialog(this, getResources().getString(R.string.app_name), "Choose Image from", "Camera", "Gallery", new DialogCallBacks() {
             @Override
             public void getDialogEvent(String buttonPressed) {
                 if (buttonPressed.equalsIgnoreCase("Camera")) {
@@ -516,7 +517,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
 
     private boolean fileSize(String  path)
     {
-        System.out.println("path==="+path);
+
         try {
             File file = new File(path);
             long length = file.length();
@@ -529,7 +530,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
             }
             else
             {
-                alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.app_name), "Image size must be less than 5 MB.", "ok", "", new DialogCallBacks() {
+                alertDialogs.alertDialog(VerifyKycForPersonalInfoScreen.this, getResources().getString(R.string.app_name), getResources().getString(R.string.image_size), "ok", "", new DialogCallBacks() {
                     @Override
                     public void getDialogEvent(String buttonPressed) {
                     }
@@ -542,7 +543,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         }
         catch (Exception e)
         {
-            System.out.println("Excep===="+e.getMessage());
+
             e.printStackTrace();
         }
         return false;
@@ -832,8 +833,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
         headerMap.put("X-API-KEY", UtilClass.xApiKey);
         headerMap.put("Rtoken", getNewRToken()+"");
 
-        System.out.println("request::"+m);
-        System.out.println("headerMap::"+headerMap);
+
 
         new ServerHandler().sendToServer(this, getApiUrl()+"submit-kyc-request", m, 0,headerMap, 20000, R.layout.progressbar, new CallBack() {
             @Override
@@ -1020,6 +1020,39 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
             docBackImage.setImageDrawable(getDrawable(R.drawable.sample_aadhaar_card_back_1));
 
         }
+
+    }
+
+    private void setData()
+    {
+        try {
+
+            firstNameET=findViewById(R.id.firstNameET);
+            middleNameET=findViewById(R.id.middleNameET);
+            lastNameET=findViewById(R.id.lastNameET);
+
+            JSONObject data=new JSONObject(savePreferences.reterivePreference(this, DefaultConstants.login_detail).toString());
+
+
+           String dataSTR=data.getString("name");
+           if(dataSTR.contains(" "))
+           {
+                   String ar[]=dataSTR.split(" ");
+                   firstNameET.setText(ar[0].trim());
+                   lastNameET.setText(ar[1].trim());
+
+           }
+           else
+           {
+               firstNameET.setText(dataSTR);
+           }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
 
     }
 

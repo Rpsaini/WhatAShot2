@@ -100,7 +100,6 @@ public class BaseActivity extends AppCompatActivity {
     {
 //       return savePreferences.reterivePreference(BaseActivity.this, UtilClass.device_Token) + "";
         String deviceToken=savePreferences.reterivePreference(BaseActivity.this, UtilClass.device_Token) + "";
-        System.out.println("device token=="+deviceToken);
         if(deviceToken.length()==0)
         {
             final int min = 20;

@@ -152,7 +152,7 @@ public class ConfirmWithdrawalFundScreen extends BaseActivity
         headerMap.put("X-API-KEY", UtilClass.xApiKey);
         headerMap.put("Rtoken", getNewRToken() + "");
 
-        System.out.println("Before to send====>>"+map);
+
 
 
         new ServerHandler().sendToServer(ConfirmWithdrawalFundScreen.this, getApiUrl() + "proceed-withdraw", map, 0, headerMap, 20000, R.layout.progressbar, new CallBack() {

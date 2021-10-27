@@ -61,7 +61,7 @@ public class ChartFragment extends Fragment {
          height=height/density;
          width= width/density;
 
-        System.out.println("Height width==="+height+"=="+width);
+
         String url = pairDetailView.getApiUrl() + "chart-data?pair=" + pairDetailView.joinedPair+"&height="+(height-150)+"&width="+width;
 
 

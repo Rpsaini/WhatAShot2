@@ -250,4 +250,6 @@
     <string name="destination_tag_txt">Destination Tag</string>
     <string name="enter_destination_tag_txt">Enter Destination Tag</string>
 
+    <string name="image_size">Image size should not be grater than 5 MB.</string>
+
 </resources>

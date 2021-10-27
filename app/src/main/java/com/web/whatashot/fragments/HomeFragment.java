@@ -259,11 +259,7 @@ public class HomeFragment extends Fragment {
                                     final String lastprice = price_stats.getString("lastprice");
                                     final String volume = price_stats.getString("volume");
 
-
-                                     System.out.println("Data====>"+change+"=="+pair_id);
-
-
-                                     if(commonMap.size()>0)
+                                    if(commonMap.size()>0)
                                       {
                                           JSONObject data=tabsHeaderKeys.get(pagerselectedPos);
                                          JSONArray dataAr = commonMap.get(data.getString("pair_name"));
@@ -281,8 +277,7 @@ public class HomeFragment extends Fragment {
                                                    dataObj.put("volume", volume);
                                                    dataObj.put("change", change);
 
-                                                 System.out.println("Data after remove===" + dataObj);
-                                                 dataAr.put(x, dataObj);
+                                                   dataAr.put(x, dataObj);
                                                }
                                             }
                                          commonMap.put(data.getString("pair_name"), dataAr);

@@ -412,6 +412,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/firstNameTV">
 
                     <EditText
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:id="@+id/firstNameET"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -451,6 +452,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/middleNameTV">
 
                     <EditText
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:id="@+id/middleNameET"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -490,6 +492,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/lastNameTV">
 
                     <EditText
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:id="@+id/lastNameET"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -721,6 +724,7 @@
                 </RelativeLayout>-->
 
                 <fontspackageForTextView.Regular
+
                     android:id="@+id/pinCodeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -747,12 +751,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/pinCodeTV">
 
                     <EditText
+                        android:inputType="number"
                         android:id="@+id/pinCodeET"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
                         android:hint="@string/enter_code"
-                        android:inputType="text"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:textColor="@color/text_black_color"
@@ -1161,7 +1165,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="10dp"
-                                android:text="@string/on_desktop_"
+                                android:text="@string/image_size"
                                 android:textColor="@color/text_hint_color"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/personal_info_tv" />
@@ -1247,7 +1251,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="10dp"
-                                android:text="@string/on_desktop_"
+                                android:text="@string/image_size"
                                 android:textColor="@color/text_hint_color"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/personal_info_tv" />
@@ -1332,7 +1336,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="10dp"
-                                android:text="@string/on_desktop_"
+                                android:text="@string/image_size"
                                 android:textColor="@color/text_hint_color"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/personal_info_tv" />

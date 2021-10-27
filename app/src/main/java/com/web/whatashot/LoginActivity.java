@@ -89,20 +89,17 @@ public class LoginActivity extends BaseActivity {
                     Map<String, String> headerMap = new HashMap<>();
                     headerMap.put("X-API-KEY", UtilClass.xApiKey);
 
-                    System.out.println("Login==="+m+"==="+headerMap);
 
-                    System.out.println("user_request::"+m);
-                    System.out.println("header_request::"+headerMap);
                     new ServerHandler().sendToServer(LoginActivity.this, getApiUrl() + "login-authenticate-api", m, 0, headerMap, 20000, R.layout.progressbar, new CallBack() {
                         @Override
                         public void getRespone(String dta, ArrayList<Object> respons) {
                             try {
-                                System.out.println("Login===="+dta);
+
                                 JSONObject obj = new JSONObject(dta);
                                 if (obj.getBoolean("status")) {
                                     try {
 
-                                        System.out.println("Login===="+obj);
+
                                         savePreferences.savePreferencesData(LoginActivity.this, obj.getString("token"), DefaultConstants.token);
                                         savePreferences.savePreferencesData(LoginActivity.this, obj.getString("r_token"), DefaultConstants.r_token);
                                         Intent intent = new Intent(LoginActivity.this, VerifyOtp.class);

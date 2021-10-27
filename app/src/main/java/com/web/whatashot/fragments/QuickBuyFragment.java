@@ -114,7 +114,6 @@ public class QuickBuyFragment extends Fragment {
                 try {
 
                     JSONObject obj = new JSONObject(dta);
-                    System.out.println("Data==="+obj);
                     if (obj.getBoolean("status"))
                     {
                         try {
@@ -164,7 +163,7 @@ public class QuickBuyFragment extends Fragment {
     public void buysellDialog(JSONObject data) {
         try
         {
-            buy_fiat="USDT";
+            buy_fiat=data.getString("term");
             str_side = "buy";
             mainPair=data.getString("base");
             sub_pair=data.getString("term");
@@ -409,13 +408,24 @@ public class QuickBuyFragment extends Fragment {
             });
             return;
         }
+        if (Double.parseDouble(ed_amount.getText().toString()) == 0)
+        {
+            mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.Response), "Enter " + mainPair + " amount.", getResources().getString(R.string.ok), "", new DialogCallBacks() {
+                @Override
+                public void getDialogEvent(String buttonPressed) {
+                    //placeorder_slider.resetSlider();
+                }
+            });
+            return;
+        }
+
+
         Map<String, String> m = new HashMap<>();
         if(str_side.equalsIgnoreCase("buy"))
         {
 
 
             String buy=formatter.format(Double.parseDouble(ed_amount.getText().toString())/Double.parseDouble(sell_price));
-            System.out.println("Buy at=="+buy);
             m.put("price", buy_price);
             m.put("amount", buy);
         }
@@ -435,7 +445,7 @@ public class QuickBuyFragment extends Fragment {
         m.put("Timestamp", System.currentTimeMillis() + "");
         m.put(DefaultConstants.r_token, mainActivity.getNewRToken() + "");
         m.put("stop_limit", "");
-        System.out.println("Btc price==="+m);
+
 
 
         calCulateOrder(m);
@@ -595,7 +605,7 @@ public class QuickBuyFragment extends Fragment {
             JSONObject map = new JSONObject();
             map.put("pair_id", pairId);
             map.put("type", "app");
-            System.out.println("Pair id===" + map);
+
             new SocketHandlers().socket.emit("broadcast_sent_server", map + "");
         } catch (Exception e) {
             e.printStackTrace();

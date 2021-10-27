@@ -74,6 +74,7 @@
                 android:orientation="horizontal"
                 >
                 <fontpackageforEdittext.Regular
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:id="@+id/txt_fname"
                     android:paddingLeft="5dp"
                     android:maxLines="1"
@@ -103,6 +104,7 @@
                 ></fontspackageForTextView.Regular>
 
             <fontpackageforEdittext.Regular
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 android:id="@+id/txt_lastname"
                 android:paddingLeft="5dp"
                 android:layout_marginTop="5dp"
@@ -157,6 +159,7 @@
                 ></fontspackageForTextView.Regular>
 
             <fontpackageforEdittext.Regular
+                android:maxLength="11"
                 android:id="@+id/txt_phonenumber"
                 android:paddingLeft="5dp"
                 android:layout_marginTop="5dp"
