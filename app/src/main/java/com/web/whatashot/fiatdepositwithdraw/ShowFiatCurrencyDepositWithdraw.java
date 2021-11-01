@@ -270,7 +270,7 @@ public class ShowFiatCurrencyDepositWithdraw extends BaseActivity {
                         return;
                     }
                     if (validationRule.checkEmptyString(ed_bank_ifsc_code) == 0) {
-                        alertDialogs.alertDialog(ShowFiatCurrencyDepositWithdraw.this, getResources().getString(R.string.app_name), "Enter IFSC code.", getString(R.string.ok), "", new DialogCallBacks() {
+                        alertDialogs.alertDialog(ShowFiatCurrencyDepositWithdraw.this, getResources().getString(R.string.app_name), "Enter IFSC/IBAN code.", getString(R.string.ok), "", new DialogCallBacks() {
                             @Override
                             public void getDialogEvent(String buttonPressed) {
 

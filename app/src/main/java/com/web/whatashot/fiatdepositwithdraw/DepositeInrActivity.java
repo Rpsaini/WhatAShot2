@@ -133,7 +133,6 @@ public class DepositeInrActivity extends BaseActivity {
             obj.put("X-API-KEY", getXapiKey());
             obj.put("Rtoken", getNewRToken() + "");
 
-
             new ServerHandler().sendToServer(DepositeInrActivity.this, getApiUrl() + "fiat-deposit", m, 0, obj, 20000, R.layout.progressbar, new CallBack() {
                 @Override
                 public void getRespone(String dta, ArrayList<Object> respons) {

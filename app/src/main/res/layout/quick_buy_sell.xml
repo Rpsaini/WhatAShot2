@@ -113,6 +113,18 @@
                        android:text="" />
 
                </LinearLayout>
+
+
+               <TextView
+                   android:layout_marginTop="10dp"
+                   android:id="@+id/txt_buysellprice"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"
+                   android:textSize="15dp"
+                   android:paddingLeft="4dp"
+                   android:text="" />
+
                <androidx.constraintlayout.widget.ConstraintLayout
 
                    android:id="@+id/buy_CL"

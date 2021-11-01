@@ -234,7 +234,7 @@
     <string name="account_num">Account Number</string>
     <string name="enter_accou">Enter account aumber</string>
     <string name="re_enter_ac">Re-Enter Account Number</string>
-    <string name="ifsc_code">IFSC Code</string>
+    <string name="ifsc_code">IFSC/IBAN Code</string>
     <string name="account_typ">Account Type</string>
     <string name="savings">Savings</string>
     <string name="save">Save</string>
@@ -264,7 +264,7 @@
     <string name="bank_details">Bank Details</string>
     <string name="bank_name_">Bank Name :</string>
     <string name="bank_enter_name">Enter Bank Name</string>
-    <string name="bank_enter_ifsc">Enter IFSC Code</string>
+    <string name="bank_enter_ifsc">Enter IFSC/IBAN Code</string>
     <string name="bank_enter_account_number">Enter Account Number</string>
     <string name="bank_confirm_account_number">Confirm Account Number</string>
     <string name="bank_enter_account_holdername">Enter Account Holder Name</string>

@@ -175,7 +175,7 @@ public class QuickBuyFragment extends Fragment {
             buy_price=data.getString("buy_price");
             sell_price=data.getString("sell_price");
 
-
+//
 
 
             SimpleDialog simpleDialog = new SimpleDialog();
@@ -196,17 +196,20 @@ public class QuickBuyFragment extends Fragment {
             TextView coinTV = buySellDialog.findViewById(R.id.coinTV);
             TextView txt_currencyname = buySellDialog.findViewById(R.id.txt_currencyname);
             TextView txt_longname = buySellDialog.findViewById(R.id.txt_longname);
+            TextView txt_buysellprice = buySellDialog.findViewById(R.id.txt_buysellprice);
             coinTV.setText(buy_fiat);
             ed_amount.setText(buyBalancefiat+"");
             buyBTCBT.setText("Buy "+mainPair);
             txt_currencyname.setText(mainPair);
             txt_longname.setText("("+data.getString("base_name")+")");
-
+            txt_buysellprice.setText(buy_price+" "+buy_fiat);
+            txt_buysellprice.setTextColor(getResources().getColor(R.color.green));
 
             bindingbuyLL.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
-                {
+                {txt_buysellprice.setText(buy_price+" "+buy_fiat);
+                    txt_buysellprice.setTextColor(getResources().getColor(R.color.green));
                     str_side = "buy";
                     ed_amount.setHint("0");
                     ed_amount.setText(buyBalancefiat+"");
@@ -227,6 +230,8 @@ public class QuickBuyFragment extends Fragment {
             sell_LL.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    txt_buysellprice.setText(sell_price+" "+buy_fiat);
+                    txt_buysellprice.setTextColor(getResources().getColor(R.color.app_red_color));
                     str_side = "sell";
                     ed_amount.setHint("0");
                     ed_amount.setText(sellBalanceMainPair+"");

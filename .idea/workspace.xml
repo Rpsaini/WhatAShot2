@@ -38,13 +38,42 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8b39339-cb8b-4239-9da2-7056d2d5b732" name="Default Changelist" comment="" />
+    <list default="true" id="f8b39339-cb8b-4239-9da2-7056d2d5b732" name="Default Changelist" comment="Done the complete functionality kyc Screen">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.aab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/DepositeInrActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/DepositeInrActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/ShowFiatCurrencyDepositWithdraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/ShowFiatCurrencyDepositWithdraw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/WithdrawInrActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/WithdrawInrActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/QuickBuyFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/QuickBuyFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/quick_buy_sell.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/quick_buy_sell.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[42006c2cc87e35b3]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -88,7 +117,7 @@
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="EXPORT_PRIVATE_KEY" value="false" />
-    <option name="KEY_STORE_PATH" value="D:\WhatAShot2\whatashot.jks" />
+    <option name="KEY_STORE_PATH" value="E:\Bakupall projects\What A Shot\FirstRelease\Jks\whatashot.jks" />
     <option name="KEY_ALIAS" value="whatashot" />
   </component>
   <component name="Git.Settings">
@@ -123,7 +152,7 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="E:/WebViewWebsites/JobHub/AndroidJava" />
+    <property name="last_opened_file_path" value="E:/piechart" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -272,26 +301,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="466" y="258" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1635317550872" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1635335488014">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1635772686424">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1635335488014" />
-    <state width="1323" height="476" key="GridCell.Tab.0.bottom" timestamp="1635322355266">
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1635772686424" />
+    <state width="1323" height="439" key="GridCell.Tab.0.bottom" timestamp="1635769060809">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="476" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1635322355266" />
-    <state width="1323" height="476" key="GridCell.Tab.0.center" timestamp="1635322355266">
+    <state width="1323" height="439" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1635769060809" />
+    <state width="1323" height="439" key="GridCell.Tab.0.center" timestamp="1635769060809">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="476" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1635322355266" />
-    <state width="1323" height="476" key="GridCell.Tab.0.left" timestamp="1635322355266">
+    <state width="1323" height="439" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1635769060809" />
+    <state width="1323" height="439" key="GridCell.Tab.0.left" timestamp="1635769060809">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="476" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1635322355266" />
-    <state width="1323" height="476" key="GridCell.Tab.0.right" timestamp="1635322355266">
+    <state width="1323" height="439" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1635769060809" />
+    <state width="1323" height="439" key="GridCell.Tab.0.right" timestamp="1635769060809">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="476" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1635322355266" />
+    <state width="1323" height="439" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1635769060809" />
     <state x="321" y="125" key="MultipleFileMergeDialog" timestamp="1634034734998">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -300,14 +329,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="499" y="141" key="chooseDestDirectoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1634037680618" />
-    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1634034717834">
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1635764156110">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1634034717834" />
-    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1635328931282">
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1635764156110" />
+    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1635768896018">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1635328931282" />
+    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1635768896018" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
