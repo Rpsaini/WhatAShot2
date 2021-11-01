@@ -64,6 +64,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WhatAShot"/>
         <activity
+            android:name=".setting_profile.SettingPasswordScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WhatAShot"/>
+        <activity
             android:name=".fund_withdrawal.WithdrawalFundScreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WhatAShot"/>

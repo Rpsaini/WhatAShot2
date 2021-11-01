@@ -72,6 +72,13 @@ public class SettingProfileScreen extends BaseActivity {
                // showMobileRegDialog();
             }
         });
+        findViewById(R.id.change_pwd_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SettingProfileScreen.this, SettingPasswordScreen.class);
+                startActivity(intent);
+            }
+        });
         findViewById(R.id.currency_pr_layout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

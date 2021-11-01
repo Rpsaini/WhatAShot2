@@ -189,6 +189,13 @@
     <string name="activity_lo">ACTIVITY LOGS</string>
     <string name="mobile">Mobile</string>
     <string name="register_ph">Register Phone</string>
+
+
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="update">Update</string>
+
     <string name="send_otp">SEND OTP</string>
     <string name="fa">2FA</string>
     <string name="email_verif">Email Verification</string>
@@ -230,6 +237,7 @@
     <string name="ifsc_code">IFSC Code</string>
     <string name="account_typ">Account Type</string>
     <string name="savings">Savings</string>
+    <string name="save">Save</string>
     <string name="current">Current</string>
     <string name="add_your_up">Add your UPI / VPA ID for UPI payments</string>
     <string name="upi_vpa_id">UPI / VPA Id</string>
@@ -239,6 +247,7 @@
     <string name="account">Account</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="contact_us">Contact Us</string>
+    <string name="change_pwd">Change Password</string>
     <string name="logout">Logout</string>
 
     <string name="market_vol">Market / vol</string>
@@ -251,5 +260,23 @@
     <string name="enter_destination_tag_txt">Enter Destination Tag</string>
 
     <string name="image_size">Image size should not be grater than 5 MB.</string>
+    <string name="bank_name">Bank Name</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="bank_name_">Bank Name :</string>
+    <string name="bank_enter_name">Enter Bank Name</string>
+    <string name="bank_enter_ifsc">Enter IFSC Code</string>
+    <string name="bank_enter_account_number">Enter Account Number</string>
+    <string name="bank_confirm_account_number">Confirm Account Number</string>
+    <string name="bank_enter_account_holdername">Enter Account Holder Name</string>
+    <string name="btranch_enter_number">Enter Branch Name</string>
+    <string name="bank_ifsc">IFSC</string>
+    <string name="bank_account_number">Account Number</string>
+    <string name="bank_account_holdername">Account Holder Name</string>
+    <string name="bankpassbook">Bank Passbook/Cheque Book</string>
+    <string name="btranch_number">Branch Number</string>
+    <string name="confirm_acount">Confirm Account Number</string>
+    <string name="iban_number">IBAN number</string>
+    <string name="bank_branch">Branch Name</string>
+    <string name="bank_branch_name">Branch Name</string>
 
 </resources>

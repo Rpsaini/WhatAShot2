@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root_layout"
+    android:layout_marginTop="50dp"
+    tools:ignore="MissingDefaultResource">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/app_bg_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/closeIC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close" />
+
+            <fontspackageForTextView.Regular
+                android:id="@+id/register_ph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/bank_details"
+                android:textColor="@color/text_black_color"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/header_line"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:alpha="0.1"
+                android:background="@color/dark_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/register_ph" />
+
+
+            <ScrollView
+                android:id="@+id/topBarLL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:weightSum="1"
+                android:fillViewport="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header_line">
+              <LinearLayout
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="20dp">
+                  <LinearLayout
+                      xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_height="wrap_content">
+
+                      <fontspackageForTextView.Regular
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginTop="0dp"
+                          android:text="@string/bank_account_holdername"
+                          android:textColor="@color/text_hint_color"
+                          />
+
+                      <RelativeLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginEnd="20dp"
+                          android:layout_marginRight="20dp"
+                          android:background="@drawable/ic_gray_border"
+                          >
+
+                          <EditText
+                              android:id="@+id/ed_bank_account_holder_name"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/transparent"
+                              android:hint="@string/bank_enter_account_holdername"
+                              android:inputType="text"
+                              android:paddingLeft="10dp"
+                              android:paddingRight="10dp"
+                              android:textColor="@color/text_black_color"
+                              android:textColorHint="@color/text_hint_color" />
+                      </RelativeLayout>
+                      <fontspackageForTextView.Regular
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginTop="20dp"
+                          android:text="@string/bank_name"
+                          android:textColor="@color/text_hint_color"
+                          />
+
+                      <RelativeLayout
+                          android:id="@+id/adharNoRL"
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginEnd="20dp"
+                          android:layout_marginRight="20dp"
+                          android:background="@drawable/ic_gray_border"
+                          >
+
+                          <EditText
+                              android:id="@+id/ed_bank_name"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/transparent"
+                              android:hint="@string/bank_enter_name"
+                              android:inputType="text"
+                              android:paddingLeft="10dp"
+                              android:paddingRight="10dp"
+                              android:textColor="@color/text_black_color"
+                              android:textColorHint="@color/text_hint_color" />
+                      </RelativeLayout>
+
+
+                      <fontspackageForTextView.Regular
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginTop="20dp"
+                          android:text="@string/bank_branch"
+                          android:textColor="@color/text_hint_color"
+                          />
+
+                      <RelativeLayout
+                          android:id="@+id/branchNameRL"
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginEnd="20dp"
+                          android:layout_marginRight="20dp"
+                          android:background="@drawable/ic_gray_border"
+                          >
+
+                          <EditText
+                              android:id="@+id/ed_branch_name"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/transparent"
+                              android:hint="@string/btranch_enter_number"
+                              android:inputType="text"
+                              android:paddingLeft="10dp"
+                              android:paddingRight="10dp"
+                              android:textColor="@color/text_black_color"
+                              android:textColorHint="@color/text_hint_color" />
+                      </RelativeLayout>
+
+
+
+
+
+
+                      <fontspackageForTextView.Regular
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:layout_marginTop="20dp"
+                          android:text="@string/bank_enter_account_number"
+                          android:textColor="@color/text_hint_color"
+                          />
+
+                      <RelativeLayout
+                          android:id="@+id/reDocRL"
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginEnd="20dp"
+                          android:layout_marginRight="20dp"
+                          android:background="@drawable/ic_gray_border"
+                          >
+
+                          <EditText
+                              android:id="@+id/ed_bank_account_number"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/transparent"
+                              android:hint="@string/bank_enter_account_number"
+                              android:inputType="text"
+                              android:paddingLeft="10dp"
+                              android:paddingRight="10dp"
+                              android:textColor="@color/text_black_color"
+                              android:textColorHint="@color/text_hint_color" />
+                      </RelativeLayout>
+
+
+
+
+                      <fontspackageForTextView.Regular
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:layout_marginTop="20dp"
+                          android:text="@string/confirm_acount"
+                          android:textColor="@color/text_hint_color"
+                          />
+
+                      <RelativeLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginEnd="20dp"
+                          android:layout_marginRight="20dp"
+                          android:background="@drawable/ic_gray_border"
+                          >
+
+                          <EditText
+                              android:id="@+id/ed_bank_confirm_account"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/transparent"
+                              android:hint="@string/confirm_acount"
+                              android:inputType="text"
+                              android:paddingLeft="10dp"
+                              android:paddingRight="10dp"
+                              android:textColor="@color/text_black_color"
+                              android:textColorHint="@color/text_hint_color" />
+                      </RelativeLayout>
+
+
+
+
+                      <fontspackageForTextView.Regular
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:layout_marginTop="20dp"
+                          android:text="@string/ifsc_code"
+                          android:textColor="@color/text_hint_color"
+                          />
+
+                      <RelativeLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginEnd="20dp"
+                          android:layout_marginRight="20dp"
+                          android:background="@drawable/ic_gray_border"
+                          >
+
+                          <EditText
+                              android:id="@+id/ed_bank_ifsc_code"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/transparent"
+                              android:hint="@string/bank_enter_ifsc"
+                              android:inputType="text"
+                              android:paddingLeft="10dp"
+                              android:paddingRight="10dp"
+                              android:textColor="@color/text_black_color"
+                              android:textColorHint="@color/text_hint_color" />
+                      </RelativeLayout>
+
+                  </LinearLayout>
+
+
+                  <fontspackageForTextView.Regular
+                      android:id="@+id/saveTV"
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:layout_marginBottom="40dp"
+                      android:layout_marginTop="20dp"
+                      android:layout_marginStart="20dp"
+                      android:layout_marginEnd="20dp"
+                      android:background="@drawable/app_button_drawable"
+                      android:gravity="center"
+                      android:orientation="horizontal"
+                      android:text="@string/save"
+                      android:textColor="@color/white"
+                      android:textSize="@dimen/title_text_size">
+
+                  </fontspackageForTextView.Regular>
+
+
+              </LinearLayout>
+            </ScrollView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

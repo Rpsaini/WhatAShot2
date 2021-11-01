@@ -7,6 +7,8 @@ import java.util.ArrayList;
  public class DefaultConstants {
 
     public static String token="token";
+
+    public static String bank_status="bank_status";
     public static String kyc_status="kyc_status";
     public static String r_token="r_token";
     public static String login_detail="login_detail";
