@@ -61,7 +61,7 @@ dependencies {
             {
                 exclude group: 'org.json', module: 'json'
             }
-    implementation 'com.github.Rpsaini:DrawableNAnimationNFonts:V1.7'
+
     implementation 'androidx.multidex:multidex:2.0.1'
 
     implementation 'com.github.Rpsaini:VollyCommunication:V1.4'
