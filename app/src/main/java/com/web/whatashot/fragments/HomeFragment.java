@@ -2,6 +2,8 @@ package com.web.whatashot.fragments;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -198,6 +200,7 @@ public class HomeFragment extends Fragment {
                                     });
                                  }
                                 tablayout();
+                                isNewVersionFound(jsonObject.getString("app_version"));
                             }
                             catch (Exception e) {
                                 e.printStackTrace();
@@ -263,7 +266,7 @@ public class HomeFragment extends Fragment {
                                       {
                                           JSONObject data=tabsHeaderKeys.get(pagerselectedPos);
                                          JSONArray dataAr = commonMap.get(data.getString("pair_name"));
-                                         System.out.println("Data Ar=="+dataAr);
+
                                          for(int x = 0; x < dataAr.length(); x++)
                                             {
                                              JSONObject dataObj = dataAr.getJSONObject(x);
@@ -300,6 +303,24 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         getDataOfPairs();
+    }
+
+
+
+    private void isNewVersionFound(String appversion)
+    {
+        if (mainActivity.getAppVersionCode()!=Double.parseDouble(appversion))
+        {
+            mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.app_name), "Please update app to new version.", "Ok", "", new DialogCallBacks() {
+                @Override
+                public void getDialogEvent(String buttonPressed)
+                {
+                    if(buttonPressed.equalsIgnoreCase("ok")) {
+                        mainActivity.launchPlayStore(mainActivity, mainActivity.getPackageName());
+                    }
+                }
+            });
+        }
     }
 
 

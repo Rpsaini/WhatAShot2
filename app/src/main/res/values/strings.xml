@@ -279,4 +279,7 @@
     <string name="bank_branch">Branch Name</string>
     <string name="bank_branch_name">Branch Name</string>
 
+    <string name="deposit_history">DEPOSIT HISTORY</string>
+    <string name="withdrawal_history">WITHDRAW HISTORY</string>
+    <string name="cashdepositnotallowed">Note:-sKindly note cash deposit services is not available at this moment. Please use net banking for the deposits.</string>
 </resources>

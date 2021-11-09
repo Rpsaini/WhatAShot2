@@ -139,7 +139,7 @@ public class WithdrawInrActivity extends BaseActivity {
         headerMap.put("Rtoken", getNewRToken() + "");
 
 
-        System.out.println("Withdraw===="+map+"==="+getApiUrl() + "proceed-withdraw");
+
 
 
         new ServerHandler().sendToServer(WithdrawInrActivity.this, getApiUrl() + "proceed-withdraw", map, 0, headerMap, 20000, R.layout.progressbar, new CallBack() {

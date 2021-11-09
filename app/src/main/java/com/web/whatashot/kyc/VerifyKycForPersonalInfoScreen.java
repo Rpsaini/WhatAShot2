@@ -522,7 +522,7 @@ public class VerifyKycForPersonalInfoScreen extends BaseActivity
             File file = new File(path);
             long length = file.length();
             length = length/1024;
-            System.out.println("File Path : " + file.getPath() + ", File size : " + length +" KB");
+
 
             if(length<=5000)
             {

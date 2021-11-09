@@ -148,8 +148,13 @@ public class ShowFiatCurrencyDepositWithdraw extends BaseActivity {
                         JSONObject jsonObject = new JSONObject(dta);
                         if(jsonObject.getBoolean("status")) {
                             try {
+
                                 authenticator = jsonObject.getBoolean("authenticator");
                                 showBanksAddress(jsonObject.getJSONArray("banks"));
+
+
+                                TextView note=findViewById(R.id.notetxt);
+                                note.setText(jsonObject.getString("note"));
                                 }
                             catch (Exception e) {
                                 e.printStackTrace();

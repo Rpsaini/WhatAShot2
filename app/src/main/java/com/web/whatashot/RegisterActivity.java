@@ -115,21 +115,23 @@ public class RegisterActivity extends BaseActivity {
 
     private void setHtmlCode()
     {
+//        By signup you agree to our Terms of Service
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            termsandcondtion.setText(Html.fromHtml("Accept  <u><b>Term of Service</b></u> and ", Html.FROM_HTML_MODE_COMPACT));
-
-        } else {
-            termsandcondtion.setText(Html.fromHtml("Accept <u><b>Term of Service</b></u> and "));
+            termsandcondtion.setText(Html.fromHtml("By signup you agree to our <u><b>Terms of Service</b></u>", Html.FROM_HTML_MODE_COMPACT));
 
         }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            privacyPolicy.setText(Html.fromHtml("<u><b>Privacy Policy</b></u>", Html.FROM_HTML_MODE_COMPACT));
-
-        } else {
-            privacyPolicy.setText(Html.fromHtml("<u><b>Privacy Policy</b></u>"));
+        else {
+            termsandcondtion.setText(Html.fromHtml("By signup you agree to our <u><b>Term of Service</b></u> "));
 
         }
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            privacyPolicy.setText(Html.fromHtml("<u><b>Privacy Policy</b></u>", Html.FROM_HTML_MODE_COMPACT));
+//
+//        } else {
+//          //  privacyPolicy.setText(Html.fromHtml("<u><b>Privacy Policy</b></u>"));
+//
+//        }
     }
 
     private void actions()
@@ -185,7 +187,15 @@ public class RegisterActivity extends BaseActivity {
                     });
                     return;
                 }
+                 if (txt_phonenumber.getText().length()<=9) {
+                     alertDialogs.alertDialog(RegisterActivity.this, getResources().getString(R.string.app_name), "Enter Valid Phone Number", "Ok", "", new DialogCallBacks() {
+                         @Override
+                         public void getDialogEvent(String buttonPressed) {
 
+                         }
+                     });
+                     return;
+                 }
                  if (txt_phonenumber.getText().toString().length() <=8)
                  {
                      alertDialogs.alertDialog(RegisterActivity.this, getResources().getString(R.string.app_name), "Enter valid mobile number", "Ok", "", new DialogCallBacks() {
@@ -248,15 +258,16 @@ public class RegisterActivity extends BaseActivity {
         termsandcondtion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openExternalUrl(getApiUrl() + "/terms-and-conditions");
+
+                openExternalUrl(getApiUrl() + "/user-agreement");
             }
         });
-        privacyPolicy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openExternalUrl(getApiUrl() + "/privacy-policy");
-            }
-        });
+//        privacyPolicy.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openExternalUrl(getApiUrl() + "/");
+//            }
+//        });
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -39,16 +39,86 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8b39339-cb8b-4239-9da2-7056d2d5b732" name="Default Changelist" comment="Done the complete functionality kyc Screen">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/FundHistoryActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/DepositHistoryFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/WithdrawHistoryFrg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/app_button_drawable.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/app_button_drawable_off.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/copy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/document_selfie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_address.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_allert.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_qr_code_scanner_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_copy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_disellect_buy_sell.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_dropdown.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_full_horizontal_line.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_gray_border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_limit_line.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_line.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_qr_code.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_rectangle_21.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_rectangle_81.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_rectangle_dotted.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_select_buy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_select_sell.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_tick_mark.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_upload.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_vector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_vector_29.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/photo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rectangle_gray_shape_border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/round_rect_green_shape_drawable.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/round_rect_white_shape_drawable.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/sample_pan_card.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_fund_history.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_withdraw_history_frg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.aab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/BaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/RegisterActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/FiatCurrenciesAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/FiatCurrenciesAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/FundAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/FundAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/FundPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/FundPagerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/QuickBuyAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/QuickBuyAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/TransactionHistoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/adapters/TransactionHistoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/ShowFiatCurrencyDepositWithdraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/ShowFiatCurrencyDepositWithdraw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/WithdrawInrActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fiatdepositwithdraw/WithdrawInrActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/FundFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/FundFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/MainFundFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/MainFundFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/TransactionHistoryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/fragments/TransactionHistoryFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/kyc/VerifyKycAccountDetailsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/kyc/VerifyKycAccountDetailsScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/kyc/VerifyKycForPersonalInfoScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/kyc/VerifyKycForPersonalInfoScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/setting_profile/SettingProfileScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/setting_profile/SettingProfileScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_show_fiat_currency_deposit_withdraw.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_show_fiat_currency_deposit_withdraw.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_order.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/register_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/register_activity.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/setting_profile_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/setting_profile_screen.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/transaction_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/transaction_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[3acd0dff]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -85,8 +155,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -127,10 +197,13 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="E:/piechart" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="android.template.2109167887">
+      <recent name="com.web.whatashot" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.web.whatashot.kyc.state" />
       <recent name="com.web.whatashot.kyc.city" />
@@ -139,6 +212,7 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\WhatAShot2\WhatAShot\app\src\main\res\drawable" />
+      <recent name="D:\WhatAShot2\WhatAShot\app\src\main\java\com\web\whatashot\fragments" />
       <recent name="F:\WhatAShot2\app\src\main\res\drawable" />
       <recent name="F:\WhatAShot2\app\src\main\res\layout" />
     </key>
@@ -276,26 +350,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="466" y="258" width="433" height="218" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1635317550872" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1635772686424">
+    <state x="263" y="118" key="AndroidCreateResourceFileDialog" timestamp="1636454817830">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1635772686424" />
-    <state width="1323" height="439" key="GridCell.Tab.0.bottom" timestamp="1635769060809">
+    <state x="263" y="118" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1636454817830" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1636350835324">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="439" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1635769060809" />
-    <state width="1323" height="439" key="GridCell.Tab.0.center" timestamp="1635769060809">
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1636350835324" />
+    <state width="1323" height="437" key="GridCell.Tab.0.bottom" timestamp="1636463984460">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="439" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1635769060809" />
-    <state width="1323" height="439" key="GridCell.Tab.0.left" timestamp="1635769060809">
+    <state width="1323" height="437" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1636463984460" />
+    <state width="1323" height="437" key="GridCell.Tab.0.center" timestamp="1636463984460">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="439" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1635769060809" />
-    <state width="1323" height="439" key="GridCell.Tab.0.right" timestamp="1635769060809">
+    <state width="1323" height="437" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1636463984460" />
+    <state width="1323" height="437" key="GridCell.Tab.0.left" timestamp="1636463984460">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="439" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1635769060809" />
+    <state width="1323" height="437" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1636463984460" />
+    <state width="1323" height="437" key="GridCell.Tab.0.right" timestamp="1636463984460">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="437" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1636463984460" />
     <state x="321" y="125" key="MultipleFileMergeDialog" timestamp="1634034734998">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -308,10 +386,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1635764156110" />
-    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1635768896018">
+    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1636462357789">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1635768896018" />
+    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1636462357789" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.app.dialogsnpickers.AlertDialogs;
 import com.app.dialogsnpickers.DialogCallBacks;
+import com.web.whatashot.fragments.FundFragment;
 import com.web.whatashot.fragments.HomeFragment;
 import com.web.whatashot.fragments.MainFundFragment;
 import com.web.whatashot.fragments.QuickBuyFragment;
@@ -96,7 +97,7 @@ public class MainActivity extends BaseActivity
 
     private void fundFragment()
     {
-        MainFundFragment fundFragment = new MainFundFragment();
+        FundFragment fundFragment = new FundFragment();
         Bundle args = new Bundle();
         fundFragment.setArguments(args);
         replaceMainFragment(fundFragment,"fundfrg");

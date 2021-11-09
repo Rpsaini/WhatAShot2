@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-
     tools:context=".fragments.HomeFragment">
 
     <com.google.android.material.tabs.TabLayout
@@ -20,6 +19,7 @@
         app:tabTextAppearance="@style/MyPairedTabLayoutStyle"
         app:tabSelectedTextColor="@color/white"
         android:stateListAnimator="@null"
+        app:tabIndicatorColor="@color/green"
         app:tabRippleColor="@color/greencolor"/>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"

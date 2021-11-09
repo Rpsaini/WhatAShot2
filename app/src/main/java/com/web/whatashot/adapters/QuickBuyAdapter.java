@@ -72,21 +72,9 @@ public class QuickBuyAdapter extends RecyclerView.Adapter<QuickBuyAdapter.MyView
 
             JSONObject dataObj = quickAr.getJSONObject(position);
             holder.txt_currency_name.setText(dataObj.getString("base"));
-            holder.txt_currency_price.setText(dataObj.getString("buy_price")+dataObj.getString("term"));
+            holder.txt_currency_price.setText(dataObj.getString("buy_price")+" "+dataObj.getString("term"));
             holder.txt_currency_fullname.setText(dataObj.getString("base_name"));
             showImage(dataObj.getString("icon"), holder.img_currencyicon);
-
-
-
-//                   "pair_id": "62",
-//                    "base": "BTC",
-//                    "term": "USDT",
-//                    "pair_name": "BTC\/USDT",
-//                    "base_balance": "100000.00119999998",
-//                    "term_balance": "999679.1616217206",
-//                    "icon": "https:\/\/whatashot.io\/front\/resources\/img\/currency-icons\/BTC.png"
-            //     	  "buy_price": "57367.4751",
-            //		  "sell_price": "57433.941"
 
 
             holder.tv_buy.setTag(dataObj);

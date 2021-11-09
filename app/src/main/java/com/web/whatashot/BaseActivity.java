@@ -101,6 +101,16 @@ public class BaseActivity extends AppCompatActivity {
 
         return "0";
     }
+    public int getAppVersionCode() {
+        try {
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            return pInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 
     public String getDeviceToken()
     {
@@ -363,7 +373,7 @@ public class BaseActivity extends AppCompatActivity {
             Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(myIntent);
         } catch (ActivityNotFoundException e) {
-            System.out.println("Exception opening in url--" + e.getMessage());
+
         }
     }
 
