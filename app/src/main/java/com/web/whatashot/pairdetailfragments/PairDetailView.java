@@ -278,7 +278,8 @@ public class PairDetailView extends BaseActivity
 
         joinedPair = mainPair + "-" + sub_pair;
 
-        if (str_side.equalsIgnoreCase("buy")) {
+        if (str_side.equalsIgnoreCase("buy"))
+        {
             txt_price.setText(sell_price);
             txt_price.setTextColor(getResources().getColor(R.color.greencolor));
         } else {

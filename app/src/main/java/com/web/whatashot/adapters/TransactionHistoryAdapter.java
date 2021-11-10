@@ -65,10 +65,7 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
         {
 
             JSONObject dataObj=moviesList.getJSONObject(position);
-
             String status=dataObj.getString("status");
-
-
             holder.txt_date.setText(dataObj.getString("date"));
             holder.tv_balance.setText(dataObj.getString("amount")+" "+dataObj.getString("symbol"));
             if(status.equalsIgnoreCase("1"))
@@ -93,9 +90,7 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
                 holder.input_arrow.setRotation(130);
             }
 //            status    1 approved   0 pending
-
-
-        }
+          }
         catch (Exception e)
         {
             e.printStackTrace();
@@ -122,10 +117,6 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
 
 
 }
-
-
-
-
 
 
 //import android.view.LayoutInflater;

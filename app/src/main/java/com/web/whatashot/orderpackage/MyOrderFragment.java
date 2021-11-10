@@ -114,7 +114,6 @@ public class MyOrderFragment extends Fragment {
                                 DefaultConstants.orders_history.add(orderHistory.getJSONObject(x));
                             }
 
-
                         }
                         catch (Exception e)
                         {

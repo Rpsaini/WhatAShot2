@@ -59,7 +59,6 @@ public class MainFundFragment extends Fragment {
         tabLayout = (TabLayout)view. findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.deposit_history)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.withdrawal_history)));
-
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         viewPager = (ViewPager) view.findViewById(R.id.pager);
 
@@ -120,11 +119,11 @@ public class MainFundFragment extends Fragment {
                     JSONObject obj = new JSONObject(dta);
                     if(obj.getBoolean("status")) {
                         try {
-                            if (obj.has("token"))
-                            {
+                            if(obj.has("token"))
+                              {
                                 fundHistory.savePreferences.savePreferencesData(fundHistory, obj.getString("token"), DefaultConstants.token);
                                 fundHistory.savePreferences.savePreferencesData(fundHistory, obj.getString("r_token"), DefaultConstants.r_token);
-                            }
+                              }
                             callPagerAdapter(obj.getJSONArray("deposit"),obj.getJSONArray("withdraw"));
 
                         } catch (Exception e) {

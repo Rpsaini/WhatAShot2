@@ -45,7 +45,7 @@ public class DepositHistoryFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_transaction_history, container, false);
             init(new JSONArray(getArguments().getString("d_fund")));
         }
-        catch (Exception e)
+        catch(Exception e)
         {
             e.printStackTrace();
         }
