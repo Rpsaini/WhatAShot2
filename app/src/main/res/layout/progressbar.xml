@@ -6,7 +6,18 @@
 
     android:layout_height="wrap_content">
 
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/img_rocketfly"
+
+        android:layout_centerInParent="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/loader_w"/>
+
+
+
     <ProgressBar
+        android:visibility="gone"
         android:indeterminate="true"
         android:indeterminateTintMode="src_atop"
         android:indeterminateTint="@color/hintTextColor"
@@ -18,7 +29,7 @@
         ></ProgressBar>
 
     <ProgressBar
-
+        android:visibility="gone"
         android:indeterminate="true"
         android:indeterminateTintMode="src_atop"
         android:indeterminateTint="@color/hintTextColor"

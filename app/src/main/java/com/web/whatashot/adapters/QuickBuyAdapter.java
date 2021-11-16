@@ -1,6 +1,7 @@
 package com.web.whatashot.adapters;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class QuickBuyAdapter extends RecyclerView.Adapter<QuickBuyAdapter.MyView
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_currency_name, tv_buy,txt_currency_price,txt_currency_fullname;
+        TextView txt_currency_name, tv_buy,txt_currency_price,txt_currency_fullname,txt_change;
 
         LinearLayout ll_fund_list_row;
         ImageView img_currencyicon;
@@ -45,6 +46,7 @@ public class QuickBuyAdapter extends RecyclerView.Adapter<QuickBuyAdapter.MyView
             img_currencyicon = view.findViewById(R.id.img_currencyicon);
             txt_currency_price = view.findViewById(R.id.txt_currency_price);
             txt_currency_fullname = view.findViewById(R.id.txt_currency_fullname);
+            txt_change = view.findViewById(R.id.txt_change);
 
 
         }
@@ -72,7 +74,7 @@ public class QuickBuyAdapter extends RecyclerView.Adapter<QuickBuyAdapter.MyView
 
             JSONObject dataObj = quickAr.getJSONObject(position);
             holder.txt_currency_name.setText(dataObj.getString("base"));
-            holder.txt_currency_price.setText(dataObj.getString("buy_price")+" "+dataObj.getString("term"));
+            holder.txt_currency_price.setText(dataObj.getString("price")+" "+dataObj.getString("term"));
             holder.txt_currency_fullname.setText(dataObj.getString("base_name"));
             showImage(dataObj.getString("icon"), holder.img_currencyicon);
 
@@ -91,6 +93,21 @@ public class QuickBuyAdapter extends RecyclerView.Adapter<QuickBuyAdapter.MyView
                 }
             });
 
+
+            if(dataObj.has("change")) {
+                holder.txt_change.setVisibility(View.VISIBLE);
+                String change = dataObj.getString("change");
+                holder.txt_change.setText(change);
+                if (change.contains("+")) {
+                    holder.txt_change.setTextColor(ira1.getResources().getColor(R.color.greencolor));
+                } else if (change.contains("-")) {
+
+                    holder.txt_change.setTextColor(ira1.getResources().getColor(R.color.darkRed));
+                } else {
+
+                    holder.txt_change.setTextColor(ira1.getResources().getColor(R.color.greencolor));
+                }
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

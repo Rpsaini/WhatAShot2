@@ -83,7 +83,8 @@ public class BaseActivity extends AppCompatActivity {
 
 
     public void changestatusBarColor(int type) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
             getWindow().setStatusBarColor(getResources().getColor(R.color.teal_200, this.getTheme()));
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.teal_200));

@@ -14,10 +14,12 @@
 
 
         <LinearLayout
+           android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:orientation="horizontal"
+            android:layout_gravity="center"
             android:weightSum="1">
 
             <LinearLayout
@@ -25,14 +27,14 @@
                 android:layout_width="0dp"
                 android:orientation="horizontal"
                 android:layout_centerVertical="true"
-                android:layout_weight="0.2">
+                android:layout_weight="0.3">
 
                 <fontspackageForTextView.BoldMedium
                     android:id="@+id/txt_subpair"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="INR"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     >
@@ -47,10 +49,8 @@
                     android:textColor="@color/grey_dark"
                     >
                 </fontspackageForTextView.Regular>
-
-
-
             </LinearLayout>
+
 
 
             <RelativeLayout
@@ -59,7 +59,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:orientation="horizontal"
-                android:layout_weight="0.8">
+                android:layout_weight="0.7">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
                                 android:maxLines="1"
                                 android:text="10"
                                 android:textColor="@color/dark_blue"
-                                android:textSize="17dp"
+                                android:textSize="16dp"
                                 android:textStyle="bold"></fontspackageForTextView.BoldMedium>
 
                             <fontspackageForTextView.BoldMedium
@@ -113,7 +113,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="right"
                                 android:maxLines="1"
-                                android:text="(24,7999)"
+                                android:text=""
                                 android:textColor="@color/grey_dark"
                                 android:textSize="14dp"
                                 android:textStyle="bold"></fontspackageForTextView.BoldMedium>
@@ -162,11 +162,7 @@
                         android:textAllCaps="true"
                         android:textColor="@color/white_20"
                         android:textSize="11dp"></TextView>
-
-
                 </LinearLayout>
-
-
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

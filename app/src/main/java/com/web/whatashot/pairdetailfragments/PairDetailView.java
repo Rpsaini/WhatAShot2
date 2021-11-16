@@ -59,6 +59,7 @@ public class PairDetailView extends BaseActivity
     private Fragment commonFragent;
     private TextView orderConfirm;
 
+
     //Added Pair details
     private TextView txt_main_pair, txt_sub_pair, txt_change;
     RelativeLayout rr_change;
@@ -116,6 +117,10 @@ public class PairDetailView extends BaseActivity
 
             initRate(change, jsonObject.getString("buy_price"), jsonObject.getString("sell_price"));
 
+             txt_price.setText(jsonObject.getString("price"));
+            txt_price.setTextColor(getResources().getColor(R.color.greencolor));
+
+
             findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -136,21 +141,22 @@ public class PairDetailView extends BaseActivity
         final TextView txt_trades = findViewById(R.id.txt_trades);
 
 
-        if (txt_allorder != null) {
-            txt_allorder.setTextColor(getResources().getColor(R.color.grey_dark));
-            text_buy_sell.setTextColor(getResources().getColor(R.color.grey_dark));
-            txt_chart.setTextColor(getResources().getColor(R.color.grey_dark));
-            txt_openOrders.setTextColor(getResources().getColor(R.color.black));
-            txt_trades.setTextColor(getResources().getColor(R.color.grey_dark));
+        if(txt_allorder != null)
+           {
+            txt_allorder.setAlpha(.5f);
+            text_buy_sell.setAlpha(.5f);
+            txt_chart.setAlpha(.5f);
+            txt_openOrders.setAlpha(1f);
+            txt_trades.setAlpha(.5f);
 
             txt_allorder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    txt_allorder.setTextColor(getResources().getColor(R.color.black));
-                    text_buy_sell.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_chart.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_openOrders.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_trades.setTextColor(getResources().getColor(R.color.grey_dark));
+                    txt_allorder.setAlpha(1f);
+                    text_buy_sell.setAlpha(.5f);
+                    txt_chart.setAlpha(.5f);
+                    txt_openOrders.setAlpha(.5f);
+                    txt_trades.setAlpha(.5f);
                     myOrders();
                 }
             });
@@ -165,11 +171,11 @@ public class PairDetailView extends BaseActivity
             txt_chart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    txt_allorder.setTextColor(getResources().getColor(R.color.grey_dark));
-                    text_buy_sell.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_chart.setTextColor(getResources().getColor(R.color.black));
-                    txt_openOrders.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_trades.setTextColor(getResources().getColor(R.color.grey_dark));
+                    txt_allorder.setAlpha(.5f);
+                    text_buy_sell.setAlpha(.5f);
+                    txt_chart.setAlpha(1f);
+                    txt_openOrders.setAlpha(.5f);
+                    txt_trades.setAlpha(.5f);
                     chartFrag();
                 }
             });
@@ -177,11 +183,11 @@ public class PairDetailView extends BaseActivity
             txt_openOrders.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    txt_allorder.setTextColor(getResources().getColor(R.color.grey_dark));
-                    text_buy_sell.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_chart.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_openOrders.setTextColor(getResources().getColor(R.color.black));
-                    txt_trades.setTextColor(getResources().getColor(R.color.grey_dark));
+                    txt_allorder.setAlpha(.5f);
+                    text_buy_sell.setAlpha(.5f);
+                    txt_chart.setAlpha(.5f);
+                    txt_openOrders.setAlpha(1f);
+                    txt_trades.setAlpha(1f);
                     allOrders();
                 }
             });
@@ -189,11 +195,11 @@ public class PairDetailView extends BaseActivity
             txt_trades.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    txt_allorder.setTextColor(getResources().getColor(R.color.grey_dark));
-                    text_buy_sell.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_chart.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_openOrders.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_trades.setTextColor(getResources().getColor(R.color.black));
+                    txt_allorder.setAlpha(.5f);
+                    text_buy_sell.setAlpha(.5f);
+                    txt_chart.setAlpha(.5f);
+                    txt_openOrders.setAlpha(.5f);
+                    txt_trades.setAlpha(1f);
                     trades();
                 }
             });
@@ -251,6 +257,7 @@ public class PairDetailView extends BaseActivity
 
     public void initRate(String changenew, String currentBuyPrice1, String sellPrice1) {
 
+        System.out.println("buy price==="+currentBuyPrice1+"==="+sellPrice1);
         buy_price = currentBuyPrice1.replace(",","");
         sell_price = sellPrice1.replace(",","");
         change = changenew;
@@ -278,14 +285,16 @@ public class PairDetailView extends BaseActivity
 
         joinedPair = mainPair + "-" + sub_pair;
 
-        if (str_side.equalsIgnoreCase("buy"))
-        {
-            txt_price.setText(sell_price);
-            txt_price.setTextColor(getResources().getColor(R.color.greencolor));
-        } else {
-            txt_price.setText(buy_price);
-            txt_price.setTextColor(getResources().getColor(R.color.darkRed));
-        }
+//        if (str_side.equalsIgnoreCase("buy"))
+//        {
+//            txt_price.setText(sell_price);
+//            txt_price.setTextColor(getResources().getColor(R.color.greencolor));
+//        }
+
+//        else {
+//            txt_price.setText(buy_price);
+//            txt_price.setTextColor(getResources().getColor(R.color.darkRed));
+//        }
 
 
         if(buySellDialog!=null&&buySellDialog.isShowing())
@@ -309,6 +318,7 @@ public class PairDetailView extends BaseActivity
     private void setBuySellOrder()
     {
 
+        System.out.println("Price====="+sell_price+"====buy=="+buy_price+"==="+str_side);
         if (str_side.equalsIgnoreCase("buy"))
         {
             ed_at_price.setText(sell_price.replace(",", ""));
@@ -410,8 +420,11 @@ public class PairDetailView extends BaseActivity
                                 if (pair_id.equalsIgnoreCase(pairId)) {
                                     JSONObject jsonObject1 = new JSONObject(jsonObject.getString("market_data"));
 
+                                    System.out.println("market data==="+jsonObject1);
                                     String buy_market = jsonObject1.getString("buy_market");
                                     String sell_market = jsonObject1.getString("sell_market");
+
+                                    txt_price.setText(jsonObject1.getString("price"));
                                     change = jsonObject1.getString("change");
                                     initRate(change, buy_market, sell_market);
                                 }
@@ -519,7 +532,7 @@ public class PairDetailView extends BaseActivity
                     }
                 });
 
-
+                setBuySellOrder();
             }
         });
 
@@ -559,7 +572,7 @@ public class PairDetailView extends BaseActivity
 
                     }
                 });
-
+                    setBuySellOrder();
             }
         });
 

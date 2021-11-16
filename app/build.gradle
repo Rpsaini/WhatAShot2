@@ -112,5 +112,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging'
 
+    //loader
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
 }
 apply plugin: 'com.google.gms.google-services'

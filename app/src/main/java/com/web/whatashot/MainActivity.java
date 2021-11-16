@@ -138,18 +138,18 @@ public class MainActivity extends BaseActivity
        final TextView txt_quicknuy =findViewById(R.id.txt_quicknuy);
        if(txt_market!=null)
         {
-           txt_market.setTextColor(getResources().getColor(R.color.black));
-           txt_order.setTextColor(getResources().getColor(R.color.grey_dark));
-           txt_fund.setTextColor(getResources().getColor(R.color.grey_dark));
-            txt_quicknuy.setTextColor(getResources().getColor(R.color.grey_dark));
+           txt_market.setAlpha(1f);
+           txt_order.setAlpha(.5f);
+           txt_fund.setAlpha(.5f);
+            txt_quicknuy.setAlpha(.5f);
 
            txt_market.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   txt_market.setTextColor(getResources().getColor(R.color.black));
-                   txt_order.setTextColor(getResources().getColor(R.color.grey_dark));
-                   txt_fund.setTextColor(getResources().getColor(R.color.grey_dark));
-                   txt_quicknuy.setTextColor(getResources().getColor(R.color.grey_dark));
+                   txt_market.setAlpha(1f);
+                   txt_order.setAlpha(.5f);
+                   txt_fund.setAlpha(.5f);
+                   txt_quicknuy.setAlpha(.5f);
                    MarketFragment();
                }
            });
@@ -157,10 +157,10 @@ public class MainActivity extends BaseActivity
            txt_order.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   txt_market.setTextColor(getResources().getColor(R.color.grey_dark));
-                   txt_order.setTextColor(getResources().getColor(R.color.black));
-                   txt_fund.setTextColor(getResources().getColor(R.color.grey_dark));
-                   txt_quicknuy.setTextColor(getResources().getColor(R.color.grey_dark));
+                   txt_market.setAlpha(.5f);
+                   txt_order.setAlpha(1f);
+                   txt_fund.setAlpha(.5f);
+                   txt_quicknuy.setAlpha(.5f);
                    orderFragment();
                }
            });
@@ -168,10 +168,10 @@ public class MainActivity extends BaseActivity
            txt_fund.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   txt_market.setTextColor(getResources().getColor(R.color.grey_dark));
-                   txt_order.setTextColor(getResources().getColor(R.color.grey_dark));
-                   txt_fund.setTextColor(getResources().getColor(R.color.black));
-                   txt_quicknuy.setTextColor(getResources().getColor(R.color.grey_dark));
+                   txt_market.setAlpha(.5f);
+                   txt_order.setAlpha(.5f);
+                   txt_fund.setAlpha(1f);
+                   txt_quicknuy.setAlpha(.5f);
                    fundFragment();
                }
            });
@@ -179,10 +179,10 @@ public class MainActivity extends BaseActivity
             txt_quicknuy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    txt_market.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_order.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_fund.setTextColor(getResources().getColor(R.color.grey_dark));
-                    txt_quicknuy.setTextColor(getResources().getColor(R.color.black));
+                    txt_market.setAlpha(.5f);
+                    txt_order.setAlpha(.5f);
+                    txt_fund.setAlpha(.5f);
+                    txt_quicknuy.setAlpha(1f);
                     loadQuickBuyFragment();
                 }
             });

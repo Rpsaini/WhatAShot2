@@ -50,14 +50,13 @@
                         android:textStyle="bold"></fontspackageForTextView.BoldMedium>
 
                     <fontspackageForTextView.Regular
-
                         android:id="@+id/txt_mainpar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:alpha="0.6"
                         android:text="/INR"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"></fontspackageForTextView.Regular>
+                        android:textSize="12dp"></fontspackageForTextView.Regular>
 
                 </LinearLayout>
 
