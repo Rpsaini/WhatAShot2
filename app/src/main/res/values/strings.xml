@@ -279,7 +279,24 @@
     <string name="bank_branch">Branch Name</string>
     <string name="bank_branch_name">Branch Name</string>
 
+
+    <string name="enter_your_new_password">Please enter your new password</string>
     <string name="deposit_history">DEPOSIT HISTORY</string>
     <string name="withdrawal_history">WITHDRAW HISTORY</string>
     <string name="cashdepositnotallowed">Note:-sKindly note cash deposit services is not available at this moment. Please use net banking for the deposits.</string>
+    <string name="next">Next</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="please_enter_otp">Please enter OTP</string>
+    <string name="enteryouremail">Please enter your registered email</string>
+    <string name="entervalidemail">Enter valid Email.</string>
+    <string name="invalidOtp">Entered OTP is invalid</string>
+    <string name="Invalid">Invalid</string>
+    <string name="enter_otp">OTP</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_old_password">Enter old Password</string>
+    <string name="enter_conf_password">Enter Confirm Password</string>
+    <string name="password_invalid">Confirm Password does not matched</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="forgot_password_">Forgot Password</string>
+    <string name="recover_password">Recover Password</string>
 </resources>
