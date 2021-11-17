@@ -17,7 +17,6 @@ public class PaymentOptionPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         this.context=context;
     }
-
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -48,7 +47,6 @@ public class PaymentOptionPagerAdapter extends FragmentPagerAdapter {
         {
             title = context.getString(R.string.upi);
         }
-
         return title;
     }
 }
