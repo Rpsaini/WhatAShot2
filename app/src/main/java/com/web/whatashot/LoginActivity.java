@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.app.dialogsnpickers.DialogCallBacks;
 import com.app.vollycommunicationlib.CallBack;
 import com.app.vollycommunicationlib.ServerHandler;
+import com.web.whatashot.forgot_pwd.ForgotPassword;
 import com.web.whatashot.utilpackage.UtilClass;
 
 import org.json.JSONObject;
@@ -29,7 +30,7 @@ import java.util.Map;
 public class LoginActivity extends BaseActivity {
 
     private EditText publicKey, sceretKey;
-    private TextView txt_register;
+    private TextView txt_register,forgotPwdTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class LoginActivity extends BaseActivity {
         publicKey = findViewById(R.id.login_username);
         sceretKey = findViewById(R.id.login_password);
         txt_register = findViewById(R.id.txt_register);
+        forgotPwdTV = findViewById(R.id.forgotPwdTV);
         final ImageView scanqrcode = findViewById(R.id.scanqrcode);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,7 +164,13 @@ public class LoginActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
-
+        forgotPwdTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
 
         findViewById(R.id.get_keys).setOnClickListener(new View.OnClickListener() {
             @Override
