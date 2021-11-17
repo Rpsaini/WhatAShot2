@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/white_20"
     android:id="@+id/RRsignuptoplayout">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/app_header_bar"
@@ -63,8 +63,8 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:src="@drawable/logo" />
@@ -111,7 +111,7 @@
                 android:imeOptions="actionDone"
                 android:inputType="numberPassword"
                 android:maxLength="1"
-                android:background="@drawable/edittext_bottom_drawable"
+                android:background="@drawable/edittext_drawable"
                 android:id="@+id/txt_otpone"
                 android:layout_marginEnd="5dp"
                 android:layout_height="match_parent"

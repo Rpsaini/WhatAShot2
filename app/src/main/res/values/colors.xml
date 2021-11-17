@@ -23,6 +23,7 @@
     <color name="buyButtonColor">#23C95B</color>
     <color name="sellButtonColor">#E64B3B</color>
     <color name="transulant_black">#80000000</color>
+    <color name="translucent_black_loader">#CCFFFFFF</color>
     <color name="lightGray">#d3d3d3</color>
     <color name="light_sell_order_row_clr">#F9D5D2</color>
 

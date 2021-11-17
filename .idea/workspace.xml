@@ -47,16 +47,21 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/payment_option/adapter/PaymentOptionPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/payment_option/adapter/PaymentOptionPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/setting_profile/SettingProfileScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/web/whatashot/setting_profile/SettingProfileScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/deposti_coin_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/deposti_coin_dialog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/edittext_bottom_drawable.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edittext_bottom_drawable.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_enter_o_t_p.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_enter_o_t_p.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/progressbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/progressbar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recover_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recover_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_XL_API_30]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[42006c2cc87e35b3]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -131,7 +136,6 @@
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -312,18 +316,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="437" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1637066980704" />
-    <state x="321" y="125" key="MultipleFileMergeDialog" timestamp="1634034734998">
+    <state x="321" y="125" key="MultipleFileMergeDialog" timestamp="1637153060272">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="125" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1634034734998" />
+    <state x="321" y="125" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1637153060272" />
     <state x="499" y="141" key="chooseDestDirectoryDialog" timestamp="1637046727076">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="499" y="141" key="chooseDestDirectoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1637046727076" />
-    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1635764156110">
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1637153051634">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1635764156110" />
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1637153051634" />
     <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1637046400222">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
