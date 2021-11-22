@@ -395,7 +395,7 @@ public class PairDetailView extends BaseActivity
                                             JSONObject buyObj = new JSONObject(buyAr.get(x) + "");
                                             JSONObject newbuyObj = new JSONObject();
                                             newbuyObj.put("price", buyObj.getString("0"));
-                                            newbuyObj.put("volume", buyObj.getString("1"));
+                                            newbuyObj.put("volume", buyObj.getString("2"));
                                             openOrderfrg.buyAr.add(newbuyObj);
                                             totalBuyVolume = Double.parseDouble(buyObj.getString("1").replace(",", "")) + totalBuyVolume;
 
@@ -404,7 +404,7 @@ public class PairDetailView extends BaseActivity
                                             JSONObject sellObj = new JSONObject(sellAr.get(x) + "");
                                             JSONObject newsellObj = new JSONObject();
                                             newsellObj.put("price", sellObj.getString("2"));
-                                            newsellObj.put("volume", sellObj.getString("1"));
+                                            newsellObj.put("volume", sellObj.getString("0"));
                                             openOrderfrg.sellAr.add(newsellObj);
                                             totalsellvolume = Double.parseDouble(sellObj.getString("1").replace(",", "")) + totalsellvolume;
 
