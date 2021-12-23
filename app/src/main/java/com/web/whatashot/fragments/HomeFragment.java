@@ -6,12 +6,14 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -88,18 +91,21 @@ public class HomeFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_home, container, false);
         mainActivity = (MainActivity) getActivity();
-        getMarketTickers();
+
 
         return view;
     }
+
 
 
     TabLayout tabLayout;
     ViewPager viewPager;
 
     private void initView() {
+        System.out.println("Tab header size==="+tabsHeaderKeys.size());
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#13B351"));
+        tabLayout.removeAllTabs();
         for (int x = 0; x < tabsHeaderKeys.size(); x++) {
             try {
                 JSONObject datObj = tabsHeaderKeys.get(x);
@@ -189,18 +195,24 @@ public class HomeFragment extends Fragment {
 
                                  }
 
+                                if(jsonObject.has("note_msg"))
+                                {
+                                    showMessageDialog(jsonObject.getString("note_msg"));
 
-                                if(mainActivity.getAppVersionCode()!=Integer.parseInt(appversion))
-                                  {
-                                    mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.app_name), "Please update app to new version.", "Ok", "", new DialogCallBacks() {
-                                        @Override
-                                        public void getDialogEvent(String buttonPressed) {
-                                            if(buttonPressed.equalsIgnoreCase("ok")) {
-                                                mainActivity.launchPlayStore(mainActivity, mainActivity.getPackageName());
-                                            }
-                                        }
-                                    });
-                                 }
+                                }
+
+
+//                                if(mainActivity.getAppVersionCode()!=Integer.parseInt(appversion))
+//                                  {
+//                                    mainActivity.alertDialogs.alertDialog(mainActivity, getResources().getString(R.string.app_name), "Please update app to new version.", "Ok", "", new DialogCallBacks() {
+//                                        @Override
+//                                        public void getDialogEvent(String buttonPressed) {
+//                                            if(buttonPressed.equalsIgnoreCase("ok")) {
+//                                                mainActivity.launchPlayStore(mainActivity, mainActivity.getPackageName());
+//                                            }
+//                                        }
+//                                    });
+//                                 }
                                 tablayout();
                                 isNewVersionFound(jsonObject.getString("app_version"));
                             }
@@ -304,6 +316,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        getMarketTickers();
         getDataOfPairs();
     }
 
@@ -325,5 +338,26 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private void showMessageDialog(String msg)
+    {
+        SimpleDialog simpleDialog = new SimpleDialog();
+        Dialog mobRegDialog = simpleDialog.simpleDailog(mainActivity, R.layout.message_dialog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+
+        TextView send_otpTV = mobRegDialog.findViewById(R.id.txt_msg);
+//        send_otpTV
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            send_otpTV.setText(Html.fromHtml(msg, Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            send_otpTV.setText(Html.fromHtml(msg));
+        }
+        ImageView img_hideview = mobRegDialog.findViewById(R.id.img_hideview);
+        img_hideview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mobRegDialog.dismiss();
+            }
+        });
+    }
 
 }

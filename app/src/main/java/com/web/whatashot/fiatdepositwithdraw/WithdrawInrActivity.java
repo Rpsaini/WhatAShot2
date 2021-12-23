@@ -44,8 +44,12 @@ public class WithdrawInrActivity extends BaseActivity {
         ImageView txt_currency_image1 = findViewById(R.id.txt_currency_image1);
         TextView total_balance1 = findViewById(R.id.total_balance1);
 
+
+
         availableBal = Double.parseDouble(getIntent().getStringExtra("balance"));
-        total_balance1.setText(availableBal + "");
+        total_balance1.setText(getIntent().getStringExtra("balance") + "");
+
+
         showImage(getIntent().getStringExtra("icon"), txt_currency_image1);
 
         String symbol = getIntent().getStringExtra("currency");
@@ -77,7 +81,8 @@ public class WithdrawInrActivity extends BaseActivity {
                     return;
                 }
 
-                if (availableBal < Double.parseDouble(txt_amount.getText().toString())) {
+                if (availableBal < Double.parseDouble(txt_amount.getText().toString()))
+                {
                     alertDialogs.alertDialog(WithdrawInrActivity.this, getResources().getString(R.string.Response), "Withdraw amount should be less than available amount.", getResources().getString(R.string.ok), "", new DialogCallBacks() {
                         @Override
                         public void getDialogEvent(String buttonPressed) {

@@ -11,8 +11,8 @@ android {
         applicationId "com.web.whatashot"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 6
-        versionName "1.6"
+        versionCode 7
+        versionName "1.7"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -63,7 +63,6 @@ dependencies {
             }
 
     implementation 'androidx.multidex:multidex:2.0.1'
-
     implementation 'com.github.Rpsaini:VollyCommunication:V1.4'
     implementation 'com.github.Rpsaini:PreferencesNStorage:V2.7'
     implementation 'com.github.Rpsaini:DialogsNPickers:V2.4'
